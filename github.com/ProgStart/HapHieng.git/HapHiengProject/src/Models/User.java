@@ -13,7 +13,7 @@ public class User {
 	String card_no = null;
 
 
-	
+	 
 	public int getTrans_no() {
 		return trans_no;
 	}
