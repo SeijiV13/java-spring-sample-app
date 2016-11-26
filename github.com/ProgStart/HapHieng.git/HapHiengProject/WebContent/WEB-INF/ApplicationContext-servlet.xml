@@ -118,8 +118,8 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     	<property name="shoppingcart" ref="shoppingCart"/>
     </bean> -->
     
-    
-    <!--BEAN MODELS -->
+
+   <!--BEAN MODELS -->
     
 
    

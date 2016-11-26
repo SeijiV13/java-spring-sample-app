@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -6,7 +5,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="navbar" tagdir="/WEB-INF/tags"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,6 +45,9 @@
 <link href="http://fonts.googleapis.com/css?family=Raleway"
 	rel="stylesheet" type="text/css">
 </head>
+<body>
+
+
 
 <!-- ADDED BY SEIJI VILLAFRANCA 2016/11/26 -->
 <!-- MAIN NAVBAR TAG -->
@@ -85,19 +86,18 @@
 	
 	<!-- MAIN CONTENT -->
 	<div class="container-fluid">
-		<!-- TITLE OF PAGE -->
-		<h3>Sample Page</h3>
-		<br>
-		<div class="row"></div>
-
+		<!-- ERROR CONTENT -->
+		<h1 style="color:#cc3b3b";>Error Page Not Found!</h1>
+		<hr style="border-color:#cc3b3b;">
+		<h4>Please Contact Developers for Assistance</h4>
+		
+	
+		
+	
 	</div>
 
 </div>
-
-
-<!-- /#PAGE CONTENT WRAPPER -->
-
-</html>
+</body>
 
 <!-- FOR LOGOUT SPRING SECURITY FUNCTION -->
 <script type="text/javascript">
@@ -105,3 +105,4 @@
 		document.getElementById("logoutForm").submit();
 	}
 </script>
+</html>

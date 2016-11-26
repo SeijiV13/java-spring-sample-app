@@ -36,11 +36,20 @@
 <url-pattern>/*</url-pattern>
 </filter-mapping>
    
+   
+<!--ERROR PAGE REDIRECTION-->
+ 
+<error-page>
+ <error-code>404</error-code>
+ <location>/PageNotFoundError</location>
+</error-page> 
+   
  <!--<listener>
 <listener-class>
 	org.springframework.security.web.session.HttpSessionEventPublisher
 </listener-class>
 </listener> -->
+
    
  
 </web-app>
