@@ -88,38 +88,28 @@ http://www.springframework.org/schema/security/spring-security.xsd">
   </security:authentication-manager>
   
   
-	  <!-- MAPPERS-->
-
-  <!--<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+   <!-- MAPPERS-->
+  <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" >
     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     <property name="mapperInterface" value="Mappers.UserMapper" />
   </bean>
  
-   <bean id="movieMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" >
-    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-    <property name="mapperInterface" value="Mappers.MovieMapper" />
-  </bean> -->
-	 
-	 <!--INJECTED MAPPERS-->
-  <!--  <bean id="userImplem" class="Implem.UserImplem">
+  <!--BEAN MODELS -->
+  <bean id="user" class="Models.User" scope="session">
+  <aop:scoped-proxy/>
+  </bean> 
+ 
+   <!--INJECTED MAPPERS INB BEANS-->
+    <bean id="userImplem" class="Implem.UserImplem">
 	    <property name="userMapper" ref="userMapper"/>
     </bean>
     
-    <bean id="movieImplem" class="Implem.MovieImplem" init-method="init">
-	    <property name="movieMapper" ref="movieMapper"/>
-    </bean>
+  
     
     
-    <bean id="shoppingCart" class="Models.ShoppingCart" scope="session"/>
-    
-    
-    <bean id="user" class="Models.User" scope="session">
-    	<aop:scoped-proxy/>
-    	<property name="shoppingcart" ref="shoppingCart"/>
-    </bean> -->
     
 
-   <!--BEAN MODELS -->
+   
     
 
    

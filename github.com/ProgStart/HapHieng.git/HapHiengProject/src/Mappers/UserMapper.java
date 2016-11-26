@@ -4,7 +4,6 @@ import Models.User;
 
 public interface UserMapper {
 	
-	public User loginUser(String email);
-    public void signupUser(User user);
-	 
+	public void changePassword(String password, String user);
+	public String checkOldPasswordValidity(String username);
 }

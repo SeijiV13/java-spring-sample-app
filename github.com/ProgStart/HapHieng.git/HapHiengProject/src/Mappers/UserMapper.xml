@@ -7,13 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="Mappers.UserMapper">
 	
-	<select id="loginUser" resultType="User">
-		SELECT * FROM TXN_CUST_SAV WHERE EMAIL_ADDR = #{param1}
-	</select>
+	<update id="changePassword">
+		UPDATE USERS_TABLE SET password = #{0} where username = #{1}
+	</update>
 	
-	<insert id="signupUser" parameterType="User">
-		INSERT INTO TXN_CUST_SAV VALUES(#{email_addr}, #{password}, #{firstname}, #{lastname}, 
-		#{middlename}, #{address}, #{telephone}, #{card_no})
-    </insert>
-
+	<select id="checkOldPasswordValidity" resultType="string">
+	   SELECT password from USERS_TABLE WHERE username = #{0}
+	</select>
 </mapper>

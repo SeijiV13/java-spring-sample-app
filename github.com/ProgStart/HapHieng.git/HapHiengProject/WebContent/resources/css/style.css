@@ -35,6 +35,15 @@ body {
 	width: 100%;
 }
 
+.changepasswordbox{
+	padding:15px;
+	width:70%;
+	margin:auto;
+	-webkit-box-shadow: 1px 8px 44px -7px rgba(0,0,0,0.54);
+	-moz-box-shadow: 1px 8px 44px -7px rgba(0,0,0,0.54);
+	box-shadow: 1px 8px 44px -7px rgba(0,0,0,0.54);
+}
+
 .container {
 	position: relative;
 	z-index: 1;
