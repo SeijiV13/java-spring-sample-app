@@ -38,7 +38,7 @@ public class ChangePasswordController {
 			   return "ChangePassword";
 		   }
 		   
-		   //CHECK OLD PASSWORD IF CORRECT
+		   //CHECK OLD PASSWORD zIF CORRECT
 		   boolean match = userImplem.checkPasswordValidity(username, oldpassword);
 		   if(!match){
 			  request.setAttribute("errorMessage", "oldPasswordIncorrect");   

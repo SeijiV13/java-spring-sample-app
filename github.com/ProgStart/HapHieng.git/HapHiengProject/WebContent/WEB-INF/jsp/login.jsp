@@ -61,53 +61,6 @@
 </head>
 
 
-<body>
-
-
-
-<!-- MAIN LOGIN FORM -->
-<div class="pen-title">
-
-
-<!-- ERROR & LOGOUT ALERTS -->
-
- 	<c:choose>
- 	 <c:when test = "${message == 'logout'}">
-		<div class="alert alert-success">
-			<strong>Success</strong>
-				You have Successfully logout!
-		</div>
-	</c:when>
-	</c:choose>
-
-
-<!--#/ ERROR & LOGOUT  ALERTS -->
-
-  <h1>HapHieng</h1><span>Inventory System</span>
-</div>
-<div class="module form-module">
-  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
-  </div>
-  <div class="form">
-    <h2>Login to your account</h2>
-    <form name='loginForm'
-		  action="<c:url value='/j_spring_security_check' />" method='POST'>
-      <input type="text" name="username" placeholder="Username" required/>
-      <input type="password"  name="password" placeholder="Password" required/>
-     
-      <button name="submit" type="submit">Login</button>
-    <input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
-    </form>
-  </div>
-
-</div>
-<!-- ONLINE LIBRARY -->
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
-
-
-</body>
 <!-- ADDED BY SEIJI VILLAFRANCA 2016/11/26 -->
 <!-- CSS BACKUP -->
 <style>
@@ -249,4 +202,54 @@ body {
 
 
 </style>
+
+
+<body>
+
+
+
+<!-- MAIN LOGIN FORM -->
+<div class="pen-title">
+
+
+<!-- ERROR & LOGOUT ALERTS -->
+
+ 	<c:choose>
+ 	 <c:when test = "${message == 'logout'}">
+		<div class="alert alert-success">
+			<strong>Success</strong>
+				You have Successfully logout!
+		</div>
+	</c:when>
+	</c:choose>
+
+
+<!--#/ ERROR & LOGOUT  ALERTS -->
+
+  <h1>HapHieng</h1><span>Inventory System</span>
+</div>
+<div class="module form-module">
+  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+  </div>
+  <div class="form">
+    <h2>Login to your account</h2>
+    <form name='loginForm'
+		  action="<c:url value='/j_spring_security_check' />" method='POST'>
+      <input type="text" name="username" placeholder="Username" required/>
+      <input type="password"  name="password" placeholder="Password" required/>
+     
+      <button name="submit" type="submit">Login</button>
+    <input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+    </form>
+  </div>
+
+</div>
+<!-- ONLINE LIBRARY -->
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://codepen.io/andytran/pen/vLmRVp.js'></script>
+
+
+</body>
+
 </html>
