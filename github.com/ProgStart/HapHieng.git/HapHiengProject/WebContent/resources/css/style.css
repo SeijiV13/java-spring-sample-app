@@ -28,9 +28,35 @@ body {
 	padding: 20px;
 }
 
+.btn-primary{
+	background-color:#122038;
+	border-color:#122038;
+	border-radius: 0px;
+}
+
+.btn-primary:hover{
+	background-color:#223759;
+	border-color:#223759;
+} 
+.btn-primary:focus{
+	background-color:#223759;
+	border-color:#223759;
+}
 .btn {
 	font-size: 14px;
 }
+
+.btn-default{
+	border-radius: 0px;
+}
+
+.btn-info{
+	border-color:#222638;
+    border-bottom-color: gray;
+	background-color:#222638;
+	font-size: 12px;
+}
+
 .form-btn {
 	width: 100%;
 }

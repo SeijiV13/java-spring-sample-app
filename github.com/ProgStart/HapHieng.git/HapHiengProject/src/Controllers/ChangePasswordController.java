@@ -38,23 +38,24 @@ public class ChangePasswordController {
 			   return "ChangePassword";
 		   }
 		   
-		   //CHECK OLD PASSWORD zIF CORRECT
+		   //CHECK OLD PASSWORD IF CORRECT
 		   boolean match = userImplem.checkPasswordValidity(username, oldpassword);
 		   if(!match){
 			  request.setAttribute("errorMessage", "oldPasswordIncorrect");   
-		      return "ChangePassword";
+		      //Name of Page
+			  return "ChangePassword";
 		   }
-		   //PASSWED VALIDITY CHECK (CHANGE PASSWORD METHOD CALL)
+		   //PASSWORD VALIDITY CHECK (CHANGE PASSWORD METHOD CALL)
 		   userImplem.changePassword(newpassword, username);
 		   
-		   //SET ACKNOWLEDGMENT PROPERTIES
+		   //SET ACKNOWLEDGMENT PROPERTIES (IMPORTANT FOR AUDITING)
 		   Date date = new Date();
 		   SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy");
 
          
 	       request.setAttribute("transactionDetails", "Changing of password Successful");
 	       request.setAttribute("currentDate", dateFormatter.format(date));
-		return "AcknowledgementPage";
+		   return "AcknowledgementPage";
 		
 	}
 	

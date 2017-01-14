@@ -20,8 +20,7 @@ http://www.springframework.org/schema/mvc
 http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security.xsd">
-
-    
+  
    <!--CONTROLLERS TRAVERSING -->
    <context:component-scan base-package="Controllers" />
    
@@ -93,6 +92,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     <property name="mapperInterface" value="Mappers.UserMapper" />
   </bean>
+  
  
   <!--BEAN MODELS -->
   <bean id="user" class="Models.User" scope="session">
@@ -105,15 +105,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     </bean>
     
   
-    
-    
-    
 
-   
-    
-
-   
- 
    <!-- RESOURCE PATH -->
    <mvc:resources mapping="/resources/**" location="/resources/" />
    <mvc:annotation-driven />

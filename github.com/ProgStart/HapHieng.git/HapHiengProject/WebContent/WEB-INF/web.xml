@@ -8,7 +8,7 @@
 
    <display-name>Spring MVC Application</display-name>
  
-
+  <!-- SERVLET APPLICATION CONTEXT-->
    <servlet>
       <servlet-name>ApplicationContext</servlet-name>
       <servlet-class>

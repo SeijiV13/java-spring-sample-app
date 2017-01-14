@@ -5,15 +5,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	
 
-<!--<typeAliases>
-<typeAlias alias="Movie" type="Models.Movie"/>
+<typeAliases>
 <typeAlias alias="User" type="Models.User"/>
-
 </typeAliases>
 
 <mappers>
 <mapper resource="Mappers/UserMapper.xml"/>
-<mapper resource="Mappers/MovieMapper.xml"/>
-</mappers>  -->
+</mappers>  
 
 </configuration>

@@ -83,6 +83,9 @@
 
 		</div>
 	</div>
+	<!-- USERNAME AND DATE DISPLAY -->
+	<h5><span class="fa fa-user"></span> User Login: ${username}</h5>
+	<h5><span class="fa fa-calendar"></span> Date: ${dateToday}</h5>
 	
 	<!-- MAIN CONTENT -->
 	<div class="container-fluid">

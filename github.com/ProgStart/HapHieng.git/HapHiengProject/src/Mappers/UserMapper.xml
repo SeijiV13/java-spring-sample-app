@@ -14,4 +14,129 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="checkOldPasswordValidity" resultType="string">
 	   SELECT password from USERS_TABLE WHERE username = #{0}
 	</select>
+	
+	<select id="retrieveAllUsers" resultType="string">
+	   SELECT username from USERS_TABLE
+	</select>
+	
+	<update id="modifyEntriesofUser">
+	   UPDATE ENTRIES_FUNCTIONS_TABLE SET sales_entries = #{1}, 
+	   sales_return_entries = #{2},
+	   purchase_entries  = #{3},
+	   purchase_return_entries = #{4},
+	   inventory_quantity_adjustment_entries = #{5},
+	   inventory_damage_entries = #{6},
+	   generate_sales_counter_receipts = #{7},
+	   collection_from_customers_entries = #{8},
+	   payment_to_suppliers_entries = #{9}
+	   WHERE username = #{0}
+	   
+	</update>
+	
+	<update id="modifyFilesofUser">
+	   UPDATE FILES_FUNCTIONS_TABLE SET inventory_file = #{1},
+	   customer_file = #{2},
+	   supplier_file = #{3},
+	   agent_file = #{4},
+	   customer_bank_file = #{5}
+	   WHERE  username = #{0}	
+	</update>
+	
+	<update id="modifyReportsofUser">
+		UPDATE REPORTS_FUNCTIONS_TABLE SET sales_reports = #{1},
+		sales_return_reports = #{2},
+		purchase_reports = #{3},
+		purchase_return_reports = #{4},
+		item_in_out_transactions = #{5},
+		customers_list = #{6},
+		suppliers_list = #{7},
+		agent_list = #{8} 
+		WHERE username = #{0}
+	</update>
+	
+	<update id="modifyProductListofUser"> 
+	   UPDATE PRODUCT_LISTS_FUNCTIONS_TABLE SET price_list_imported = #{1},
+	   price_list_local = #{2},
+	   external_imported = #{3},
+	   external_local =  #{4},
+	   external_no_price = #{5},
+	   internal = #{6},
+	   list_products_by_category = #{7},
+	   damaged_inventory_summary = #{8},
+	   quantity_adjustment_inventory = #{9}
+	   WHERE username = #{0}
+	</update>
+	
+	<select id="retrieveUserEntriesAccess" resultType="User">
+	   SELECT sales_entries as salesEntries,
+	   sales_return_entries as salesReturnEntries,
+	   purchase_entries as purchaseEntries,
+	   purchase_return_entries as purchaseReturnEntries,
+	   inventory_quantity_adjustment_entries as inventoryQuantityAdjustmentEntries,
+	   inventory_damage_entries as inventoryDamageEntries,
+	   generate_sales_counter_receipts as generateSalesCounterReceipts,
+	   collection_from_customers_entries as collectionFromCustomersEntries,
+	   payment_to_suppliers_entries as paymentToSuppliersEntries FROM ENTRIES_FUNCTIONS_TABLE
+	   WHERE
+	   username = #{0}
+	</select>
+	
+	<select id="retrieveUserFilesAccess" resultType="User">
+		SELECT inventory_file as inventoryFile,
+		customer_file as customerFile,
+		supplier_file as supplierFile,
+		agent_file as agentFile,
+		customer_bank_file as customerBankFile
+		FROM FILES_FUNCTIONS_TABLE
+		WHERE
+		username = #{0}
+	</select>
+	
+	<select id="retrieveUserReportsAccess" resultType="User">
+		SELECT sales_reports as salesReports,
+		sales_return_reports as salesReturnReports,
+		purchase_reports as purchaseReports,
+		purchase_return_reports as purchaseReturnReports,
+		item_in_out_transactions as itemInOutTransactions,
+		customers_list as customersList,
+		suppliers_list as suppliersList,
+		agent_list as agentList
+		FROM REPORTS_FUNCTIONS_TABLE
+		WHERE
+		username = #{0}
+	</select>
+	
+	<select id="retrieveUserProductListAccess" resultType="User">
+		SELECT price_list_imported as priceListImported,
+		price_list_local as priceListLocal,
+		external_imported as externalImported,
+		external_local as externalLocal,
+		external_no_price as externalNoPrice,
+		internal as internal,
+		list_products_by_category as listProductsByCategory,
+		damaged_inventory_summary as damagedInventorySummary,
+		quantity_adjustment_inventory as quantityAdjustmentInventory
+		FROM PRODUCT_LISTS_FUNCTIONS_TABLE
+		WHERE
+		username = #{0}	
+    </select>	
+    
+    <select id="retrieveUserToolsAccess" resultType="User">
+        SELECT view_edit_sales as viewEditSales,
+        view_edit_sales_returns as viewEditSalesReturns,
+        view_edit_purchases as viewEditPurchases,
+        view_edit_purchases_returns as viewEditPurchasesReturns,
+        view_edit_counter_receipts as viewEditCounterReceipts,
+        view_edit_quantity_stock_adjustments as viewEditQuantityStockAdjustments,
+        view_edit_inventory_damages as viewEditInventoryDamages,
+        customer_transactions as customerTransactions,
+        supplier_transactions as supplierTransactions,
+        administrator_control as administratorControl,
+        change_password as changePassword
+        FROM TOOLS_FUNCTIONS_TABLE
+        WHERE
+        username = #{0}
+    </select>
+    
+    
 </mapper>
