@@ -31,15 +31,18 @@ UserImplem userImplem;
 		ArrayList<String> usersList = userImplem.retrieveAllUsers();
 		session.setAttribute("usersList", usersList);
 		
-		//FUNCTIONS OF ENTRIES HASHMAP
-		HashMap<String, String> entriesFunctions = new HashMap<String,String>();
 		
-		entriesFunctions.put("sales_entries", "Sales Entries");
+		
+		//FUNCTIONS OF ENTRIES HASHMAP
+		HashMap<String, String> entriesFunctions = new HashMap<String, String>();
+		
+		entriesFunctions.put("sales_entries",  "Sales Entries");
 		entriesFunctions.put("sales_return_entries", "Sales Return Entries");
-		entriesFunctions.put("purchase_entries","Purchase Entries");
-		entriesFunctions.put("purchase_return_entries","Purchase Return Entries");
-		entriesFunctions.put("inventory_quantity_adjustment_entries","Inventory Quantity Adjustment Entries");
-		entriesFunctions.put("inventory_damage_entries","Inventory Damage Entries");
+		entriesFunctions.put("purchase_entries", "Purchase Entries");
+		entriesFunctions.put("purchase_return_entries", "Purchase Return Entries");
+	 	entriesFunctions.put("inventory_quantity_adjustment_entries", "Inventory Quantity Adjustment Entries");
+		entriesFunctions.put("inventory_damage_entries", "Inventory Damage Entries");
+
 		entriesFunctions.put("generate_sales_counter_receipts","Generate Sales Counter Receipts");
 		entriesFunctions.put("collection_from_customers_entries","Collection from Customers Entries");
 		entriesFunctions.put("payment_to_suppliers_entries","Payment to Suppliers Entries");
@@ -390,6 +393,116 @@ UserImplem userImplem;
 		    //UPDATE PRODUCT LIST ACCESS OF THE USER
 		    userImplem.modifyProductListofUser(user, pli_active, pll_active, ei_active, el_active, enp_active, i_active, lpbc_active, dis_active, qai_active);
 		    
+		}
+		
+		if(transactionTab.equals("tools")){
+			//FOR TOOLS TABLE
+			int ves_active, vesr_active, vep_active, vepr_active, vecr_active, veqsa_active, veid_active, ct_active, st_active, ac_active, cp_active;
+		     
+			String view_edit_sales = request.getParameter("view_edit_sales");
+			String view_edit_sales_returns = request.getParameter("view_edit_sales_returns");
+			String view_edit_purchases = request.getParameter("view_edit_purchases");
+		    String view_edit_purchases_returns = request.getParameter("view_edit_purchases_returns");
+		    String view_edit_counter_receipts = request.getParameter("view_edit_counter_receipts");
+		    String view_edit_quantity_stock_adjustments = request.getParameter("view_edit_quantity_stock_adjustments");
+		    String view_edit_inventory_damages = request.getParameter("view_edit_inventory_damages");
+		    String customer_transactions = request.getParameter("customer_transactions");
+		    String supplier_transactions = request.getParameter("supplier_transactions");
+		    String administrator_control = request.getParameter("administrator_control");
+		    String change_password = request.getParameter("change_password");
+		    
+		    if(view_edit_sales == null){	
+		       ves_active = 0;
+		    }
+		    else{
+		    	ves_active = 1;
+		    }
+		    
+		    
+		    
+		    if(view_edit_sales_returns == null){
+		    	vesr_active = 0;
+		    }
+		    
+		    else{
+		    	vesr_active = 1;
+		    }
+		    
+		    
+		    
+		    if(view_edit_purchases == null){
+		    	vep_active = 0;
+		    }
+		    else{
+		    	vep_active = 1;
+		    }
+		    
+		    
+		    
+		    if(view_edit_purchases_returns == null){
+		    	vepr_active = 0;
+		    }
+		    else{
+		    	vepr_active = 1;
+		    }
+		    
+		    
+		    if(view_edit_counter_receipts == null){
+		    	vecr_active = 0;
+		    }
+		    else{
+		    	vecr_active = 1;
+		    }
+		    
+		    
+		    if(view_edit_quantity_stock_adjustments == null){
+		    	veqsa_active = 0;
+		    }
+		    
+		    else{
+		    	veqsa_active = 1;
+		    }
+		    
+		    if(view_edit_inventory_damages == null){
+		    	veid_active = 0;
+		    }
+		    
+		    else{
+		    	veid_active = 1;
+		    }
+ 		    
+		    if(customer_transactions == null){
+		    	ct_active = 0;
+		    }
+		    else{
+		    	ct_active = 1;
+		    }
+		    
+		    if(supplier_transactions == null){
+		    	st_active = 0;
+		    }
+		    else{
+		    	st_active = 1;
+		    }
+		
+		    
+		    if(administrator_control == null){
+		    	ac_active = 0;
+		    }
+		    else{
+		    	ac_active = 1;
+		    }
+		    
+		    if(change_password == null){
+		    	cp_active = 0;
+		    }
+		    else{
+		    	cp_active = 1;
+		    }
+		    
+		    //UPDATE TOOLS ACCESS LIST OF THE USER
+		     userImplem.modifyToolsOfUser(user, ves_active, vesr_active, vep_active, vepr_active, vecr_active, veqsa_active, veid_active, ct_active, st_active, ac_active, cp_active);
+		     
 		}
 	 
 		 //SET ACKNOWLEDGMENT PROPERTIES (IMPORTANT FOR AUDITING)

@@ -67,6 +67,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	   WHERE username = #{0}
 	</update>
 	
+	<update id="modifyToolsofUser">
+	   UPDATE TOOLS_FUNCTIONS_TABLE SET view_edit_sales = #{1},
+	   view_edit_sales_returns = #{2},
+	   view_edit_purchases = #{3},
+	   view_edit_purchases_returns = #{4},
+	   view_edit_counter_receipts = #{5},
+	   view_edit_quantity_stock_adjustments = #{6},
+	   view_edit_inventory_damages = #{7},
+	   customer_transactions = #{8},
+	   supplier_transactions = #{9},
+	   administrator_control = #{10},
+	   change_password = #{11} 
+	   WHERE username = #{0}
+    </update>
+		
+    
+	
 	<select id="retrieveUserEntriesAccess" resultType="User">
 	   SELECT sales_entries as salesEntries,
 	   sales_return_entries as salesReturnEntries,

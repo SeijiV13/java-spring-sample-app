@@ -56,6 +56,10 @@ public class UserImplem {
         userMapper.modifyProductListofUser(user, pli_active, pll_active, ei_active, el_active, enp_active, i_active, lpbc_active, dis_active, qai_active);
      } 
      
+     public void modifyToolsOfUser(String user, int ves_active, int vesr_active, int vep_active, int vepr_active, int vecr_active, int veqsa_active, int veid_active, int ct_active, int st_active, int ac_active, int cp_active){
+    	userMapper.modifyToolsofUser(user, ves_active, vesr_active, vep_active, vepr_active, vecr_active, veqsa_active, veid_active, ct_active, st_active, ac_active, cp_active); 
+     }
+     
      
      
      public User retrieveUserEntriesAccess(String user){

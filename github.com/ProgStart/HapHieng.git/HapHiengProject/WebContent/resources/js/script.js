@@ -24,5 +24,26 @@ $(document).ready(function() {
 			opacity : "toggle"
 		}, "slow");
 	});
-
+	
+	
+	$(window).resize(function(){
+		if ($(window).width() < 768) {
+			$('.btn_grp').removeClass('btn-group-justified');
+	    } else {
+	        $('.btn_grp').addClass('btn-group-justified');
+		}
+	});
+	
+	$('.datepicker').datepicker({
+	    format: 'mm/dd/yyyy',
+	    startDate: '-3d'
+	});
+	
+	$('.input-daterange input').each(function() {
+	    $(this).datepicker("clearDates");
+	});
+	
+	
+	
 });
+

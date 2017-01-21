@@ -49,55 +49,56 @@
 
 
 
-<!-- ADDED BY SEIJI VILLAFRANCA 2016/11/26 -->
-<!-- MAIN NAVBAR TAG -->
-<navbar:mainnavbar />  <!-- FOUND IN /WEB-INF/tags/mainnavbar.tag -->
+	<!-- ADDED BY SEIJI VILLAFRANCA 2016/11/26 -->
+	<!-- MAIN NAVBAR TAG -->
+	<navbar:mainnavbar />
+	<!-- FOUND IN /WEB-INF/tags/mainnavbar.tag -->
 
 
-<!-- PAGE CONTENT -->
-<div id="page-content-wrapper">
-	<!-- CLOSE MENU BAR AND SIGNOUT BUTTON -->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12">
-				<a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">
-					Close Menu Bar</a>
+	<!-- PAGE CONTENT -->
+	<div id="page-content-wrapper">
+		<!-- CLOSE MENU BAR AND SIGNOUT BUTTON -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">
+						Close Menu Bar</a>
 
 
-				<div class="pull-right">
-					<a href="javascript:formSubmit()" class="btn btn-primary"> <span
-						class="fa fa-sign-out"></span> Sign Out
-					</a>
+					<div class="pull-right">
+						<a href="javascript:formSubmit()" class="btn btn-primary"> <span
+							class="fa fa-sign-out"></span> Sign Out
+						</a>
 
-					<c:url value="/logout" var="logoutUrl" />
-					<form action="${logoutUrl}" method="post" id="logoutForm">
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
-					</form>
+						<c:url value="/logout" var="logoutUrl" />
+						<form action="${logoutUrl}" method="post" id="logoutForm">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						</form>
+					</div>
+
+					<!-- MENU COUNTER ADDED BY SEIJI VILLAFRANCA 2016/11/19 -->
+					<input value="1" id="menustate" hidden> <br> <br>
+
 				</div>
 
-				<!-- MENU COUNTER ADDED BY SEIJI VILLAFRANCA 2016/11/19 -->
-				<input value="1" id="menustate" hidden> <br> <br>
-
 			</div>
+		</div>
+
+		<!-- MAIN CONTENT -->
+		<div class="container-fluid">
+			<!-- TRANSACTION ACKNOWLEDGEMENT CONTENT -->
+			<h1>Transaction Successful!</h1>
+			<hr style="border-color: black;">
+			<h4>${transactionDetails}</h4>
+			<h5>Date: ${currentDate}</h5>
+
+
+
 
 		</div>
-	</div>
-	
-	<!-- MAIN CONTENT -->
-	<div class="container-fluid">
-		<!-- TRANSACTION ACKNOWLEDGEMENT CONTENT -->
-		<h1>Transaction Successful!</h1>
-		<hr style="border-color:black;">
-		<h4>${transactionDetails}</h4>
-		<h5>Date: ${currentDate}</h5>
-		
-	
-		
-	
-	</div>
 
-</div>
+	</div>
 </body>
 
 <!-- FOR LOGOUT SPRING SECURITY FUNCTION -->
