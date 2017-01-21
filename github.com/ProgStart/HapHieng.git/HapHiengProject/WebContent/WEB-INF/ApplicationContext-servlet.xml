@@ -109,5 +109,23 @@ http://www.springframework.org/schema/security/spring-security.xsd">
    <!-- RESOURCE PATH -->
    <mvc:resources mapping="/resources/**" location="/resources/" />
    <mvc:annotation-driven />
+   
+   <!--EMAIL SENDER BEAN ADDED BY SEIJI VILLAFRANCA 1/21/2017--> 
+   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <!-- SMTP settings -->
+    <property name="host" value="smtp.gmail.com" />
+    <property name="port" value="587" />
+    <property name="username" value="villafrancasra@gmail.com" />
+    <property name="password" value="comsci10" />
+ 
+    <property name="javaMailProperties">
+        <!-- additional properties specific to JavaMail -->
+        <props>
+            <prop key="mail.transport.protocol">smtp</prop>
+            <prop key="mail.smtp.auth">true</prop>
+            <prop key="mail.smtp.starttls.enable">true</prop>
+        </props>
+    </property>
+   </bean>
  
 </beans>

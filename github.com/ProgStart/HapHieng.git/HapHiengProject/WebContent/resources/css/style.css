@@ -351,3 +351,19 @@ select {
 	border-width: 0.5px;
 	margin-bottom: 3%;
 }
+
+/*======BOXES ===== */
+
+.info-box{
+	background-color:#222638;
+	color:white;
+	padding:10px;
+}
+
+
+
+/*===== ICONS =====*/
+.fa-asterisk{
+	color: red;
+	font-size:6px;
+}
