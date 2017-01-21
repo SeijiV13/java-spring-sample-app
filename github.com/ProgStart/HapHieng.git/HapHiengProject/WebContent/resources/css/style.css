@@ -340,3 +340,14 @@ select {
 	margin-top: 5%;
 	margin-bottom: 5%;
 }
+
+
+/* ========= FORMS =========== */
+.form-container{
+	padding:25px;
+	border-radius:5px;
+	border-style: solid;
+	border-color:#c9cacc;
+	border-width: 0.5px;
+	margin-bottom: 3%;
+}
