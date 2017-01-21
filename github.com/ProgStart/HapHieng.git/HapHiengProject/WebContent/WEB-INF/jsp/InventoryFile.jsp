@@ -126,8 +126,8 @@
 							<div class="col-md-6">
 
 								<div class="form-group">
-									<label for="unit">Unit</label> <input placeholder="Unit"type="text"
-										class="form-control" id="unit">
+									<label for="unit">Unit</label> <input placeholder="Unit"
+										type="text" class="form-control" id="unit">
 								</div>
 
 							</div>
@@ -138,16 +138,18 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="itemcode">Item Code</label> <input placeholder="Item Code" type="text"
-										class="form-control" id="itemcode">
+									<label for="itemcode">Item Code</label> <input
+										placeholder="Item Code" type="text" class="form-control"
+										id="itemcode">
 								</div>
 							</div>
 
 							<div class="col-md-6">
 
 								<div class="form-group">
-									<label for="location">Location</label> <input placeholder="Location" type="text"
-										class="form-control" id="location">
+									<label for="location">Location</label> <input
+										placeholder="Location" type="text" class="form-control"
+										id="location">
 								</div>
 
 							</div>
@@ -169,7 +171,8 @@
 
 								<div class="form-group">
 									<label for="minimumquantity">Minimum Quantity</label> <input
-										placeholder="Minimum Quantity" type="text" class="form-control" id="minimumquantity">
+										placeholder="Minimum Quantity" type="text"
+										class="form-control" id="minimumquantity">
 
 								</div>
 							</div>
@@ -179,7 +182,8 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="description">Description</label> <input type="text"
-										placeholder="Description" class="form-control" id="description">
+										placeholder="Description" class="form-control"
+										id="description">
 								</div>
 
 							</div>
@@ -233,7 +237,8 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="packageqtybig">PackQty Big</label> <input
-										placeholder="Package Quantity Big" type="text" class="form-control" id="packageqtybig">
+										placeholder="Package Quantity Big" type="text"
+										class="form-control" id="packageqtybig">
 								</div>
 
 							</div>
@@ -242,7 +247,8 @@
 
 								<div class="form-group">
 									<label for="packageqtysmall">PackQty Small</label> <input
-										placeholder="Package Quantity Small" type="text" class="form-control" id="packageqtysmall">
+										placeholder="Package Quantity Small" type="text"
+										class="form-control" id="packageqtysmall">
 								</div>
 
 							</div>
@@ -260,46 +266,281 @@
 				<br>
 				<div id="browseform" class="tab-pane fade">
 					<form>
-					    <div class="row">
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="productlinefilter">Product Line Filter</label>
-								<select class="form-control" id="productlinefilter">
-								    <option>Select Product Line</option>
-								</select>
-							
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="productlinefilter">Product Line Filter</label> <select
+										class="form-control" id="productlinefilter">
+										<option>Select Product Line</option>
+									</select>
+
+								</div>
 							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="categoryfilter">Category Filter</label> 
-							    <select class="form-control" id="categoryfilter">
-							        <option>Select Category</option>
-							    </select>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="categoryfilter">Category Filter</label> <select
+										class="form-control" id="categoryfilter">
+										<option>Select Category</option>
+									</select>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="remarks">Total Inventory Cost</label> 
-								<input class="form-control" readonly>
-				
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="remarks">Total Inventory Cost</label> <input
+										class="form-control" readonly>
+
+								</div>
 							</div>
-						</div>
 						</div>
 						<div class="row">
-						    <div class="col-md-12">
-						       <div class="pull-right">
-						          <button class="btn btn-default">Filter</button>
-						       </div>
-						    </div>
+							<div class="col-md-12">
+								<div class="pull-right">
+									<button class="btn btn-default">Filter</button>
+								</div>
+							</div>
 						</div>
-					
+
 						<hr>
 
+						<!--/# TABLE FOR INVENTORY FILE-->
+
+						<div class="table-responsive">
+							<table class="table table-block">
+								<thead>
+									<tr>
+										<th class="bg_dblue text-nowrap">Row No.</th>
+										<th class="bg_dblue text-nowrap">Item code</th>
+										<th class="bg_dblue text-nowrap">Item code</th>
+										<th class="bg_dblue text-nowrap">Category</th>
+										<th class="bg_dblue text-nowrap">Description</th>
+										<th class="bg_dblue text-nowrap">Gross Price</th>
+										<th class="bg_dblue text-nowrap">Net Price</th>
+										<th class="bg_dblue text-nowrap">Qty</th>
+										<th class="bg_dblue text-nowrap">Qty on PO</th>
+										<th class="bg_dblue text-nowrap">Location</th>
+										<th class="bg_dblue text-nowrap">Qty Pack Big</th>
+										<th class="bg_dblue text-nowrap">Qty Pack Small</th>
+										<th class="bg_dblue text-nowrap">Remarks</th>
+										<th class="bg_dblue text-nowrap">Image</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<div class="hoverme">
+											<td class="">1</td>
+											<td class=""><button class="btn btn-primary">1000
+													Sand Paper</button>"</td>
+											<td class="">1000 Sand Paper</td>
+											<td class="">Dummy Data</td>
+											<td class="">Dummy data</td>
+											<td class="">Php. 4,000</td>
+											<td class="">Php. 5,300</td>
+											<td class="">100</td>
+											<td class="">122</td>
+											<td class="">Manila</td>
+											<td class="">123</td>
+											<td class="">123</td>
+											<td class="">This is a sample</td>
+											<td class=""></td>
+										</div>
+
+
+									</tr>
+
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button>"</td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
+
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button>"</td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
+
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button>"</td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
+
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button>"</td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
+
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button>"</td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
+
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button>"</td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+
 					</form>
+					<hr>
 				</div>
 
 			</div>
+
+			<hr>
+
+			<!--/# PRICING LEGEND -->
+			<div class="row center-block legend">
+				<div class="col-md-2 text-right col-xs-4 " style="">Pricing
+					Legend:</div>
+				<div class="col-md-4 col-xs-4">
+					<span class="text-center bg_blue" style="padding: 10px;">
+						Cost 1.25</span>
+				</div>
+
+
+			</div>
+			<br>
+
+
+			<!-- #/BUTTON TRANSACTIONS -->
+			<div class="btn-group btn-group-justified  " role="group"
+				aria-label="...">
+
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default">
+						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+						Item Transactions
+					</button>
+				</div>
+
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						Find
+					</button>
+				</div>
+
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default">
+						<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+						Print
+					</button>
+				</div>
+			</div>
+			<br>
+
+			<div class="table-responsive">
+				<table class="table">
+
+					<thead>
+						<tr>
+							<th class="bg_dblue text-nowrap">Customer</th>
+							<th class="bg_dblue text-nowrap">Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Emily Equiza</td>
+							<td>9.00</td>
+
+						</tr>
+						<tr>
+							<td>Jes Rey</td>
+							<td>5.00</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+
+
 
 		</div>
 
