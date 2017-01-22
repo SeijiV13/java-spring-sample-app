@@ -12,9 +12,18 @@ public class ErrorHandlerController {
 
 	
 	@RequestMapping(value="/PageNotFoundError", method = RequestMethod.GET)
-	public ModelAndView formBackingObject(HttpServletRequest request){
+	public ModelAndView redirectToPageNotFound(HttpServletRequest request){
 		
 		ModelAndView pageNotFoundError = new ModelAndView("PageNotFoundError");
 		return pageNotFoundError;
+	}
+	
+	
+	@RequestMapping(value="/SessionExpiredError", method  =RequestMethod.GET)
+	public ModelAndView redirectToSessionExpired(HttpServletRequest request){
+		
+		ModelAndView sessionExpiredError = new ModelAndView("SessionExpiredError");
+		
+		return sessionExpiredError;
 	}
 }

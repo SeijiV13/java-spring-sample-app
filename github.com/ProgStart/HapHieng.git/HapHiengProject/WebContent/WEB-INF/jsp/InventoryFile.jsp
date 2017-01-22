@@ -306,170 +306,170 @@
 					<hr>
 
 					<!--/# TABLE FOR INVENTORY FILE-->
+					<div class="tbl_wrap">
+						<div class="table-responsive">
+							<table class="table table-block">
+								<thead>
+									<tr>
+										<th class="bg_dblue text-nowrap">Row No.</th>
+										<th class="bg_dblue text-nowrap">Item code</th>
+										<th class="bg_dblue text-nowrap">Item code</th>
+										<th class="bg_dblue text-nowrap">Category</th>
+										<th class="bg_dblue text-nowrap">Description</th>
+										<th class="bg_dblue text-nowrap">Gross Price</th>
+										<th class="bg_dblue text-nowrap">Net Price</th>
+										<th class="bg_dblue text-nowrap">Qty</th>
+										<th class="bg_dblue text-nowrap">Qty on PO</th>
+										<th class="bg_dblue text-nowrap">Location</th>
+										<th class="bg_dblue text-nowrap">Qty Pack Big</th>
+										<th class="bg_dblue text-nowrap">Qty Pack Small</th>
+										<th class="bg_dblue text-nowrap">Remarks</th>
+										<th class="bg_dblue text-nowrap">Image</th>
+									</tr>
+								</thead>
+								<tbody>
 
-					<div class="table-responsive">
-						<table class="table table-block">
-							<thead>
-								<tr>
-									<th class="bg_dblue text-nowrap">Row No.</th>
-									<th class="bg_dblue text-nowrap">Item code</th>
-									<th class="bg_dblue text-nowrap">Item code</th>
-									<th class="bg_dblue text-nowrap">Category</th>
-									<th class="bg_dblue text-nowrap">Description</th>
-									<th class="bg_dblue text-nowrap">Gross Price</th>
-									<th class="bg_dblue text-nowrap">Net Price</th>
-									<th class="bg_dblue text-nowrap">Qty</th>
-									<th class="bg_dblue text-nowrap">Qty on PO</th>
-									<th class="bg_dblue text-nowrap">Location</th>
-									<th class="bg_dblue text-nowrap">Qty Pack Big</th>
-									<th class="bg_dblue text-nowrap">Qty Pack Small</th>
-									<th class="bg_dblue text-nowrap">Remarks</th>
-									<th class="bg_dblue text-nowrap">Image</th>
-								</tr>
-							</thead>
-							<tbody>
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
 
-								<tr style="cursor: pointer;" data-toggle="modal"
-									data-target="#myModal">
-
-									<td class="">1</td>
-									<td class=""><button class="btn btn-primary">1000
-											Sand Paper</button></td>
-									<td class="">1000 Sand Paper</td>
-									<td class="">Dummy Data</td>
-									<td class="">Dummy data</td>
-									<td class="">Php. 4,000</td>
-									<td class="">Php. 5,300</td>
-									<td class="">100</td>
-									<td class="">122</td>
-									<td class="">Manila</td>
-									<td class="">123</td>
-									<td class="">123</td>
-									<td class="">This is a sample</td>
-									<td class=""></td>
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button></td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
 
 
 
-								</tr>
+									</tr>
 
-								<tr style="cursor: pointer;" data-toggle="modal"
-									data-target="#myModal">
-									<td class="">1</td>
-									<td class=""><button class="btn btn-primary">1000
-											Sand Paper</button></td>
-									<td class="">1000 Sand Paper</td>
-									<td class="">Dummy Data</td>
-									<td class="">Dummy data</td>
-									<td class="">Php. 4,000</td>
-									<td class="">Php. 5,300</td>
-									<td class="">100</td>
-									<td class="">122</td>
-									<td class="">Manila</td>
-									<td class="">123</td>
-									<td class="">123</td>
-									<td class="">This is a sample</td>
-									<td class=""></td>
-								</tr>
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button></td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
 
-								<tr style="cursor: pointer;" data-toggle="modal"
-									data-target="#myModal">
-									<td class="">1</td>
-									<td class=""><button class="btn btn-primary">1000
-											Sand Paper</button></td>
-									<td class="">1000 Sand Paper</td>
-									<td class="">Dummy Data</td>
-									<td class="">Dummy data</td>
-									<td class="">Php. 4,000</td>
-									<td class="">Php. 5,300</td>
-									<td class="">100</td>
-									<td class="">122</td>
-									<td class="">Manila</td>
-									<td class="">123</td>
-									<td class="">123</td>
-									<td class="">This is a sample</td>
-									<td class=""></td>
-								</tr>
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button></td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
 
-								<tr style="cursor: pointer;" data-toggle="modal"
-									data-target="#myModal">
-									<td class="">1</td>
-									<td class=""><button class="btn btn-primary">1000
-											Sand Paper</button></td>
-									<td class="">1000 Sand Paper</td>
-									<td class="">Dummy Data</td>
-									<td class="">Dummy data</td>
-									<td class="">Php. 4,000</td>
-									<td class="">Php. 5,300</td>
-									<td class="">100</td>
-									<td class="">122</td>
-									<td class="">Manila</td>
-									<td class="">123</td>
-									<td class="">123</td>
-									<td class="">This is a sample</td>
-									<td class=""></td>
-								</tr>
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button></td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
 
-								<tr style="cursor: pointer;" data-toggle="modal"
-									data-target="#myModal">
-									<td class="">1</td>
-									<td class=""><button class="btn btn-primary">1000
-											Sand Paper</button></td>
-									<td class="">1000 Sand Paper</td>
-									<td class="">Dummy Data</td>
-									<td class="">Dummy data</td>
-									<td class="">Php. 4,000</td>
-									<td class="">Php. 5,300</td>
-									<td class="">100</td>
-									<td class="">122</td>
-									<td class="">Manila</td>
-									<td class="">123</td>
-									<td class="">123</td>
-									<td class="">This is a sample</td>
-									<td class=""></td>
-								</tr>
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button></td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
 
-								<tr style="cursor: pointer;" data-toggle="modal"
-									data-target="#myModal">
-									<td class="">1</td>
-									<td class=""><button class="btn btn-primary">1000
-											Sand Paper</button></td>
-									<td class="">1000 Sand Paper</td>
-									<td class="">Dummy Data</td>
-									<td class="">Dummy data</td>
-									<td class="">Php. 4,000</td>
-									<td class="">Php. 5,300</td>
-									<td class="">100</td>
-									<td class="">122</td>
-									<td class="">Manila</td>
-									<td class="">123</td>
-									<td class="">123</td>
-									<td class="">This is a sample</td>
-									<td class=""></td>
-								</tr>
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button></td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
 
-								<tr style="cursor: pointer;" data-toggle="modal"
-									data-target="#myModal">
-									<td class="">1</td>
-									<td class=""><button class="btn btn-primary">1000
-											Sand Paper</button></td>
-									<td class="">1000 Sand Paper</td>
-									<td class="">Dummy Data</td>
-									<td class="">Dummy data</td>
-									<td class="">Php. 4,000</td>
-									<td class="">Php. 5,300</td>
-									<td class="">100</td>
-									<td class="">122</td>
-									<td class="">Manila</td>
-									<td class="">123</td>
-									<td class="">123</td>
-									<td class="">This is a sample</td>
-									<td class=""></td>
-								</tr>
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+										<td class="">1</td>
+										<td class=""><button class="btn btn-primary">1000
+												Sand Paper</button></td>
+										<td class="">1000 Sand Paper</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Php. 4,000</td>
+										<td class="">Php. 5,300</td>
+										<td class="">100</td>
+										<td class="">122</td>
+										<td class="">Manila</td>
+										<td class="">123</td>
+										<td class="">123</td>
+										<td class="">This is a sample</td>
+										<td class=""></td>
+									</tr>
 
-							</tbody>
-						</table>
+								</tbody>
+							</table>
+						</div>
 					</div>
-
 
 					<hr>
 				</div>
@@ -518,32 +518,32 @@
 				</div>
 			</div>
 			<br>
+			<div class="tbl_wrap">
+				<div class="table-responsive">
+					<table class="table">
 
-			<div class="table-responsive">
-				<table class="table">
+						<thead>
+							<tr>
+								<th class="bg_dblue text-nowrap">Customer</th>
+								<th class="bg_dblue text-nowrap">Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Emily Equiza</td>
+								<td>9.00</td>
 
-					<thead>
-						<tr>
-							<th class="bg_dblue text-nowrap">Customer</th>
-							<th class="bg_dblue text-nowrap">Price</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Emily Equiza</td>
-							<td>9.00</td>
+							</tr>
+							<tr>
+								<td>Jes Rey</td>
+								<td>5.00</td>
+							</tr>
 
-						</tr>
-						<tr>
-							<td>Jes Rey</td>
-							<td>5.00</td>
-						</tr>
+						</tbody>
+					</table>
+				</div>
 
-					</tbody>
-				</table>
 			</div>
-
-
 
 		</div>
 

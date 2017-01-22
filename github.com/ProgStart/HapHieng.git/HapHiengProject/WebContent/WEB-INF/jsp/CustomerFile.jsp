@@ -309,8 +309,8 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="agentfilter">Agent Filter</label> <input
-										id="agentfilter" class="form-control"
-										placeholder="Agent" type="text">
+										id="agentfilter" class="form-control" placeholder="Agent"
+										type="text">
 								</div>
 							</div>
 
@@ -329,89 +329,89 @@
 					<hr>
 
 					<!--/# TABLE FOR INVENTORY FILE-->
+					<div class="tbl_wrap">
+						<div class="table-responsive">
+							<table class="table table-block">
+								<thead>
+									<tr>
+										<th class="bg_dblue text-nowrap">Row No.</th>
+										<th class="bg_dblue text-nowrap">Customer code</th>
+										<th class="bg_dblue text-nowrap">Description</th>
+										<th class="bg_dblue text-nowrap">Agent</th>
+										<th class="bg_dblue text-nowrap">Address</th>
+										<th class="bg_dblue text-nowrap">Address 2</th>
+										<th class="bg_dblue text-nowrap">Telephone</th>
+										<th class="bg_dblue text-nowrap">Resident Phone</th>
+										<th class="bg_dblue text-nowrap">Fax</th>
+										<th class="bg_dblue text-nowrap">Cellphone</th>
+										<th class="bg_dblue text-nowrap">Terms</th>
+										<th class="bg_dblue text-nowrap">Tin #</th>
+										<th class="bg_dblue text-nowrap">Contact Person</th>
+										<th class="bg_dblue text-nowrap">Email</th>
+										<th class="bg_dblue text-nowrap">Credit Limit</th>
+										<th class="bg_dblue text-nowrap">Initial Balance</th>
+										<th class="bg_dblue text-nowrap">Remaining</th>
+										<th class="bg_dblue text-nowrap">Remarks</th>
+									</tr>
+								</thead>
+								<tbody>
 
-					<div class="table-responsive">
-						<table class="table table-block">
-							<thead>
-								<tr>
-									<th class="bg_dblue text-nowrap">Row No.</th>
-									<th class="bg_dblue text-nowrap">Customer code</th>
-									<th class="bg_dblue text-nowrap">Description</th>
-									<th class="bg_dblue text-nowrap">Agent</th>
-									<th class="bg_dblue text-nowrap">Address</th>
-									<th class="bg_dblue text-nowrap">Address 2</th>
-									<th class="bg_dblue text-nowrap">Telephone</th>
-									<th class="bg_dblue text-nowrap">Resident Phone</th>
-									<th class="bg_dblue text-nowrap">Fax</th>
-									<th class="bg_dblue text-nowrap">Cellphone</th>
-									<th class="bg_dblue text-nowrap">Terms</th>
-									<th class="bg_dblue text-nowrap">Tin #</th>
-									<th class="bg_dblue text-nowrap">Contact Person</th>
-									<th class="bg_dblue text-nowrap">Email</th>
-									<th class="bg_dblue text-nowrap">Credit Limit</th>
-									<th class="bg_dblue text-nowrap">Initial Balance</th>
-									<th class="bg_dblue text-nowrap">Remaining</th>
-									<th class="bg_dblue text-nowrap">Remarks</th>
-								</tr>
-							</thead>
-							<tbody>
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
 
-								<tr style="cursor: pointer;" data-toggle="modal"
-									data-target="#myModal">
-
-									<td class="">1</td>
-									<td class="">20TH Century</td>
-									<td class="">20TH Century Auto Supply</td>
-									<td class="">Dummy Data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-
-
-
-								</tr>
-								<tr style="cursor: pointer;" data-toggle="modal"
-									data-target="#myModal">
-
-									<td class="">1</td>
-									<td class="">20TH Century</td>
-									<td class="">20TH Century Auto Supply</td>
-									<td class="">Dummy Data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
-									<td class="">Dummy data</td>
+										<td class="">1</td>
+										<td class="">20TH Century</td>
+										<td class="">20TH Century Auto Supply</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
 
 
 
-								</tr>
+									</tr>
+									<tr style="cursor: pointer;" data-toggle="modal"
+										data-target="#myModal">
+
+										<td class="">1</td>
+										<td class="">20TH Century</td>
+										<td class="">20TH Century Auto Supply</td>
+										<td class="">Dummy Data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
+										<td class="">Dummy data</td>
 
 
-							</tbody>
-						</table>
+
+									</tr>
+
+
+								</tbody>
+							</table>
+						</div>
 					</div>
-
 
 					<hr>
 				</div>

@@ -15,7 +15,7 @@ body {
 
 .menu-button {
 	width: 100%;
-	border-radius:0px;
+	border-radius: 0px;
 }
 .navbar {
 	z-index: 1;
@@ -69,308 +69,320 @@ body {
 	color: #EF3B3A;
 }
 
-.side_navbar .dropdown-menu{
-	font-size:12px;
-	z-index:1;
-	color:white;
-	background-color:white;
+.side_navbar .dropdown-menu {
+	font-size: 12px;
+	z-index: 1;
+	color: white;
+	background-color: white;
 }
-.side_navbar .dropdown-menu li{
-	color:white;
+.side_navbar .dropdown-menu li {
+	color: white;
 }
-.side_navbar .dropdown-menu li:hover{
-	
-	background-color:#82cdff;
+.side_navbar .dropdown-menu li:hover {
+
+	background-color: #82cdff;
 }
-.side_navbar .dropdown-header{
-	background-color:#82cdff;
+.side_navbar .dropdown-header {
+	background-color: #82cdff;
 }
 
 .btn-info {
-	border-color:#222638 ;
-    border-bottom-color: gray;
-    background-color:#222638 ;
-    font-size: 12px;
+	border-color: #222638;
+	border-bottom-color: gray;
+	background-color: #222638;
+	font-size: 12px;
 }
 
 /* ======================= GENERAL ======================= */
-	.bg_blue {
-		background:#d9edf7;
-	}
-	
-	.bg_red {
-		background: #f2dede;
-	}
-	
-	.bg_dblue{
-		background-color: #44618e !important;
-		color: white;
-	}
-	
-	.bg_yellow {
-		background-color: #EFE24B;
-	}
-	
-	.bg_black {
-		background-color: #000000;
-		color: white;
-	}
-	
-	.bg_green {
-		background-color: #dff0d8;
-	}
-	
-	body div:nth-child(2) h3:not(.modal-title) {
-		margin-bottom: 3%;
-	}
-	
-	.head_nav { margin-bottom: 3%;}
-	
-	/* ============== MODALS ============= */
-		.modal-content {
-			width: 900px;
-		}
-		
-	
-	
-	/* ============== TABLES ============= */
-		
-		.tbl_wrap{
-		  height: 200px !important;
-		  overflow-y: auto;
-		  width: 100%;
-		}
-		
-		.cust_tbl {
-			height: 250px;
-			overflow-y: auto;
-		}
-		
-		/*.tbl_wrapper{
-			max-height: 300px !important;
-			overflow-y: auto;
-		}*/
-		
-		.tbl_header {
-			margin-bottom: 0;
-		}
-		
-	/*	.table-fixed thead {
-		  width: 100%;
-		}
-		
-		.table-fixed tbody td{
-			padding-left: 15px;
-		}
+.bg_blue {
+	background: #d9edf7;
+}
 
-		.table-fixed tbody {
-		  height: 200px;
-		  overflow-y: auto;
-		  width: 100%;
-		}
-		
-		.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
-		  display: block;
-		}
-		
-		.table-fixed tbody td, .table-fixed thead > tr> th {
-		  float: left;
-		  border-bottom-width: 0;
-		} */
-		
-	
+.bg_red {
+	background: #f2dede;
+}
+
+.bg_dblue {
+	background-color: #44618e !important;
+	color: white;
+}
+
+.bg_yellow {
+	background-color: #EFE24B;
+}
+
+.bg_black {
+	background-color: #000000;
+	color: white;
+}
+
+.bg_green {
+	background-color: #dff0d8;
+}
+
+body div:nth-child(2) h3:not(.modal-title) {
+	margin-bottom: 3%;
+}
+
+.fa-asterisk {
+	color: red;
+	font-size: 5px;
+}
+
+.head_nav {
+	margin-bottom: 3%;
+}
+
+.form-container {
+	border-radius: 10px;
+	padding: 15px;
+	border-style: solid;
+	border-width: 0.5px;
+	border-color: #c4c5c6;
+	margin-bottom: 3%;
+}
+
+/* ============== MODALS ============= */
+.modal-content {
+	width: 900px;
+}
+
+/* ============== TABLES ============= */
+
+.tbl_wrap {
+	height: 300px !important;
+	overflow-y: auto;
+	width: 100%;
+}
+
+.cust_tbl {
+	height: 250px;
+	overflow-y: auto;
+}
+
+/*.tbl_wrapper{
+ max-height: 300px !important;
+ overflow-y: auto;
+ }*/
+
+.tbl_header {
+	margin-bottom: 0;
+}
+
+/*	.table-fixed thead {
+ width: 100%;
+ }
+
+ .table-fixed tbody td{
+ padding-left: 15px;
+ }
+
+ .table-fixed tbody {
+ height: 200px;
+ overflow-y: auto;
+ width: 100%;
+ }
+
+ .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+ display: block;
+ }
+
+ .table-fixed tbody td, .table-fixed thead > tr> th {
+ float: left;
+ border-bottom-width: 0;
+ } */
+
 /* ======================= ENTRIES TAB ======================= */
-	
-	.TotalAmt{
-		margin-top: 3%;
-		margin-bottom: 3%;
-	}
-	
-	.datepicker-days thead tr:nth-child(2) th,
-	.datepicker-days td {
-		cursor: pointer;
-	}
-	
-	.txtbox {
-		margin-top: 15px;
-	}
-	
-	.legend > div > span:not(.glyphicon) {
-		padding: 7px 25px;
-	}
-	
-	.table tbody tr {
-		cursor: pointer;
-	}
 
-	
-	/* ============= SALES ENTRIES ============= */
-		
-		.SE .col_3 .btn { width: 100%;}
-		
-		.SE > .row:last-child{
-			padding-top: 10px;
-			padding-bottom: 10px;
-		}
-		
-		.SE select {
-			margin-bottom: 5%;
-		}
-		
-	
-	/* ========= GENERATE SALES =========== */
-		
-		.GSR .input-daterange, 
-		.btn_am{
-			margin-top: 25px;
-		}
-	
-		.cust_headers {
-			display: block;
-		    padding: 10px 15px;
-		    margin-bottom: -1px;
-		    background-color: #44618e ;
-			color: white;
-		    border: 1px solid #ddd;
-		    border-top-left-radius: 4px;
-		    border-top-right-radius: 4px;
+.TotalAmt {
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
 
-		}
-		
-		.GSR .list-group-item:first-child {
-		    border-top-left-radius: 0;
-		    border-top-right-radius: 0;
-		}
-		
-		.GSR .list-group-item.active {
-			background-color:#F78F97;
-			border-color: #F78F97;
-			color: black;
-		}
-				
-		.GSR .row:last-child {
-			margin-top: 5%;
-			margin-bottom: 5%;	
-		}
-		
-		.GSR .col-md-9 .tbl_wrap {
-			height: 350px !important;
-		}
-		
-		.GSR div.TotalAmt {
-			margin-top: 0;
-			margin-bottom: 0;
-		}
+.datepicker-days thead tr:nth-child(2) th, .datepicker-days td {
+	cursor: pointer;
+}
 
-	/* ========= COLLECTION FROM CUSTOMER =========== */
-		
-		.CFC > div.row:nth-child(4), .CFC > div.row:nth-child(5), .CFC > div.row:nth-child(6){
-			margin-bottom: 3% !important;
-		}
-		
-		.CFC > div.row:last-child .col-md-4:last-child {
-			margin-top: 2%;
-		}
+.txtbox {
+	margin-top: 15px;
+}
 
-	
-	/* ========= PAYMENT TO SUPPLIERS =========== */
-		
-		.PTS div.tbl_wrap {
-			height: 300px !important;
-		  	overflow-y: auto;
-		  	width: 100%;
-		}
-		
-		.PTS .center-block {
-		    float: none;
-		    margin-left: auto;
-		    margin-right: auto;
-		}
-		
-		.PTS .input-group .icon-addon .form-control {
-		    border-radius: 0;
-		}
-		
-		.PTS .icon-addon {
-		    position: relative;
-		    color: #555;
-		    display: block;
-		}
-		
-		.PTS .icon-addon:after,
-		.PTS .icon-addon:before {
-		    display: table;
-		    content: " ";
-		}
-		
-		.PTS .icon-addon:after {
-		    clear: both;
-		}
-		
-		.PTS .icon-addon.addon-md .glyphicon,
-		.PTS .icon-addon .glyphicon, 
-		.PTS .icon-addon.addon-md .fa,
-		.PTS .icon-addon .fa {
-		    position: absolute;
-		    z-index: 2;
-		    left: 10px;
-		    font-size: 14px;
-		    width: 20px;
-		    margin-left: -2.5px;
-		    text-align: center;
-		    padding: 10px 0;
-		    top: 1px
-		}
-		
-		.PTS .icon-addon.addon-lg .form-control {
-		    line-height: 1.33;
-		    height: 46px;
-		    font-size: 18px;
-		    padding: 10px 16px 10px 40px;
-		}
-		
-		.PTS .icon-addon.addon-sm .form-control {
-		    height: 30px;
-		    padding: 5px 10px 5px 28px;
-		    font-size: 12px;
-		    line-height: 1.5;
-		}
-		
-		.PTS .icon-addon.addon-lg .fa,
-		.PTS .icon-addon.addon-lg .glyphicon {
-		    font-size: 18px;
-		    margin-left: 0;
-		    left: 11px;
-		    top: 4px;
-		}
-		
-		.PTS .icon-addon.addon-md .form-control,
-		.PTS.icon-addon .form-control {
-		    padding-left: 30px;
-		    float: left;
-		    font-weight: normal;
-		}
-		
-		.PTS.icon-addon.addon-sm .fa,
-		.PTS .icon-addon.addon-sm .glyphicon {
-		    margin-left: 0;
-		    font-size: 12px;
-		    left: 5px;
-		    top: -1px
-		}
-		
-		.PTS.icon-addon .form-control:focus + .glyphicon,
-		.PTS .icon-addon:hover .glyphicon,
-		.PTS .icon-addon .form-control:focus + .fa,
-		.PTS .icon-addon:hover .fa {
-		    color: #2580db;
-		}
+.legend > div > span:not(.glyphicon) {
+	padding: 7px 25px;
+}
 
+.table tbody tr {
+	cursor: pointer;
+}
+
+/* ============= SALES ENTRIES ============= */
+
+.SE .col_3 .btn {
+	width: 100%;
+}
+
+.SE > .row:last-child {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.SE select {
+	margin-bottom: 5%;
+}
+
+/* ========= GENERATE SALES =========== */
+
+.GSR .input-daterange, .btn_am {
+	margin-top: 25px;
+}
+
+.cust_headers {
+	display: block;
+	padding: 10px 15px;
+	margin-bottom: -1px;
+	background-color: #44618e;
+	color: white;
+	border: 1px solid #ddd;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.GSR .list-group-item:first-child {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.GSR .list-group-item.active {
+	background-color: #F78F97;
+	border-color: #F78F97;
+	color: black;
+}
+
+.GSR .row:last-child {
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.GSR .col-md-9 .tbl_wrap {
+	height: 350px !important;
+}
+
+.GSR div.TotalAmt {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.error-holder {
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:30%;
+  
+}
+
+.error-message {
+	color: #44618E;
+	font-size: 50px;	
+}
+
+
+/* ========= COLLECTION FROM CUSTOMER =========== */
+
+.CFC > div.row:nth-child(4), .CFC > div.row:nth-child(5), .CFC > div.row:nth-child(6) {
+	margin-bottom: 3% !important;
+}
+
+.CFC > div.row:last-child .col-md-4:last-child {
+	margin-top: 2%;
+}
+
+/* ========= PAYMENT TO SUPPLIERS =========== */
+
+.PTS div.tbl_wrap {
+	height: 300px !important;
+	overflow-y: auto;
+	width: 100%;
+}
+
+.PTS .center-block {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.PTS .input-group .icon-addon .form-control {
+	border-radius: 0;
+}
+
+.PTS .icon-addon {
+	position: relative;
+	color: #555;
+	display: block;
+}
+
+.PTS .icon-addon:after, .PTS .icon-addon:before {
+	display: table;
+	content: " ";
+}
+
+.PTS .icon-addon:after {
+	clear: both;
+}
+
+.PTS .icon-addon.addon-md .glyphicon, .PTS .icon-addon .glyphicon, .PTS .icon-addon.addon-md .fa, .PTS .icon-addon .fa {
+	position: absolute;
+	z-index: 2;
+	left: 10px;
+	font-size: 14px;
+	width: 20px;
+	margin-left: -2.5px;
+	text-align: center;
+	padding: 10px 0;
+	top: 1px
+}
+
+.PTS .icon-addon.addon-lg .form-control {
+	line-height: 1.33;
+	height: 46px;
+	font-size: 18px;
+	padding: 10px 16px 10px 40px;
+}
+
+.PTS .icon-addon.addon-sm .form-control {
+	height: 30px;
+	padding: 5px 10px 5px 28px;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.PTS .icon-addon.addon-lg .fa, .PTS .icon-addon.addon-lg .glyphicon {
+	font-size: 18px;
+	margin-left: 0;
+	left: 11px;
+	top: 4px;
+}
+
+.PTS .icon-addon.addon-md .form-control, .PTS.icon-addon .form-control {
+	padding-left: 30px;
+	float: left;
+	font-weight: normal;
+}
+
+.PTS.icon-addon.addon-sm .fa, .PTS .icon-addon.addon-sm .glyphicon {
+	margin-left: 0;
+	font-size: 12px;
+	left: 5px;
+	top: -1px
+}
+
+.PTS.icon-addon .form-control:focus + .glyphicon, .PTS .icon-addon:hover .glyphicon, .PTS .icon-addon .form-control:focus + .fa, .PTS .icon-addon:hover .fa {
+	color: #2580db;
+}
 
 /* ======================= REPORTS TAB ======================= */
 
-	/* ========= ITEM IN OUT TRANSACTIONS =========== */
-		.IOT .InOutAdj{
-			font-size: 18px;
-		}
+/* ========= ITEM IN OUT TRANSACTIONS =========== */
+.IOT .InOutAdj {
+	font-size: 18px;
+}
 

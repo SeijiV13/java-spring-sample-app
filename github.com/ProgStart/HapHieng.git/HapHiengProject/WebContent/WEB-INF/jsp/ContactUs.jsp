@@ -106,8 +106,8 @@
 			</div>
 			<br>
 			<form class="form-container" method="POST" action="/HapHiengProject/ContactUs">
-				<label for="problems">Problems Encountered <span
-					class="fa fa-asterisk"></span></label>
+				<label for="problems">Problems Encountered <sup
+					class="fa fa-asterisk"></sup></label>
 				<textarea name="issues" rows="5" class="form-control" id="problems"
 					placeholder="Enter issues here" required></textarea>
 				<br>
