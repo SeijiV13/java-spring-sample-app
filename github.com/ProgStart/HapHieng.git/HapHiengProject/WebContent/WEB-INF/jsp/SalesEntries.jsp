@@ -103,58 +103,61 @@
 
 			<hr>
 			<div class="row">
-				<div class="form-horizontal col-md-6 col-xs-12">
-					<div class="form-group">
-						<label class="control-label col-md-4" for="drno">DR Ref.
-							No.</label>
-						<div class="col-md-8">
-							<input type="text" class="form-control" id="drno">
+				
+				<form>
+					<div class="form-horizontal col-md-6 col-xs-12">
+						<div class="form-group">
+							<label class="control-label col-md-4" for="drno">DR Ref.
+								No.</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="drno">
+							</div>
 						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-4" for="sono">SO No.</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="sono">
+							</div>
+						</div>
+
+						<select class="form-control">
+							<option>Customer</option>
+						</select>
+
 					</div>
 
-					<div class="form-group">
-						<label class="control-label col-md-4" for="sono">SO No.</label>
-						<div class="col-md-8">
-							<input type="text" class="form-control" id="sono">
-						</div>
-					</div>
 
-					<select class="form-control">
-						<option>Customer</option>
-					</select>
-
-				</div>
-
-
-				<div class="form-horizontal col-md-6 col-xs-12 col_2">
-					<div class="form-group">
-						<label class="control-label col-md-2" for="date">Date</label>
-						<div class="col-md-10">
-							<div class="input-group date" data-provide="datepicker">
-								<input type="text" class="form-control">
-								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-calendar"></span>
+					<div class="form-horizontal col-md-6 col-xs-12 col_2">
+						<div class="form-group">
+							<label class="control-label col-md-2" for="date">Date</label>
+							<div class="col-md-10">
+								<div class="input-group date" data-provide="datepicker">
+									<input type="text" class="form-control">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="form-group">
-						<label class="control-label col-md-2" for="terms">Terms</label>
-						<div class="col-md-10 input-group">
-							<input type="text" class="form-control" id="terms">
-							<div class="input-group-addon">day(s)</div>
+						<div class="form-group">
+							<label class="control-label col-md-2" for="terms">Terms</label>
+							<div class="col-md-10 input-group">
+								<input type="text" class="form-control" id="terms">
+								<div class="input-group-addon">day(s)</div>
+							</div>
 						</div>
+
+						<select class="form-control">
+							<option>Sales Agent</option>
+						</select>
+
+
+
 					</div>
-
-					<select class="form-control">
-						<option>Sales Agent</option>
-					</select>
-
-
-
-				</div>
-
+				</form>
+				
 				<!-- ============ TABLE ============ -->
 
 				<table class="table table-fixed table-block tables">
@@ -466,7 +469,7 @@
 						</button>
 					</div>
 
-		
+
 				</div>
 
 

@@ -168,7 +168,9 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="pull-right">
-						<button class="btn btn-default"><span class="glyphicon glyphicon-print"></span> Print</button>
+						<button class="btn btn-default">
+							<span class="glyphicon glyphicon-print"></span> Print
+						</button>
 					</div>
 				</div>
 			</div>
