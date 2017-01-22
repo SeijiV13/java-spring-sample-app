@@ -78,7 +78,7 @@
 						</c:if>
 						
 						<c:if test="${paymentToSuppliersEntries == 1}">
-						<a href="PaymentToSuppliers.htm"><button class="btn btn-info dropdown-toggle menu-button">
+						<a href="PaymentToSuppliersEntries.htm"><button class="btn btn-info dropdown-toggle menu-button">
 							Payment to Suppliers Entries<span></span>
 						</button></a>
 						</c:if>

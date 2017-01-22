@@ -1,0 +1,32 @@
+@CHARSET "ISO-8859-1";
+
+/* ==================== SMALLER SCREEN DEVICES ==================== */
+
+@media only screen and (max-width: 768px) {
+	
+	/* ======================= GENERAL ======================= */
+
+		
+	/* ======================= ENTRIES TAB ======================= */
+				
+		.IDE .TotalAmt .form-control, .SRE .TotalAmt .form-control,
+		.SE .TotalAmt .form-control, .SOE .TotalAmt .form-control,
+		.GSR .TotalAmt .form-control {
+			width: inherit;
+		}
+		
+		/* ========= INVENTORY DAMAGE ============= */
+			
+			
+			
+		/* ========= SALES RETURN ============= */
+			.SRE .col-md-4 .dropdown .btn, .SRE .col-md-4 .dropdown ul {
+				margin-top: 3%;
+				margin-bottom: 3%;
+				z-index: 3;
+			}
+			
+			.SRE input#srno {width: 100%;}
+	
+
+}

@@ -43,7 +43,15 @@ $(document).ready(function() {
 	    $(this).datepicker("clearDates");
 	});
 	
+	$("#IOTradio3").click(function(event){
+	    //event.preventDefault();
+	    $('.IOTselect').removeAttr("disabled");
+	    
+	});
 	
+	$('.IOTradios').change(function(){
+	  $('.IOTselect').attr('disabled', true);
+	});
 	
 });
 
