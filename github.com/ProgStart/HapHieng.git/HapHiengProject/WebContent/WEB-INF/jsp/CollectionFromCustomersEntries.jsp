@@ -120,18 +120,12 @@
 			</div>
 			
 			<div class="col-md-1 btn_am">
-				<button class="btn btn-success">
+				<button class="btn btn-primary">
 					<span class="fa fa-check"></span>
 					Post
 				</button>
 			</div>
-			
-			<div class="col-md-1">
-				<button class="btn btn-danger btn_am">
-					<span class="fa fa-close"></span>
-					Cancel
-				</button>
-			</div>
+		
 		</div>
 	
 		<!-- ============ TABLE ============ -->

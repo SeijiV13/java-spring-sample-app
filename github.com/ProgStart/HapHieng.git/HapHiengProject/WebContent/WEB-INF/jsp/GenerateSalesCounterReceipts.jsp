@@ -148,7 +148,7 @@
 				</div>
 				
 				<div class="list-group cust_tbl">
-				  <a href="#" class="list-group-item active">
+				  <a href="#" class="list-group-item">
 				    Customer 0
 				  </a>
 				  <a href="#" class="list-group-item">Customer 1</a>

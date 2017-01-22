@@ -396,7 +396,7 @@
 
 
 
-                <!-- /#PRICING LEGEND -->
+				<!-- /#PRICING LEGEND -->
 				<hr>
 				<div class="row center-block legend">
 					<div class="col-md-2 text-right col-xs-4 ">Pricing Legend:</div>
@@ -418,20 +418,24 @@
 						id="totalAmt" disabled>
 				</div>
 
-				<div class="btn-group btn-group-justified  " role="group"
-					aria-label="...">
+				<div class="btn-group btn-group-justified  " role="group">
 
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-primary">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-							New Transaction
+							<span class="fa fa-file" aria-hidden="true"></span> Item
+							Transaction
 						</button>
 					</div>
 
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-default">
-							<span class="glyphicon glyphicon-triangle-right"
-								aria-hidden="true"></span> Resume
+							<span class="fa fa-file-text" aria-hidden="true"></span> Post
+						</button>
+					</div>
+
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-default">
+							<span class="fa fa-pencil" aria-hidden="true"></span> Resume
 						</button>
 					</div>
 
@@ -462,19 +466,7 @@
 						</button>
 					</div>
 
-					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default">
-							<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
-							Shown DR
-						</button>
-					</div>
-
-					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default">
-							<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
-							Print Plain DR
-						</button>
-					</div>
+		
 				</div>
 
 

@@ -423,8 +423,8 @@
 			  </div>		  
 	
 			  <div class="btn-group" role="group">
-				  <button type="button" class="btn btn-danger">
-					<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+				  <button type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-save" aria-hidden="true"></span>
 				  	Suspend
 				  </button>
 			  </div>

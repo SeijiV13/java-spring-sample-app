@@ -497,8 +497,8 @@
 				aria-label="...">
 
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-default">
-						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+					<button type="button" class="btn btn-primary">
+						<span class="glyphicon glyphicon-file" aria-hidden="true"></span>
 						Item Transactions
 					</button>
 				</div>
