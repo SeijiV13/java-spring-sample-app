@@ -276,13 +276,13 @@
 						
 						<c:if test="${viewEditPurchases == 1}">
 						<a href="ViewEditPurchases.htm"><button class="btn btn-info dropdown-toggle menu-button">
-							View/Edit Sales Purchases<span></span>
+							View/Edit Purchases<span></span>
 						</button></a>
 						</c:if>
 						
 						<c:if test="${viewEditPurchasesReturns == 1}">
 						<a href="ViewEditPurchasesReturns.htm"><button class="btn btn-info dropdown-toggle menu-button">
-							View/Edit Sales Purchases Returns<span></span>
+							View/Edit Purchases Returns<span></span>
 						</button></a>
 						</c:if>
 						
