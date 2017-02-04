@@ -97,27 +97,27 @@
     <h5><span class="fa fa-calendar"></span> Date: ${dateToday}</h5>
 	
 	<!-- MAIN CONTENT -->
-	<div class="container-fluid SR">
+	<div class="container-fluid PR">
 		<!-- TITLE OF PAGE -->
-		<h3>Sales Reports</h3>
+		<h3>Purchase Reports</h3>
 		
 		<hr>
 		
 		<div class="row show">
 			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRad_btn"> Agent & Date Input </button>
+				<button class="btn btn-default center-block sales-report-button" id="PRad_btn"> Agent & Date Input </button>
 			</div>
 			
 			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRccd_btn"> Customer/Category/Date Input </button>
+				<button class="btn btn-default center-block sales-report-button" id="PRccd_btn"> Customer/Category/Date Input </button>
 			</div>
 			
 			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRdate_btn"> Date Input </button>
+				<button class="btn btn-default center-block sales-report-button" id="PRdate_btn"> Date Input </button>
 			</div>
 			
 			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRisrh_btn"> Item Sales Return History Input </button>
+				<button class="btn btn-default center-block sales-report-button" id="PRisrh_btn"> Item Sales Return History Input </button>
 			</div>
 		</div>
 		
@@ -125,41 +125,9 @@
 			
 			<div class="col-md-offset-3 col-md-6 form-container">
 				
-				<div id="SRad" class="hide">
+				<div id="PRad" class="hide">
 					<select class="form-control">
 					  	<option>Agent</option>
-					</select>
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">		
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-					
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-					
-						 
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: SR AD -->
-				
-				<div id="SRccd" class="hide">
-					<select class="form-control">
-					  	<option>Customer</option>
-					</select>
-					
-					<select class="form-control">
-					  	<option>Category</option>
 					</select>
 					
 					<div class="input-group input-daterange">
@@ -179,12 +147,21 @@
 					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 					        	Cancel
 					       </button>
- 
+				
+						
+						 
 					</div> <!-- end of btns -->
 					
-				</div> <!-- end: SR CCD -->
+				</div> <!-- end: PRR AD -->
 				
-				<div id="SRdate" class="hide">
+				<div id="PRccd" class="hide">
+					<select class="form-control">
+					  	<option>Customer</option>
+					</select>
+					
+					<select class="form-control">
+					  	<option>Category</option>
+					</select>
 					
 					<div class="input-group input-daterange">
 						<span class="input-group-addon">Date</span>
@@ -194,23 +171,48 @@
 					</div>
 					
 					<div class="text-right">
+				
+							<button type="button" class="btn btn-primary" data-dismiss="modal">
+					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					        	Ok
+					       </button>
+	
+							<button type="button" class="btn btn-dedault" data-dismiss="modal">
+					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					        	Cancel
+					       </button>
+						
+
+					</div> <!-- end of btns -->
+					
+				</div> <!-- end: PR CCD -->
+				
+				<div id="PRdate" class="hide">
+					
+					<div class="input-group input-daterange">
+						<span class="input-group-addon">Date</span>
+					    <input type="text" class="form-control" value="2012-04-05">
+					    <span class="input-group-addon">to</span>
+					    <input type="text" class="form-control" value="2012-04-19">
+					</div>
+					
+					<div class="text-right">
+					
 							<button type="button" class="btn btn-primary" data-dismiss="modal">
 					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 					        	Ok
 					       </button>
 					
-						
 							<button type="button" class="btn btn-default" data-dismiss="modal">
 					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 					        	Cancel
 					       </button>
-						
-						
+			 
 					</div> <!-- end of btns -->
 					
-				</div> <!-- end: SR date -->
+				</div> <!-- end: PR date -->
 				
-				<div id="SRisrh" class="hide">
+				<div id="PRisrh" class="hide">
 				
 					<select class="form-control">
 					  	<option>Item Code</option>
@@ -224,21 +226,20 @@
 					</div>
 					
 					<div class="text-right">
+				
 							<button type="button" class="btn btn-primary" data-dismiss="modal">
 					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 					        	Ok
 					       </button>
-					
+
 							<button type="button" class="btn btn-default" data-dismiss="modal">
 					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 					        	Cancel
 					       </button>
 					
-						
-						 
 					</div> <!-- end of btns -->
 					
-				</div> <!-- end: SR item sales return history -->
+				</div> <!-- end: PR item sales return history -->
 				
 			</div>
 			

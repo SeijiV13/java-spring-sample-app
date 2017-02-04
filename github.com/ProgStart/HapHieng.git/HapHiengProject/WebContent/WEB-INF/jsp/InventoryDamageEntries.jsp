@@ -124,7 +124,7 @@
 		          <thead>
 		            <tr>
 		              	<th class=" bg_dblue ">Row No.</th>
-						<th class=" bg_dblue ">Barcode</th>
+						<th class=" bg_dblue ">Item Code</th>
 						<th class=" bg_dblue ">Quantity</th>
 						<th class=" bg_dblue ">Category</th>
 						<th class=" bg_dblue ">Qty Stock</th>

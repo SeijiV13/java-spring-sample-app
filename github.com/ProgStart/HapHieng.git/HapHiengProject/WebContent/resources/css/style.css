@@ -386,3 +386,53 @@ body div:nth-child(2) h3:not(.modal-title) {
 	font-size: 18px;
 }
 
+/* ======================= REPORTS TAB ======================= */
+
+	/* ============== SR, SRR, PR, PRR ================= */
+		
+		.SR .row:nth-child(4),
+		.SRR .row:nth-child(4),
+		.PR .row:nth-child(4),
+		.PRR .row:nth-child(4){
+			margin-top: 5%;
+			
+		}
+		
+		.SR .row:nth-child(4) > .col-md-6,
+		.SRR .row:nth-child(4) > .col-md-6,
+		.PR .row:nth-child(4) > .col-md-6,
+		.PRR .row:nth-child(4) > .col-md-6{
+			border-top: thin rgba(0, 0, 0, 0.1) solid;
+		}
+		
+		.SR .row:nth-child(4) > .col-md-6 > div > div,
+		.SR .row:nth-child(4) > .col-md-6 > div > select,
+		.SRR .row:nth-child(4) > .col-md-6 > div > div,
+		.SRR .row:nth-child(4) > .col-md-6 > div > select,
+		.PR .row:nth-child(4) > .col-md-6 > div > div,
+		.PR .row:nth-child(4) > .col-md-6 > div > select,
+		.PRR .row:nth-child(4) > .col-md-6 > div > div,
+		.PRR .row:nth-child(4) > .col-md-6 > div > select{ 
+			margin-top: 3%;
+		}
+		.SR .btn:hover, .SRR .btn:hover, .PR .btn:hover, .PRR .btn:hover {
+			background-color: #44618e;
+			color: white;
+		}
+		
+		.SR .btn, .SRR .btn, .PR .btn, .PRR .btn {
+			font-size: 16px;
+		}
+	
+
+	/* ========= ITEM IN OUT TRANSACTIONS =========== */
+		.IOT .InOutAdj{
+			font-size: 18px;
+		}
+		
+		.sales-report-button{
+			white-space:normal;
+			
+		}
+
+

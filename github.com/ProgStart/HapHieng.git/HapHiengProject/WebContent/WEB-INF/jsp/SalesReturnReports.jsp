@@ -97,27 +97,27 @@
     <h5><span class="fa fa-calendar"></span> Date: ${dateToday}</h5>
 	
 	<!-- MAIN CONTENT -->
-	<div class="container-fluid SR">
+	<div class="container-fluid SRR">
 		<!-- TITLE OF PAGE -->
-		<h3>Sales Reports</h3>
+		<h3>Sales Return Reports</h3>
 		
 		<hr>
 		
 		<div class="row show">
 			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRad_btn"> Agent & Date Input </button>
+				<button class="btn btn-default center-block sales-report-button" id="SRRad_btn"> Agent & Date Input </button>
 			</div>
 			
 			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRccd_btn"> Customer/Category/Date Input </button>
+				<button class="btn btn-default center-block sales-report-button" id="SRRccd_btn"> Customer/Category/Date Input </button>
 			</div>
 			
 			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRdate_btn"> Date Input </button>
+				<button class="btn btn-default center-block sales-report-button" id="SRRdate_btn"> Date Input </button>
 			</div>
 			
 			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRisrh_btn"> Item Sales Return History Input </button>
+				<button class="btn btn-default center-block sales-report-button" id="SRRisrh_btn"> Item Sales Return History Input </button>
 			</div>
 		</div>
 		
@@ -125,7 +125,7 @@
 			
 			<div class="col-md-offset-3 col-md-6 form-container">
 				
-				<div id="SRad" class="hide">
+				<div id="SRRad" class="hide">
 					<select class="form-control">
 					  	<option>Agent</option>
 					</select>
@@ -137,7 +137,63 @@
 					    <input type="text" class="form-control" value="2012-04-19">
 					</div>
 					
-					<div class="text-right">		
+					<div class="text-right">
+							<button type="button" class="btn btn-primary" data-dismiss="modal">
+					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					        	Ok
+					       </button>
+			
+							<button type="button" class="btn btn-default" data-dismiss="modal">
+					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					        	Cancel
+					       </button> 
+					</div> <!-- end of btns -->
+					
+				</div> <!-- end: SRRR AD -->
+				
+				<div id="SRRccd" class="hide">
+					<select class="form-control">
+					  	<option>Customer</option>
+					</select>
+					
+					<select class="form-control">
+					  	<option>Category</option>
+					</select>
+					
+					<div class="input-group input-daterange">
+						<span class="input-group-addon">Date</span>
+					    <input type="text" class="form-control" value="2012-04-05">
+					    <span class="input-group-addon">to</span>
+					    <input type="text" class="form-control" value="2012-04-19">
+					</div>
+					
+					<div class="text-right">
+						
+							<button type="button" class="btn btn-primary" data-dismiss="modal">
+					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+					        	Ok
+					       </button>
+				
+							<button type="button" class="btn btn-default" data-dismiss="modal">
+					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					        	Cancel
+					       </button>
+		 
+					</div> <!-- end of btns -->
+					
+				</div> <!-- end: SRR CCD -->
+				
+				<div id="SRRdate" class="hide">
+					
+					<div class="input-group input-daterange">
+						<span class="input-group-addon">Date</span>
+					    <input type="text" class="form-control" value="2012-04-05">
+					    <span class="input-group-addon">to</span>
+					    <input type="text" class="form-control" value="2012-04-19">
+					</div>
+					
+					<div class="text-right">
+		
 							<button type="button" class="btn btn-primary" data-dismiss="modal">
 					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 					        	Ok
@@ -147,19 +203,16 @@
 					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 					        	Cancel
 					       </button>
-					
-						 
+			
+	 
 					</div> <!-- end of btns -->
 					
-				</div> <!-- end: SR AD -->
+				</div> <!-- end: SRR date -->
 				
-				<div id="SRccd" class="hide">
+				<div id="SRRisrh" class="hide">
+				
 					<select class="form-control">
-					  	<option>Customer</option>
-					</select>
-					
-					<select class="form-control">
-					  	<option>Category</option>
+					  	<option>Item Code</option>
 					</select>
 					
 					<div class="input-group input-daterange">
@@ -179,66 +232,10 @@
 					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 					        	Cancel
 					       </button>
- 
+
 					</div> <!-- end of btns -->
 					
-				</div> <!-- end: SR CCD -->
-				
-				<div id="SRdate" class="hide">
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-					
-						
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-						
-						
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: SR date -->
-				
-				<div id="SRisrh" class="hide">
-				
-					<select class="form-control">
-					  	<option>Item Code</option>
-					</select>
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-					
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-					
-						
-						 
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: SR item sales return history -->
+				</div> <!-- end: SRR item sales return history -->
 				
 			</div>
 			

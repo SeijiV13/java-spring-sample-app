@@ -381,13 +381,13 @@
 							</div>
 
 							<div class="modal-footer">
-								<button type="button" class="btn btn-success"
+								<button type="button" class="btn btn-primary"
 									data-dismiss="modal">
 									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 									Ok
 								</button>
 
-								<button type="button" class="btn btn-danger"
+								<button type="button" class="btn btn-default"
 									data-dismiss="modal">
 									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 									Cancel
