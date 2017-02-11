@@ -13,5 +13,14 @@ public class inventoryFileController {
 		
 		return "InventoryFile";
 	}
+	
+	
+	@RequestMapping(value = "/InventoryFile", method = RequestMethod.POST)
+	public String onSubmit(){
+		
+		
+		
+		return "InventoryFile";
+	}
 
 }

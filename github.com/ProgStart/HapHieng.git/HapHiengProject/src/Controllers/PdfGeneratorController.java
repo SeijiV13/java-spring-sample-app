@@ -8,19 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.portlet.ModelAndView;
 
-
 @Controller
 public class PdfGeneratorController {
-	
-	
+
 	@RequestMapping(value = "/GeneratePdf", method = RequestMethod.GET)
-	 ModelAndView generatePdf(HttpServletRequest request,
-	   HttpServletResponse response) throws Exception {
-		
-		
-	    
-	  ModelAndView modelAndView = new ModelAndView("pdfView");
-	  return modelAndView;
-}
+	ModelAndView generatePdf(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		ModelAndView modelAndView = new ModelAndView("pdfView");
+		return modelAndView;
+	}
 
 }

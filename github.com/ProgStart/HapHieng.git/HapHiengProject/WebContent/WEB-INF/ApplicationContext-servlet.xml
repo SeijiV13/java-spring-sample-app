@@ -101,15 +101,29 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     <property name="mapperInterface" value="Mappers.UserMapper" />
   </bean>
   
+   <bean id="productMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    <property name="mapperInterface" value="Mappers.ProductMapper" />
+  </bean>
+  
+  
  
   <!--BEAN MODELS -->
   <bean id="user" class="Models.User" scope="session">
+  <aop:scoped-proxy/>
+  </bean> 
+  
+  <bean id="product" class="Models.Product" scope="session">
   <aop:scoped-proxy/>
   </bean> 
  
    <!--INJECTED MAPPERS INB BEANS-->
     <bean id="userImplem" class="Implem.UserImplem">
 	    <property name="userMapper" ref="userMapper"/>
+    </bean>
+    
+     <bean id="productImplem" class="Implem.ProductImplem">
+	    <property name="productMapper" ref="ProductMapper"/>
     </bean>
     
  

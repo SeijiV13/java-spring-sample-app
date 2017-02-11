@@ -268,7 +268,7 @@
 					<h3>Browse Form</h3>
 					<hr>
 					<br>
-					<form class="form-container">
+					<form class="form-container" method="POST" action="/HapHiengProject/InventoryFile.htm">
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
