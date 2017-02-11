@@ -123,7 +123,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     </bean>
     
      <bean id="productImplem" class="Implem.ProductImplem">
-	    <property name="productMapper" ref="ProductMapper"/>
+	    <property name="productMapper" ref="productMapper"/>
     </bean>
     
  

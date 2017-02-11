@@ -7,10 +7,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <typeAliases>
 <typeAlias alias="User" type="Models.User"/>
+<typeAlias alias="Product" type="Models.Product"/>
 </typeAliases>
 
 <mappers>
 <mapper resource="Mappers/UserMapper.xml"/>
+<mapper resource="Mappers/ProductMapper.xml"/>
 </mappers>  
 
 </configuration>
