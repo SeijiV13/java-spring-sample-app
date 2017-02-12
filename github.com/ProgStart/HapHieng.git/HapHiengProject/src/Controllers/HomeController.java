@@ -1,8 +1,10 @@
 package Controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,11 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import Implem.ProductImplem;
 import Implem.UserImplem;
 import Models.User;
 
@@ -23,21 +25,37 @@ import Models.User;
 public class HomeController {
 @Autowired
 UserImplem userImplem;
+@Autowired
+ProductImplem productImplem;
+
+@Autowired
+private ServletContext servletContext;
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String user;
-        
 		Date dateToday  = new Date();
         SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy");
-
+        
+        //set all initial values
+        //for category dropdown
+        ArrayList<String> categories = productImplem.getAllCategories();
+        servletContext.setAttribute("categories", categories);
+         
+        //for product line dropdown
+        ArrayList<String> productLines = productImplem.getAllProductLine();
+        servletContext.setAttribute("productLines", productLines);
         
 		//CHECK PRINCIPAL IF SET OF USERDETAILS
 		if (principal instanceof UserDetails) {
 			String username = ((UserDetails) principal).getUsername();
 			user = username;
 			session.setAttribute("username", username);
+			 
+			
+			
 		} else {
 			String username = principal.toString();
 			user = username;

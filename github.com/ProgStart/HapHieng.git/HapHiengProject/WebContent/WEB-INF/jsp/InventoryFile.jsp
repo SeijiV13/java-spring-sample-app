@@ -268,13 +268,19 @@
 					<h3>Browse Form</h3>
 					<hr>
 					<br>
-					<form class="form-container" method="POST" action="/HapHiengProject/InventoryFile.htm">
+					<form class="form-container" method="POST"
+						action="/HapHiengProject/InventoryFileSubmit">
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="productlinefilter">Product Line Filter</label> <select
-										class="form-control" id="productlinefilter">
-										<option>Select Product Line</option>
+										class="form-control" id="productlinefilter"
+										name="productLineFilter">
+										<option value="">Select Product Line</option>
+										<c:forEach var="productLine"
+											items="${applicationScope.productLines}">
+											<option value="${productLine}">${productLine}</option>
+										</c:forEach>
 									</select>
 
 								</div>
@@ -282,8 +288,12 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="categoryfilter">Category Filter</label> <select
-										class="form-control" id="categoryfilter">
-										<option>Select Category</option>
+										class="form-control" id="categoryfilter" name="categoryFilter">
+										<option value="">Select Category</option>
+										<c:forEach var="category"
+											items="${applicationScope.categories}">
+											<option value="${category}">${category}</option>
+										</c:forEach>
 									</select>
 								</div>
 							</div>
@@ -298,7 +308,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="pull-right">
-									<button class="btn btn-default">Filter</button>
+									<button type="submit" class="btn btn-default">Filter</button>
 								</div>
 							</div>
 						</div>
@@ -328,143 +338,36 @@
 									</tr>
 								</thead>
 								<tbody>
+								    <c:set var="row" value="0"/>
+									<c:forEach var="product" items="${sessionScope.products}">
+									    
+										<tr style="cursor: pointer;" data-toggle="modal"
+											data-target="#myModal">
 
-									<tr style="cursor: pointer;" data-toggle="modal"
-										data-target="#myModal">
-
-										<td class="">1</td>
-										<td class=""><button class="btn btn-primary">1000
-												Sand Paper</button></td>
-										<td class="">1000 Sand Paper</td>
-										<td class="">Dummy Data</td>
-										<td class="">Dummy data</td>
-										<td class="">Php. 4,000</td>
-										<td class="">Php. 5,300</td>
-										<td class="">100</td>
-										<td class="">122</td>
-										<td class="">Manila</td>
-										<td class="">123</td>
-										<td class="">123</td>
-										<td class="">This is a sample</td>
-										<td class=""></td>
+											<td class="">${row = row + 1}</td>
+											<td class=""><button class="btn btn-primary">
+													${product.item_code }</button></td>
+											<td class="">${product.item_code}</td>
+											<td class="">${product.category}</td>
+											<td class="">${product.description}</td>
+											<td class="">${product.gross_price}</td>
+											<td class="">${product.net_price}</td>
+											<td class="">${product.quantity}</td>
+											<td class="">${product.quantity_on_po}</td>
+											<td class="">${product.location}</td>
+											<td class="">${product.quantity_pack_big}</td>
+											<td class="">${product.quantity_pack_small}</td>
+											<td class="">${product.remarks}</td>
+											<td class=""></td>
 
 
 
-									</tr>
+										</tr>
+									</c:forEach>
 
-									<tr style="cursor: pointer;" data-toggle="modal"
-										data-target="#myModal">
-										<td class="">1</td>
-										<td class=""><button class="btn btn-primary">1000
-												Sand Paper</button></td>
-										<td class="">1000 Sand Paper</td>
-										<td class="">Dummy Data</td>
-										<td class="">Dummy data</td>
-										<td class="">Php. 4,000</td>
-										<td class="">Php. 5,300</td>
-										<td class="">100</td>
-										<td class="">122</td>
-										<td class="">Manila</td>
-										<td class="">123</td>
-										<td class="">123</td>
-										<td class="">This is a sample</td>
-										<td class=""></td>
-									</tr>
 
-									<tr style="cursor: pointer;" data-toggle="modal"
-										data-target="#myModal">
-										<td class="">1</td>
-										<td class=""><button class="btn btn-primary">1000
-												Sand Paper</button></td>
-										<td class="">1000 Sand Paper</td>
-										<td class="">Dummy Data</td>
-										<td class="">Dummy data</td>
-										<td class="">Php. 4,000</td>
-										<td class="">Php. 5,300</td>
-										<td class="">100</td>
-										<td class="">122</td>
-										<td class="">Manila</td>
-										<td class="">123</td>
-										<td class="">123</td>
-										<td class="">This is a sample</td>
-										<td class=""></td>
-									</tr>
 
-									<tr style="cursor: pointer;" data-toggle="modal"
-										data-target="#myModal">
-										<td class="">1</td>
-										<td class=""><button class="btn btn-primary">1000
-												Sand Paper</button></td>
-										<td class="">1000 Sand Paper</td>
-										<td class="">Dummy Data</td>
-										<td class="">Dummy data</td>
-										<td class="">Php. 4,000</td>
-										<td class="">Php. 5,300</td>
-										<td class="">100</td>
-										<td class="">122</td>
-										<td class="">Manila</td>
-										<td class="">123</td>
-										<td class="">123</td>
-										<td class="">This is a sample</td>
-										<td class=""></td>
-									</tr>
 
-									<tr style="cursor: pointer;" data-toggle="modal"
-										data-target="#myModal">
-										<td class="">1</td>
-										<td class=""><button class="btn btn-primary">1000
-												Sand Paper</button></td>
-										<td class="">1000 Sand Paper</td>
-										<td class="">Dummy Data</td>
-										<td class="">Dummy data</td>
-										<td class="">Php. 4,000</td>
-										<td class="">Php. 5,300</td>
-										<td class="">100</td>
-										<td class="">122</td>
-										<td class="">Manila</td>
-										<td class="">123</td>
-										<td class="">123</td>
-										<td class="">This is a sample</td>
-										<td class=""></td>
-									</tr>
-
-									<tr style="cursor: pointer;" data-toggle="modal"
-										data-target="#myModal">
-										<td class="">1</td>
-										<td class=""><button class="btn btn-primary">1000
-												Sand Paper</button></td>
-										<td class="">1000 Sand Paper</td>
-										<td class="">Dummy Data</td>
-										<td class="">Dummy data</td>
-										<td class="">Php. 4,000</td>
-										<td class="">Php. 5,300</td>
-										<td class="">100</td>
-										<td class="">122</td>
-										<td class="">Manila</td>
-										<td class="">123</td>
-										<td class="">123</td>
-										<td class="">This is a sample</td>
-										<td class=""></td>
-									</tr>
-
-									<tr style="cursor: pointer;" data-toggle="modal"
-										data-target="#myModal">
-										<td class="">1</td>
-										<td class=""><button class="btn btn-primary">1000
-												Sand Paper</button></td>
-										<td class="">1000 Sand Paper</td>
-										<td class="">Dummy Data</td>
-										<td class="">Dummy data</td>
-										<td class="">Php. 4,000</td>
-										<td class="">Php. 5,300</td>
-										<td class="">100</td>
-										<td class="">122</td>
-										<td class="">Manila</td>
-										<td class="">123</td>
-										<td class="">123</td>
-										<td class="">This is a sample</td>
-										<td class=""></td>
-									</tr>
 
 								</tbody>
 							</table>

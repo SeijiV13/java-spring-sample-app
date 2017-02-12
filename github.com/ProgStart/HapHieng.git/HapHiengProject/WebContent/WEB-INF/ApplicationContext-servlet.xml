@@ -51,15 +51,8 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     <property name="configLocation" value="classpath:Configuration/Configuration.xml"/>
    </bean> 
     
-    
-    <!-- VIEW RESOLVER-->
-    <bean id="viewResolver"
-      class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
-      <property name="order" value="1"></property>
-      <property name="basename" value="views"></property>
-    </bean> 
+   
  
-  
  <!--SPRING SECURITY ADDED BY SAV 2016/11/19-->
 <security:http auto-config="true" use-expressions="true">
    	<!-- DIRECT USER TO LOGIN-->

@@ -4,8 +4,8 @@ public class Product {
     String item_code = null;
 	String category = null;
 	String description = null;
-	float  grossPrice = 0;
-	float netPrice = 0;
+	double  gross_price = 0;
+	double net_price = 0;
 	int quantity = 0;
 	int quantity_on_po = 0;
     String location = null;
@@ -14,6 +14,9 @@ public class Product {
     String remarks  = null;
     String image = null;
     String product_line = null;
+    
+    
+    
 	public String getItem_code() {
 		return item_code;
 	}
@@ -32,17 +35,17 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public float getGrossPrice() {
-		return grossPrice;
+	public double getGross_price() {
+		return gross_price;
 	}
-	public void setGrossPrice(float grossPrice) {
-		this.grossPrice = grossPrice;
+	public void setGross_price(double gross_price) {
+		this.gross_price = gross_price;
 	}
-	public float getNetPrice() {
-		return netPrice;
+	public double getNet_price() {
+		return net_price;
 	}
-	public void setNetPrice(float netPrice) {
-		this.netPrice = netPrice;
+	public void setNet_price(double net_price) {
+		this.net_price = net_price;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -92,6 +95,8 @@ public class Product {
 	public void setProduct_line(String product_line) {
 		this.product_line = product_line;
 	}
+    
+
 	
 	
 	
