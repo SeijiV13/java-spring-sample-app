@@ -37,6 +37,16 @@
 <spring:url value="/resources/css/simple-sidebar.css" var="SideBar" />
 <link rel="stylesheet" href="${SideBar}" />
 
+
+<!-- DATEPICKER LINKS -->
+<spring:url value="/resources/js/bootstrap-datepicker.js" var="DatePJS" />
+<script src="${DatePJS}" type="text/javascript"></script>
+
+<spring:url value="/resources/css/boostrap-datepicker.css"
+	var="DatePCss" />
+<link rel="stylesheet" href="${DatePCss}" />
+
+
 <!-- CSS LINKS -->
 <spring:url value="/resources/css/style.css" var="styles" />
 <link rel="stylesheet" href="${styles}" />
@@ -169,6 +179,7 @@
 							<table class="table table-block">
 								<thead>
 									<tr>
+										<th class="bg_dblue text-nowrap">Select Item.</th>
 										<th class="bg_dblue text-nowrap">Row No.</th>
 										<th class="bg_dblue text-nowrap">Item code</th>
 										<th class="bg_dblue text-nowrap">Item code</th>
@@ -195,7 +206,8 @@
 
 										<tr style="cursor: pointer;" data-toggle="modal"
 											data-target="#myModal">
-
+											<td class=""><input name="select" type="radio"
+												class="select" /></td>
 											<td class="">${row = row + 1}</td>
 											<td class=""><button value="${product.item_code}"
 													data-target="#iteminout" data-toggle="modal"
@@ -275,11 +287,13 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="categorycode">Category Code</label> <select
+									<label for="categorycode">Category</label> <select
 										class="form-control" id="categorycode">
-										<option>Select Category</option>
-										<option>Sand Paper</option>
-										<option>Bleeders Screw</option>
+										<option value="">Select Category</option>
+										<c:forEach var="category"
+											items="${applicationScope.categories}">
+											<option value="${category}">${category}</option>
+										</c:forEach>
 									</select>
 								</div>
 							</div>
@@ -326,7 +340,7 @@
 
 
 								<div class="form-group">
-									<label for="netprice">Net Price</label> <input type="text"
+									<label for="netprice">Less 15%</label> <input type="text"
 										placeholder="Net Price" class="form-control" id="netprice">
 								</div>
 
@@ -373,7 +387,16 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<label for="remarks">Remarks</label>
+									<label for="remarks">Remarks 1</label>
+									<textarea class="form-control" rows="4"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="remarks">Remarks 2</label>
 									<textarea class="form-control" rows="4"></textarea>
 								</div>
 							</div>
@@ -457,7 +480,7 @@
 
 </div>
 
-
+<!-- MODAL FOR ITEM IN OUT TRANSACTION -->
 <div class="modal fade" id="iteminout" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -471,182 +494,141 @@
 
 			<!-- MODAL FORM -->
 			<div class="modal-body">
-			
 
-					<div class="row">
-						<div class="col-md-4">
-							<select class="form-control">
-								<option>Item Code</option>
+				<div class="row">
+					<div class="col-md-4">
+						<select class="form-control">
+							<option>Item Code/Description</option>
+						</select>
+
+						<h4>Clients</h4>
+
+						<div class="radio">
+							<label> <input type="radio" class="IOTradios"
+								name="IOTRadios" id="IOTradio1" value="option1"> All
+								Supplies
+							</label>
+						</div>
+
+						<div class="radio">
+							<label> <input type="radio" class="IOTradios"
+								name="IOTRadios" id="IOTradio2" value="option2"> All
+								Sales Transaction
+							</label>
+						</div>
+
+						<div class="radio">
+							<label> <input type="radio" name="IOTRadios"
+								id="IOTradio3" value="option3"> <select
+								class="form-control IOTselect" disabled>
+									<option>Select Client</option>
 							</select>
-						</div>
-
-						<div class="col-md-4 form-horizontal">
-							<label for="IOTdate" class="col-md-2">Date from</label>
-							<div class="input-group input-daterange col-md-10" id="IOTdate">
-								<input type="text" class="form-control" value="2012-04-05">
-								<span class="input-group-addon">to</span> <input type="text"
-									class="form-control" value="2012-04-19">
-							</div>
-
-						</div>
-
-						<div class="col-md-2 form-horizontal ">
-							<button class="btn btn-default center-block">
-								<span class="fa fa-search"></span> Find Reference
-							</button>
-						</div>
-
-						<div class="col-md-2 form-horizontal">
-							<button class="btn btn-default">
-								<span class="fa fa-print"></span> Print
-							</button>
+							</label>
 						</div>
 					</div>
-					<!-- END: FIRST ROW -->
+					<div class="col-md-4">
 
-					<div class="row">
-
-						<div class="col-md-4">
-							<h4>Clients</h4>
-
-							<div class="radio">
-								<label> <input type="radio" class="IOTradios"
-									name="IOTRadios" id="IOTradio1" value="option1"> All
-									Supplies
-								</label>
-							</div>
-
-							<div class="radio">
-								<label> <input type="radio" class="IOTradios"
-									name="IOTRadios" id="IOTradio2" value="option2"> All
-									Sales Transaction
-								</label>
-							</div>
-
-							<div class="radio">
-								<label> <input type="radio" name="IOTRadios"
-									id="IOTradio3" value="option3"> <select
-									class="form-control IOTselect" disabled>
-										<option>Select Client</option>
-								</select>
-								</label>
-							</div>
+						<label for="from">Date from</label>
+						<div class="input-group input-daterange col-md-10" id="from">
+							<input type="text" class="form-control" placeholder="mm/dd/yyyy">
 						</div>
-						<!-- END: CLIENTS -->
 
-						<div class="col-md-4 form-horizontal">
+						<label for="to">Date To</label>
+						<div class="input-group input-daterange col-md-10" id="to">
+							<input type="text" class="form-control" placeholder="mm/dd/yyyy">
+						</div>
 
-							<div class="form-group txtbox">
-								<label class="control-label col-md-3" for="IOTIn">Total
-									In:</label>
-								<div class="col-md-9">
-									<input type="text" class="form-control" id="IOTIn" disabled
-										placeholder="102891">
-								</div>
-							</div>
-
-							<div class="form-group txtbox">
-								<label class="control-label col-md-3" for="IOTOut">Total
-									Out:</label>
-								<div class="col-md-9">
-									<input type="text" class="form-control" id="IOTOut" disabled
-										placeholder="102891">
-								</div>
-							</div>
-
-							<div class="form-group txtbox">
-								<label class="control-label col-md-3" for="IOTAdj">Total
-									Adj:</label>
-								<div class="col-md-9">
-									<input type="text" class="form-control" id="IOTAdj" disabled
-										placeholder="102891">
-								</div>
-							</div>
+						<div class="form-group txtbox">
+							<label class="control-label" for="IOTIn">Total In:</label> <input
+								type="text" class="form-control" id="IOTIn" readonly>
 
 						</div>
-						<!-- END: TOTALS -->
 
-						<div class="col-md-4 form-horizontal InOutAdj">
-
-							<div class="form-group txtbox">
-								<label class="control-label col-md-5" for="IOTOut">In-Out+Adj:</label>
-								<div class="col-md-7">
-									<input type="text" class="form-control" id="IOTOut" disabled
-										placeholder="102891">
-								</div>
-							</div>
-
-							<div class="form-group txtbox">
-								<label class="control-label col-md-5" for="IOTOut">Record
-									Qty:</label>
-								<div class="col-md-7">
-									<input type="text" class="form-control" id="IOTOut" disabled
-										placeholder="102891">
-								</div>
-							</div>
+						<div class="form-group txtbox">
+							<label class="control-label" for="IOTOut">Total Out:</label> <input
+								type="text" class="form-control" id="IOTOut" readonly>
 
 						</div>
+
+						<div class="form-group txtbox">
+							<label class="control-label" for="IOTAdj">Total Adj:</label> <input
+								type="text" class="form-control" id="IOTAdj" readonly>
+						</div>
+
 
 
 					</div>
-					<!-- END: SECOND ROW -->
+					<div class="col-md-4">
+						<button class="btn btn-default">
+							<span class="fa fa-search"></span> Find Reference
+						</button>
+						<button class="btn btn-default">
+							<span class="fa fa-print"></span> Print
+						</button>
 
-				<!-- END: UPPER PART NAV -->
+						<div class="form-group txtbox">
+							<label class="control-label" for="inoutadj">In-Out+Adj:</label> <input
+								type="text" class="form-control" id="inoutadj" readonly /> <label
+								class="control-label" for="stockquantity">StockQty:</label> <input
+								type="text" class="form-control" id="stockquantity" readonly />
 
-				<!-- ========================== TABLE =========================== -->
+							<label class="control-label" for="totaldamage">Total
+								Damage:</label> <input type="text" class="form-control" id="totaldamage"
+								readonly /> <label class="control-label" for="pendingso">Pending
+								SO:</label> <input type="text" class="form-control" id="pendingso"
+								readonly>
+						</div>
 
-				<div class="tbl_wrap">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th class="bg_dblue">Date</th>
-								<th class="bg_dblue">Client</th>
-								<th class="bg_dblue">Reference</th>
-								<th class="bg_dblue">Price</th>
-								<th class="bg_dblue">Currency</th>
-								<th class="bg_dblue">Qty_In</th>
-								<th class="bg_dblue">Qty_Out</th>
-								<th class="bg_dblue">Qty_Adj</th>
-								<th class="bg_dblue">Balance</th>
-								<th class="bg_dblue">Agent</th>
-							</tr>
-						</thead>
-						<tbody>
+					</div>
 
-							<tr data-toggle="modal" data-target="#IOTModal">
-								<td class="">12/3/2014</td>
-								<td class="">Sumpit</td>
-								<td class="">169</td>
-								<td class="">235</td>
-								<td class="">Yuan</td>
-								<td class="">1600</td>
-								<td class="">10</td>
-								<td class=""></td>
-								<td class="">2,374</td>
-								<td class="">Bong</td>
-							</tr>
+					<!-- ========================== TABLE =========================== -->
 
-						</tbody>
-					</table>
+					<div style="padding: 10px" class="tbl_wrap">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th class="bg_dblue">Date</th>
+									<th class="bg_dblue">Client</th>
+									<th class="bg_dblue">Reference</th>
+									<th class="bg_dblue">Price</th>
+									<th class="bg_dblue">Currency</th>
+									<th class="bg_dblue">Qty_In</th>
+									<th class="bg_dblue">Qty_Out</th>
+									<th class="bg_dblue">Qty_Adj</th>
+									<th class="bg_dblue">Balance</th>
+									<th class="bg_dblue">Agent</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr data-toggle="modal" data-target="#IOTModal">
+									<td class="">12/3/2014</td>
+									<td class="">Sumpit</td>
+									<td class="">169</td>
+									<td class="">235</td>
+									<td class="">Yuan</td>
+									<td class="">1600</td>
+									<td class="">10</td>
+									<td class=""></td>
+									<td class="">2,374</td>
+									<td class="">Bong</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+
 				</div>
-
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
-			</div>
+			<!-- /.modal-content -->
 		</div>
-		<!-- /.modal-content -->
+		<!-- /.modal-dialog -->
 	</div>
-	<!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
 
-<!-- end of modal -->
+</div>
 
 
 <!-- /#PAGE CONTENT WRAPPER -->
-
 </html>
 
 <!-- FOR LOGOUT SPRING SECURITY FUNCTION -->
