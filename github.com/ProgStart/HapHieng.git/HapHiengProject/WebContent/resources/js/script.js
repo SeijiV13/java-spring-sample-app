@@ -1,3 +1,4 @@
+var sumTotals = 0;
 $(document).ready(function() {
 	// MENUT TOGGLE FUNCTION
 
@@ -170,6 +171,97 @@ $(document).ready(function() {
 		$('#PRRisrh').toggleClass('show');
 	});
 	
+	// ================= MENU SCRIPT =====================
+	$('.addToList').click(function(){
+		var itemName = $(this).attr('name');
+		var itemPrice = $('#itemAmount').text();
+		var quantity = $('#orderQuantity').val();
+		
+		var itemDesc = $('#description').text();
+		var stock = $('#stockQuantity').val();
+		var agentname = $('#salesagent').val();
+		var itemCode = $('#itemCode').text();
+
+		if((quantity*itemPrice !== 0 && quantity <= stock)){		
+			if($('#'+itemCode+'item').length === 0) {
+				$('.list').append('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  itemDesc + '</td>\n\t<td class=\"item-xm\">' +  stock + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  quantity + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></font></td>\n</tr>').fadeIn('slow');
+			}
+			else{
+				$('#'+itemCode+'item').replaceWith('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  itemDesc + '</td>\n\t<td class=\"item-xm\">' +  stock + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  quantity + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></font></td>\n</tr>').fadeIn('slow');
+			} 
+		}
+
+		var sumTotals = 0;
+		var rows = $("#entries tr:gt(0)");
+
+		 rows.children("td:nth-child(7)").each(function() {
+		 sumTotals += parseInt($(this).html());
+		 });
+
+		 $("#result").html("<b>Total Amount: </b>"+sumTotals.toFixed(2));
+ });
+	
+	$('#clear').click(function(){
+		$('#result').text("0.00");
+		$('#entries').replaceWith('<table id=\"entries\" class=\"list\"><thead><tr><th><p class=\"qtyCO\">Name &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</p></th><th><p class=\"qtyCO\">Quantity &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</p></th><th><p class=\"qtyCO\">Price &nbsp &nbsp</p></th></tr></thead></table>');
+	});
+
+	$('.addToList').mouseover(function(){
+		$(this).css('cursor', 'pointer');
+	});
+
+	$(document).on('click','.item-x',function(){
+		if (confirm("Remove Item?") == true) {
+	         $(this).parent().parent().fadeOut();
+			var removeSum = $(this).parent().parent().children("td:nth-child(7)").text();
+			var myDivObj = document.getElementById("result").innerHTML;
+			sumTotals = parseInt(myDivObj) - parseInt(removeSum);
+			$('#result').text(sumTotals.toFixed(2));
+			$(this).parent().parent().children("td:nth-child(7)").text(0);
+	    } else {
+	        alert('Cancelled by user.');
+	    }
+		//$('#result').text(sumTotals);
+	});	
+
+	$(document).on('mouseover','.item-x',function(){
+		$(this).css('cursor', 'pointer');
+	});	
+
+	$(document).on('mouseover','.item-xm',function(){
+		$(this).css('cursor', 'pointer');
+	});
+	
+	$("#itemmenu").hide();
+	
+	var changer = function () {
+        var end = this.value;
+        var itemval = $('#itemname').val();
+		var agentval = $('#salesagent').val();
+		
+		if(itemval == 0 || agentval == 0){
+			$("#itemmenu").hide();
+		} else {
+	        $.get('SalesEntries.htm?itemId='+itemval,function(json) {
+	            if(json!=null){
+	            	var data = JSON.parse(json);
+	            	$('#itemCode').text(data.itemid);
+	        		$('#addItem').attr('name', data.name);
+	        		$('#itemAmount').text(data.amount);
+	        		$('#description').text(data.desc);
+	        		$('#stockQuantity').val(data.stock);
+	        		$('#orderQuantity').attr('max', data.stock);
+	            }
+	            else {
+	            	$("#result").html("no fetched");
+	            }
+	        }); 
+			$("#itemmenu").show();
+		}
+    }
+	$( document ).ready( changer );
+	$("#itemname").change(changer);
+	$("#salesagent").change(changer);
 	
 });
 
