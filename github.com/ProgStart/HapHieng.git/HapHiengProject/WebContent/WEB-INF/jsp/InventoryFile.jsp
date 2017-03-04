@@ -144,7 +144,8 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="remarks">Total Inventory Cost</label> <input
-										class="form-control" value="${sessionScope.totalCost}" readonly>
+										class="form-control" value="${sessionScope.totalCost}"
+										readonly>
 
 								</div>
 							</div>
@@ -162,7 +163,7 @@
 					<hr>
 
 					<!--/# TABLE FOR INVENTORY FILE-->
-					
+
 					<div class="tbl_wrap">
 						<div class="table-responsive">
 							<table class="table table-block">
@@ -188,7 +189,7 @@
 									</tr>
 								</thead>
 								<tbody>
-				
+
 									<c:set var="row" value="0" />
 									<c:forEach var="product" items="${sessionScope.products}">
 
@@ -196,8 +197,9 @@
 											data-target="#myModal">
 
 											<td class="">${row = row + 1}</td>
-											<td class=""><button class="btn btn-primary">
-													${product.item_code }</button></td>
+											<td class=""><button value="${product.item_code}"
+													data-target="#iteminout" data-toggle="modal"
+													class="btn btn-primary">${product.item_code }</button></td>
 											<td class="">${product.item_code}</td>
 											<td class="">${product.category}</td>
 											<td class="">${product.description}</td>
@@ -207,15 +209,13 @@
 											<td class="">${product.total}</td>
 											<td class="">${product.w1}</td>
 											<td class="">${product.w2}</td>
-											<td class="">${product.image}</td>
-											<td class="">${product.location}</td>
 											<td class="">${product.quantity_pack_big}</td>
 											<td class="">${product.quantity_pack_small}</td>
+											<td class="">${product.image}</td>
+											<td class="">${product.location}</td>
 											<td class="">${product.remarks1}</td>
 											<td class="">${product.remarks2}</td>
-											 
-											
-                                              
+
 										</tr>
 									</c:forEach>
 
@@ -456,6 +456,193 @@
 	</div>
 
 </div>
+
+
+<div class="modal fade" id="iteminout" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 class="modal-title">Item In-Out Transaction</h3>
+			</div>
+
+			<!-- MODAL FORM -->
+			<div class="modal-body">
+			
+
+					<div class="row">
+						<div class="col-md-4">
+							<select class="form-control">
+								<option>Item Code</option>
+							</select>
+						</div>
+
+						<div class="col-md-4 form-horizontal">
+							<label for="IOTdate" class="col-md-2">Date from</label>
+							<div class="input-group input-daterange col-md-10" id="IOTdate">
+								<input type="text" class="form-control" value="2012-04-05">
+								<span class="input-group-addon">to</span> <input type="text"
+									class="form-control" value="2012-04-19">
+							</div>
+
+						</div>
+
+						<div class="col-md-2 form-horizontal ">
+							<button class="btn btn-default center-block">
+								<span class="fa fa-search"></span> Find Reference
+							</button>
+						</div>
+
+						<div class="col-md-2 form-horizontal">
+							<button class="btn btn-default">
+								<span class="fa fa-print"></span> Print
+							</button>
+						</div>
+					</div>
+					<!-- END: FIRST ROW -->
+
+					<div class="row">
+
+						<div class="col-md-4">
+							<h4>Clients</h4>
+
+							<div class="radio">
+								<label> <input type="radio" class="IOTradios"
+									name="IOTRadios" id="IOTradio1" value="option1"> All
+									Supplies
+								</label>
+							</div>
+
+							<div class="radio">
+								<label> <input type="radio" class="IOTradios"
+									name="IOTRadios" id="IOTradio2" value="option2"> All
+									Sales Transaction
+								</label>
+							</div>
+
+							<div class="radio">
+								<label> <input type="radio" name="IOTRadios"
+									id="IOTradio3" value="option3"> <select
+									class="form-control IOTselect" disabled>
+										<option>Select Client</option>
+								</select>
+								</label>
+							</div>
+						</div>
+						<!-- END: CLIENTS -->
+
+						<div class="col-md-4 form-horizontal">
+
+							<div class="form-group txtbox">
+								<label class="control-label col-md-3" for="IOTIn">Total
+									In:</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="IOTIn" disabled
+										placeholder="102891">
+								</div>
+							</div>
+
+							<div class="form-group txtbox">
+								<label class="control-label col-md-3" for="IOTOut">Total
+									Out:</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="IOTOut" disabled
+										placeholder="102891">
+								</div>
+							</div>
+
+							<div class="form-group txtbox">
+								<label class="control-label col-md-3" for="IOTAdj">Total
+									Adj:</label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="IOTAdj" disabled
+										placeholder="102891">
+								</div>
+							</div>
+
+						</div>
+						<!-- END: TOTALS -->
+
+						<div class="col-md-4 form-horizontal InOutAdj">
+
+							<div class="form-group txtbox">
+								<label class="control-label col-md-5" for="IOTOut">In-Out+Adj:</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" id="IOTOut" disabled
+										placeholder="102891">
+								</div>
+							</div>
+
+							<div class="form-group txtbox">
+								<label class="control-label col-md-5" for="IOTOut">Record
+									Qty:</label>
+								<div class="col-md-7">
+									<input type="text" class="form-control" id="IOTOut" disabled
+										placeholder="102891">
+								</div>
+							</div>
+
+						</div>
+
+
+					</div>
+					<!-- END: SECOND ROW -->
+
+				<!-- END: UPPER PART NAV -->
+
+				<!-- ========================== TABLE =========================== -->
+
+				<div class="tbl_wrap">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th class="bg_dblue">Date</th>
+								<th class="bg_dblue">Client</th>
+								<th class="bg_dblue">Reference</th>
+								<th class="bg_dblue">Price</th>
+								<th class="bg_dblue">Currency</th>
+								<th class="bg_dblue">Qty_In</th>
+								<th class="bg_dblue">Qty_Out</th>
+								<th class="bg_dblue">Qty_Adj</th>
+								<th class="bg_dblue">Balance</th>
+								<th class="bg_dblue">Agent</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr data-toggle="modal" data-target="#IOTModal">
+								<td class="">12/3/2014</td>
+								<td class="">Sumpit</td>
+								<td class="">169</td>
+								<td class="">235</td>
+								<td class="">Yuan</td>
+								<td class="">1600</td>
+								<td class="">10</td>
+								<td class=""></td>
+								<td class="">2,374</td>
+								<td class="">Bong</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- end of modal -->
 
 
 <!-- /#PAGE CONTENT WRAPPER -->
