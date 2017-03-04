@@ -333,7 +333,7 @@
 							<option>WC/RC</option>
 						</select>
 
-
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addEntry">Add Entry</button>
 
 					</div>
 				</form>
@@ -341,7 +341,7 @@
 				<!-- ============ TABLE ============ -->
 
 				<div class="tbl_wrap">
-					<table class="table table-hover">
+					<table class="table table-hover" id="entries">
 			          <thead>
 			            <tr>
 			              	<th class=" bg_dblue">Row no.</th>
@@ -455,6 +455,64 @@
         
 
 				<!-- ============= MODAL =============== -->
+				<div id="addEntry" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+				
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">Add Entry</h4>
+				      </div>
+				    <div class="modal-body">
+						<div class="form-group">
+							  <label for="salesagent">Sales Agent:</label>
+							  <select class="form-control" id="salesagent">
+								<option value="0" selected="selected">None</option>
+								<option value="Agent1">Sales Agent1</option>
+								<option value="Agent2">Sales Agent2</option>
+								<option value="Agent3">Sales Agent3</option>
+								<option value="Agent4">Sales Agent4</option>
+							  </select>
+							  
+							<label for="itemname">Item:</label>
+							  <select class="form-control" id="itemname">
+								<option value="0" selected="selected">None</option>
+								<option value="1">Test Item1</option>
+								<option value="2">Test Item2</option>
+								<option value="3">Test Item3</option>
+								<option value="4">Test Item4</option>
+							  </select>
+							  
+							<div id="itemmenu" class="form-group">
+							<div class="col-sm-10">
+							  <p class="form-control-static">Item ID: <span id="itemCode">00</span></p>
+							</div>		
+							<p class="form-control-static"></p>
+							<div class="panel panel-default">
+							  <div class="panel-heading">Description</div>
+							  <div id="description" class="panel-body">
+								Description test
+							  </div>
+							</div>
+							<label for="btn-stockquan">Available Stock:</label>
+							  <input id="stockQuantity" class="form-control" type="number" placeholder="0" value="0" disabled>
+							<p class="form-control-static">Amount: P<span id="itemAmount">200.00</span></p>
+							  <label for="btn-quan">Enter Quantity:</label>
+							  <input id="orderQuantity" class="form-control" type="number" placeholder="0" min="1" max="0" size="1" height="1" width="2">
+							</div>
+						</div>
+						</div>
+						
+				      <div class="modal-footer">
+				        <button id="addItem" type="button" data-dismiss="modal" name="" class="addToList btn btn-default">Add</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
+				
+				  </div>
+				</div>
+
 				<div class="modal fade" id="SEModal" tabindex="-2" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
