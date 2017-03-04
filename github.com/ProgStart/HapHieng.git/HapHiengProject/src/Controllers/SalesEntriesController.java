@@ -20,8 +20,8 @@ public class SalesEntriesController {
 		return salesEntries;
 	}
 	
-	/*
-	@RequestMapping(value="/SalesEntries.htm")
+	
+	@RequestMapping(value="/entries")
 	@ResponseBody 
     public String salesEntry2(@RequestParam("itemId") String itemId) {
         /*JSONObject obj = new JSONObject();
@@ -31,9 +31,9 @@ public class SalesEntriesController {
         obj.put("desc", "Short Description");
         obj.put("stock", new Integer(100));
         obj.put("amount", new Double(1000.21));
-        *//*
+        */
     	String sample = "{\"itemid\": "+ itemId +", \"name\": \"Sample Item "+ itemId +"\", \"desc\": \"Short Desc\", \"stock\": "+ 100 * Integer.parseInt(itemId) + ", \"amount\": "+ 1000 * Integer.parseInt(itemId) + "}";
     	return sample;
     }
-	*/
+	
 }

@@ -346,108 +346,18 @@
 			            <tr>
 			              	<th class=" bg_dblue">Row no.</th>
 							<th class=" bg_dblue">Item code</th>
+							<th class=" bg_dblue">Description</th>
 							<th class=" bg_dblue">Qty</th>
 							<th class=" bg_dblue">QtyStock</th>
 							<th class=" bg_dblue">Pending Qty</th>
-							<th class=" bg_dblue">Description</th>
 							<th class=" bg_dblue">Agent</th>
 							<th class=" bg_dblue">Price</th>
 							<th class=" bg_dblue">Amount</th>
+							<th class=" bg_dblue">Remove</th>
 							
 			            </tr>
 			          </thead>
-			          <tbody>
-			          	
-			           <tr  data-toggle="modal" data-target="#SEModal">
-			           		<td class="">1</td>
-							<td class="">2020</td>
-							<td class="">20</td>
-							<td class="">250</td>
-							<td class="">10</td>
-							<td class="">Bleeder Screw</td>
-							<td class="">John Smith</td>
-							<td class="">Php 10</td>
-							<td class="">Php 200</td>
-							
-						</tr>
-						
-						<tr  data-toggle="modal" data-target="#SEModal">
-			           		<td class="">1</td>
-							<td class="">2020</td>
-							<td class="">Yes</td>
-							<td class="">20</td>
-							<td class="">20</td>
-							<td class="">Bleeder Screw</td>
-							<td class="">Php 10</td>
-							<td class="">Php 200</td>
-							<td class="">John Smith</td>
-							
-						</tr>
-						
-						<tr  data-toggle="modal" data-target="#SEModal">
-			           		<td class="">1</td>
-							<td class="">2020</td>
-							<td class="">Yes</td>
-							<td class="">20</td>
-							<td class="">20</td>
-							<td class="">Bleeder Screw</td>
-							<td class="">Php 10</td>
-							<td class="">Php 200</td>
-							<td class="">John Smith</td>
-							
-						</tr>
-						
-						<tr  data-toggle="modal" data-target="#SEModal">
-			           		<td class="">1</td>
-							<td class="">2020</td>
-							<td class="">Yes</td>
-							<td class="">20</td>
-							<td class="">20</td>
-							<td class="">Bleeder Screw</td>
-							<td class="">Php 10</td>
-							<td class="">Php 200</td>
-							<td class="">John Smith</td>
-							
-						</tr>
-						
-						<tr  data-toggle="modal" data-target="#SEModal">
-			           		<td class="">1</td>
-							<td class="">2020</td>
-							<td class="">Yes</td>
-							<td class="">20</td>
-							<td class="">20</td>
-							<td class="">Bleeder Screw</td>
-							<td class="">Php 10</td>
-							<td class="">Php 200</td>
-							<td class="">John Smith</td>
-							
-						</tr>
-						
-						<tr  data-toggle="modal" data-target="#SEModal">
-			           		<td class="">1</td>
-							<td class="">2020</td>
-							<td class="">Yes</td>
-							<td class="">20</td>
-							<td class="">20</td>
-							<td class="">Bleeder Screw</td>
-							<td class="">Php 10</td>
-							<td class="">Php 200</td>
-							<td class="">John Smith</td>
-							
-						</tr>
-						
-						<tr data-toggle="modal" data-target="#SEModal">
-			           		<td class="">1</td>
-							<td class="">2020</td>
-							<td class="">Yes</td>
-							<td class="">20</td>
-							<td class="">20</td>
-							<td class="">Bleeder Screw</td>
-							<td class="">Php 10</td>
-							<td class="">Php 200</td>
-							<td class="">John Smith</td>
-							
-						</tr>
+			          <tbody data-toggle="modal" data-target="#addEntry" class="list">
 						
 			          </tbody>
 			        </table> 
@@ -475,6 +385,44 @@
 								<option value="Agent4">Sales Agent4</option>
 							  </select>
 							  
+						<div class="tbl_wrap">
+						<input type="text" class="form-control" id="entrySearch" onkeyup="searchItem()" placeholder="Search for items.."><br>
+					        	<table class="table table-hover" id="itemTable">
+							          <thead>
+							            <tr>
+							            	<th class="bg_dblue"></th>
+											<th class="bg_dblue">Item code</th>
+											<th class="bg_dblue">Description</th>
+											<th class="bg_dblue">Available Qty</th>
+											<th class="bg_dblue">Pending Qty</th>
+											<th class="bg_dblue">Price</th>
+							            </tr>
+							          </thead>
+							          <tbody>
+							          		<tr>
+							          			<td>
+							          				<input type="radio" name="itementry" value="Item1">
+							          			</td>
+							          			<td>
+							          				Item1code
+							          			</td>
+							          			<td>
+							          				Item1name
+							          			</td>
+							          			<td>
+							          				1000
+							          			</td>
+							          			<td>
+							          				100
+							          			</td>
+							          			<td>
+							          				1500
+							          			</td>							          										          		
+							          		</tr>
+							          </tbody>
+							          </table>
+							          </div>
+							          
 							<label for="itemname">Item:</label>
 							  <select class="form-control" id="itemname">
 								<option value="0" selected="selected">None</option>
@@ -497,7 +445,7 @@
 							</div>
 							<label for="btn-stockquan">Available Stock:</label>
 							  <input id="stockQuantity" class="form-control" type="number" placeholder="0" value="0" disabled>
-							<p class="form-control-static">Amount: P<span id="itemAmount">200.00</span></p>
+							<p class="form-control-static">Amount: P<span id="itemAmount">0.00</span></p>
 							  <label for="btn-quan">Enter Quantity:</label>
 							  <input id="orderQuantity" class="form-control" type="number" placeholder="0" min="1" max="0" size="1" height="1" width="2">
 							</div>
@@ -667,7 +615,8 @@
 					<label for="totalAmt"
 						class="col-md-offset-3 col-md-2 col-xs-6 text-right">Total
 						Amount</label> <input type="text" class="form-control col-md-2 col-xs-6"
-						id="totalAmt" disabled>
+						id="totalAmt" readonly>
+						<div id="test"></div>
 				</div>
 
 				<div class="btn-group btn-group-justified  " role="group">

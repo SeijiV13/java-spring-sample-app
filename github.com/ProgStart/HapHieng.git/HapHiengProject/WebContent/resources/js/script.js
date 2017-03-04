@@ -184,25 +184,24 @@ $(document).ready(function() {
 
 		if((quantity*itemPrice !== 0 && quantity <= stock)){		
 			if($('#'+itemCode+'item').length === 0) {
-				$('.list').append('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  itemDesc + '</td>\n\t<td class=\"item-xm\">' +  stock + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  quantity + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></font></td>\n</tr>').fadeIn('slow');
+				$('.list').append('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></font></td>\n</tr>').fadeIn('slow');
 			}
 			else{
-				$('#'+itemCode+'item').replaceWith('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  itemDesc + '</td>\n\t<td class=\"item-xm\">' +  stock + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  quantity + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></font></td>\n</tr>').fadeIn('slow');
+				$('#'+itemCode+'item').replaceWith('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></font></td>\n</tr>').fadeIn('slow');
 			} 
 		}
 
 		var sumTotals = 0;
 		var rows = $("#entries tr:gt(0)");
 
-		 rows.children("td:nth-child(7)").each(function() {
+		 rows.children("td:nth-child(9)").each(function() {
 		 sumTotals += parseInt($(this).html());
 		 });
-
-		 $("#result").html("<b>Total Amount: </b>"+sumTotals.toFixed(2));
+		 $("#totalAmt").val(sumTotals.toFixed(2));
  });
 	
 	$('#clear').click(function(){
-		$('#result').text("0.00");
+		$('#totalAmt').text("0.00");
 		$('#entries').replaceWith('<table id=\"entries\" class=\"list\"><thead><tr><th><p class=\"qtyCO\">Name &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</p></th><th><p class=\"qtyCO\">Quantity &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</p></th><th><p class=\"qtyCO\">Price &nbsp &nbsp</p></th></tr></thead></table>');
 	});
 
@@ -213,11 +212,11 @@ $(document).ready(function() {
 	$(document).on('click','.item-x',function(){
 		if (confirm("Remove Item?") == true) {
 	         $(this).parent().parent().fadeOut();
-			var removeSum = $(this).parent().parent().children("td:nth-child(7)").text();
-			var myDivObj = document.getElementById("result").innerHTML;
+			var removeSum = $(this).parent().parent().children("td:nth-child(9)").text();
+			var myDivObj = document.getElementById("totalAmt").innerHTML;
 			sumTotals = parseInt(myDivObj) - parseInt(removeSum);
-			$('#result').text(sumTotals.toFixed(2));
-			$(this).parent().parent().children("td:nth-child(7)").text(0);
+			$('#totalAmt').text(sumTotals.toFixed(2));
+			$(this).parent().parent().children("td:nth-child(9)").text(0);
 	    } else {
 	        alert('Cancelled by user.');
 	    }
@@ -242,7 +241,7 @@ $(document).ready(function() {
 		if(itemval == 0 || agentval == 0){
 			$("#itemmenu").hide();
 		} else {
-	        $.get('SalesEntries.htm?itemId='+itemval,function(json) {
+	        $.get('entries.htm?itemId='+itemval,function(json) {
 	            if(json!=null){
 	            	var data = JSON.parse(json);
 	            	$('#itemCode').text(data.itemid);
@@ -253,7 +252,7 @@ $(document).ready(function() {
 	        		$('#orderQuantity').attr('max', data.stock);
 	            }
 	            else {
-	            	$("#result").html("no fetched");
+	            	$("#totalAmt").html("no fetched");
 	            }
 	        }); 
 			$("#itemmenu").show();
@@ -265,3 +264,23 @@ $(document).ready(function() {
 	
 });
 
+function searchItem() {
+	  // Declare variables 
+	  var input, filter, table, tr, td, i;
+	  input = document.getElementById("entrySearch");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("itemTable");
+	  tr = table.getElementsByTagName("tr");
+
+	  // Loop through all table rows, and hide those who don't match the search query
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[2];
+	    if (td) {
+	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    } 
+	  }
+	}
