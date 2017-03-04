@@ -119,7 +119,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 	    <property name="productMapper" ref="productMapper"/>
     </bean>
     
- 
+  
  
    <!-- RESOURCE PATH -->
    <mvc:resources mapping="/resources/**" location="/resources/" />
