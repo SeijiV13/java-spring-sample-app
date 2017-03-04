@@ -120,7 +120,7 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     </bean>
      
   
- 
+  
    <!-- RESOURCE PATH -->
    <mvc:resources mapping="/resources/**" location="/resources/" />
    <mvc:annotation-driven />
