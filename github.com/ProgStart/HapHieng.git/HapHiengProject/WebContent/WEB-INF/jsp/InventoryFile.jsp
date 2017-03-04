@@ -100,15 +100,132 @@
 		<div class="row">
 
 			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#cardform">Card
+				<li class="active"><a data-toggle="tab" href="#browseform">Browse
 						Form</a></li>
-				<li><a data-toggle="tab" href="#browseform">Browse Form</a></li>
+				<li><a data-toggle="tab" href="#cardform">Card Form</a></li>
+
 
 			</ul>
 
 			<div class="tab-content">
+				<div id="browseform" class="tab-pane fade in active">
+					<h3>Browse Form</h3>
+					<hr>
+					<br>
+					<form class="form-container" method="POST"
+						action="/HapHiengProject/InventoryFileSubmit">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="productlinefilter">Product Line Filter</label> <select
+										class="form-control" id="productlinefilter"
+										name="productLineFilter">
+										<option value="">Select Product Line</option>
+										<c:forEach var="productLine"
+											items="${applicationScope.productLines}">
+											<option value="${productLine}">${productLine}</option>
+										</c:forEach>
+									</select>
 
-				<div id="cardform" class="tab-pane fade in active">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="categoryfilter">Category Filter</label> <select
+										class="form-control" id="categoryfilter" name="categoryFilter">
+										<option value="">Select Category</option>
+										<c:forEach var="category"
+											items="${applicationScope.categories}">
+											<option value="${category}">${category}</option>
+										</c:forEach>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="remarks">Total Inventory Cost</label> <input
+										class="form-control" value="${sessionScope.totalCost}" readonly>
+
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="pull-right">
+									<button type="submit" class="btn btn-default">Filter</button>
+								</div>
+							</div>
+						</div>
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+					</form>
+					<hr>
+
+					<!--/# TABLE FOR INVENTORY FILE-->
+					
+					<div class="tbl_wrap">
+						<div class="table-responsive">
+							<table class="table table-block">
+								<thead>
+									<tr>
+										<th class="bg_dblue text-nowrap">Row No.</th>
+										<th class="bg_dblue text-nowrap">Item code</th>
+										<th class="bg_dblue text-nowrap">Item code</th>
+										<th class="bg_dblue text-nowrap">Category</th>
+										<th class="bg_dblue text-nowrap">Description</th>
+										<th class="bg_dblue text-nowrap">Gross Price</th>
+										<th class="bg_dblue text-nowrap">Less 15%</th>
+										<th class="bg_dblue text-nowrap">Less 35%</th>
+										<th class="bg_dblue text-nowrap">Total</th>
+										<th class="bg_dblue text-nowrap">W1</th>
+										<th class="bg_dblue text-nowrap">W2</th>
+										<th class="bg_dblue text-nowrap">Qty Pack Big</th>
+										<th class="bg_dblue text-nowrap">Qty Pack Small</th>
+										<th class="bg_dblue text-nowrap">Image</th>
+										<th class="bg_dblue text-nowrap">Location</th>
+										<th class="bg_dblue text-nowrap">Remarks1</th>
+										<th class="bg_dblue text-nowrap">Remarks2</th>
+									</tr>
+								</thead>
+								<tbody>
+				
+									<c:set var="row" value="0" />
+									<c:forEach var="product" items="${sessionScope.products}">
+
+										<tr style="cursor: pointer;" data-toggle="modal"
+											data-target="#myModal">
+
+											<td class="">${row = row + 1}</td>
+											<td class=""><button class="btn btn-primary">
+													${product.item_code }</button></td>
+											<td class="">${product.item_code}</td>
+											<td class="">${product.category}</td>
+											<td class="">${product.description}</td>
+											<td class="">${product.gross_price}</td>
+											<td class="">${product.less_rc}</td>
+											<td class="">${product.less_wc}</td>
+											<td class="">${product.total}</td>
+											<td class="">${product.w1}</td>
+											<td class="">${product.w2}</td>
+											<td class="">${product.image}</td>
+											<td class="">${product.location}</td>
+											<td class="">${product.quantity_pack_big}</td>
+											<td class="">${product.quantity_pack_small}</td>
+											<td class="">${product.remarks1}</td>
+											<td class="">${product.remarks2}</td>
+											 
+											
+                                              
+										</tr>
+									</c:forEach>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+				<div id="cardform" class="tab-pane fade">
 					<h3>Card Form</h3>
 					<hr>
 					<br>
@@ -263,123 +380,8 @@
 						</div>
 					</form>
 				</div>
-				<br>
-				<div id="browseform" class="tab-pane fade">
-					<h3>Browse Form</h3>
-					<hr>
-					<br>
-					<form class="form-container" method="POST"
-						action="/HapHiengProject/InventoryFileSubmit">
-						<div class="row">
-							<div class="col-md-4">
-								<div class="form-group">
-									<label for="productlinefilter">Product Line Filter</label> <select
-										class="form-control" id="productlinefilter"
-										name="productLineFilter">
-										<option value="">Select Product Line</option>
-										<c:forEach var="productLine"
-											items="${applicationScope.productLines}">
-											<option value="${productLine}">${productLine}</option>
-										</c:forEach>
-									</select>
-
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label for="categoryfilter">Category Filter</label> <select
-										class="form-control" id="categoryfilter" name="categoryFilter">
-										<option value="">Select Category</option>
-										<c:forEach var="category"
-											items="${applicationScope.categories}">
-											<option value="${category}">${category}</option>
-										</c:forEach>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label for="remarks">Total Inventory Cost</label> <input
-										class="form-control" readonly>
-
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="pull-right">
-									<button type="submit" class="btn btn-default">Filter</button>
-								</div>
-							</div>
-						</div>
-					</form>
-					<hr>
-
-					<!--/# TABLE FOR INVENTORY FILE-->
-					<div class="tbl_wrap">
-						<div class="table-responsive">
-							<table class="table table-block">
-								<thead>
-									<tr>
-										<th class="bg_dblue text-nowrap">Row No.</th>
-										<th class="bg_dblue text-nowrap">Item code</th>
-										<th class="bg_dblue text-nowrap">Item code</th>
-										<th class="bg_dblue text-nowrap">Category</th>
-										<th class="bg_dblue text-nowrap">Description</th>
-										<th class="bg_dblue text-nowrap">Gross Price</th>
-										<th class="bg_dblue text-nowrap">Net Price</th>
-										<th class="bg_dblue text-nowrap">Qty</th>
-										<th class="bg_dblue text-nowrap">Qty on PO</th>
-										<th class="bg_dblue text-nowrap">Location</th>
-										<th class="bg_dblue text-nowrap">Qty Pack Big</th>
-										<th class="bg_dblue text-nowrap">Qty Pack Small</th>
-										<th class="bg_dblue text-nowrap">Remarks</th>
-										<th class="bg_dblue text-nowrap">Image</th>
-									</tr>
-								</thead>
-								<tbody>
-								    <c:set var="row" value="0"/>
-									<c:forEach var="product" items="${sessionScope.products}">
-									    
-										<tr style="cursor: pointer;" data-toggle="modal"
-											data-target="#myModal">
-
-											<td class="">${row = row + 1}</td>
-											<td class=""><button class="btn btn-primary">
-													${product.item_code }</button></td>
-											<td class="">${product.item_code}</td>
-											<td class="">${product.category}</td>
-											<td class="">${product.description}</td>
-											<td class="">${product.gross_price}</td>
-											<td class="">${product.net_price}</td>
-											<td class="">${product.quantity}</td>
-											<td class="">${product.quantity_on_po}</td>
-											<td class="">${product.location}</td>
-											<td class="">${product.quantity_pack_big}</td>
-											<td class="">${product.quantity_pack_small}</td>
-											<td class="">${product.remarks}</td>
-											<td class=""></td>
-
-
-
-										</tr>
-									</c:forEach>
-
-
-
-
-
-								</tbody>
-							</table>
-						</div>
-					</div>
-
-					<hr>
-				</div>
 
 			</div>
-
-			<hr>
 
 			<!--/# PRICING LEGEND -->
 			<div class="row center-block legend">
@@ -421,6 +423,7 @@
 				</div>
 			</div>
 			<br>
+			<h4>Pricing</h4>
 			<div class="tbl_wrap">
 				<div class="table-responsive">
 					<table class="table">

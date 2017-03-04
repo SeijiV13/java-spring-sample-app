@@ -23,6 +23,7 @@ UserImplem userImplem;
 	@RequestMapping(value ="/AdministratorControl", method = RequestMethod.GET)
 	public ModelAndView formBackingObject(HttpServletRequest request){
 		
+		
 		HttpSession session = request.getSession();
 		
 		ModelAndView AdministratorControl = new ModelAndView("AdministratorControl");

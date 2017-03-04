@@ -120,13 +120,193 @@
 								<input type="text" class="form-control" id="sono">
 							</div>
 						</div>
-
-						<select class="form-control">
-							<option>Customer</option>
-						</select>
-
+						
+						<div class="col-md-3">
+							<button class="btn btn-default bg_dblue btn-add" data-target="#SEAddCust" data-toggle="modal"> Add Customer </button>
+						</div>
+						
+						<div class="col-md-9">
+							<select class="form-control" >
+								<option>Customer</option>
+							</select>
+							
+						</div>
 					</div>
-
+					
+					<!-- MODAL FOR ADD CUSTOMER -->
+					
+					<div class="modal fade" id="SEAddCust" tabindex="-1" role="dialog">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h3 class="modal-title">Add Customer</h3>
+					      </div>
+					      
+					      <!-- MODAL FORM -->
+					      <div class="modal-body">
+					        <form>
+								<div class="form-container">
+									<h3>Personal Details</h3>
+									<div class="row">
+										<div class="col-md-6">
+		
+											<div class="form-group">
+												<label for="customercode">Customer Code</label> <input
+													placeholder="Customer Code" type="text" class="form-control"
+													id="customercode">
+											</div>
+		
+											<div class="form-group">
+												<label for="description">Description</label> <input
+													placeholder="Description" type="text" class="form-control"
+													id="description">
+											</div>
+		
+										</div>
+										<div class="col-md-6">
+		
+											<div class="form-group">
+												<label for="agent">Agent</label> <select class="form-control">
+													<option value="">Select Agent</option>
+												</select>
+											</div>
+		
+											<div class="form-group">
+												<label for="address">Address</label> <input
+													placeholder="Address" type="text" class="form-control"
+													id="address">
+											</div>
+		
+										</div>
+										<div class="col-md-6">
+		
+											<div class="form-group">
+												<label for="address2">Address 2</label> <input
+													placeholder="Address 2" type="text" class="form-control"
+													id="address2">
+											</div>
+		
+											<div class="form-group">
+												<label for="telephone">Telephone</label> <input
+													placeholder="Telephone" type="text" class="form-control"
+													id="telephone">
+											</div>
+		
+										</div>
+										<div class="col-md-6">
+		
+											<div class="form-group">
+												<label for="residentphone">Resident Phone</label> <input
+													placeholder="Resident Phone" type="text" class="form-control"
+													id="residentphone">
+											</div>
+		
+											<div class="form-group">
+												<label for="fax">Fax</label> <input placeholder="Fax"
+													type="text" class="form-control" id="fax">
+											</div>
+		
+										</div>
+										<div class="col-md-6">
+		
+											<div class="form-group">
+												<label for="cellphone">Cellphone</label> <input
+													placeholder="Cellphone" type="text" class="form-control"
+													id="cellphone">
+											</div>
+		
+											<div class="form-group">
+												<label for="terms">Terms</label> <input placeholder="Terms"
+													type="text" class="form-control" id="terms">
+											</div>
+		
+										</div>
+										<div class="col-md-6">
+		
+											<div class="form-group">
+												<label for="tin">Tin #</label> <input placeholder="Tin #"
+													type="text" class="form-control" id="tin">
+											</div>
+		
+											<div class="form-group">
+												<label for="contactperson">Contact Person</label> <input
+													placeholder="Contact Person" type="text" class="form-control"
+													id="contactperson">
+											</div>
+		
+										</div>
+										<div class="col-md-6">
+		
+											<div class="form-group">
+												<label for="email">Email</label> <input placeholder="Email"
+													type="text" class="form-control" id="email">
+											</div>
+		
+										</div>
+		
+									</div>
+								</div>
+								<div class="form-container">
+									<h3>Other Details</h3>
+									<div class="row">
+										<div class="col-md-6">
+		
+											<div class="form-group">
+												<label for="creditlimit">Credit Limit</label> <input
+													placeholder="Credit Limit" type="text" class="form-control"
+													id="creditlimit">
+											</div>
+		
+											<div class="form-group">
+												<label for="initialbalance">Initial Balance</label> <input
+													placeholder="Initial Balance" type="text"
+													class="form-control" id="initialbalance">
+											</div>
+		
+										</div>
+										<div class="col-md-6">
+		
+											<div class="form-group">
+												<label for="remaining">Remaining</label> <input
+													placeholder="Remaining" type="text" class="form-control"
+													id="remaining">
+											</div>
+		
+											<div class="form-group">
+												<label for="remaining">Customer Type</label>
+												<div class="radio">
+													<label><input type="radio" name="optradio">Wholesale
+													</label> <label><input type="radio" name="optradio">Retail
+													</label>
+												</div>
+		
+											</div>
+		
+		
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="remarks">Remarks</label>
+												<textarea placeholder="Remarks" class="form-control" rows="4"></textarea>
+											</div>
+										</div>
+		
+									</div>
+								</div>
+		
+							</form>
+					        
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-primary">Save changes</button>
+					      </div>
+					    </div><!-- /.modal-content -->
+					  </div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+					
+					<!-- end of modal -->
 
 					<div class="form-horizontal col-md-6 col-xs-12 col_2">
 						<div class="form-group">
@@ -150,7 +330,7 @@
 						</div>
 
 						<select class="form-control">
-							<option>Sales Agent</option>
+							<option>WC/RC</option>
 						</select>
 
 
@@ -160,106 +340,122 @@
 				
 				<!-- ============ TABLE ============ -->
 
-				<table class="table table-fixed table-block tables">
-					<thead>
-						<tr>
-							<th class="col-xs-1 bg_dblue ">Row No.</th>
-							<th class="col-xs-2 bg_dblue ">Item code</th>
-							<th class="col-xs-1 bg_dblue ">Quantity</th>
-							<th class="col-xs-2 bg_dblue ">Qty Stock</th>
-							<th class="col-xs-2 bg_dblue ">Description</th>
-							<th class="col-xs-2 bg_dblue ">Price</th>
-							<th class="col-xs-2 bg_dblue ">Amount</th>
+				<div class="tbl_wrap">
+					<table class="table table-hover">
+			          <thead>
+			            <tr>
+			              	<th class=" bg_dblue">Row no.</th>
+							<th class=" bg_dblue">Item code</th>
+							<th class=" bg_dblue">Qty</th>
+							<th class=" bg_dblue">QtyStock</th>
+							<th class=" bg_dblue">Pending Qty</th>
+							<th class=" bg_dblue">Description</th>
+							<th class=" bg_dblue">Agent</th>
+							<th class=" bg_dblue">Price</th>
+							<th class=" bg_dblue">Amount</th>
+							
+			            </tr>
+			          </thead>
+			          <tbody>
+			          	
+			           <tr  data-toggle="modal" data-target="#SEModal">
+			           		<td class="">1</td>
+							<td class="">2020</td>
+							<td class="">20</td>
+							<td class="">250</td>
+							<td class="">10</td>
+							<td class="">Bleeder Screw</td>
+							<td class="">John Smith</td>
+							<td class="">Php 10</td>
+							<td class="">Php 200</td>
+							
 						</tr>
-					</thead>
-					<tbody>
-
-						<tr style="cursor: pointer;" data-toggle="modal"
-							data-target="#myModal">
-							<div class="hoverme">
-								<td class="col-xs-1">1</td>
-								<td class="col-xs-2">22345</td>
-								<td class="col-xs-1">54</td>
-								<td class="col-xs-2">240</td>
-								<td class="col-xs-2">Dummy data</td>
-								<td class="col-xs-2">Php. 4,000</td>
-								<td class="col-xs-2">Php. 6,300</td>
-							</div>
-
-
+						
+						<tr  data-toggle="modal" data-target="#SEModal">
+			           		<td class="">1</td>
+							<td class="">2020</td>
+							<td class="">Yes</td>
+							<td class="">20</td>
+							<td class="">20</td>
+							<td class="">Bleeder Screw</td>
+							<td class="">Php 10</td>
+							<td class="">Php 200</td>
+							<td class="">John Smith</td>
+							
 						</tr>
-
-						<tr style="cursor: pointer;" data-toggle="modal"
-							data-target="#myModal">
-							<td class="col-xs-1">2</td>
-							<td class="col-xs-2">22345</td>
-							<td class="col-xs-1">54</td>
-							<td class="col-xs-2">240</td>
-							<td class="col-xs-2">Dummy data</td>
-							<td class="col-xs-2">Php. 4,000</td>
-							<td class="col-xs-2">Php. 6,300</td>
+						
+						<tr  data-toggle="modal" data-target="#SEModal">
+			           		<td class="">1</td>
+							<td class="">2020</td>
+							<td class="">Yes</td>
+							<td class="">20</td>
+							<td class="">20</td>
+							<td class="">Bleeder Screw</td>
+							<td class="">Php 10</td>
+							<td class="">Php 200</td>
+							<td class="">John Smith</td>
+							
 						</tr>
-
-						<tr style="cursor: pointer;" data-toggle="modal"
-							data-target="#myModal">
-							<td class="col-xs-1">3</td>
-							<td class="col-xs-2">22345</td>
-							<td class="col-xs-1">54</td>
-							<td class="col-xs-2">240</td>
-							<td class="col-xs-2">Dummy data</td>
-							<td class="col-xs-2">Php. 4,000</td>
-							<td class="col-xs-2">Php. 6,300</td>
+						
+						<tr  data-toggle="modal" data-target="#SEModal">
+			           		<td class="">1</td>
+							<td class="">2020</td>
+							<td class="">Yes</td>
+							<td class="">20</td>
+							<td class="">20</td>
+							<td class="">Bleeder Screw</td>
+							<td class="">Php 10</td>
+							<td class="">Php 200</td>
+							<td class="">John Smith</td>
+							
 						</tr>
-
-						<tr style="cursor: pointer;" data-toggle="modal"
-							data-target="#myModal">
-							<td class="col-xs-1">4</td>
-							<td class="col-xs-2">22345</td>
-							<td class="col-xs-1">54</td>
-							<td class="col-xs-2">240</td>
-							<td class="col-xs-2">Dummy data</td>
-							<td class="col-xs-2">Php. 4,000</td>
-							<td class="col-xs-2">Php. 6,300</td>
+						
+						<tr  data-toggle="modal" data-target="#SEModal">
+			           		<td class="">1</td>
+							<td class="">2020</td>
+							<td class="">Yes</td>
+							<td class="">20</td>
+							<td class="">20</td>
+							<td class="">Bleeder Screw</td>
+							<td class="">Php 10</td>
+							<td class="">Php 200</td>
+							<td class="">John Smith</td>
+							
 						</tr>
-
-						<tr style="cursor: pointer;" data-toggle="modal"
-							data-target="#myModal">
-							<td class="col-xs-1">5</td>
-							<td class="col-xs-2">22345</td>
-							<td class="col-xs-1">54</td>
-							<td class="col-xs-2">240</td>
-							<td class="col-xs-2">Dummy data</td>
-							<td class="col-xs-2">Php. 4,000</td>
-							<td class="col-xs-2">Php. 6,300</td>
+						
+						<tr  data-toggle="modal" data-target="#SEModal">
+			           		<td class="">1</td>
+							<td class="">2020</td>
+							<td class="">Yes</td>
+							<td class="">20</td>
+							<td class="">20</td>
+							<td class="">Bleeder Screw</td>
+							<td class="">Php 10</td>
+							<td class="">Php 200</td>
+							<td class="">John Smith</td>
+							
 						</tr>
-
-						<tr style="cursor: pointer;" data-toggle="modal"
-							data-target="#myModal">
-							<td class="col-xs-1">6</td>
-							<td class="col-xs-2">22345</td>
-							<td class="col-xs-1">54</td>
-							<td class="col-xs-2">240</td>
-							<td class="col-xs-2">Dummy data</td>
-							<td class="col-xs-2">Php. 4,000</td>
-							<td class="col-xs-2">Php. 6,300</td>
+						
+						<tr data-toggle="modal" data-target="#SEModal">
+			           		<td class="">1</td>
+							<td class="">2020</td>
+							<td class="">Yes</td>
+							<td class="">20</td>
+							<td class="">20</td>
+							<td class="">Bleeder Screw</td>
+							<td class="">Php 10</td>
+							<td class="">Php 200</td>
+							<td class="">John Smith</td>
+							
 						</tr>
-
-						<tr style="cursor: pointer;" data-toggle="modal"
-							data-target="#myModal">
-							<td class="col-xs-1">7</td>
-							<td class="col-xs-2">22345</td>
-							<td class="col-xs-1">54</td>
-							<td class="col-xs-2">240</td>
-							<td class="col-xs-2">Dummy data</td>
-							<td class="col-xs-2">Php. 4,000</td>
-							<td class="col-xs-2">Php. 6,300</td>
-						</tr>
-
-					</tbody>
-				</table>
+						
+			          </tbody>
+			        </table> 
+				</div>
+        
 
 				<!-- ============= MODAL =============== -->
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+				<div class="modal fade" id="SEModal" tabindex="-2" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -273,81 +469,75 @@
 							<div class="modal-body">
 								<!-- ============= MODAL TABLE =============== -->
 
-								<table class="table tables table-hover">
-									<thead>
-										<tr>
-											<th class="col-xs-1 bg_dblue ">Tx</th>
-											<th class="col-xs-2 bg_dblue ">SearchString</th>
-											<th class="col-xs-2 bg_dblue ">Item code</th>
-											<th class="col-xs-2 bg_dblue ">Category</th>
-											<th class="col-xs-2 bg_dblue ">Description</th>
-											<th class="col-xs-1 bg_dblue ">Qty</th>
-											<th class="col-xs-2 bg_dblue ">Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td class="col-xs-1"></td>
-											<td class="col-xs-2">New Product Line</td>
-											<td class="col-xs-2">BS-006</td>
-											<td class="col-xs-2">Bleeder Screw</td>
-											<td class="col-xs-2">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-											<td class="col-xs-1">0</td>
-											<td class="col-xs-2">4.08</td>
-										</tr>
-
-										<tr>
-											<td class="col-xs-1"></td>
-											<td class="col-xs-2">New Product Line</td>
-											<td class="col-xs-2">BS-006</td>
-											<td class="col-xs-2">Bleeder Screw</td>
-											<td class="col-xs-2">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-											<td class="col-xs-1">0</td>
-											<td class="col-xs-2">4.08</td>
-										</tr>
-
-										<tr>
-											<td class="col-xs-1"></td>
-											<td class="col-xs-2">New Product Line</td>
-											<td class="col-xs-2">BS-006</td>
-											<td class="col-xs-2">Bleeder Screw</td>
-											<td class="col-xs-2">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-											<td class="col-xs-1">0</td>
-											<td class="col-xs-2">4.08</td>
-										</tr>
-
-										<tr>
-											<td class="col-xs-1"></td>
-											<td class="col-xs-2">New Product Line</td>
-											<td class="col-xs-2">BS-006</td>
-											<td class="col-xs-2">Bleeder Screw</td>
-											<td class="col-xs-2">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-											<td class="col-xs-1">0</td>
-											<td class="col-xs-2">4.08</td>
-										</tr>
-
-										<tr>
-											<td class="col-xs-1"></td>
-											<td class="col-xs-2">New Product Line</td>
-											<td class="col-xs-2">BS-006</td>
-											<td class="col-xs-2">Bleeder Screw</td>
-											<td class="col-xs-2">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-											<td class="col-xs-1">0</td>
-											<td class="col-xs-2">4.08</td>
-										</tr>
-
-										<tr>
-											<td class="col-xs-1"></td>
-											<td class="col-xs-2">New Product Line</td>
-											<td class="col-xs-2">BS-006</td>
-											<td class="col-xs-2">Bleeder Screw</td>
-											<td class="col-xs-2">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-											<td class="col-xs-1">0</td>
-											<td class="col-xs-2">4.08</td>
-										</tr>
-									</tbody>
-
-								</table>
+								<div class="tbl_wrap">
+					        		<table class="table table-hover">
+							          <thead>
+							            <tr>
+							            	<th class="bg_dblue">Tx</th>
+							              	<th class="bg_dblue">SearchString</th>
+											<th class="bg_dblue">Item code</th>
+											<th class="bg_dblue">Category</th>
+											<th class="bg_dblue">Description</th>
+											<th class="bg_dblue">Qty</th>
+											<th class="bg_dblue">Price</th>
+							            </tr>
+							          </thead>
+							          <tbody>
+							          	<tr>
+							          		<td class=""></td>
+							          		<td class="">New Product Line</td>
+							          		<td class="">BS-006</td>
+							          		<td class="">Bleeder Screw</td>
+							          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
+							          		<td class="">0</td>
+							          		<td class="">4.08</td>
+							          	</tr>
+							          	
+							          	<tr>
+							          		<td class=""></td>
+							          		<td class="">New Product Line</td>
+							          		<td class="">BS-006</td>
+							          		<td class="">Bleeder Screw</td>
+							          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
+							          		<td class="">0</td>
+							          		<td class="">4.08</td>
+							          	</tr>
+							          	
+							          	<tr>
+							          		<td class=""></td>
+							          		<td class="">New Product Line</td>
+							          		<td class="">BS-006</td>
+							          		<td class="">Bleeder Screw</td>
+							          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
+							          		<td class="">0</td>
+							          		<td class="">4.08</td>
+							          	</tr>
+							          	
+							          	<tr>
+							          		<td class=""></td>
+							          		<td class="">New Product Line</td>
+							          		<td class="">BS-006</td>
+							          		<td class="">Bleeder Screw</td>
+							          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
+							          		<td class="">0</td>
+							          		<td class="">4.08</td>
+							          	</tr>
+							          	
+							          	<tr>
+							          		<td class=""></td>
+							          		<td class="">New Product Line</td>
+							          		<td class="">BS-006</td>
+							          		<td class="">Bleeder Screw</td>
+							          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
+							          		<td class="">0</td>
+							          		<td class="">4.08</td>
+							          	</tr>
+							          	
+							          				          		
+							          </tbody>
+							          
+							         </table>
+						        	</div>
 
 								<hr>
 								<div class="row center-block legend">
@@ -399,7 +589,7 @@
 
 
 
-				<!-- /#PRICING LEGEND -->
+				<!-- #PRICING LEGEND -->
 				<hr>
 				<div class="row center-block legend">
 					<div class="col-md-2 text-right col-xs-4 ">Pricing Legend:</div>
@@ -411,9 +601,10 @@
 					</div>
 
 				</div>
-
+		
+				<!-- TOTAL AMOUNT -->
 				<hr>
-
+			
 				<div class="row form-inline TotalAmt">
 					<label for="totalAmt"
 						class="col-md-offset-3 col-md-2 col-xs-6 text-right">Total
@@ -437,7 +628,7 @@
 					</div>
 
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default">
+						<button type="button" class="btn btn-default" data-target="#SEresume" data-toggle="modal">
 							<span class="fa fa-pencil" aria-hidden="true"></span> Resume
 						</button>
 					</div>
@@ -450,25 +641,112 @@
 					</div>
 				</div>
 
+				<!-- MODAL FOR RESUME BUTTON -->
+				
+				<div class="modal fade" id="SEresume" tabindex="-3" role="dialog">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h3 class="modal-title">Suspended sales</h3>
+				      </div>
+				      <div class="modal-body">
+				        
+				        <div class="tbl_wrap">
+	        		<table class="table table-hover">
+			          <thead>
+			            <tr>
+			            	<th class="bg_dblue"></th>
+			            	<th class="bg_dblue">SR no.</th>
+			              	<th class="bg_dblue">Customer</th>
+							<th class="bg_dblue">Date</th>
+			            </tr>
+			          </thead>
+			          <tbody>
+			          	<tr>
+			          		<td class="">
+				          		<div class="checkbox">
+							    <label>
+							      <input type="checkbox"> 
+							    </label>
+							  </div>
+			          		</td>
+			          		<td class="">124</td>
+			          		<td class="">John Smith</td>
+			          		<td class="">Jan 20 2017</td>
+			          	</tr>
+			          	
+			          	<tr>
+			          		<td class="">
+				          		<div class="checkbox">
+							    <label>
+							      <input type="checkbox"> 
+							    </label>
+							  </div>
+			          		</td>
+			          		<td class="">124</td>
+			          		<td class="">John Smith</td>
+			          		<td class="">Jan 20 2017</td>
+			          	</tr>
+			          	
+			          	<tr>
+			          		<td class="">
+				          		<div class="checkbox">
+							    <label>
+							      <input type="checkbox"> 
+							    </label>
+							  </div>
+			          		</td>
+			          		<td class="">124</td>
+			          		<td class="">John Smith</td>
+			          		<td class="">Jan 20 2017</td>
+			          	</tr>          		
+			          </tbody>
+			          
+			         </table>
+		        	</div>
+				        
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				        <button type="button" class="btn btn-primary">Resume</button>
+				      </div>
+				    </div><!-- /.modal-content -->
+				  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+				
+				<!-- BUTTONS -->
 				<hr>
-
-				<div class="btn-group btn-group-justified " role="group"
-					aria-label="...">
-
+				<div class="btn-group btn-group-justified " role="group">
+					
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-default">
 							<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
-							OLD HH DR
+							STANDARD
 						</button>
 					</div>
 
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-default">
 							<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
-							NEW HH DR
+							HHH PLAIN
 						</button>
 					</div>
 
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-default">
+							<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+							HAP HIENG PLAIN
+						</button>
+					</div>
+					
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-default">
+							<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+							CKCJ PLAIN
+						</button>
+					</div>
 
 				</div>
 

@@ -5,16 +5,18 @@ public class Product {
 	String category = null;
 	String description = null;
 	double  gross_price = 0;
-	double net_price = 0;
-	int quantity = 0;
-	int quantity_on_po = 0;
-    String location = null;
+    double less_rc = 0;
+	double less_wc = 0;
+	int total = 0;
+	int w1 = 0;
+	int w2 = 0;
     int quantity_pack_big = 0;
     int quantity_pack_small = 0;
-    String remarks  = null;
     String image = null;
+    String location = null;
+    String remarks1  = null;
+    String remarks2  = null;
     String product_line = null;
-    
     
     
 	public String getItem_code() {
@@ -41,29 +43,35 @@ public class Product {
 	public void setGross_price(double gross_price) {
 		this.gross_price = gross_price;
 	}
-	public double getNet_price() {
-		return net_price;
+	public double getLess_rc() {
+		return less_rc;
 	}
-	public void setNet_price(double net_price) {
-		this.net_price = net_price;
+	public void setLess_rc(double less_rc) {
+		this.less_rc = less_rc;
 	}
-	public int getQuantity() {
-		return quantity;
+	public double getLess_wc() {
+		return less_wc;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setLess_wc(double less_wc) {
+		this.less_wc = less_wc;
 	}
-	public int getQuantity_on_po() {
-		return quantity_on_po;
+	public int getTotal() {
+		return total;
 	}
-	public void setQuantity_on_po(int quantity_on_po) {
-		this.quantity_on_po = quantity_on_po;
+	public void setTotal(int total) {
+		this.total = total;
 	}
-	public String getLocation() {
-		return location;
+	public int getW1() {
+		return w1;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setW1(int w1) {
+		this.w1 = w1;
+	}
+	public int getW2() {
+		return w2;
+	}
+	public void setW2(int w2) {
+		this.w2 = w2;
 	}
 	public int getQuantity_pack_big() {
 		return quantity_pack_big;
@@ -77,17 +85,29 @@ public class Product {
 	public void setQuantity_pack_small(int quantity_pack_small) {
 		this.quantity_pack_small = quantity_pack_small;
 	}
-	public String getRemarks() {
-		return remarks;
-	}
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
 	public String getImage() {
 		return image;
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getRemarks1() {
+		return remarks1;
+	}
+	public void setRemarks1(String remarks1) {
+		this.remarks1 = remarks1;
+	}
+	public String getRemarks2() {
+		return remarks2;
+	}
+	public void setRemarks2(String remarks2) {
+		this.remarks2 = remarks2;
 	}
 	public String getProduct_line() {
 		return product_line;
@@ -95,6 +115,10 @@ public class Product {
 	public void setProduct_line(String product_line) {
 		this.product_line = product_line;
 	}
+    
+    
+    
+
     
 
 	

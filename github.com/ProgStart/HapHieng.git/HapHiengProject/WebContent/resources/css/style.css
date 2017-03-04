@@ -215,6 +215,14 @@ body div:nth-child(2) h3:not(.modal-title) {
 	cursor: pointer;
 }
 
+.btn-add {
+	margin-bottom: 2%;
+}
+
+.btn-add:hover {
+	color: white;
+}
+
 /* ============= SALES ENTRIES ============= */
 
 .SE .col_3 .btn {

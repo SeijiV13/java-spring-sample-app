@@ -24,8 +24,13 @@ public class inventoryFileController {
 		HttpSession session = request.getSession();
 		
 		ArrayList<Product> products = productImplem.getAllProducts();
+		double totalCost = 0;
+		for(Product product: products){
+			totalCost = totalCost + product.getGross_price();
+	
+		}
 		session.setAttribute("products", products);
-		
+		session.setAttribute("totalCost", totalCost); 
 		return "InventoryFile";
 	}
 	
@@ -38,7 +43,15 @@ public class inventoryFileController {
 		
 		
 		ArrayList<Product> products = productImplem.getAllFilteredProducts("%"+product_line+"%", "%"+category+"%");
+		//get total inventory cost
+		double totalCost = 0;
+		for(Product product: products){
+			totalCost = totalCost + product.getGross_price();
+	
+		}
+		
 		session.setAttribute("products", products);
+		session.setAttribute("totalCost", totalCost);
 		return "InventoryFile";
 	}
 
