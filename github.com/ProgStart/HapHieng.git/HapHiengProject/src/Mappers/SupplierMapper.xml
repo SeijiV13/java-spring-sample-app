@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Mappers.SupplierMapper">
+	  
+	  
+	  <select id="getAllSuppliers" resultType="Supplier">
+	     SELECT * FROM SUPPLIER_TABLE	
+	  </select>
+	  
+	  <select id="getFilteredSuppliers" resultType="Supplier">
+	     SELECT * FROM SUPPLIER_TABLE WHERE supplier_code LIKE #{0} 
+	     AND description LIKE #{1}
+	  </select>
+
+</mapper>

@@ -100,13 +100,13 @@
 
 		<div class="row">
 			<div class="form-container">
-				<form>
+				<form method="POST" action="/HapHiengProject/AgentFileSubmit">
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
 								<label for="agentname">Agent Name Filter</label> <input
 									type="text" id="agentname" class="form-control"
-									placeholder="Agent Name">
+									placeholder="Agent Name" name="name">
 							</div>
 
 						</div>
@@ -114,7 +114,7 @@
 							<div class="form-group">
 								<label for="agentdescription">Agent Description Filter</label> <input
 									type="text" id="agentdescription" class="form-control"
-									placeholder="Agent Description">
+									placeholder="Agent Description" name="description">
 							</div>
 
 						</div>
@@ -122,16 +122,17 @@
 							<div class="form-group">
 								<label for="agentaddress">Address Filter</label> <input
 									type="text" id="agentaddress" class="form-control"
-									placeholder="Agent Address">
+									placeholder="Agent Address" name="address">
 							</div>
 
 						</div>
-
+                    <input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
 					</div>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="pull-right">
-								<button class="btn btn-default">Filter</button>
+								<button  class="btn btn-default">Filter</button>
 							</div>
 						</div>
 					</div>
@@ -147,76 +148,38 @@
 					<table class="table table-block">
 						<thead>
 							<tr>
+							    <th class="bg_dblue text-nowrap">Row No.</th>
 								<th class="bg_dblue text-nowrap">Name</th>
 								<th class="bg_dblue text-nowrap">Description</th>
 								<th class="bg_dblue text-nowrap">Address</th>
 								<th class="bg_dblue text-nowrap">Address 2</th>
-								<th class="bg_dblue text-nowrap">Phone</th>
-								<th class="bg_dblue text-nowrap">Cellhone</th>
+								<th class="bg_dblue text-nowrap">Telephone</th>
+								<th class="bg_dblue text-nowrap">Cellphone</th>
+								<th class="bg_dblue text-nowrap">email</th>
+								<th class="bg_dblue text-nowrap">remarks</th>
+
 
 							</tr>
 						</thead>
 						<tbody>
+						<c:set var="row" value="0"/>
+							<c:forEach var="agent" items="${sessionScope.agents}">
+								<tr style="cursor: pointer;" data-toggle="modal"
+									data-target="#myModal">
 
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
+									<td class="">${row = row + 1}</td>
+									<td class="">${agent.name}</td>
+									<td class="">${agent.description}</td>
+									<td class="">${agent.address}</td>
+									<td class="">${agent.address2}</td>
+									<td class="">${agent.telephone}</td>
+									<td class="">${agent.cellphone}</td>
+									<td class="">${agent.email}</td>
+									<td class="">${agent.remarks}</td>
 
-								<td class="">1</td>
-								<td class="">1000 Sand Paper</td>
-								<td class="">1000 Sand Paper</td>
-								<td class="">Dummy Data</td>
-								<td class="">Dummy data</td>
-								<td class="">Dummy data</td>
+								</tr>
 
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">1</td>
-								<td class="">1000 Sand Paper</td>
-								<td class="">1000 Sand Paper</td>
-								<td class="">Dummy Data</td>
-								<td class="">Dummy data</td>
-								<td class="">Dummy data</td>
-
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">1</td>
-								<td class="">1000 Sand Paper</td>
-								<td class="">1000 Sand Paper</td>
-								<td class="">Dummy Data</td>
-								<td class="">Dummy data</td>
-								<td class="">Dummy data</td>
-
-							</tr>
-
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">1</td>
-								<td class="">1000 Sand Paper</td>
-								<td class="">1000 Sand Paper</td>
-								<td class="">Dummy Data</td>
-								<td class="">Dummy data</td>
-								<td class="">Dummy data</td>
-
-							</tr>
-
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">1</td>
-								<td class="">1000 Sand Paper</td>
-								<td class="">1000 Sand Paper</td>
-								<td class="">Dummy Data</td>
-								<td class="">Dummy data</td>
-								<td class="">Dummy data</td>
-
-							</tr>
-
-
+							</c:forEach>
 
 
 						</tbody>

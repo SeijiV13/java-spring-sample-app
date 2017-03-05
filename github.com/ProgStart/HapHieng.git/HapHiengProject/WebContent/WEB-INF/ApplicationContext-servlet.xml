@@ -99,6 +99,21 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     <property name="mapperInterface" value="Mappers.ProductMapper" />
   </bean>
   
+  <bean id="customerMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    <property name="mapperInterface" value="Mappers.CustomerMapper" />
+  </bean>
+  
+   <bean id="supplierMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    <property name="mapperInterface" value="Mappers.SupplierMapper" />
+  </bean>
+  
+    <bean id="agentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    <property name="mapperInterface" value="Mappers.AgentMapper" />
+  </bean>
+  
   
  
   <!--BEAN MODELS -->
@@ -109,6 +124,19 @@ http://www.springframework.org/schema/security/spring-security.xsd">
   <bean id="product" class="Models.Product" scope="session">
   <aop:scoped-proxy/>
   </bean> 
+  
+   <bean id="customer" class="Models.Customer" scope="session">
+  <aop:scoped-proxy/>
+  </bean> 
+  
+   <bean id="supplier" class="Models.Supplier" scope="session">
+  <aop:scoped-proxy/>
+  </bean> 
+  
+   <bean id="agent" class="Models.Agent" scope="session">
+  <aop:scoped-proxy/>
+  </bean> 
+  
  
    <!--INJECTED MAPPERS INB BEANS-->
     <bean id="userImplem" class="Implem.UserImplem">
@@ -119,7 +147,17 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 	    <property name="productMapper" ref="productMapper"/>
     </bean>
      
-  
+      <bean id="customerImplem" class="Implem.CustomerImplem">
+	    <property name="customerMapper" ref="customerMapper"/>
+    </bean>
+    
+     <bean id="supplierImplem" class="Implem.SupplierImplem">
+	    <property name="supplierMapper" ref="supplierMapper"/>
+    </bean>
+    
+      <bean id="agentImplem" class="Implem.AgentImplem">
+	    <property name="agentMapper" ref="agentMapper"/>
+    </bean>
   
    <!-- RESOURCE PATH -->
    <mvc:resources mapping="/resources/**" location="/resources/" />

@@ -99,15 +99,16 @@
 		<br>
 		<div class="row">
 			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#cardtype">Card
-						Type</a></li>
-				<li><a data-toggle="tab" href="#browsetype">Browse Type</a></li>
+				<li class="active"><a data-toggle="tab" href="#browsetype">Browse
+						Form</a></li>
+
+				<li><a data-toggle="tab" href="#cardtype">Card Form</a></li>
 
 			</ul>
 			<div class="tab-content">
 
-				<div id="cardtype" class="tab-pane fade in active">
-					<h3>Card Type</h3>
+				<div id="cardtype" class="tab-pane fade in">
+					<h3>Card Form</h3>
 					<hr>
 					<br>
 
@@ -286,39 +287,42 @@
 					</div>
 
 				</div>
-				<div id="browsetype" class="tab-pane fade">
+				<div id="browsetype" class="tab-pane fade in active">
 					<h3>Browse Form</h3>
 					<hr>
 					<br>
-					<form class="form-container">
+					<form class="form-container" method="POST" action="/HapHiengProject/CustomerFileSubmit">
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="searchbycuscode">Customer Code Filter</label> <input
 										id="searchbycuscode" class="form-control"
-										placeholder="Customer Code" type="text">
+										placeholder="Customer Code" type="text" name="customer_code">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="searchbydescription">Description Filter</label> <input
 										id="searchbydescription" class="form-control"
-										placeholder="Description" type="text">
+										placeholder="Description" type="text" name="description">
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="agentfilter">Agent Filter</label> <input
 										id="agentfilter" class="form-control" placeholder="Agent"
-										type="text">
+										type="text" name="agent">
 								</div>
 							</div>
 
 						</div>
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+						
 						<div class="row">
 							<div class="col-md-12">
 								<div class="pull-right">
-									<button class="btn btn-default">Filter</button>
+									<button type="submit" class="btn btn-default">Filter</button>
 								</div>
 							</div>
 						</div>
@@ -355,57 +359,30 @@
 									</tr>
 								</thead>
 								<tbody>
+								    <c:set var="row" value="0"/>
+									<c:forEach var="customer" items="${sessionScope.customers}">
+										<tr style="cursor: pointer;" data-toggle="modal">
 
-									<tr style="cursor: pointer;" data-toggle="modal"
-										data-target="#myModal">
-
-										<td class="">1</td>
-										<td class="">20TH Century</td>
-										<td class="">20TH Century Auto Supply</td>
-										<td class="">Dummy Data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-
-
-
-									</tr>
-									<tr style="cursor: pointer;" data-toggle="modal"
-										data-target="#myModal">
-
-										<td class="">1</td>
-										<td class="">20TH Century</td>
-										<td class="">20TH Century Auto Supply</td>
-										<td class="">Dummy Data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-										<td class="">Dummy data</td>
-
-
-
-									</tr>
+											<td class="">${row = row + 1}</td>
+											<td class="">${customer.customer_code}</td>
+											<td class="">${customer.description}</td>
+											<td class="">${customer.agent}</td>
+											<td class="">${customer.address}</td>
+											<td class="">${customer.address2}</td>
+											<td class="">${customer.telephone}</td>
+											<td class="">${customer.resident_phone}</td>
+											<td class="">${customer.fax}</td>
+											<td class="">${customer.cellphone}</td>
+											<td class="">${customer.terms}</td>
+											<td class="">${customer.tin_number}</td>
+											<td class="">${customer.contact_person}</td>
+											<td class="">${customer.email}</td>
+											<td class="">${customer.credit_limit}</td>
+											<td class="">${customer.initial_balance}</td>
+											<td class="">${customer.remaining}</td>
+											<td class="">${customer.remarks}</td>
+										</tr>
+									</c:forEach>
 
 
 								</tbody>

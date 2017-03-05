@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Mappers.CustomerMapper">
+	
+	<select id="getAllCustomers" resultType="Customer">
+	  SELECT * FROM CUSTOMER_TABLE order by customer_code	
+    </select>
+    
+    <select id="getFilteredCustomers" resultType="Customer">
+    	SELECT * FROM CUSTOMER_TABLE WHERE customer_code LIKE #{0}
+    	AND description LIKE #{1} AND agent LIKE #{2} ORDER BY description
+    </select>
+    
+   
+
+</mapper>

@@ -8,11 +8,17 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <typeAliases>
 <typeAlias alias="User" type="Models.User"/>
 <typeAlias alias="Product" type="Models.Product"/>
+<typeAlias alias="Customer" type="Models.Customer"/>
+<typeAlias alias="Supplier" type="Models.Supplier"/>
+<typeAlias alias="Agent" type="Models.Agent"/>
 </typeAliases>
 
 <mappers>
 <mapper resource="Mappers/UserMapper.xml"/>
 <mapper resource="Mappers/ProductMapper.xml"/>
+<mapper resource="Mappers/CustomerMapper.xml"/>
+<mapper resource="Mappers/SupplierMapper.xml"/>
+<mapper resource="Mappers/AgentMapper.xml"/>
 </mappers>  
 
 </configuration>

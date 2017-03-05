@@ -340,8 +340,8 @@
 
 
 								<div class="form-group">
-									<label for="netprice">Less 15%</label> <input type="text"
-										placeholder="Net Price" class="form-control" id="netprice">
+									<label for="less15">Less 15%</label> <input type="text"
+										placeholder="Less 15%" class="form-control" id="less15">
 								</div>
 
 							</div>
@@ -349,8 +349,8 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="quantity">Quantity</label> <input type="text"
-										placeholder="Quantity" class="form-control" id="quantity">
+									<label for="less35">Less 35%</label> <input type="text"
+										placeholder="Less 35%" class="form-control" id="less35">
 								</div>
 
 							</div>
@@ -358,8 +358,27 @@
 							<div class="col-md-6">
 
 								<div class="form-group">
-									<label for="qtyonpo">Qty on Po</label> <input type="text"
-										placeholder="Quantity on PO" class="form-control" id="qtyonpo">
+									<label for="total">Total</label> <input type="text"
+										placeholder="Total%" class="form-control" id="total">
+								</div>
+
+							</div>
+						</div>
+						
+							<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="w1">Warehouse 1</label> <input type="text"
+										placeholder="Warehouse 1" class="form-control" id="w1">
+								</div>
+
+							</div>
+
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="w2">Warehouse 2</label> <input type="text"
+										placeholder="Warehouse 2" class="form-control" id="w2">
 								</div>
 
 							</div>

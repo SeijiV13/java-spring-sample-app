@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Mappers.AgentMapper">
+	 <select id="getAllAgents" resultType="Agent">
+	 	SELECT * FROM AGENT_TABLE
+	 </select>
+	 <select id="getFilteredAgents" resultType="Agent">
+	    SELECT * FROM AGENT_TABLE where name LIKE #{0} AND
+	    description LIKE #{1} AND (address LIKE #{2} OR address2 LIKE #{2})
+	 </select>
+
+</mapper>
