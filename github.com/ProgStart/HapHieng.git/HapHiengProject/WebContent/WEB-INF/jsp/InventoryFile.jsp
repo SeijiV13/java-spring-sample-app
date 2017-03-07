@@ -206,29 +206,31 @@
 
 										<tr style="cursor: pointer;" data-toggle="modal"
 											data-target="#myModal">
-											<td class=""><input name="select" type="radio"
+											<td class=""><input id="${product.item_code}|select"  name="select" type="radio"
 												class="select" /></td>
 											<td class="">${row = row + 1}</td>
 											<td class=""><button value="${product.item_code}"
 													data-target="#iteminout" data-toggle="modal"
 													class="btn btn-primary">${product.item_code }</button></td>
-											<td class="">${product.item_code}</td>
-											<td class="">${product.category}</td>
-											<td class="">${product.description}</td>
-											<td class="">${product.gross_price}</td>
-											<td class="">${product.less_rc}</td>
-											<td class="">${product.less_wc}</td>
-											<td class="">${product.total}</td>
-											<td class="">${product.w1}</td>
-											<td class="">${product.w2}</td>
-											<td class="">${product.quantity_pack_big}</td>
-											<td class="">${product.quantity_pack_small}</td>
-											<td class="">${product.image}</td>
-											<td class="">${product.location}</td>
-											<td class="">${product.remarks1}</td>
-											<td class="">${product.remarks2}</td>
-
+											<td id="${product.item_code}-itemcode" class="">${product.item_code}</td>
+											<td id="${product.item_code}-category" class="">${product.category}</td>
+											<td id="${product.item_code}-description" class="">${product.description}</td>
+											<td id="${product.item_code}-gross_price" class="">${product.gross_price}</td>
+											<td id="${product.item_code}-less_rc" class="">${product.less_rc}</td>
+											<td id="${product.item_code}-less_wc" class="">${product.less_wc}</td>
+											<td id="${product.item_code}-total"  class="">${product.total}</td>
+											<td id="${product.item_code}-w1" class="">${product.w1}</td>
+											<td id="${product.item_code}-w2" class="">${product.w2}</td>
+											<td id="${product.item_code}-qpb" class="">${product.quantity_pack_big}</td>
+											<td id="${product.item_code}-qps" class="">${product.quantity_pack_small}</td>
+											<td id="${product.item_code}-image" class="">${product.image}</td>
+											<td id="${product.item_code}-location" class="">${product.location}</td>
+											<td id="${product.item_code}-remarks1" class="">${product.remarks1}</td>
+											<td id="${product.item_code}-remarks2" class="">${product.remarks2}</td>
+                                           
 										</tr>
+										 
+										
 									</c:forEach>
 
 								</tbody>
@@ -241,6 +243,7 @@
 					<h3>Card Form</h3>
 					<hr>
 					<br>
+					
 					<form class="form-container">
 						<div class="row">
 							<div class="col-md-6">
@@ -288,7 +291,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="categorycode">Category</label> <select
-										class="form-control" id="categorycode">
+										class="form-control" id="category">
 										<option value="">Select Category</option>
 										<c:forEach var="category"
 											items="${applicationScope.categories}">
@@ -407,7 +410,7 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="remarks">Remarks 1</label>
-									<textarea class="form-control" rows="4"></textarea>
+									<textarea id="remarks1" class="form-control" rows="4"></textarea>
 								</div>
 							</div>
 						</div>
@@ -416,7 +419,7 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="remarks">Remarks 2</label>
-									<textarea class="form-control" rows="4"></textarea>
+									<textarea id="remarks2" class="form-control" rows="4"></textarea>
 								</div>
 							</div>
 						</div>
@@ -652,7 +655,33 @@
 
 <!-- FOR LOGOUT SPRING SECURITY FUNCTION -->
 <script type="text/javascript">
-	function formSubmit() {
-		document.getElementById("logoutForm").submit();
-	}
+
+	$(document).ready(function(){
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+		$(".select").click(function(){
+			if($(".select").is(":checked")){
+				let productId = $(this).attr("id");
+				let id = productId.split("|");
+				$("#itemcode").val($("#"+id[0]+"-itemcode").text());
+				$("#category").val($("#"+id[0]+"-category").text());
+				$("#description").val($("#"+id[0]+"-description").text());
+				$("#grossprice").val($("#"+id[0]+"-gross_price").text());
+				$("#less35").val($("#"+id[0]+"-less_wc").text());
+				$("#less15").val($("#"+id[0]+"-less_rc").text());
+				$("#total").val($("#"+id[0]+"-total").text());
+				$("#w1").val($("#"+id[0]+"-w1").text());
+				$("#w2").val($("#"+id[0]+"-w2").text());
+				$("#packageqtybig").val($("#"+id[0]+"-qpb").text());
+				$("#packageqtysmall").val($("#"+id[0]+"-qps").text());
+				$("#image").val($("#"+id[0]+"-image").text());
+				$("#location").val($("#"+id[0]+"-location").text());
+				$("#remarks1").val($("#"+id[0]+"-remarks1").text());
+				$("#remarks2").val($("#"+id[0]+"-remarks2").text());
+				
+			}
+		});
+	
+	});
 </script>
