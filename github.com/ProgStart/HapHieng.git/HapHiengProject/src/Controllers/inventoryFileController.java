@@ -44,8 +44,9 @@ public class inventoryFileController {
 		
 		ArrayList<Product> products = productImplem.getAllFilteredProducts("%"+product_line+"%", "%"+category+"%");
 		//get total inventory cost
+		ArrayList<Product> allProducts = productImplem.getAllProducts();
 		double totalCost = 0;
-		for(Product product: products){
+		for(Product product: allProducts){
 			totalCost = totalCost + product.getGross_price();
 	
 		}
