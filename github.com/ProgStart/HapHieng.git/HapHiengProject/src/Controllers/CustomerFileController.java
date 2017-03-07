@@ -11,14 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.portlet.ModelAndView;
 
+import Implem.AgentImplem;
 import Implem.CustomerImplem;
 import Models.Customer;
+import Models.Agent;
 
 @Controller
 public class CustomerFileController {
 
 	@Autowired
 	private CustomerImplem customerImplem;
+	@Autowired
+	private AgentImplem agentImplem;
 
 	@RequestMapping(value = "/CustomerFile", method = RequestMethod.GET)
 	public ModelAndView formBackingObject(HttpServletRequest request) {
@@ -42,8 +46,10 @@ public class CustomerFileController {
 		  
 		  
 		  ArrayList<Customer> customers = customerImplem.getFilteredCustomers(customer_code, description, agent);
-		  session.setAttribute("customers", customers);
+		  ArrayList<Agent> agents = agentImplem.getAllAgents(); 
 		  
+		  session.setAttribute("customers", customers);
+		  session.setAttribute("agents", agents);
 		  return "CustomerFile";
 	}
 }

@@ -136,6 +136,9 @@
 									<div class="form-group">
 										<label for="agent">Agent</label> <select class="form-control">
 											<option value="">Select Agent</option>
+											<c:forEach var="agent" items="${sessionScope.agents}">
+											<option value="${agent.name}">${agent.name}</option> 
+											</c:forEach>
 										</select>
 									</div>
 

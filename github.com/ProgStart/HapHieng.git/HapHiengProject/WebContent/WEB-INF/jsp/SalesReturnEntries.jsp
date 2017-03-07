@@ -152,97 +152,18 @@
 	            </tr>
 	          </thead>
 	          <tbody>
-	          	
+	          	<c:forEach var="product" items="${sessionScope.products}">
 	           <tr  data-toggle="modal" data-target="#SREModal">
-	           		<td class="">1</td>
-					<td class="">2020</td>
-					<td class="">Yes</td>
-					<td class="">20</td>
-					<td class="">20</td>
-					<td class="">Bleeder Screw</td>
-					<td class="">Php 10</td>
-					<td class="">Php 200</td>
-					<td class="">John Smith</td>
+	           		<td class="">${product.item_code}</td>
+	
 					
 				</tr>
+				</c:forEach>
 				
-				<tr  data-toggle="modal" data-target="#SREModal">
-	           		<td class="">1</td>
-					<td class="">2020</td>
-					<td class="">Yes</td>
-					<td class="">20</td>
-					<td class="">20</td>
-					<td class="">Bleeder Screw</td>
-					<td class="">Php 10</td>
-					<td class="">Php 200</td>
-					<td class="">John Smith</td>
-					
-				</tr>
 				
-				<tr  data-toggle="modal" data-target="#SREModal">
-	           		<td class="">1</td>
-					<td class="">2020</td>
-					<td class="">Yes</td>
-					<td class="">20</td>
-					<td class="">20</td>
-					<td class="">Bleeder Screw</td>
-					<td class="">Php 10</td>
-					<td class="">Php 200</td>
-					<td class="">John Smith</td>
-					
-				</tr>
+	
 				
-				<tr  data-toggle="modal" data-target="#SREModal">
-	           		<td class="">1</td>
-					<td class="">2020</td>
-					<td class="">Yes</td>
-					<td class="">20</td>
-					<td class="">20</td>
-					<td class="">Bleeder Screw</td>
-					<td class="">Php 10</td>
-					<td class="">Php 200</td>
-					<td class="">John Smith</td>
-					
-				</tr>
-				
-				<tr  data-toggle="modal" data-target="#SREModal">
-	           		<td class="">1</td>
-					<td class="">2020</td>
-					<td class="">Yes</td>
-					<td class="">20</td>
-					<td class="">20</td>
-					<td class="">Bleeder Screw</td>
-					<td class="">Php 10</td>
-					<td class="">Php 200</td>
-					<td class="">John Smith</td>
-					
-				</tr>
-				
-				<tr  data-toggle="modal" data-target="#SREModal">
-	           		<td class="">1</td>
-					<td class="">2020</td>
-					<td class="">Yes</td>
-					<td class="">20</td>
-					<td class="">20</td>
-					<td class="">Bleeder Screw</td>
-					<td class="">Php 10</td>
-					<td class="">Php 200</td>
-					<td class="">John Smith</td>
-					
-				</tr>
-				
-				<tr data-toggle="modal" data-target="#SREModal">
-	           		<td class="">1</td>
-					<td class="">2020</td>
-					<td class="">Yes</td>
-					<td class="">20</td>
-					<td class="">20</td>
-					<td class="">Bleeder Screw</td>
-					<td class="">Php 10</td>
-					<td class="">Php 200</td>
-					<td class="">John Smith</td>
-					
-				</tr>
+			
 				
 	          </tbody>
 	        </table> 
