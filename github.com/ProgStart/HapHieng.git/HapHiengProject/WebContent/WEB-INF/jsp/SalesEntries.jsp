@@ -399,6 +399,37 @@
 							            </tr>
 							          </thead>
 							          <tbody>
+									<c:set var="row" value="0" />
+									<c:forEach var="product" items="${sessionScope.products}">
+
+										<tr style="cursor: pointer;" data-toggle="modal"
+											data-target="#myModal">
+											<td class=""><input id="${product.item_code}|select"  name="select" type="radio"
+												class="select" /></td>
+											<td class="">${row = row + 1}</td>
+											<td class=""><button value="${product.item_code}"
+													data-target="#iteminout" data-toggle="modal"
+													class="btn btn-primary">${product.item_code }</button></td>
+											<td id="${product.item_code}-itemcode" class="">${product.item_code}</td>
+											<td id="${product.item_code}-category" class="">${product.category}</td>
+											<td id="${product.item_code}-description" class="">${product.description}</td>
+											<td id="${product.item_code}-gross_price" class="">${product.gross_price}</td>
+											<td id="${product.item_code}-less_rc" class="">${product.less_rc}</td>
+											<td id="${product.item_code}-less_wc" class="">${product.less_wc}</td>
+											<td id="${product.item_code}-total"  class="">${product.total}</td>
+											<td id="${product.item_code}-w1" class="">${product.w1}</td>
+											<td id="${product.item_code}-w2" class="">${product.w2}</td>
+											<td id="${product.item_code}-qpb" class="">${product.quantity_pack_big}</td>
+											<td id="${product.item_code}-qps" class="">${product.quantity_pack_small}</td>
+											<td id="${product.item_code}-image" class="">${product.image}</td>
+											<td id="${product.item_code}-location" class="">${product.location}</td>
+											<td id="${product.item_code}-remarks1" class="">${product.remarks1}</td>
+											<td id="${product.item_code}-remarks2" class="">${product.remarks2}</td>
+                                           
+										</tr>
+										 
+										
+									</c:forEach>
 							          		<tr>
 							          			<td>
 							          				<input type="radio" name="itementry" value="Item1">
