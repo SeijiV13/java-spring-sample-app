@@ -2,6 +2,7 @@ package Controllers;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +25,11 @@ public class SalesEntriesController {
 	public ModelAndView formBackingObject(HttpServletRequest request){
 		
 		ModelAndView salesEntries = new ModelAndView("SalesEntries");
+		HttpSession session = request.getSession();
+		
 		ArrayList<Product> products = productImplem.getAllProducts();
 		
-		salesEntries.addObject("products", products);
+		session.setAttribute("products", products);
 		return salesEntries;
 	}
 	
