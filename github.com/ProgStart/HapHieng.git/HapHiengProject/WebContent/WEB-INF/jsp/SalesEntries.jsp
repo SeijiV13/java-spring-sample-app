@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="navbar" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -399,11 +399,51 @@
 							            </tr>
 							          </thead>
 							          <tbody>
+							          	  <tr>
+							          			<td>
+							          				<input type="radio" name="itementry" value="1">
+							          			</td>
+							          			<td>
+							          				Item1code
+							          			</td>
+							          			<td>
+							          				Item1name
+							          			</td>
+							          			<td>
+							          				1000
+							          			</td>
+							          			<td>
+							          				100
+							          			</td>
+							          			<td>
+							          				1500
+							          			</td>							          										          		
+							          		</tr>
+							          		<tr>
+							          			<td>
+							          				<input type="radio" name="itementry" value="2">
+							          			</td>
+							          			<td>
+							          				Item1code
+							          			</td>
+							          			<td>
+							          				Item1name
+							          			</td>
+							          			<td>
+							          				1000
+							          			</td>
+							          			<td>
+							          				100
+							          			</td>
+							          			<td>
+							          				1500
+							          			</td>							          										          		
+							          		</tr>
+							          		
 									<c:set var="row" value="0" />
 									<c:forEach var="product" items="${sessionScope.products}">
 
-										<tr style="cursor: pointer;" data-toggle="modal"
-											data-target="#myModal">
+										<tr>
 											<td class=""><input id="${product.item_code}|select"  name="select" type="radio"
 												class="select" /></td>
 											<td class="">${row = row + 1}</td>
@@ -430,40 +470,12 @@
 										 
 										
 									</c:forEach>
-							          		<tr>
-							          			<td>
-							          				<input type="radio" name="itementry" value="Item1">
-							          			</td>
-							          			<td>
-							          				Item1code
-							          			</td>
-							          			<td>
-							          				Item1name
-							          			</td>
-							          			<td>
-							          				1000
-							          			</td>
-							          			<td>
-							          				100
-							          			</td>
-							          			<td>
-							          				1500
-							          			</td>							          										          		
-							          		</tr>
 							          </tbody>
 							          </table>
 							          </div>
 							          
-							<label for="itemname">Item:</label>
-							  <select class="form-control" id="itemname">
-								<option value="0" selected="selected">None</option>
-								<option value="1">Test Item1</option>
-								<option value="2">Test Item2</option>
-								<option value="3">Test Item3</option>
-								<option value="4">Test Item4</option>
-							  </select>
+							<div class="form-group" style="display:none;">
 							  
-							<div id="itemmenu" class="form-group">
 							<div class="col-sm-10">
 							  <p class="form-control-static">Item ID: <span id="itemCode">00</span></p>
 							</div>		
@@ -477,7 +489,10 @@
 							<label for="btn-stockquan">Available Stock:</label>
 							  <input id="stockQuantity" class="form-control" type="number" placeholder="0" value="0" disabled>
 							<p class="form-control-static">Amount: P<span id="itemAmount">0.00</span></p>
-							  <label for="btn-quan">Enter Quantity:</label>
+							</div>
+							
+							<div id="itemmenu" class="form-group">
+							<label for="btn-quan">Enter Quantity:</label>
 							  <input id="orderQuantity" class="form-control" type="number" placeholder="0" min="1" max="0" size="1" height="1" width="2">
 							</div>
 						</div>

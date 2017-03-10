@@ -172,6 +172,11 @@ $(document).ready(function() {
 	});
 	
 	// ================= MENU SCRIPT =====================
+	$('#itemTable tr').click(function() {
+	    $(this).find('td input:radio').prop('checked', true);
+	    
+	});
+	
 	$('.addToList').click(function(){
 		var itemName = $(this).attr('name');
 		var itemPrice = $('#itemAmount').text();
@@ -234,11 +239,11 @@ $(document).ready(function() {
 	$("#itemmenu").hide();
 	
 	var changer = function () {
-        var end = this.value;
-        var itemval = $('#itemname').val();
+        var itemval = $('input[name=itementry]:checked').val();
 		var agentval = $('#salesagent').val();
+		//alert(itemval);
 		
-		if(itemval == 0 || agentval == 0){
+		if(agentval == 0 || itemval == undefined){
 			$("#itemmenu").hide();
 		} else {
 	        $.get('entries.htm?itemId='+itemval,function(json) {
@@ -259,8 +264,8 @@ $(document).ready(function() {
 		}
     }
 	$( document ).ready( changer );
-	$("#itemname").change(changer);
 	$("#salesagent").change(changer);
+	$('#itemTable tr').click(changer);
 	
 });
 
