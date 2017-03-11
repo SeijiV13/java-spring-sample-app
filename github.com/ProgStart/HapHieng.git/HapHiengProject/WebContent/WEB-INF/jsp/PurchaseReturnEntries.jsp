@@ -112,18 +112,25 @@
 			<!-- UPPER PART -->
 			<hr>
 			<div class="row head_nav">
-
 				<div class="form-horizontal col-md-6 col-xs-12">
-					<select class="form-control">
+					<div class="col-md-3">
+					<button type="button" class="btn btn-default bg_dblue btn-add" data-target="#PREAddSupp" data-toggle="modal"> Add Supplier </button>
+				</div> 
+				
+				<div class="col-md-9">
+					<select class="form-control" >
 						<option>Supplier</option>
 					</select>
-
-					<div class="form-group txtbox">
-						<label class="control-label col-md-2" for="PREref">Reference</label>
-						<div class="col-md-5">
-							<input type="text" class="form-control" id="PREref">
-						</div>
-					</div>
+					
+				</div>
+				
+				
+				<div class="form-group txtbox col-md-12">
+				    <label class="control-label col-md-2" for="PEref">Reference</label>
+				    <div class="col-md-10">
+				      <input type="text" class="form-control" id="PEref">
+				    </div>
+				 </div>
 
 					<select class="form-control">
 						<option>Currency</option>
@@ -156,11 +163,114 @@
 						</div>
 					</div>
 
-
-
 				</div>
 
 			</div>
+			
+			<!-- END: HEAD NAV -->
+			
+			<!-- MODAL FOR ADD SUPPLIER -->
+				<div class="modal fade" id="PREAddSupp" role="dialog">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h3 class="modal-title">Add Supplier</h3>
+				      </div>
+				      
+				      <!-- MODAL FORM -->
+				      <div class="modal-body">
+				        <form>
+							<div class="form-container">
+								<h3>Personal Details</h3>
+								<div class="row">
+									<div class="col-md-6">
+		
+										<div class="form-group">
+											<label for="suppliercode">Supplier Code</label> <input
+												placeholder="Supplier Code" type="text" class="form-control"
+												id="suppliercode">
+										</div>
+		
+										<div class="form-group">
+											<label for="description">Description</label> <input
+												placeholder="Description" type="text" class="form-control"
+												id="description">
+										</div>
+		
+									</div>
+									<div class="col-md-6">
+		
+		
+										<div class="form-group">
+											<label for="address">Address</label> <input
+												placeholder="Address" type="text" class="form-control"
+												id="address">
+										</div>
+		
+										<div class="form-group">
+											<label for="address2">Address 2</label> <input
+												placeholder="Address 2" type="text" class="form-control"
+												id="address2">
+										</div>
+		
+									</div>
+									<div class="col-md-6">
+		
+										<div class="form-group">
+											<label for="telephone">Telephone</label> <input
+												placeholder="Telephone" type="text" class="form-control"
+												id="telephone">
+										</div>
+		
+										<div class="form-group">
+											<label for="fax">Fax</label> <input placeholder="Fax"
+												type="text" class="form-control" id="fax">
+										</div>
+		
+									</div>
+									<div class="col-md-6">
+		
+										<div class="form-group">
+											<label for="email">Email</label> <input placeholder="Email"
+												type="text" class="form-control" id="email">
+										</div>
+		
+										<div class="form-group">
+											<label for="terms">Terms</label> <input placeholder="Terms"
+												type="text" class="form-control" id="terms">
+										</div>
+		
+		
+									</div>
+		
+									<div class="col-md-6">
+		
+										<div class="form-group">
+											<label for="initialbalance">Initial Balance</label> <input
+												placeholder="Initial Balance" type="text"
+												class="form-control" id="initialbalance">
+										</div>
+		
+									</div>
+		
+								</div>
+							</div>
+		
+						</form>
+				        
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" class="btn btn-primary">Save changes</button>
+				      </div>
+				    </div><!-- /.modal-content -->
+				  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+				<!-- END: MODEL SUPPLIER -->
+			
+			
 			<!-- ============== TABLE =============== -->
 
 			<div class="row">
@@ -174,7 +284,9 @@
 								<th class="bg_dblue">Good</th>
 								<th class="bg_dblue">Qty</th>
 								<th class="bg_dblue">QtyStock</th>
+								<th class="bg_dblue">S.O</th>
 								<th class="bg_dblue">Description</th>
+								<th class="bg_dblue">W1/W2</th>
 								<th class="bg_dblue">Price</th>
 								<th class="bg_dblue">Local Price</th>
 								<th class="bg_dblue">Amount</th>
@@ -428,7 +540,7 @@
 					</div>
 
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default">
+						<button type="button" class="btn btn-default" data-target="#PREresume" data-toggle="modal">
 							<span class="fa fa-pencil" aria-hidden="true"></span> Resume
 						</button>
 					</div>
@@ -442,7 +554,82 @@
 				</div>
 
 			</div>
-
+			
+			<!-- MODAL FOR RESUME BUTTON -->			
+				<div class="modal fade" id="PREresume" tabindex="-3" role="dialog">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h3 class="modal-title">Suspended sales</h3>
+				      </div>
+				      <div class="modal-body">
+				        
+				        <div class="tbl_wrap">
+			      		<table class="table table-hover">
+			          <thead>
+			            <tr>
+			            	<th class="bg_dblue"></th>
+			            	<th class="bg_dblue">SR no.</th>
+			              	<th class="bg_dblue">Customer</th>
+							<th class="bg_dblue">Date</th>
+			            </tr>
+			          </thead>
+			          <tbody>
+			          	<tr>
+			          		<td class="">
+				          		<div class="checkbox">
+							    <label>
+							      <input type="checkbox"> 
+							    </label>
+							  </div>
+			          		</td>
+			          		<td class="">124</td>
+			          		<td class="">John Smith</td>
+			          		<td class="">Jan 20 2017</td>
+			          	</tr>
+			          	
+			          	<tr>
+			          		<td class="">
+				          		<div class="checkbox">
+							    <label>
+							      <input type="checkbox"> 
+							    </label>
+							  </div>
+			          		</td>
+			          		<td class="">124</td>
+			          		<td class="">John Smith</td>
+			          		<td class="">Jan 20 2017</td>
+			          	</tr>
+			          	
+			          	<tr>
+			          		<td class="">
+				          		<div class="checkbox">
+							    <label>
+							      <input type="checkbox"> 
+							    </label>
+							  </div>
+			          		</td>
+			          		<td class="">124</td>
+			          		<td class="">John Smith</td>
+			          		<td class="">Jan 20 2017</td>
+			          	</tr>          		
+			          </tbody>
+			          
+			         </table>
+			       	</div>
+				        
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				        <button type="button" class="btn btn-primary">Resume</button>
+				      </div>
+				    </div><!-- /.modal-content -->
+				  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+	
+			<!-- END: MODAL FROM RESUME BUTTON -->
+			
 
 		</div>
 </body>

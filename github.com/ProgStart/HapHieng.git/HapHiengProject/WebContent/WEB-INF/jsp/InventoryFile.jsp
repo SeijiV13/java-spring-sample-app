@@ -206,8 +206,8 @@
 
 										<tr style="cursor: pointer;" data-toggle="modal"
 											data-target="#myModal">
-											<td class=""><input id="${product.item_code}|select"  name="select" type="radio"
-												class="select" /></td>
+											<td class=""><input id="${product.item_code}|select"
+												name="select" type="radio" class="select" /></td>
 											<td class="">${row = row + 1}</td>
 											<td class=""><button value="${product.item_code}"
 													data-target="#iteminout" data-toggle="modal"
@@ -218,7 +218,7 @@
 											<td id="${product.item_code}-gross_price" class="">${product.gross_price}</td>
 											<td id="${product.item_code}-less_rc" class="">${product.less_rc}</td>
 											<td id="${product.item_code}-less_wc" class="">${product.less_wc}</td>
-											<td id="${product.item_code}-total"  class="">${product.total}</td>
+											<td id="${product.item_code}-total" class="">${product.total}</td>
 											<td id="${product.item_code}-w1" class="">${product.w1}</td>
 											<td id="${product.item_code}-w2" class="">${product.w2}</td>
 											<td id="${product.item_code}-qpb" class="">${product.quantity_pack_big}</td>
@@ -227,10 +227,10 @@
 											<td id="${product.item_code}-location" class="">${product.location}</td>
 											<td id="${product.item_code}-remarks1" class="">${product.remarks1}</td>
 											<td id="${product.item_code}-remarks2" class="">${product.remarks2}</td>
-                                           
+
 										</tr>
-										 
-										
+
+
 									</c:forEach>
 
 								</tbody>
@@ -243,7 +243,7 @@
 					<h3>Card Form</h3>
 					<hr>
 					<br>
-					
+
 					<form class="form-container">
 						<div class="row">
 							<div class="col-md-6">
@@ -367,8 +367,8 @@
 
 							</div>
 						</div>
-						
-							<div class="row">
+
+						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="w1">Warehouse 1</label> <input type="text"
@@ -655,33 +655,34 @@
 
 <!-- FOR LOGOUT SPRING SECURITY FUNCTION -->
 <script type="text/javascript">
-
-	$(document).ready(function(){
+	$(document).ready(function() {
 		function formSubmit() {
 			document.getElementById("logoutForm").submit();
 		}
-		$(".select").click(function(){
-			if($(".select").is(":checked")){
-				let productId = $(this).attr("id");
-				let id = productId.split("|");
-				$("#itemcode").val($("#"+id[0]+"-itemcode").text());
-				$("#category").val($("#"+id[0]+"-category").text());
-				$("#description").val($("#"+id[0]+"-description").text());
-				$("#grossprice").val($("#"+id[0]+"-gross_price").text());
-				$("#less35").val($("#"+id[0]+"-less_wc").text());
-				$("#less15").val($("#"+id[0]+"-less_rc").text());
-				$("#total").val($("#"+id[0]+"-total").text());
-				$("#w1").val($("#"+id[0]+"-w1").text());
-				$("#w2").val($("#"+id[0]+"-w2").text());
-				$("#packageqtybig").val($("#"+id[0]+"-qpb").text());
-				$("#packageqtysmall").val($("#"+id[0]+"-qps").text());
-				$("#image").val($("#"+id[0]+"-image").text());
-				$("#location").val($("#"+id[0]+"-location").text());
-				$("#remarks1").val($("#"+id[0]+"-remarks1").text());
-				$("#remarks2").val($("#"+id[0]+"-remarks2").text());
-				
+		$(".select").click(function() {
+			if ($(".select").is(":checked")) {
+				let
+				productId = $(this).attr("id");
+				let
+				id = productId.split("|");
+				$("#itemcode").val($("#" + id[0] + "-itemcode").text());
+				$("#category").val($("#" + id[0] + "-category").text());
+				$("#description").val($("#" + id[0] + "-description").text());
+				$("#grossprice").val($("#" + id[0] + "-gross_price").text());
+				$("#less35").val($("#" + id[0] + "-less_wc").text());
+				$("#less15").val($("#" + id[0] + "-less_rc").text());
+				$("#total").val($("#" + id[0] + "-total").text());
+				$("#w1").val($("#" + id[0] + "-w1").text());
+				$("#w2").val($("#" + id[0] + "-w2").text());
+				$("#packageqtybig").val($("#" + id[0] + "-qpb").text());
+				$("#packageqtysmall").val($("#" + id[0] + "-qps").text());
+				$("#image").val($("#" + id[0] + "-image").text());
+				$("#location").val($("#" + id[0] + "-location").text());
+				$("#remarks1").val($("#" + id[0] + "-remarks1").text());
+				$("#remarks2").val($("#" + id[0] + "-remarks2").text());
+
 			}
 		});
-	
+
 	});
 </script>

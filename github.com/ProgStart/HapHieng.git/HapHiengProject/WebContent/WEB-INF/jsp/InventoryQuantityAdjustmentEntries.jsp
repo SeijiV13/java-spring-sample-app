@@ -96,7 +96,7 @@
 	<!-- MAIN CONTENT -->
 	<div class="container-fluid IDE">
 		<!-- TITLE OF PAGE -->
-		<h3>Inventory Damage Entries</h3>
+		<h3>Inventory Quantity Adjustment Entries</h3>
 		
 		<!-- ====== UPPER PART ====== -->
 		<hr>
@@ -125,15 +125,15 @@
 		          <thead>
 		            <tr>
 		              	<th class=" bg_dblue ">Row No.</th>
-						<th class=" bg_dblue ">Item Code</th>
-						<th class=" bg_dblue ">Quantity</th>
 						<th class=" bg_dblue ">Category</th>
-						<th class=" bg_dblue ">W1/W2</th>
-						<th class=" bg_dblue ">Qty Stock</th>
-						<th class=" bg_dblue ">S.O</th>
+						<th class=" bg_dblue ">Item Code</th>
+						<th class=" bg_dblue ">QtyNew</th>
+						<th class=" bg_dblue ">QtyOld</th>
+						<th class=" bg_dblue ">QtyDiff</th>
 						<th class=" bg_dblue ">Unit Cost</th>
-						<th class=" bg_dblue ">Amount</th>
-						<th class=" bg_dblue ">Remark</th>
+						<th class=" bg_dblue ">Diff Amount</th>
+						<th class=" bg_dblue ">New Amount</th>
+						<th class=" bg_dblue ">Adjustment Remark</th>
 		            </tr>
 		          </thead>
 		          <tbody>
@@ -186,47 +186,6 @@
 				          		<td class="">0</td>
 				          		<td class="">4.08</td>
 				          	</tr>
-				          	
-				          	<tr>
-				          		<td class=""></td>
-				          		<td class="">New Product Line</td>
-				          		<td class="">BS-006</td>
-				          		<td class="">Bleeder Screw</td>
-				          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-				          		<td class="">0</td>
-				          		<td class="">4.08</td>
-				          	</tr>
-				          	
-				          	<tr>
-				          		<td class=""></td>
-				          		<td class="">New Product Line</td>
-				          		<td class="">BS-006</td>
-				          		<td class="">Bleeder Screw</td>
-				          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-				          		<td class="">0</td>
-				          		<td class="">4.08</td>
-				          	</tr>
-				          	
-				          	<tr>
-				          		<td class=""></td>
-				          		<td class="">New Product Line</td>
-				          		<td class="">BS-006</td>
-				          		<td class="">Bleeder Screw</td>
-				          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-				          		<td class="">0</td>
-				          		<td class="">4.08</td>
-				          	</tr>
-				          	
-				          	<tr>
-				          		<td class=""></td>
-				          		<td class="">New Product Line</td>
-				          		<td class="">BS-006</td>
-				          		<td class="">Bleeder Screw</td>
-				          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-				          		<td class="">0</td>
-				          		<td class="">4.08</td>
-				          	</tr>
-				          	
 				          				          		
 				          </tbody>
 				          
@@ -280,17 +239,48 @@
 			
 	        <!-- ============= END OF MODAL ==================== -->	
 		        
-		
+			<!-- #PRICING LEGEND -->
+			<hr>
+			<div class="row center-block legend">
+				<div class="col-md-2 text-right">Pricing Legend:</div>
+				<div class="col-md-3">
+					<span class="text-center bg_green"> QtyNew > QtyOld </span>
+				</div>
+				<div class="col-md-3">
+					<span class="text-center bg_red"> QtyNew < QtyOld </span>
+				</div>
+				<div class="col-md-3 ">
+					<span class="text-center bg_blue"> QtyNew = QtyOld </span>
+				</div>
+
+			</div>
+			<hr/>
+			<!-- END: PRICING LEGEND -->
+			
 			<div class="row form-inline TotalAmt">
 					<label for="IDEtotalAmt" class="col-md-offset-3 col-md-2 col-xs-6 text-right">Total Amount</label>
 					<input type="text" class="form-control col-md-2 col-xs-6" id="IDEtotalAmt" disabled>
 			</div>
-		
+			
 			<div class="btn-group btn-group-justified" role="group">
 			  <div class="btn-group" role="group">
 			    <button type="button" class="btn btn-primary">
 			    	<span class="fa fa-file" aria-hidden="true"></span>
 			  		Item Transaction
+			    </button>
+			  </div>
+			  
+			  <div class="btn-group" role="group">
+			    <button type="button" class="btn btn-default">
+			    	<!-- <span class="fa fa-file" aria-hidden="true"></span> -->
+			  		Fill Category
+			    </button>
+			  </div>
+			  
+			  <div class="btn-group" role="group">
+			    <button type="button" class="btn btn-default">
+			    	<!-- <span class="fa fa-file" aria-hidden="true"></span> -->
+			  		Fill All
 			    </button>
 			  </div>
 			  

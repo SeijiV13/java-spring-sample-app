@@ -106,7 +106,7 @@
 		<!-- MAIN CONTENT -->
 		<div class="container-fluid GSR">
 			<!-- TITLE OF PAGE -->
-			<h3>Generate Sales Receipts</h3>
+			<h3>Generate Sales Counter Receipts</h3>
 
 			<hr>
 			<div class="row head_nav">

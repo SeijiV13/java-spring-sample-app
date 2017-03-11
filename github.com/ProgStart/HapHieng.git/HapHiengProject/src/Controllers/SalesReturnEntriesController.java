@@ -24,9 +24,9 @@ public class SalesReturnEntriesController {
 	public ModelAndView formBackingObject(HttpServletRequest request){
 	    HttpSession session = request.getSession();
 	    //@CIRINEO SAMPLE IMPLEMENTATION GET ALL PRODUCTS
-		ArrayList<Product> products = productImplem.getAllProducts();
+		//ArrayList<Product> products = productImplem.getAllProducts();
 		
-		session.setAttribute("products", products);
+		//session.setAttribute("products", products);
 		ModelAndView salesReturnEntries = new ModelAndView("SalesReturnEntries");
 		return salesReturnEntries;
 		

@@ -111,9 +111,15 @@
 			    </div>
 			  </div>
 			  
-			  <select class="form-control">
-			  	<option>Customer</option>
-			  </select>
+			  <div class="col-md-3">
+				  <button type="button" class="btn btn-default bg_dblue btn-add" data-target="#SREAddCust" data-toggle="modal"> Add Customer </button>
+			   </div> 
+				
+				<div class="col-md-9">
+					<select class="form-control" >
+						<option>Customer</option>
+					</select>
+				</div>
 			  
 			</div>			
 	  		
@@ -133,6 +139,184 @@
 			
 		</div>
 		
+		<!-- END: ROW OF HEAD NAV -->
+		
+		<!-- MODAL FOR ADD CUSTOMER -->
+					
+		<div class="modal fade" id="SREAddCust" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h3 class="modal-title">Add Customer</h3>
+		      </div>
+		      
+		      <!-- MODAL FORM -->
+		      <div class="modal-body">
+		        <form>
+					<div class="form-container">
+						<h3>Personal Details</h3>
+						<div class="row">
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="customercode">Customer Code</label> <input
+										placeholder="Customer Code" type="text" class="form-control"
+										id="customercode">
+								</div>
+
+								<div class="form-group">
+									<label for="description">Description</label> <input
+										placeholder="Description" type="text" class="form-control"
+										id="description">
+								</div>
+
+							</div>
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="agent">Agent</label> <select class="form-control">
+										<option value="">Select Agent</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label for="address">Address</label> <input
+										placeholder="Address" type="text" class="form-control"
+										id="address">
+								</div>
+
+							</div>
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="address2">Address 2</label> <input
+										placeholder="Address 2" type="text" class="form-control"
+										id="address2">
+								</div>
+
+								<div class="form-group">
+									<label for="telephone">Telephone</label> <input
+										placeholder="Telephone" type="text" class="form-control"
+										id="telephone">
+								</div>
+
+							</div>
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="residentphone">Resident Phone</label> <input
+										placeholder="Resident Phone" type="text" class="form-control"
+										id="residentphone">
+								</div>
+
+								<div class="form-group">
+									<label for="fax">Fax</label> <input placeholder="Fax"
+										type="text" class="form-control" id="fax">
+								</div>
+
+							</div>
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="cellphone">Cellphone</label> <input
+										placeholder="Cellphone" type="text" class="form-control"
+										id="cellphone">
+								</div>
+
+								<div class="form-group">
+									<label for="terms">Terms</label> <input placeholder="Terms"
+										type="text" class="form-control" id="terms">
+								</div>
+
+							</div>
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="tin">Tin #</label> <input placeholder="Tin #"
+										type="text" class="form-control" id="tin">
+								</div>
+
+								<div class="form-group">
+									<label for="contactperson">Contact Person</label> <input
+										placeholder="Contact Person" type="text" class="form-control"
+										id="contactperson">
+								</div>
+
+							</div>
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="email">Email</label> <input placeholder="Email"
+										type="text" class="form-control" id="email">
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+					<div class="form-container">
+						<h3>Other Details</h3>
+						<div class="row">
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="creditlimit">Credit Limit</label> <input
+										placeholder="Credit Limit" type="text" class="form-control"
+										id="creditlimit">
+								</div>
+
+								<div class="form-group">
+									<label for="initialbalance">Initial Balance</label> <input
+										placeholder="Initial Balance" type="text"
+										class="form-control" id="initialbalance">
+								</div>
+
+							</div>
+							<div class="col-md-6">
+
+								<div class="form-group">
+									<label for="remaining">Remaining</label> <input
+										placeholder="Remaining" type="text" class="form-control"
+										id="remaining">
+								</div>
+
+								<div class="form-group">
+									<label for="remaining">Customer Type</label>
+									<div class="radio">
+										<label><input type="radio" name="optradio">Wholesale
+										</label> <label><input type="radio" name="optradio">Retail
+										</label>
+									</div>
+
+								</div>
+
+
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="remarks">Remarks</label>
+									<textarea placeholder="Remarks" class="form-control" rows="4"></textarea>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</form>
+		        
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
+		<!-- END: MODEL CUSTOMER -->
+		
+		
 		<!-- ============ TABLE ============ -->
 		 
 		<div class="tbl_wrap">
@@ -144,25 +328,23 @@
 					<th class=" bg_dblue">Good</th>
 					<th class=" bg_dblue">Qty</th>
 					<th class=" bg_dblue">QtyStock</th>
+					<th class=" bg_dblue">S.O</th>
 					<th class=" bg_dblue">Description</th>
+					<th class=" bg_dblue">W1/W2</th>
 					<th class=" bg_dblue">Price</th>
-					<th class=" bg_dblue">Amount</th>
 					<th class=" bg_dblue">Agent</th>
+					<th class=" bg_dblue">Amount</th>
+					
 					
 	            </tr>
 	          </thead>
 	          <tbody>
-	          	<c:forEach var="product" items="${sessionScope.products}">
+	          	<!--<c:forEach var="product" items="${sessionScope.products}">
 	           <tr  data-toggle="modal" data-target="#SREModal">
 	           		<td class="">${product.item_code}</td>
 	
-					
 				</tr>
-				</c:forEach>
-				
-				
-	
-				
+				</c:forEach>-->
 			
 				
 	          </tbody>
@@ -298,7 +480,6 @@
 		
         <!-- ============= END OF MODAL ==================== -->
         
-		
 		<hr>
 		<div class="row form-inline TotalAmt">
 				<label for="SREtotalAmt" class="col-md-offset-3 col-md-2 col-xs-6 text-right">Total Amount</label>
@@ -322,11 +503,10 @@
 		  </div>
 
 		  <div class="btn-group" role="group">
-			  <button type="button" class="btn btn-default">
-				<span class="fa fa-pencil" aria-hidden="true"></span>
-			  	Resume
-			  </button>
-		  </div>		  
+			<button type="button" class="btn btn-default" data-target="#SREresume" data-toggle="modal">
+				<span class="fa fa-pencil" aria-hidden="true"></span> Resume
+			</button>
+		</div>		  
 
 		  <div class="btn-group" role="group">
 			  <button type="button" class="btn btn-default">
@@ -335,8 +515,82 @@
 			  </button>
 		  </div>
 	    </div>
-	
-	
+		<!-- END: BUTTONS  -->
+		
+		<!-- MODAL FOR RESUME BUTTON -->
+		
+		<div class="modal fade" id="SREresume" tabindex="-3" role="dialog">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h3 class="modal-title">Suspended sales</h3>
+		      </div>
+		      <div class="modal-body">
+		        
+		        <div class="tbl_wrap">
+       		<table class="table table-hover">
+	          <thead>
+	            <tr>
+	            	<th class="bg_dblue"></th>
+	            	<th class="bg_dblue">SR no.</th>
+	              	<th class="bg_dblue">Customer</th>
+					<th class="bg_dblue">Date</th>
+	            </tr>
+	          </thead>
+	          <tbody>
+	          	<tr>
+	          		<td class="">
+		          		<div class="checkbox">
+					    <label>
+					      <input type="checkbox"> 
+					    </label>
+					  </div>
+	          		</td>
+	          		<td class="">124</td>
+	          		<td class="">John Smith</td>
+	          		<td class="">Jan 20 2017</td>
+	          	</tr>
+	          	
+	          	<tr>
+	          		<td class="">
+		          		<div class="checkbox">
+					    <label>
+					      <input type="checkbox"> 
+					    </label>
+					  </div>
+	          		</td>
+	          		<td class="">124</td>
+	          		<td class="">John Smith</td>
+	          		<td class="">Jan 20 2017</td>
+	          	</tr>
+	          	
+	          	<tr>
+	          		<td class="">
+		          		<div class="checkbox">
+					    <label>
+					      <input type="checkbox"> 
+					    </label>
+					  </div>
+	          		</td>
+	          		<td class="">124</td>
+	          		<td class="">John Smith</td>
+	          		<td class="">Jan 20 2017</td>
+	          	</tr>          		
+	          </tbody>
+	          
+	         </table>
+        	</div>
+		        
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		        <button type="button" class="btn btn-primary">Resume</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<!-- END: MODAL FROM RESUME BUTTON -->
 		
 		
 	</div>

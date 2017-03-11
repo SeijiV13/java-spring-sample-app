@@ -122,8 +122,8 @@
 						</div>
 						
 						<div class="col-md-3">
-							<button class="btn btn-default bg_dblue btn-add" data-target="#SEAddCust" data-toggle="modal"> Add Customer </button>
-						</div>
+							<button type="button" class="btn btn-default bg_dblue btn-add" data-target="#seaddcust" data-toggle="modal"> Add Customer </button>
+						</div> 
 						
 						<div class="col-md-9">
 							<select class="form-control" >
@@ -135,7 +135,7 @@
 					
 					<!-- MODAL FOR ADD CUSTOMER -->
 					
-					<div class="modal fade" id="SEAddCust" tabindex="-1" role="dialog">
+					<div class="modal fade" id="seaddcust" role="dialog">
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
 					      <div class="modal-header">
@@ -306,7 +306,7 @@
 					  </div><!-- /.modal-dialog -->
 					</div><!-- /.modal -->
 					
-					<!-- end of modal -->
+					<!-- END: MODEL CUSTOMER -->
 
 					<div class="form-horizontal col-md-6 col-xs-12 col_2">
 						<div class="form-group">
@@ -333,9 +333,8 @@
 							<option>WC/RC</option>
 						</select>
 
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addEntry">Add Entry</button>
-
 					</div>
+										
 				</form>
 				
 				<!-- ============ TABLE ============ -->
@@ -362,9 +361,11 @@
 			          </tbody>
 			        </table> 
 				</div>
+				
+				<button type="button" class="center-block btn btn-primary btn-lg" data-toggle="modal" data-target="#addEntry">Add Entry</button>
         
 
-				<!-- ============= MODAL =============== -->
+				<!-- ============= MODAL: ADD ENTRY =============== -->
 				<div id="addEntry" class="modal fade" role="dialog">
 				  <div class="modal-dialog">
 				
@@ -384,44 +385,40 @@
 								<option value="Agent3">Sales Agent3</option>
 								<option value="Agent4">Sales Agent4</option>
 							  </select>
-							  
+						
+						<div class="form-group">
+			                <div class="icon-addon addon-md">
+			                    <input type="text" class="form-control" id="entrySearch" onkeyup="searchItem()" placeholder="Search for items..">
+			                    <label for="entrySearch" class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
+			                </div>
+			            </div>
+						
 						<div class="tbl_wrap">
-						<input type="text" class="form-control" id="entrySearch" onkeyup="searchItem()" placeholder="Search for items.."><br>
-					        	<table class="table table-hover" id="itemTable">
-							          <thead>
-							            <tr>
-							            	<th class="bg_dblue"></th>
-											<th class="bg_dblue">Item code</th>
-											<th class="bg_dblue">Description</th>
-											<th class="bg_dblue">Available Qty</th>
-											<th class="bg_dblue">Pending Qty</th>
-											<th class="bg_dblue">Price</th>
-							            </tr>
-							          </thead>
-							          <tbody>
-							          		<tr>
-							          			<td>
-							          				<input type="radio" name="itementry" value="Item1">
-							          			</td>
-							          			<td>
-							          				Item1code
-							          			</td>
-							          			<td>
-							          				Item1name
-							          			</td>
-							          			<td>
-							          				1000
-							          			</td>
-							          			<td>
-							          				100
-							          			</td>
-							          			<td>
-							          				1500
-							          			</td>							          										          		
-							          		</tr>
-							          </tbody>
-							          </table>
-							          </div>
+				        	<table class="table table-hover" id="itemTable">
+						          <thead>
+						            <tr>
+						            	<th class="bg_dblue"></th>
+										<th class="bg_dblue">Item code</th>
+										<th class="bg_dblue">Description</th>
+										<th class="bg_dblue">Available Qty</th>
+										<th class="bg_dblue">Pending Qty</th>
+										<th class="bg_dblue">Price</th>
+						            </tr>
+						          </thead>
+						          <tbody>
+						          		<tr>
+						          			<td>
+						          				<input type="radio" name="itementry" value="Item1">
+						          			</td>
+						          			<td>Item1code</td>
+						          			<td>Item1name</td>
+						          			<td>1000</td>
+						          			<td>100</td>
+						          			<td>1500</td>							          										          		
+						          		</tr>
+						          </tbody>
+						      </table>
+						</div>
 							          
 							<label for="itemname">Item:</label>
 							  <select class="form-control" id="itemname">
@@ -721,7 +718,7 @@
 				    </div><!-- /.modal-content -->
 				  </div><!-- /.modal-dialog -->
 				</div><!-- /.modal -->
-				
+				<!-- END: MODAL FROM RESUME BUTTON -->
 				
 				<!-- BUTTONS -->
 				<hr>
