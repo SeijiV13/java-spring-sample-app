@@ -41,6 +41,10 @@ public class ProductImplem {
 		return products;
 	 
 	}
+	public Product selectProduct(String itemId) {
+		Product product = productMapper.selectProduct(itemId);
+		return product;
+	}
 	
 }
  

@@ -172,6 +172,11 @@ $(document).ready(function() {
 	});
 	
 	// ================= MENU SCRIPT =====================
+	$('.list td').click(function () {
+	     var myBookId = $(this);
+	     alert(myBookId.attr('id'));
+	});
+	
 	$('#itemTable tr').click(function() {
 	    $(this).find('td input:radio').prop('checked', true);
 	    
@@ -187,9 +192,9 @@ $(document).ready(function() {
 		var agentname = $('#salesagent').val();
 		var itemCode = $('#itemCode').text();
 
-		if((quantity*itemPrice !== 0 && quantity <= stock)){		
-			if($('#'+itemCode+'item').length === 0) {
-				$('.list').append('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></font></td>\n</tr>').fadeIn('slow');
+		if((quantity*itemPrice !== 0 && (parseInt(quantity) <= parseInt(stock)))){	
+			if($('#'+itemCode+'item').length == 0) {
+				$('.list').append('<tr data-toggle="modal" data-target="#addEntry" id=' + itemCode + 'item>\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td>' + itemPrice + '</td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td data-toggle="modal" data-target="#SEModal" data-id="TEST"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
 			}
 			else{
 				$('#'+itemCode+'item').replaceWith('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></font></td>\n</tr>').fadeIn('slow');
@@ -203,7 +208,7 @@ $(document).ready(function() {
 		 sumTotals += parseInt($(this).html());
 		 });
 		 $("#totalAmt").val(sumTotals.toFixed(2));
- });
+	});
 	
 	$('#clear').click(function(){
 		$('#totalAmt').text("0.00");
@@ -269,9 +274,9 @@ $(document).ready(function() {
 	
 });
 
-function searchItem() {
+	function searchItem() {
 	  // Declare variables 
-	  var input, filter, table, tr, td, i;
+	  var input, filter, table, tr, td, td1, i;
 	  input = document.getElementById("entrySearch");
 	  filter = input.value.toUpperCase();
 	  table = document.getElementById("itemTable");
@@ -280,8 +285,9 @@ function searchItem() {
 	  // Loop through all table rows, and hide those who don't match the search query
 	  for (i = 0; i < tr.length; i++) {
 	    td = tr[i].getElementsByTagName("td")[2];
-	    if (td) {
-	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	    td1 = tr[i].getElementsByTagName("td")[1];
+	    if (td || td1) {
+	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td1.innerHTML.toUpperCase().indexOf(filter) > -1) {
 	        tr[i].style.display = "";
 	      } else {
 	        tr[i].style.display = "none";

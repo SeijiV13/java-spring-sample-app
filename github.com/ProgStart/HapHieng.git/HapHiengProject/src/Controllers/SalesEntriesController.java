@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,17 +38,21 @@ public class SalesEntriesController {
 	
 	@RequestMapping(value="/entries")
 	@ResponseBody 
-    public String salesEntry2(@RequestParam("itemId") String itemId) {
-        /*JSONObject obj = new JSONObject();
+    public String salesEntry2(@RequestParam("itemId") String itemId) throws JSONException {
+		Product product = productImplem.selectProduct(itemId);
+        JSONObject obj = new JSONObject();
 
-        obj.put("itemid", itemId);
-        obj.put("name", "Sample Item");
-        obj.put("desc", "Short Description");
-        obj.put("stock", new Integer(100));
-        obj.put("amount", new Double(1000.21));
-        */
-    	String sample = "{\"itemid\": "+ itemId +", \"name\": \"Sample Item "+ itemId +"\", \"desc\": \"Short Desc\", \"stock\": "+ 100 * Integer.parseInt(itemId) + ", \"amount\": "+ 1000 * Integer.parseInt(itemId) + "}";
-    	return sample;
+        obj.put("itemid", product.getItem_code());
+        obj.put("name", product.getDescription());
+        obj.put("desc", product.getDescription());
+        obj.put("stock", product.getQuantity_pack_big());
+        obj.put("amount", product.getGross_price());
+        
+        //System.out.println(obj.toString());
+        
+		//Product product = productImplem.selectProduct(itemId);
+    	//String sample = "{\"itemid\": "+ itemId +", \"name\": \"Sample Item "+ itemId +"\", \"desc\": \"Short Desc\", \"stock\": "+ 100 * Integer.parseInt(itemId) + ", \"amount\": "+ 1000 * Integer.parseInt(itemId) + "}";
+    	return obj.toString();
     }
 	
 }
