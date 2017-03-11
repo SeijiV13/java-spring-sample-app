@@ -124,6 +124,10 @@ td, tr{
 	background-color: #dff0d8;
 }
 
+.bg_dgreen{
+	background-color: #59d182;
+}
+
 body div:nth-child(2) h3:not(.modal-title) {
 	margin-bottom: 3%;
 }
@@ -227,6 +231,55 @@ body div:nth-child(2) h3:not(.modal-title) {
 	color: white;
 }
 
+/* ============== SEARCH ICON ============= */
+
+.icon-addon {
+    position: relative;
+    color: #555;
+    display: block;
+}
+
+.icon-addon:after,
+.icon-addon:before {
+    display: table;
+    content: " ";
+}
+
+.icon-addon:after {
+    clear: both;
+}
+
+.icon-addon.addon-md .glyphicon,
+.icon-addon .glyphicon, 
+.icon-addon.addon-md .fa,
+.icon-addon .fa {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    font-size: 14px;
+    width: 20px;
+    margin-left: -2.5px;
+    text-align: center;
+    padding: 10px 0;
+    top: 1px
+}
+
+.icon-addon.addon-md .form-control,
+.icon-addon .form-control {
+    padding-left: 30px;
+    float: left;
+    font-weight: normal;
+}
+
+.icon-addon .form-control:focus + .glyphicon,
+.icon-addon:hover .glyphicon,
+.icon-addon .form-control:focus + .fa,
+.icon-addon:hover .fa {
+    color: #2580db;
+}
+
+
+
 /* ============= SALES ENTRIES ============= */
 
 .SE .col_3 .btn {
@@ -240,6 +293,10 @@ body div:nth-child(2) h3:not(.modal-title) {
 
 .SE select {
 	margin-bottom: 5%;
+}
+
+.SE #salesagent {
+	margin-bottom: 2%;
 }
 
 /* ========= GENERATE SALES =========== */
