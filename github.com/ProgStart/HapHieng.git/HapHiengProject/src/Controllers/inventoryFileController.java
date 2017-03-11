@@ -76,7 +76,10 @@ public class inventoryFileController {
 	    int packageqtybig = Integer.parseInt(request.getParameter("packageqtybig"));
 	    int packageqtysmall = Integer.parseInt(request.getParameter("pacakageqtysmall"));
 		String remarks1 = request.getParameter("remarks1");
-		String remarks2 = request.getParameter("remarks2");
+		String remarks2 = request.getParameter("remarks2"); 
+		
+		Product product = new Product();
+		
 		
 		return "InventoryFile";
 	}
