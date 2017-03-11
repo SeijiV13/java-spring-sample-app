@@ -1,6 +1,8 @@
 package Models;
 
 public class Product {
+	String importeditem = null;
+	String unit = null;
     String item_code = null;
 	String category = null;
 	String description = null;
@@ -19,6 +21,19 @@ public class Product {
     String product_line = null;
     
     
+	public String getImporteditem() {
+		return importeditem;
+	}
+	public void setImporteditem(String importeditem) {
+		this.importeditem = importeditem;
+	}
+	public String getUnit() {
+		return unit;
+	}
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+	
 	public String getItem_code() {
 		return item_code;
 	}
