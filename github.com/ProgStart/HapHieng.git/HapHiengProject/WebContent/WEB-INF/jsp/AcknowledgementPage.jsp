@@ -92,7 +92,7 @@
 			<hr style="border-color: black;">
 			<h4>${transactionDetails}</h4>
 			<h5>Date: ${currentDate}</h5>
-
+           
 
 
 

@@ -6,7 +6,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="navbar" tagdir="/WEB-INF/tags"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -340,7 +340,7 @@
 						<div class="table-responsive">
 							<table class="table table-block">
 								<thead>
-									<tr>
+									<tr><th class="bg_dblue text-nowrap">Select Customer</th> 
 										<th class="bg_dblue text-nowrap">Row No.</th>
 										<th class="bg_dblue text-nowrap">Customer code</th>
 										<th class="bg_dblue text-nowrap">Description</th>
@@ -364,26 +364,28 @@
 								<tbody>
 								    <c:set var="row" value="0"/>
 									<c:forEach var="customer" items="${sessionScope.customers}">
+									     <c:set var="cuscode" value="${fn:trim(customer.customer_code)}"/>
 										<tr style="cursor: pointer;" data-toggle="modal">
-
+                                            
+                                            <td><input type="radio" id="${cuscode}|select" name="select" class="select"></td>
 											<td class="">${row = row + 1}</td>
-											<td class="">${customer.customer_code}</td>
-											<td class="">${customer.description}</td>
-											<td class="">${customer.agent}</td>
-											<td class="">${customer.address}</td>
-											<td class="">${customer.address2}</td>
-											<td class="">${customer.telephone}</td>
-											<td class="">${customer.resident_phone}</td>
-											<td class="">${customer.fax}</td>
-											<td class="">${customer.cellphone}</td>
-											<td class="">${customer.terms}</td>
-											<td class="">${customer.tin_number}</td>
-											<td class="">${customer.contact_person}</td>
-											<td class="">${customer.email}</td>
-											<td class="">${customer.credit_limit}</td>
-											<td class="">${customer.initial_balance}</td>
-											<td class="">${customer.remaining}</td>
-											<td class="">${customer.remarks}</td>
+											<td id="${cuscode}-customercode" class="">${customer.customer_code}</td>
+											<td id="${cuscode}-description" class="">${customer.description}</td>
+											<td id="${cuscode}-id" class="">${customer.agent}</td>
+											<td id="${cuscode}-address" class="">${customer.address}</td>
+											<td id="${cuscode}-address2" class="">${customer.address2}</td>
+											<td id="${cuscode}-telephone" class="">${customer.telephone}</td>
+											<td id="${cuscode}-residentphone" class="">${customer.resident_phone}</td>
+											<td id="${cuscode}-fax" class="">${customer.fax}</td>
+											<td id="${cuscode}-cellphone" class="">${customer.cellphone}</td>
+											<td id="${cuscode}-terms" class="">${customer.terms}</td>
+											<td id="${cuscode}-tinnumber" class="">${customer.tin_number}</td>
+											<td id="${cuscode}-contactperson" class="">${customer.contact_person}</td>
+											<td id="${cuscode}-email" class="">${customer.email}</td>
+											<td id="${cuscode}-creditlimit" class="">${customer.credit_limit}</td>
+											<td id="${cuscode}-initialbalance" class="">${customer.initial_balance}</td>
+											<td id="${cuscode}-remaining" class="">${customer.remaining}</td>
+											<td id="${cuscode}-remarks" class="">${customer.remarks}</td>
 										</tr>
 									</c:forEach>
 
@@ -428,12 +430,23 @@
 
 
 <!-- /#PAGE CONTENT WRAPPER -->
-
+ 
 </html>
 
 <!-- FOR LOGOUT SPRING SECURITY FUNCTION -->
 <script type="text/javascript">
-	function formSubmit() {
-		document.getElementById("logoutForm").submit();
-	}
+   $(document).ready(function(){
+	   $(".select").click(function(){
+		  if($(this).is(":checked")){
+			  let customerId = $(this).attr('id').split("|");
+			  console.log(customerId)
+			  console.log($("#"+customerId[0]+"-customercode").text());
+			$("#customercode").val($("#"+customerId[0]+"-customercode").text());
+		  } 
+	   });
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+   });
+
 </script>

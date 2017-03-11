@@ -55,5 +55,33 @@ public class inventoryFileController {
 		session.setAttribute("totalCost", totalCost);
 		return "InventoryFile";
 	}
+	
+	@RequestMapping(value="/InventoryFileAddCustomer", method = RequestMethod.POST)
+	public String onAddCustomer(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String importeditem = request.getParameter("importeditem");
+		String unit = request.getParameter("unit");
+		String itemcode = request.getParameter("itemcode");
+	    String location = request.getParameter("location");
+	    String category = request.getParameter("category");
+	    String minimumquantity = request.getParameter("minimumquantity");
+	    String description = request.getParameter("description");
+	    //image
+	    double grossprice= Double.parseDouble(request.getParameter("grossprice"));
+	    double less15 = Double.parseDouble(request.getParameter("less15"));
+	    double less35 = Double.parseDouble(request.getParameter("less35"));
+	    double total = Double.parseDouble(request.getParameter("total"));
+	    int w1 = Integer.parseInt(request.getParameter("w1"));
+	    int w2 = Integer.parseInt(request.getParameter("w2"));
+	    int packageqtybig = Integer.parseInt(request.getParameter("packageqtybig"));
+	    int packageqtysmall = Integer.parseInt(request.getParameter("pacakageqtysmall"));
+		String remarks1 = request.getParameter("remarks1");
+		String remarks2 = request.getParameter("remarks2"); 
+		
+		Product product = new Product();
+		
+		
+		return "InventoryFile";
+	}
 
 }
