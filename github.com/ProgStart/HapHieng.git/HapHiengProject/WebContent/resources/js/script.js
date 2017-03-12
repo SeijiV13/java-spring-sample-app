@@ -172,11 +172,20 @@ $(document).ready(function() {
 	});
 	
 	// ================= MENU SCRIPT =====================
-	$('.list td').click(function () {
-	     var myBookId = $(this);
-	     alert(myBookId.attr('id'));
+	$('.list').click(function () {
+		var dataRow = $(this).children().children("td:first-child").parent();
+		//alert($(this).closest('tr')[0].attr("id"))
+		alert(dataRow.attr("id")); 
+		$("#orderQuantity").val(dataRow.data("quantity"));
+		$("#salesagent").val(dataRow.data("agent"));
+		$("input[name=itementry][value=" + dataRow.data("id") + "]").prop('checked', true);
 	});
 	
+	/*
+	$("#tbentries > tr > td").click(function () {
+		alert(this.rowIndex); 
+	});
+	*/
 	$('#itemTable tr').click(function() {
 	    $(this).find('td input:radio').prop('checked', true);
 	    
@@ -194,7 +203,7 @@ $(document).ready(function() {
 
 		if((quantity*itemPrice !== 0 && (parseInt(quantity) <= parseInt(stock)))){	
 			if($('#'+itemCode+'item').length == 0) {
-				$('.list').append('<tr data-toggle="modal" data-target="#addEntry" id=' + itemCode + 'item>\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td>' + itemPrice + '</td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td data-toggle="modal" data-target="#SEModal" data-id="TEST"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
+				$('.list').append('<tr data-toggle="modal" data-target="#addEntry" id=' + itemCode + '-item data-quantity="' + quantity + '" data-id="' + itemCode + '" data-agent="' + agentname + '">\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td>' + itemPrice + '</td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td data-toggle="modal" data-target="#SEModal" data-id="TEST"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
 			}
 			else{
 				$('#'+itemCode+'item').replaceWith('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></font></td>\n</tr>').fadeIn('slow');

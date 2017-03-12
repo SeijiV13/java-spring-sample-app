@@ -355,7 +355,7 @@
 							<th class=" bg_dblue">Remove</th>
 			            </tr>
 			          </thead>
-			          <tbody class="list">
+			          <tbody class="list" id="tbentries">
 						
 			          </tbody>
 			        </table> 
@@ -388,7 +388,7 @@
 					<div class="form-group">
                             <div class="icon-addon addon-md">
                                 <input type="text" class="form-control" id="entrySearch" onkeyup="searchItem()" placeholder="Search for items..">
-                                <label for="entrySearch" class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
+                                <label for="entrySearch" class="glyphicon glyphicon-search" rel="tooltip"></label>
                             </div>
                         </div>
                         		  
