@@ -172,20 +172,13 @@ $(document).ready(function() {
 	});
 	
 	// ================= MENU SCRIPT =====================
-	$('.list').click(function () {
-		var dataRow = $(this).children().children("td:first-child").parent();
-		//alert($(this).closest('tr')[0].attr("id"))
-		alert(dataRow.attr("id")); 
+	$(".list").delegate("tr", "click", function(e) {
+		var dataRow = $(e.currentTarget);
 		$("#orderQuantity").val(dataRow.data("quantity"));
 		$("#salesagent").val(dataRow.data("agent"));
 		$("input[name=itementry][value=" + dataRow.data("id") + "]").prop('checked', true);
-	});
-	
-	/*
-	$("#tbentries > tr > td").click(function () {
-		alert(this.rowIndex); 
-	});
-	*/
+    });
+
 	$('#itemTable tr').click(function() {
 	    $(this).find('td input:radio').prop('checked', true);
 	    
