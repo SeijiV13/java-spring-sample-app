@@ -172,6 +172,22 @@ $(document).ready(function() {
 	});
 	
 	// ================= MENU SCRIPT =====================
+	Number.prototype.between  = function (a, b, inclusive) {
+	    var min = Math.min.apply(Math, [a,b]),
+	        max = Math.max.apply(Math, [a,b]);
+	    return inclusive ? this >= min && this <= max : this > min && this < max;
+	};
+
+	$('#orderQuantity').keydown(function(event){
+	    var v = parseFloat(this.value + String.fromCharCode(event.which));
+	    var max = $('#orderQuantity').attr('max');
+	    if (event.keyCode == 45) { 
+	        event.preventDefault();
+	        return false;
+	    }
+	    return parseFloat(v).between(0,max,true);
+	});
+	
 	$(".list").delegate("tr", "click", function(e) {
 		var dataRow = $(e.currentTarget);
 		$("#orderQuantity").val(dataRow.data("quantity"));
