@@ -15,5 +15,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	     SELECT * FROM SUPPLIER_TABLE WHERE supplier_code LIKE #{0} 
 	     AND description LIKE #{1}
 	  </select>
-
+	  
+	  <update id="editSupplierDetails">
+	  	 UPDATE SUPPLIER_TABLE SET description = #{1}, address = #{2}, address2 = #{3},
+	  	 telephone = #{4}, fax = #{5}, email = #{6}, terms = #{7}, initial_balance = #{8}, remaining = #{9} WHERE
+	  	 supplier_code = #{0}
+	  </update>
 </mapper>

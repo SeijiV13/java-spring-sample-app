@@ -71,7 +71,7 @@
 
 					<c:url value="/logout" var="logoutUrl" />
 					<form action="${logoutUrl}" method="post" id="logoutForm">
-						<input type="hidden" name="${_csrf.parameterName}"
+						<input id="csrf" type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
 					</form>
 				</div>
@@ -97,6 +97,13 @@
 		<!-- TITLE OF PAGE -->
 		<h3>Customer Bank File</h3>
 		<br>
+		<c:if test="${hasError == 'true'}">
+			<div class="alert alert-warning">Cannot Edit Deatils, You have
+				not selected a Customer</div>
+		</c:if>
+		<c:if test="${hasError == 'false'}">
+			<div class="alert alert-success">Successfully edited customer</div>
+		</c:if>
 		<div class="row">
 			<div class="row ">
 				<div class="col-md-3">
@@ -105,55 +112,83 @@
 						<div class="input-group">
 							<span class="input-group-addon"> <span
 								class="glyphicon glyphicon-search"></span>
-							</span> <input type="text" class="form-control"
-								placeholder="Search Customer">
+							</span> <input type="text" class="form-control" id="entrySearch"
+								onkeyup="searchCustomer()" placeholder="Search Customer">
 						</div>
 					</div>
 
+
 					<div class="list-group cust_tbl">
-					<c:forEach var="customer" items="${sessionScope.customers}">
-						<a href="#" class="list-group-item">${customer.customer_code}</a>
-                     </c:forEach>
+						<table class="table table-hover" id="itemTable">
+							<tbody>
+								<c:forEach var="customer" items="${sessionScope.customers}">
+									<tr>
+										<td class="customerrow" value="${customer.customer_code}"
+											class="list-group-item">${customer.customer_code}</td>
+										<td class="accountno" hidden>${customer.account_no}</td>
+										<td class="accountname" hidden>${customer.account_name}</td>
+										<td class="bank" hidden>${customer.bank}</td>
+										<td class="branch" hidden>${customer.branch}</td>
+										<td class="status" hidden>${customer.status}</td>
+										<td class="bankremarks" hidden>${customer.bank_remarks}</td>
+
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 					</div>
 				</div>
 				<div class="col-md-9">
 					<div class=" row form-container">
 						<h3>Customer Bank Information</h3>
-						<div class="form-group">
-							<label for="accountnumber">Account Number</label> <input
-								placeholder="Account Number" type="text" class="form-control"
-								id="accountnumber">
-						</div>
+						<form method="POST"
+							action="/HapHiengProject/CustomerBankFileModify">
+							<div class="form-group">
+								<label for="accountnumber">Account Number</label> <input
+									placeholder="Account Number" type="text" class="form-control"
+									name="accountnumber" id="accountnumber">
+							</div>
 
-						<div class="form-group">
-							<label for="accountname">Account Name</label> <input
-								placeholder="Account Name" type="text" class="form-control"
-								id="accountname">
-						</div>
+							<div class="form-group">
+								<label for="accountname">Account Name</label> <input
+									placeholder="Account Name" type="text" class="form-control"
+									name="accountname" id="accountname">
+							</div>
 
-						<div class="form-group">
-							<label for="bank">Bank</label> <input placeholder="Bank"
-								type="text" class="form-control" id="bank">
-						</div>
-						<div class="form-group">
-							<label for="branch">Branch</label> <input placeholder="Branch"
-								type="text" class="form-control" id="branch">
-						</div>
+							<div class="form-group">
+								<label for="bank">Bank</label> <input placeholder="Bank"
+									name="bank" type="text" class="form-control" id="bank">
+							</div>
+							<div class="form-group">
+								<label for="branch">Branch</label> <input placeholder="Branch"
+									name="branch" type="text" class="form-control" id="branch">
+							</div>
 
-						<div class="form-group">
-							<label for="status">Status</label> <select class="form-control"
-								id="status">
-								<option>Select Status</option>
-							</select>
-						</div>
+							<div class="form-group">
+								<label for="status">Status</label> <select name="status"
+									class="form-control" id="status">
+									<option value="">Select Status</option>
+									<option value="active">Active</option>
+									<option value="inactive">Inactive</option>
+								</select>
+							</div>
 
-						<div class="form-group">
-							<label for="remarks">Remarks</label> <input placeholder="Remarks"
-								type="text" class="form-control" id="remarks">
-						</div>
+							<div class="form-group">
+								<label for="remarks">Remarks</label> <input
+									placeholder="Remarks" name="remarks" type="text"
+									class="form-control" id="remarks">
+							</div>
 
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" /> <input name="customercode"
+								type="hidden" class="form-control" id="customercodehidden">
 
+							<div class="text-right" style="padding: 5px;">
+								<button type="submit" class="btn btn-primary">Edit
+									Details</button>
+							</div>
 
+						</form>
 
 					</div>
 				</div>
@@ -181,6 +216,18 @@
 
 <!-- FOR LOGOUT SPRING SECURITY FUNCTION -->
 <script type="text/javascript">
+	$(document).ready(function() {
+		$(".customerrow").click(function() {
+			$("#customercodehidden").val(($(this).text()));
+			$("#accountnumber").val(($(this).siblings(".accountno").text()));
+			$("#accountname").val(($(this).siblings(".accountname").text()));
+			$("#bank").val(($(this).siblings(".bank").text()));
+			$("#branch").val(($(this).siblings(".branch").text()));
+			$("#status").val(($(this).siblings(".status").text()));
+			$("#remarks").val(($(this).siblings(".bankremarks").text()));
+		})
+
+	});
 	function formSubmit() {
 		document.getElementById("logoutForm").submit();
 	}

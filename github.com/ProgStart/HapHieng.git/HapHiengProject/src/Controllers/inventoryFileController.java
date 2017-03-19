@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import Implem.CustomerImplem;
 import Implem.ProductImplem;
+import Models.PriceList;
 import Models.Product;
 
 @Controller
@@ -18,6 +20,8 @@ public class inventoryFileController {
 	
 	@Autowired
 	ProductImplem productImplem;
+	@Autowired
+	CustomerImplem customerImplem;
 	
 	@RequestMapping(value = "/InventoryFile", method = RequestMethod.GET)
 	public String formBackingObject(HttpServletRequest request){
@@ -29,8 +33,12 @@ public class inventoryFileController {
 			totalCost = totalCost + product.getGross_price();
 	
 		}
+		//get price list for the pricing table
+		ArrayList<PriceList> priceList = customerImplem.getCustomerPriceList();
+	
 		session.setAttribute("products", products);
 		session.setAttribute("totalCost", totalCost); 
+		session.setAttribute("priceList", priceList);
 		return "InventoryFile";
 	}
 	
@@ -50,9 +58,11 @@ public class inventoryFileController {
 			totalCost = totalCost + product.getGross_price();
 	
 		}
-		
+		//get price list for the pricing table
+		ArrayList<PriceList> priceList = customerImplem.getCustomerPriceList();
 		session.setAttribute("products", products);
 		session.setAttribute("totalCost", totalCost);
+		session.setAttribute("priceList", priceList);
 		return "InventoryFile";
 	}
 	

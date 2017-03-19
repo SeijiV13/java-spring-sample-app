@@ -15,6 +15,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	AND description LIKE #{1} AND agent LIKE #{2} ORDER BY description
     </select>
     
+    <select id="getAllCustomersWithBankFile" resultType="Customer">
+    	SELECT * FROM CUSTOMER_TABLE INNER JOIN 
+    	CUSTOMER_BANK_FILE_TABLE on 
+    	CUSTOMER_BANK_FILE_TABLE.customer_code = CUSTOMER_TABLE.customer_code
+    </select>
+    
+    <update id="editCustomerDetails">
+       UPDATE CUSTOMER_TABLE SET description = #{1}, agent = #{2}, address = #{3},
+       address2 = #{4}, telephone = #{5}, resident_phone = #{6}, fax = #{7}, cellphone = #{8},
+       terms = #{9}, tin_number = #{10}, contact_person = #{11}, email = #{12}, credit_limit = #{13},
+       initial_balance = #{14}, remaining = #{15}, customer_type = #{16}, remarks = #{17} WHERE
+       customer_code = #{0}
+    </update> 
+    
+    <select id="getCustomerPriceList" resultType="PriceList">
+    	SELECT * FROM CUSTOMER_PRICING_TABLE
+    </select>  
+    
+    <update id="editCustomerBankDetails">
+      UPDATE CUSTOMER_BANK_FILE_TABLE set account_no = #{1}, account_name= #{2}, bank = #{3}, branch = #{4},
+      status = #{5}, bank_remarks = #{6} WHERE customer_code = #{0}
+    </update>
+    
    
 
 </mapper>

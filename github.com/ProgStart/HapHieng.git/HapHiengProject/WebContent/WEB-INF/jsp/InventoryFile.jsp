@@ -6,6 +6,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="navbar" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="modal" tagdir="/WEB-INF/tags"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -177,219 +178,8 @@
 					</form>
 					<hr>
 
-					<!--/# TABLE FOR INVENTORY SFILE-->
-					<div class="modal fade" id="addproduct" role="dialog">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									<h3 class="modal-title">Add New Product</h3>
-								</div>
-
-								<!-- MODAL FORM -->
-								<div class="modal-body">
-									<form id="submitaddcustomer" class="form-container"
-										method="POST"
-										action="/HapHiengProject/InventoryFileAddCustomer">
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<div class="checkbox">
-														<label><input name="importeditem" type="checkbox">
-															<b>Imported Item </b></label>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-6">
-
-												<div class="form-group">
-													<label for="unit">Unit</label> <input name="unit"
-														placeholder="Unit" type="text" class="form-control"
-														id="unit">
-												</div>
-
-											</div>
-
-										</div>
-
-
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="itemcode">Item Code</label> <input
-														name="itemcode" placeholder="Item Code" type="text" class="form-control"
-														id="itemcode">
-												</div>
-											</div>
-
-											<div class="col-md-6">
-
-												<div class="form-group">
-													<label for="location">Location</label> <input
-														name="location" placeholder="Location" type="text" class="form-control"
-														id="location">
-												</div>
-
-											</div>
-
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="categorycode">Category</label> <select
-														name="category" class="form-control" id="category">
-														<option value="">Select Category</option>
-														<c:forEach var="category"
-															items="${applicationScope.categories}">
-															<option value="${category}">${category}</option>
-														</c:forEach>
-													</select>
-												</div>
-											</div>
-
-											<div class="col-md-6">
-
-												<div class="form-group">
-													<label for="minimumquantity">Minimum Quantity</label> <input
-														name="minimumquantity" placeholder="Minimum Quantity" type="text"
-														class="form-control" id="minimumquantity">
-
-												</div>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="description">Description</label> <input
-														name="description" type="text" placeholder="Description" class="form-control"
-														id="description">
-												</div>
-
-											</div>
-
-											<div class="col-md-6">
-
-												<div class="form-group">
-													<label for="image">Image</label> <input type="text"
-														name="image" class="form-control" id="image">
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="grossprice">Gross Price</label> <input
-														name="grossprice" type="text" placeholder="Gross Price" class="form-control"
-														id="grossprice">
-												</div>
-
-											</div>
-
-											<div class="col-md-6">
-
-
-												<div class="form-group">
-													<label for="less15">Less 15%</label> <input type="text"
-														name="less15" placeholder="Less 15%" class="form-control" id="less15">
-												</div>
-
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="less35">Less 35%</label> <input type="text"
-														name="less35" placeholder="Less 35%" class="form-control" id="less35">
-												</div>
-
-											</div>
-
-											<div class="col-md-6">
-
-												<div class="form-group">
-													<label for="total">Total</label> <input type="text"
-														name="total" placeholder="Total%" class="form-control" id="total">
-												</div>
-
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="w1">Warehouse 1</label> <input type="text"
-														name="w1" placeholder="Warehouse 1" class="form-control" id="w1">
-												</div>
-
-											</div>
-
-											<div class="col-md-6">
-
-												<div class="form-group">
-													<label for="w2">Warehouse 2</label> <input type="text"
-														name="w2" placeholder="Warehouse 2" class="form-control" id="w2">
-												</div>
-
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label for="packageqtybig">PackQty Big</label> <input
-														name="packageqtybig" placeholder="Package Quantity Big" type="text"
-														class="form-control" id="packageqtybig">
-												</div>
-
-											</div>
-
-											<div class="col-md-6">
-
-												<div class="form-group">
-													<label for="packageqtysmall">PackQty Small</label> <input
-														name="packageqtysmall" placeholder="Package Quantity Small" type="text"
-														class="form-control" id="packageqtysmall">
-												</div>
-
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group">
-													<label for="remarks">Remarks 1</label>
-													<textarea name="remarks1" id="remarks1" class="form-control" rows="4"></textarea>
-												</div>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-12">
-												<div class="form-group">
-													<label for="remarks">Remarks 2</label>
-													<textarea name="remarks2" id="remarks2" class="form-control" rows="4"></textarea>
-												</div>
-											</div>
-										</div>
-										<input type="hidden" name="${_csrf.parameterName}"
-											value="${_csrf.token}" />
-									</form>
-								</div>
-								<div class="modal-footer">
-									<button type="submit" form="submitaddcustomer"
-										class="btn btn-primary">Add Product</button>
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">Close</button>
-								</div>
-								<!-- /.modal-content -->
-							</div>
-							<!-- /.modal-dialog -->
-						</div>
-
-					</div>
+					<!-- MODAL FOR ADD PRODUCT -->
+					<modal:addproduct/>
 
 					<div class="tbl_wrap">
 						<div class="table-responsive">
@@ -444,6 +234,9 @@
 											<td id="${product.item_code}-location" class="">${product.location}</td>
 											<td id="${product.item_code}-remarks1" class="">${product.remarks1}</td>
 											<td id="${product.item_code}-remarks2" class="">${product.remarks2}</td>
+											<td id="${product.item_code}-minimumquantity" class="" hidden>${product.minimum_quantity}</td>
+											<td id="${product.item_code}-importeditem" class="" hidden>${product.importeditem}</td>
+											<td id="${product.item_code}-unit" class="" hidden>${product.unit}</td>
 
 										</tr>
 
@@ -466,7 +259,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<div class="checkbox">
-										<label><input type="checkbox"> <b>Imported
+										<label><input id="importeditem" type="checkbox"> <b>Imported
 												Item </b></label>
 									</div>
 								</div>
@@ -489,7 +282,7 @@
 								<div class="form-group">
 									<label for="itemcode">Item Code</label> <input
 										placeholder="Item Code" type="text" class="form-control"
-										id="itemcode">
+										id="itemcode" readonly>
 								</div>
 							</div>
 
@@ -691,25 +484,23 @@
 			<h4>Pricing</h4>
 			<div class="tbl_wrap">
 				<div class="table-responsive">
-					<table class="table">
+					<table class="table" id="priceListTable">
 
 						<thead>
 							<tr>
-								<th class="bg_dblue text-nowrap">Customer</th>
+								<th class="bg_dblue text-nowrap">Customer Code</th>
 								<th class="bg_dblue text-nowrap">Price</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="priceListBody">
+						    <c:forEach var="item" items="${priceList}">
 							<tr>
-								<td>Emily Equiza</td>
-								<td>9.00</td>
+							    <td class="col1" hidden>${item.item_code}</td>
+								<td>${item.customer_code}</td>
+								<td>${item.price}</td>
 
 							</tr>
-							<tr>
-								<td>Jes Rey</td>
-								<td>5.00</td>
-							</tr>
-
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -880,11 +671,12 @@
 			document.getElementById("logoutForm").submit();
 		}
 		$(".select").click(function() {
+		
 			if ($(".select").is(":checked")) {
-				let
-				productId = $(this).attr("id");
-				let
-				id = productId.split("|");
+				let productId = $(this).attr("id");
+				
+				let id = productId.split("|");
+				
 				$("#itemcode").val($("#" + id[0] + "-itemcode").text());
 				$("#category").val($("#" + id[0] + "-category").text());
 				$("#description").val($("#" + id[0] + "-description").text());
@@ -900,7 +692,28 @@
 				$("#location").val($("#" + id[0] + "-location").text());
 				$("#remarks1").val($("#" + id[0] + "-remarks1").text());
 				$("#remarks2").val($("#" + id[0] + "-remarks2").text());
+				//hidden rows
+				$("#minimumquantity").val($("#" + id[0] + "-minimumquantity").text());
+				$("#unit").val($("#" + id[0] + "-unit").text());
+		        if($("#" + id[0] + "-importeditem").text() === 'yes'){
+		        	$("#importeditem").prop("checked", true);
+		        }else{
+		        	$("#importeditem").prop("checked", false);
+		        }
+		        
+		        //filter price list table
+                
+                $.each($("#priceListTable #priceListBody").find("tr"), function () {
 
+                     if($(this).children(".col1").text() == $("#" + id[0] + "-itemcode").text()){ 
+                  	   $(this).show();
+                     }else{
+                  	   
+                  	   $(this).hide();
+                     }
+                });
+				
+				
 			}
 		});
 

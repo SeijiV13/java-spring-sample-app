@@ -6,6 +6,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="navbar" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="modal" tagdir="/WEB-INF/tags"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -131,6 +132,9 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
+						     <div class="pull-left">
+								<button type="button" data-target="#addagent" data-toggle="modal"  class="btn btn-default">Add Agent</button>
+							</div>
 							<div class="pull-right">
 								<button  class="btn btn-default">Filter</button>
 							</div>
@@ -140,6 +144,8 @@
 				</form>
 			</div>
 		</div>
+		<!-- MODAL FOR ADD AGENT -->
+		<modal:addagent/>
 
 		<!-- TABLE FOR AGENT FILE -->
 		<div class="row">

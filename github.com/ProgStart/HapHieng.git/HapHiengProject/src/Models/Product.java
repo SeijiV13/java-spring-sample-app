@@ -9,6 +9,7 @@ public class Product {
 	double  gross_price = 0;
     double less_rc = 0;
 	double less_wc = 0;
+	int minimum_quantity = 0;
 	int total = 0;
 	int w1 = 0;
 	int w2 = 0;
@@ -21,6 +22,12 @@ public class Product {
     String product_line = null;
     
     
+	public int getMinimum_quantity() {
+		return minimum_quantity;
+	}
+	public void setMinimum_quantity(int minimum_quantity) {
+		this.minimum_quantity = minimum_quantity;
+	}
 	public String getImporteditem() {
 		return importeditem;
 	}

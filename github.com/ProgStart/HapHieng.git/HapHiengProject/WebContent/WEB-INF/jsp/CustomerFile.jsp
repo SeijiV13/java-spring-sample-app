@@ -6,7 +6,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="navbar" tagdir="/WEB-INF/tags"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="modal" tagdir="/WEB-INF/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -97,6 +98,13 @@
 		<!-- TITLE OF PAGE -->
 		<h3>Customer File</h3>
 		<br>
+		<c:if test="${hasError == 'true'}">
+			<div class="alert alert-warning">Cannot Edit Deatils, You have
+				not selected a Customer</div>
+		</c:if>
+		<c:if test="${hasError == 'false'}">
+			<div class="alert alert-success">Successfully edited customer</div>
+		</c:if>
 		<div class="row">
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#browsetype">Browse
@@ -108,11 +116,12 @@
 			<div class="tab-content">
 
 				<div id="cardtype" class="tab-pane fade in">
+
 					<h3>Card Form</h3>
 					<hr>
 					<br>
 
-					<form>
+					<form method="POST" action="/HapHiengProject/CustomerFileModify">
 						<div class="form-container">
 							<h3>Personal Details</h3>
 							<div class="row">
@@ -121,29 +130,30 @@
 									<div class="form-group">
 										<label for="customercode">Customer Code</label> <input
 											placeholder="Customer Code" type="text" class="form-control"
-											id="customercode">
+											id="customercode" name="customercode" readonly>
 									</div>
 
 									<div class="form-group">
 										<label for="description">Description</label> <input
 											placeholder="Description" type="text" class="form-control"
-											id="description">
+											id="description" name="description">
 									</div>
 
 								</div>
 								<div class="col-md-6">
 
 									<div class="form-group">
-										<label for="agent">Agent</label> <select class="form-control">
+										<label for="agent">Agent</label> <select name="agent"
+											id="agent" class="form-control">
 											<option value="">Select Agent</option>
-											<c:forEach var="agent" items="${sessionScope.agents}">
-											<option value="${agent.name}">${agent.name}</option> 
+											<c:forEach var="agent" items="${applicationScope.agents}">
+												<option value="${agent.name}">${agent.name}</option>
 											</c:forEach>
 										</select>
 									</div>
 
 									<div class="form-group">
-										<label for="address">Address</label> <input
+										<label for="address">Address</label> <input name="address"
 											placeholder="Address" type="text" class="form-control"
 											id="address">
 									</div>
@@ -152,15 +162,15 @@
 								<div class="col-md-6">
 
 									<div class="form-group">
-										<label for="address2">Address 2</label> <input
+										<label for="address2">Address 2</label> <input name="address2"
 											placeholder="Address 2" type="text" class="form-control"
 											id="address2">
 									</div>
 
 									<div class="form-group">
 										<label for="telephone">Telephone</label> <input
-											placeholder="Telephone" type="text" class="form-control"
-											id="telephone">
+											name="telephone" placeholder="Telephone" type="text"
+											class="form-control" id="telephone">
 									</div>
 
 								</div>
@@ -168,13 +178,13 @@
 
 									<div class="form-group">
 										<label for="residentphone">Resident Phone</label> <input
-											placeholder="Resident Phone" type="text" class="form-control"
-											id="residentphone">
+											name="residentphone" placeholder="Resident Phone" type="text"
+											class="form-control" id="residentphone">
 									</div>
 
 									<div class="form-group">
 										<label for="fax">Fax</label> <input placeholder="Fax"
-											type="text" class="form-control" id="fax">
+											name="fax" type="text" class="form-control" id="fax">
 									</div>
 
 								</div>
@@ -182,13 +192,13 @@
 
 									<div class="form-group">
 										<label for="cellphone">Cellphone</label> <input
-											placeholder="Cellphone" type="text" class="form-control"
-											id="cellphone">
+											name="cellphone" placeholder="Cellphone" type="text"
+											class="form-control" id="cellphone">
 									</div>
 
 									<div class="form-group">
 										<label for="terms">Terms</label> <input placeholder="Terms"
-											type="text" class="form-control" id="terms">
+											name="terms" type="text" class="form-control" id="terms">
 									</div>
 
 								</div>
@@ -196,13 +206,13 @@
 
 									<div class="form-group">
 										<label for="tin">Tin #</label> <input placeholder="Tin #"
-											type="text" class="form-control" id="tin">
+											name="tin" type="text" class="form-control" id="tin">
 									</div>
 
 									<div class="form-group">
 										<label for="contactperson">Contact Person</label> <input
 											placeholder="Contact Person" type="text" class="form-control"
-											id="contactperson">
+											name="contactperson" id="contactperson">
 									</div>
 
 								</div>
@@ -210,7 +220,7 @@
 
 									<div class="form-group">
 										<label for="email">Email</label> <input placeholder="Email"
-											type="text" class="form-control" id="email">
+											name="email" type="text" class="form-control" id="email">
 									</div>
 
 								</div>
@@ -225,13 +235,14 @@
 									<div class="form-group">
 										<label for="creditlimit">Credit Limit</label> <input
 											placeholder="Credit Limit" type="text" class="form-control"
-											id="creditlimit">
+											name="creditlimit" id="creditlimit">
 									</div>
 
 									<div class="form-group">
 										<label for="initialbalance">Initial Balance</label> <input
 											placeholder="Initial Balance" type="text"
-											class="form-control" id="initialbalance">
+											name="initialbalance" class="form-control"
+											id="initialbalance">
 									</div>
 
 								</div>
@@ -240,15 +251,15 @@
 									<div class="form-group">
 										<label for="remaining">Remaining</label> <input
 											placeholder="Remaining" type="text" class="form-control"
-											id="remaining">
+											name="remaining" id="remaining">
 									</div>
 
 									<div class="form-group">
 										<label for="remaining">Customer Type</label>
 										<div class="radio">
-											<label><input type="radio" name="optradio">Wholesale
-											</label> <label><input type="radio" name="optradio">Retail
-											</label>
+											<label><input value="wc" type="radio" name="optradio">Wholesale
+											</label> <label><input value="rc" type="radio"
+												name="optradio">Retail </label>
 										</div>
 
 									</div>
@@ -258,10 +269,16 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="remarks">Remarks</label>
-										<textarea placeholder="Remarks" class="form-control" rows="4"></textarea>
+										<textarea id="remarks" placeholder="Remarks"
+											class="form-control" rows="4"></textarea>
 									</div>
 								</div>
-
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" />
+								<div class="text-right" style="padding: 5px;">
+									<button type="submit" class="btn btn-primary">Edit
+										Details</button>
+								</div>
 							</div>
 						</div>
 
@@ -273,18 +290,21 @@
 
 					<!--/# TABLE FOR CARD TYPE -->
 					<div class="table-responsive">
-						<table class="table">
+						<table class="table" id="priceListTable">
 							<thead>
 								<tr>
 									<th class="bg_dblue">Item Code</th>
 									<th class="bg_dblue">Price</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr>
-									<td>BATTERY TERMINAL</td>
-									<td>26.00</td>
+							<tbody id="priceListBody">
+							    <c:forEach var="item" items="${priceList}">
+								<tr> 
+								    <td class="col1" hidden>${item.customer_code}</td>  
+									<td>${item.item_code}</td>
+									<td>${item.price}</td>
 								</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -294,7 +314,8 @@
 					<h3>Browse Form</h3>
 					<hr>
 					<br>
-					<form class="form-container" method="POST" action="/HapHiengProject/CustomerFileSubmit">
+					<form class="form-container" method="POST"
+						action="/HapHiengProject/CustomerFileSubmit">
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
@@ -321,16 +342,21 @@
 						</div>
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
-						
+
 						<div class="row">
 							<div class="col-md-12">
+								<div class="pull-left">
+									<button data-target="#addcustomer" data-toggle="modal"
+										type="button" class="btn btn-default">Add Customer</button>
+								</div>
 								<div class="pull-right">
 									<button type="submit" class="btn btn-default">Filter</button>
 								</div>
 							</div>
 						</div>
 
-
+						<!-- MODAL FOR ADD CUSTOMER -->
+						<modal:addcustomer />
 
 					</form>
 					<hr>
@@ -340,7 +366,8 @@
 						<div class="table-responsive">
 							<table class="table table-block">
 								<thead>
-									<tr><th class="bg_dblue text-nowrap">Select Customer</th> 
+									<tr>
+										<th class="bg_dblue text-nowrap">Select Customer</th>
 										<th class="bg_dblue text-nowrap">Row No.</th>
 										<th class="bg_dblue text-nowrap">Customer code</th>
 										<th class="bg_dblue text-nowrap">Description</th>
@@ -362,30 +389,32 @@
 									</tr>
 								</thead>
 								<tbody>
-								    <c:set var="row" value="0"/>
+									<c:set var="row" value="0" />
 									<c:forEach var="customer" items="${sessionScope.customers}">
-									     <c:set var="cuscode" value="${fn:trim(customer.customer_code)}"/>
+
 										<tr style="cursor: pointer;" data-toggle="modal">
-                                            
-                                            <td><input type="radio" id="${cuscode}|select" name="select" class="select"></td>
+
+											<td><input type="radio" id="${row + 1}|select"
+												name="select" class="select"></td>
 											<td class="">${row = row + 1}</td>
-											<td id="${cuscode}-customercode" class="">${customer.customer_code}</td>
-											<td id="${cuscode}-description" class="">${customer.description}</td>
-											<td id="${cuscode}-id" class="">${customer.agent}</td>
-											<td id="${cuscode}-address" class="">${customer.address}</td>
-											<td id="${cuscode}-address2" class="">${customer.address2}</td>
-											<td id="${cuscode}-telephone" class="">${customer.telephone}</td>
-											<td id="${cuscode}-residentphone" class="">${customer.resident_phone}</td>
-											<td id="${cuscode}-fax" class="">${customer.fax}</td>
-											<td id="${cuscode}-cellphone" class="">${customer.cellphone}</td>
-											<td id="${cuscode}-terms" class="">${customer.terms}</td>
-											<td id="${cuscode}-tinnumber" class="">${customer.tin_number}</td>
-											<td id="${cuscode}-contactperson" class="">${customer.contact_person}</td>
-											<td id="${cuscode}-email" class="">${customer.email}</td>
-											<td id="${cuscode}-creditlimit" class="">${customer.credit_limit}</td>
-											<td id="${cuscode}-initialbalance" class="">${customer.initial_balance}</td>
-											<td id="${cuscode}-remaining" class="">${customer.remaining}</td>
-											<td id="${cuscode}-remarks" class="">${customer.remarks}</td>
+											<td id="${row}-customercode" class="">${customer.customer_code}</td>
+											<td id="${row}-description" class="">${customer.description}</td>
+											<td id="${row}-agent" class="">${customer.agent}</td>
+											<td id="${row}-address" class="">${customer.address}</td>
+											<td id="${row}-address2" class="">${customer.address2}</td>
+											<td id="${row}-telephone" class="">${customer.telephone}</td>
+											<td id="${row}-residentphone" class="">${customer.resident_phone}</td>
+											<td id="${row}-fax" class="">${customer.fax}</td>
+											<td id="${row}-cellphone" class="">${customer.cellphone}</td>
+											<td id="${row}-terms" class="">${customer.terms}</td>
+											<td id="${row}-tinnumber" class="">${customer.tin_number}</td>
+											<td id="${row}-contactperson" class="">${customer.contact_person}</td>
+											<td id="${row}-email" class="">${customer.email}</td>
+											<td id="${row}-creditlimit" class="">${customer.credit_limit}</td>
+											<td id="${row}-initialbalance" class="">${customer.initial_balance}</td>
+											<td id="${row}-remaining" class="">${customer.remaining}</td>
+											<td id="${row}-remarks" class="">${customer.remarks}</td>
+											<td id="${row}-customertype" class="" hidden>${customer.customer_type}</td>
 										</tr>
 									</c:forEach>
 
@@ -430,23 +459,53 @@
 
 
 <!-- /#PAGE CONTENT WRAPPER -->
- 
+
 </html>
 
 <!-- FOR LOGOUT SPRING SECURITY FUNCTION -->
 <script type="text/javascript">
-   $(document).ready(function(){
-	   $(".select").click(function(){
-		  if($(this).is(":checked")){
-			  let customerId = $(this).attr('id').split("|");
-			  console.log(customerId)
-			  console.log($("#"+customerId[0]+"-customercode").text());
-			$("#customercode").val($("#"+customerId[0]+"-customercode").text());
-		  } 
-	   });
-		function formSubmit() {
-			document.getElementById("logoutForm").submit();
-		}
-   });
-
+	$(document)
+			.ready(
+					function() {
+						$(".select").click(function() {
+								if ($(this).is(":checked")) {
+						let rownum = $(this).attr('id').split("|");
+						$("#customercode").val($("#"+ rownum[0]+ "-customercode").text());
+						$("#agent").val($("#"+ rownum[0]+ "-agent").text());
+						$("#description").val($("#"+ rownum[0]+ "-description").text());
+						$("#address").val($("#"+ rownum[0]+ "-customercode").text());
+						$("#address2").val($("#"+ rownum[0]+ "-address2").text());
+						$("#location").val($("#"+ rownum[0]+ "-location").text());
+						$("#residentphone").val($("#" + rownum[0]+ "-residentphone").text());
+						$("#telephone").val($("#"+ rownum[0]+ "-telephone").text());
+						$("#fax").val($("#"+ rownum[0]+ "-fax").text());
+						$("#cellphone").val($("#"+ rownum[0]+ "-cellphone").text());
+						$("#terms").val($("#"+ rownum[0]+ "-terms").text());
+					    $("#tin").val($("#"+ rownum[0]+ "-tinnumber").text());
+						$("#contactperson").val($("#"+ rownum[0]+ "-contactperson").text());
+					    $("#email").val($("#"+ rownum[0]+ "-email").text());
+						$("#creditlimit").val($("#"+ rownum[0]+ "-creditlimit").text());
+						$("#initialbalance").val($("#"+ rownum[0]+ "-initialbalance").text());
+						$("#remaining").val($("#"+ rownum[0]+ "-remaining").text());
+						$("#remarks").val($("#"+ rownum[0]+ "-remarks").text());
+                        $('input:radio[name=optradio]').val([ $("#"+ rownum[0]+ "-customertype").text() ]);
+                          
+                        //filter price list table
+                      
+                          $.each($("#priceListTable #priceListBody").find("tr"), function () {
+          
+                               if($(this).children(".col1").text() == $("#"+ rownum[0]+ "-customercode").text()){ 
+                            	   $(this).show();
+                               }else{
+                            	  
+                            	   $(this).hide();
+                               }
+                          });
+									}
+					
+										});
+						function formSubmit() {
+							document.getElementById("logoutForm").submit();
+						}
+					});
 </script>

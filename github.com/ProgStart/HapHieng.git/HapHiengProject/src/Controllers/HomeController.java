@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import Implem.AgentImplem;
 import Implem.ProductImplem;
 import Implem.UserImplem;
+import Models.Agent;
 import Models.User;
 
 @Controller
@@ -27,6 +29,8 @@ public class HomeController {
 UserImplem userImplem;
 @Autowired
 ProductImplem productImplem;
+@Autowired
+AgentImplem agentImplem;
 
 @Autowired
 private ServletContext servletContext;
@@ -47,6 +51,10 @@ private ServletContext servletContext;
         //for product line dropdown
         ArrayList<String> productLines = productImplem.getAllProductLine();
         servletContext.setAttribute("productLines", productLines);
+        
+        //for agent dropdown
+        ArrayList<Agent> agents = agentImplem.getAllAgents(); 
+        servletContext.setAttribute("agents", agents);
         
 		//CHECK PRINCIPAL IF SET OF USERDETAILS
 		if (principal instanceof UserDetails) {

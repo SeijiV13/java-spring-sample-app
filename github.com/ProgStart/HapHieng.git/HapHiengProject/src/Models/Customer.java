@@ -19,7 +19,50 @@ public class Customer {
 	  double remaining = 0;
 	  String customer_type = null;
 	  String remarks = null;
+	  String account_no = null;
+	  String account_name = null;
+	  String bank = null;
+	  String branch = null;
+	  String status = null;
+	  String bank_remarks = null;
 	  
+	  
+	public String getAccount_no() {
+		return account_no;
+	}
+	public void setAccount_no(String account_no) {
+		this.account_no = account_no;
+	}
+	public String getAccount_name() {
+		return account_name;
+	}
+	public void setAccount_name(String account_name) {
+		this.account_name = account_name;
+	}
+	public String getBank() {
+		return bank;
+	}
+	public void setBank(String bank) {
+		this.bank = bank;
+	}
+	public String getBranch() {
+		return branch;
+	}
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getBank_remarks() {
+		return bank_remarks;
+	}
+	public void setBank_remarks(String bank_remarks) {
+		this.bank_remarks = bank_remarks;
+	}
 	public String getCustomer_code() {
 		return customer_code;
 	}

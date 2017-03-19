@@ -6,7 +6,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="navbar" tagdir="/WEB-INF/tags"%>
-
+<%@ taglib prefix="modal" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -105,6 +105,13 @@
 		<!-- TITLE OF PAGE -->
 		<h3>Supplier File</h3>
 		<br>
+		<c:if test="${hasError == 'true'}">
+			<div class="alert alert-warning">Cannot Edit Deatils, You have
+				not selected a Customer</div>
+		</c:if>
+		<c:if test="${hasError == 'false'}">
+			<div class="alert alert-success">Successfully edited customer</div>
+		</c:if>
 		<div class="row">
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#browsetype">Browse
@@ -120,7 +127,7 @@
 					<hr>
 					<br>
 
-					<form>
+					<form method="POST" action="/HapHiengProject/SupplierFileModify">
 						<div class="form-container">
 							<h3>Personal Details</h3>
 							<div class="row">
@@ -129,13 +136,13 @@
 									<div class="form-group">
 										<label for="suppliercode">Supplier Code</label> <input
 											placeholder="Supplier Code" type="text" class="form-control"
-											id="suppliercode">
+											id="suppliercode" name="suppliercode" readonly>
 									</div>
 
 									<div class="form-group">
 										<label for="description">Description</label> <input
 											placeholder="Description" type="text" class="form-control"
-											id="description">
+											id="description" name="description">
 									</div>
 
 								</div>
@@ -145,13 +152,13 @@
 									<div class="form-group">
 										<label for="address">Address</label> <input
 											placeholder="Address" type="text" class="form-control"
-											id="address">
+											id="address" name="address">
 									</div>
 
 									<div class="form-group">
 										<label for="address2">Address 2</label> <input
 											placeholder="Address 2" type="text" class="form-control"
-											id="address2">
+											id="address2" name ="address2">
 									</div>
 
 								</div>
@@ -160,12 +167,12 @@
 									<div class="form-group">
 										<label for="telephone">Telephone</label> <input
 											placeholder="Telephone" type="text" class="form-control"
-											id="telephone">
+											id="telephone" name="telephone">
 									</div>
 
 									<div class="form-group">
 										<label for="fax">Fax</label> <input placeholder="Fax"
-											type="text" class="form-control" id="fax">
+											type="text" class="form-control" id="fax" name="fax">
 									</div>
 
 								</div>
@@ -173,12 +180,12 @@
 
 									<div class="form-group">
 										<label for="email">Email</label> <input placeholder="Email"
-											type="text" class="form-control" id="email">
+											type="text" class="form-control" id="email" name="email">
 									</div>
 
 									<div class="form-group">
 										<label for="terms">Terms</label> <input placeholder="Terms"
-											type="text" class="form-control" id="terms">
+											type="text" class="form-control" id="terms" name="terms">
 									</div>
 
 
@@ -189,16 +196,24 @@
 									<div class="form-group">
 										<label for="initialbalance">Initial Balance</label> <input
 											placeholder="Initial Balance" type="text"
-											class="form-control" id="initialbalance">
+											class="form-control" id="initialbalance" name="initialbalance">
 									</div>
+                                
+                                <input type="hidden" name="${_csrf.parameterName}"
+							    value="${_csrf.token}" />
 
 
-
+								</div>
+								
+								<div class="text-right" style="padding: 5px;">
+									<button type="submit" class="btn btn-primary">Edit
+										Details</button>
 								</div>
 
 
 							</div>
 						</div>
+						</form>
 						<div class="form-container">
 							<h3>Update New Costing</h3>
 							<div class="row">
@@ -250,7 +265,7 @@
 							</div>
 						</div>
 
-					</form>
+					
 
 
 				</div>
@@ -282,6 +297,9 @@
 
 						<div class="row">
 							<div class="col-md-12">
+							    <div class="pull-left">
+									<button type="button" data-target="#addsupplier" data-toggle="modal" class="btn btn-default">Add Supplier</button>
+								</div>
 								<div class="pull-right">
 									<button type="submit" class="btn btn-default">Filter</button>
 								</div>
@@ -292,6 +310,8 @@
 
 					</form>
 					<hr>
+					<!-- MODAL FOR ADD SUPPLIER -->
+					<modal:addsupplier/>
 
 					<!--/# TABLE FOR INVENTORY FILE-->
 					<div class="tbl_wrap">
@@ -299,7 +319,8 @@
 							<table class="table table-block">
 								<thead>
 									<tr>
-										<th class="bg_dblue text-nowrap">Row No.</th>
+ 	       								<th class="bg_dblue text-nowrap">Select Supplier</th>
+   										<th class="bg_dblue text-nowrap">Row No.</th>
 										<th class="bg_dblue text-nowrap">Supplier code</th>
 										<th class="bg_dblue text-nowrap">Description</th>
 
@@ -309,9 +330,18 @@
 									<c:set var="row" value="0" />
 									<c:forEach var="supplier" items="${sessionScope.suppliers}">
 										<tr style="cursor: pointer;" data-toggle="modal">
+										    <td><input type="radio" id="${row + 1}|select" name="select" class="select"></td>
 											<td class="">${row = row + 1}</td>
-											<td class="">${supplier.supplier_code}</td>
-											<td class="">${supplier.description}</td>
+											<td id="${row}-suppliercode" class="">${supplier.supplier_code}</td>
+											<td id="${row}-description" class="">${supplier.description}</td>
+											<td id="${row}-address" class="" hidden>${supplier.address}</td>
+											<td id="${row}-address2" class="" hidden>${supplier.address2}</td>
+											<td id="${row}-telephone" class="" hidden>${supplier.telephone}</td>
+											<td id="${row}-fax" class="" hidden>${supplier.fax}</td>
+											<td id="${row}-email" class="" hidden>${supplier.email}</td>
+											<td id="${row}-terms" class="" hidden>${supplier.terms}</td>
+											<td id="${row}-initialbalance" class="" hidden>${supplier.initial_balance}</td>
+											<td id="${row}-remaining" class="" hidden>${supplier.remaining}</td>
 										</tr>
 									</c:forEach>
 
@@ -384,7 +414,27 @@
 
 <!-- FOR LOGOUT SPRING SECURITY FUNCTION -->
 <script type="text/javascript">
-	function formSubmit() {
-		document.getElementById("logoutForm").submit();
-	}
+$(document).ready(function(){
+	   $(".select").click(function(){
+		  if($(this).is(":checked")){
+			 let rownum = $(this).attr('id').split("|");
+			$("#suppliercode").val($("#"+rownum[0]+"-suppliercode").text());
+			$("#description").val($("#"+rownum[0]+"-description").text());
+			$("#address").val($("#"+rownum[0]+"-address").text());
+			$("#address2").val($("#"+rownum[0]+"-address2").text());
+			$("#telephone").val($("#"+rownum[0]+"-telephone").text());
+			$("#fax").val($("#"+rownum[0]+"-fax").text());
+			$("#terms").val($("#"+rownum[0]+"-terms").text());
+			$("#email").val($("#"+rownum[0]+"-email").text());
+			$("#initialbalance").val($("#"+rownum[0]+"-initialbalance").text());
+			$("#remaining").val($("#"+rownum[0]+"-remaining").text());
+			
+			$('input:radio[name=optradio]').val([$("#"+rownum[0]+"-customertype").text()]);
+			
+		  } 
+	   });
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+});
 </script>
