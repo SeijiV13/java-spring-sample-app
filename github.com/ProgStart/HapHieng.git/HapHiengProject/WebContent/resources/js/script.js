@@ -172,27 +172,6 @@ $(document).ready(function() {
 	});
 	
 	// ================= MENU SCRIPT =====================
-<<<<<<< HEAD
-	$(".list").delegate("tr", "click", function(e) {
-	    alert($(e.currentTarget).attr("id"));
-	});
-	//$('.list').find("tr").click(function () {
-	   
-		// alert('You clicked row '+ ($(this).index()+1) );
-		//var dataRow = $(this).children().children("td:first-child").parent();
-		//alert($(this).closest('tr')[0].attr("id"))
-		//alert(dataRow.attr("id")); 
-		//$("#orderQuantity").val(dataRow.data("quantity"));
-		//$("#salesagent").val(dataRow.data("agent"));
-		//$("input[name=itementry][value=" + dataRow.data("id") + "]").prop('checked', true);
-	//});
-	
-	/*
-	$("#tbentries > tr > td").click(function () {
-		alert(this.rowIndex); 
-	});
-	*/
-=======
 	Number.prototype.between  = function (a, b, inclusive) {
 	    var min = Math.min.apply(Math, [a,b]),
 	        max = Math.max.apply(Math, [a,b]);
@@ -216,7 +195,6 @@ $(document).ready(function() {
 		$("input[name=itementry][value=" + dataRow.data("id") + "]").prop('checked', true);
     });
 
->>>>>>> b5a2680897dc929bd78a299ff5db7089259daa78
 	$('#itemTable tr').click(function() {
 	    $(this).find('td input:radio').prop('checked', true);
 	    
@@ -335,25 +313,3 @@ $(document).ready(function() {
 	    } 
 	  }
 	}
-	
-	function searchCustomer() {
-		  // Declare variables 
-		  var input, filter, table, tr, td, td1, i;
-		  input = document.getElementById("entrySearch");
-		  filter = input.value.toUpperCase();
-		  table = document.getElementById("itemTable");
-		  tr = table.getElementsByTagName("tr");
-
-		  // Loop through all table rows, and hide those who don't match the search query
-		  for (i = 0; i < tr.length; i++) {
-		    td = tr[i].getElementsByTagName("td")[0];
-		   
-		    if (td) {
-		      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-		        tr[i].style.display = "";
-		      } else {
-		        tr[i].style.display = "none";
-		      }
-		    } 
-		  }
-		}
