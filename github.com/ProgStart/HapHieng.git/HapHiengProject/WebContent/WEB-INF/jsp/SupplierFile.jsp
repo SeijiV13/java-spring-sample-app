@@ -106,11 +106,14 @@
 		<h3>Supplier File</h3>
 		<br>
 		<c:if test="${hasError == 'true'}">
-			<div class="alert alert-warning">Cannot Edit Deatils, You have
-				not selected a Customer</div>
+			<div class="alert alert-warning">Cannot Edit Details, You have
+				not selected a Supplier</div>
 		</c:if>
 		<c:if test="${hasError == 'false'}">
-			<div class="alert alert-success">Successfully edited customer</div>
+			<div class="alert alert-success">Successfully edited Supplier</div>
+		</c:if>
+		<c:if test="${insertSuccess == 'true'}">
+			<div class="alert alert-success">new supplier has been created</div>
 		</c:if>
 		<div class="row">
 			<ul class="nav nav-tabs">
@@ -198,12 +201,19 @@
 											placeholder="Initial Balance" type="text"
 											class="form-control" id="initialbalance" name="initialbalance">
 									</div>
-                                
-                                <input type="hidden" name="${_csrf.parameterName}"
-							    value="${_csrf.token}" />
-
+									
+	
 
 								</div>
+								<div class="col-md-6">
+								<div class="form-group">
+										<label for="remaining">Remaining</label> <input
+											placeholder="Remaining" type="text"
+											class="form-control" id="remaining" name="remaining">
+									</div>
+								</div>
+								 <input type="hidden" name="${_csrf.parameterName}"
+							    value="${_csrf.token}" />
 								
 								<div class="text-right" style="padding: 5px;">
 									<button type="submit" class="btn btn-primary">Edit
@@ -214,59 +224,36 @@
 							</div>
 						</div>
 						</form>
-						<div class="form-container">
-							<h3>Update New Costing</h3>
-							<div class="row">
-								<div class="col-md-6">
+						
+			<!--/# TABLE FOR CARD TYPE -->
+			<h3>Costing</h3>
+			<div class="table-responsive">
+				<table class="table" id="priceListTable">
+					<thead>
+						<tr>
+							<th class="bg_dblue">Item Code</th>
+							<th class="bg_dblue">Cost</th>
+							<th class="bg_dblue">New Date</th>
+							<th class="bg_dblue">New Cost</th>
+						</tr>
+		
+					</thead>
+					<tbody id="priceListBody">
+					<c:forEach var="item" items="${supplierPriceList}">
+						<tr> 
+						    <td class="col1" hidden>${item.supplier_code}</td>
+							<td>${item.item_code}</td>
+							<td>${item.cost}</td>
+							<td>${item.new_date}</td>
+							<td>${item.new_cost}</td>
 
-									<div class="form-group input-daterange"
-										data-provide="datepicker">
-										<label for="creditlimit">Date</label> <input
-											placeholder="mm/dd/yy" type="text" class="form-control"
-											id="date">
-									</div>
+							
 
-									<div class="form-group">
-										<label for="variable">Variable</label> <select
-											class="form-control">
-											<option value="">Please Select</option>
-										</select>
-									</div>
-
-								</div>
-								<div class="col-md-6">
-
-									<div class="form-group">
-										<label for="operators">Operator</label> <select
-											class="form-control">
-											<option value="">Please Select</option>
-										</select>
-									</div>
-
-									<div class="form-group">
-										<label for="value">Value</label> <input type="text"
-											class="form-control" id="value">
-
-									</div>
-
-
-								</div>
-
-							</div>
-							<div class="row">
-								<div class="col-md-3"></div>
-								<div class="col-md-3"></div>
-								<div class="col-md-3"></div>
-
-								<div class="col-md-3">
-
-									<button class="form-control  bg_dblue">Calculate</button>
-								</div>
-							</div>
-						</div>
-
-					
-
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 
 				</div>
 				<div id="browsetype" class="tab-pane fade in active">
@@ -280,7 +267,7 @@
 								<div class="form-group">
 									<label for="searchbysuppliercode">Supplier Code Filter</label>
 									<input id="searchbycuscode" class="form-control"
-										placeholder="Customer Code" type="text" name="supplier_code">
+										placeholder="Supplier Code" type="text" name="supplier_code">
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -355,31 +342,8 @@
 				</div>
 
 			</div>
-
-			<br>
-			<!--/# TABLE FOR CARD TYPE -->
-			<h3>Costing</h3>
-			<div class="table-responsive">
-				<table class="table">
-					<thead>
-						<tr>
-							<th class="bg_dblue">Item Code</th>
-							<th class="bg_dblue">Cost</th>
-							<th class="bg_dblue">New Date</th>
-							<th class="bg_dblue">New Cost</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-
-						</tr>
-					</tbody>
-				</table>
-			</div>
+         
+		
 			<!-- #/BUTTON TRANSACTIONS -->
 			<div class="btn-group btn-group-justified" role="group"
 				aria-label="...">
@@ -430,6 +394,18 @@ $(document).ready(function(){
 			$("#remaining").val($("#"+rownum[0]+"-remaining").text());
 			
 			$('input:radio[name=optradio]').val([$("#"+rownum[0]+"-customertype").text()]);
+			
+			   //filter price list table
+            
+            $.each($("#priceListTable #priceListBody").find("tr"), function () {
+
+                 if($(this).children(".col1").text() == $("#"+ rownum[0]+ "-suppliercode").text()){ 
+              	   $(this).show();
+                 }else{
+              	  
+              	   $(this).hide();
+                 }
+            });
 			
 		  } 
 	   });

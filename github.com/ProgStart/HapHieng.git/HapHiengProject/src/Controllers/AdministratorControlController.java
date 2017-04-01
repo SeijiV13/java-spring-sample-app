@@ -43,7 +43,7 @@ UserImplem userImplem;
 		entriesFunctions.put("purchase_return_entries", "Purchase Return Entries");
 	 	entriesFunctions.put("inventory_quantity_adjustment_entries", "Inventory Quantity Adjustment Entries");
 		entriesFunctions.put("inventory_damage_entries", "Inventory Damage Entries");
-
+		entriesFunctions.put("transfering_stock_entries", "Transferring Stock Entries");
 		entriesFunctions.put("generate_sales_counter_receipts","Generate Sales Counter Receipts");
 		entriesFunctions.put("collection_from_customers_entries","Collection from Customers Entries");
 		entriesFunctions.put("payment_to_suppliers_entries","Payment to Suppliers Entries");
@@ -114,7 +114,7 @@ UserImplem userImplem;
 		//IF MODIFIED IS ENTRIES
 		if(transactionTab.equals("entries")){
 			int se_active,sre_active,pe_active, pre_active,iqae_active,
-			 ide_active, gscr_active,cfce_active, ptse_active;
+			 ide_active, tse_active, gscr_active,cfce_active, ptse_active;
 			
 			String sales_entries = request.getParameter("sales_entries");
 			String sales_return_entries = request.getParameter("sales_return_entries");
@@ -122,6 +122,7 @@ UserImplem userImplem;
 			String purchase_return_entries = request.getParameter("purchase_return_entries");
 			String inventory_quantity_adjustment_entries = request.getParameter("inventory_quantity_adjustment_entries");
 			String inventory_damage_entries = request.getParameter("inventory_damage_entries");
+			String transfering_stock_entries = request.getParameter("transfering_stock_entries");
 			String generate_sales_counter_receipts = request.getParameter("generate_sales_counter_receipts");
 			String collection_from_customers_entries = request.getParameter("collection_from_customers_entries");
 			String payment_to_suppliers_entries = request.getParameter("payment_to_suppliers_entries");
@@ -169,6 +170,13 @@ UserImplem userImplem;
 				ide_active = 1;
 			}
 			
+			if(transfering_stock_entries == null){
+				tse_active = 0;
+			}
+			else{
+				tse_active = 1;
+			}
+			
 			if(generate_sales_counter_receipts  == null){
 				gscr_active = 0;
 			}
@@ -189,7 +197,7 @@ UserImplem userImplem;
 				ptse_active = 1;
 			}
 			//UPDATE ENTRIES ACCESS OF THE USER
-			userImplem.modifyEntriesofUser(user, se_active, sre_active, pe_active, pre_active, iqae_active, ide_active, gscr_active, cfce_active, ptse_active);
+			userImplem.modifyEntriesofUser(user, se_active, sre_active, pe_active, pre_active, iqae_active, ide_active, tse_active, gscr_active, cfce_active, ptse_active);
 		
 		}
 		

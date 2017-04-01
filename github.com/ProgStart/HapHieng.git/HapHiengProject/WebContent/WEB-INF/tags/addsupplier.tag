@@ -15,8 +15,9 @@
 			</div>
 
 			<!-- MODAL FORM -->
-			<div class="modal-body">
-				<form>
+			<form method="POST" action="/HapHiengProject/SupplierFileInsert">
+				<div class="modal-body">
+
 					<div class="form-container">
 						<h3>Personal Details</h3>
 						<div class="row">
@@ -25,13 +26,13 @@
 								<div class="form-group">
 									<label for="suppliercode">Supplier Code</label> <input
 										placeholder="Supplier Code" type="text" class="form-control"
-										name="suppliercode">
+										name="suppliercode" required>
 								</div>
 
 								<div class="form-group">
 									<label for="description">Description</label> <input
 										placeholder="Description" type="text" class="form-control"
-										name="description">
+										name="description" required>
 								</div>
 
 							</div>
@@ -90,17 +91,28 @@
 
 							</div>
 
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="remaining">Remaining</label> <input
+										placeholder="Remaining" type="text" class="form-control"
+										id="remaining" name="remaining">
+								</div>
+							</div>
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+	                        <!-- SET REQUESTING URL -->
+							<c:set var="req" value="${pageContext.request}" />
+                            <c:set var="url">${req.requestURL}</c:set>
+                            <input name="requestingurl" type="text" value="${url}" hidden>
 						</div>
 					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Add Supplier</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-				</form>
-
-			</div>
-			<div class="modal-footer">
-			    <button type="submit" class="btn btn-primary">Add Supplier</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				
-			</div>
+				</div>
+			</form>
 		</div>
 		<!-- /.modal-content -->
 	</div>

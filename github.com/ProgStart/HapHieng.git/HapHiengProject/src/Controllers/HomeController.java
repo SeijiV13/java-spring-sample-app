@@ -56,6 +56,7 @@ private ServletContext servletContext;
         ArrayList<Agent> agents = agentImplem.getAllAgents(); 
         servletContext.setAttribute("agents", agents);
         
+     
 		//CHECK PRINCIPAL IF SET OF USERDETAILS
 		if (principal instanceof UserDetails) {
 			String username = ((UserDetails) principal).getUsername();
@@ -84,6 +85,7 @@ private ServletContext servletContext;
 		session.setAttribute("salesReturnEntries", retrievedEntriesAccess.getSalesReturnEntries());
 		session.setAttribute("purchaseEntries", retrievedEntriesAccess.getPurchaseEntries());
 		session.setAttribute("purchaseReturnEntries", retrievedEntriesAccess.getPurchaseReturnEntries());
+		session.setAttribute("transferingStockEntries", retrievedEntriesAccess.getTransferingStockEntries());
 		session.setAttribute("inventoryQuantityAdjustmentEntries", retrievedEntriesAccess.getInventoryQuantityAdjustmentEntries());
 		session.setAttribute("inventoryDamageEntries", retrievedEntriesAccess.getInventoryDamageEntries());
 	    session.setAttribute("generateSalesCounterReceipts", retrievedEntriesAccess.getGenerateSalesCounterReceipts());
@@ -97,6 +99,7 @@ private ServletContext servletContext;
 	    		               retrievedEntriesAccess.getPurchaseReturnEntries() +
 	    		               retrievedEntriesAccess.getInventoryQuantityAdjustmentEntries() +
 	    		               retrievedEntriesAccess.getInventoryDamageEntries() +
+	    		               retrievedEntriesAccess.getTransferingStockEntries()+
 	    		               retrievedEntriesAccess.getGenerateSalesCounterReceipts() +
 	    		               retrievedEntriesAccess.getCollectionFromCustomersEntries() +
 	    		               retrievedEntriesAccess.getPaymentToSuppliersEntries();

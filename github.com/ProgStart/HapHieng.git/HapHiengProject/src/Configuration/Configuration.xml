@@ -11,7 +11,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <typeAlias alias="Customer" type="Models.Customer"/>
 <typeAlias alias="Supplier" type="Models.Supplier"/>
 <typeAlias alias="Agent" type="Models.Agent"/>
+<typeAlias alias="Sales" type="Models.Sales"/>
 <typeAlias alias="PriceList" type="Models.PriceList"/>
+<typeAlias alias="Purchases" type="Models.Purchases"/>
+<typeAlias alias="SupplierPriceList" type="Models.SupplierPriceList"/>
 </typeAliases>
 
 <mappers>

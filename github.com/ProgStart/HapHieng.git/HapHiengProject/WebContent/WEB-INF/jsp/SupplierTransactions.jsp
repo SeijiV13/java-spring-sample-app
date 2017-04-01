@@ -103,10 +103,20 @@
 		
 		<hr>
 		<div class="row head_nav">
-			<div class="col-md-12">
+			<div class="col-md-9">
 				<select class="form-control">
-				  	<option>Supplier</option>
+				  	<option value="">Select Supplier</option>
+				  	<c:forEach var="supplier" items="${sessionScope.suppliers}">
+				  	<option value="${supplier.supplier_code}">${supplier.supplier_code}</option>.
+				  	</c:forEach>
 				 </select>
+			</div>
+			<div class="col-md-3">
+				<button type="submit" class="btn btn-default">
+				   Filter
+				</button>
+				<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
 			</div>
 		</div>
 		
@@ -136,87 +146,7 @@
 					<td class=""></td>
 					
 				</tr>
-				
-				<tr>
-	           		<td class="">12/3/2014</td>
-					<td class="">Sample Text</td>
-					<td class="">PH Peso</td>
-					<td class=""></td>
-					<td class="">2130</td>
-					
-				</tr>
-				
-				<tr>
-	           		<td class="">12/3/2014</td>
-					<td class="">Sample Text</td>
-					<td class="">Yuan</td>
-					<td class="">1600</td>
-					<td class=""></td>
-					
-				</tr>
-				
-				<tr>
-	           		<td class="">12/3/2014</td>
-					<td class="">Sample Text</td>
-					<td class="">PH Peso</td>
-					<td class=""></td>
-					<td class="">2130</td>
-					
-				</tr>
-				
-				<tr>
-	           		<td class="">12/3/2014</td>
-					<td class="">Sample Text</td>
-					<td class="">Yuan</td>
-					<td class="">1600</td>
-					<td class=""></td>
-					
-				</tr>
-				
-				<tr>
-	           		<td class="">12/3/2014</td>
-					<td class="">Sample Text</td>
-					<td class="">PH Peso</td>
-					<td class=""></td>
-					<td class="">2130</td>
-					
-				</tr>
-				
-				<tr>
-	           		<td class="">12/3/2014</td>
-					<td class="">Sample Text</td>
-					<td class="">Yuan</td>
-					<td class="">1600</td>
-					<td class=""></td>
-					
-				</tr>
-				
-				<tr>
-	           		<td class="">12/3/2014</td>
-					<td class="">Sample Text</td>
-					<td class="">PH Peso</td>
-					<td class=""></td>
-					<td class="">2130</td>
-					
-				</tr>
-				
-				<tr>
-	           		<td class="">12/3/2014</td>
-					<td class="">Sample Text</td>
-					<td class="">Yuan</td>
-					<td class="">1600</td>
-					<td class=""></td>
-					
-				</tr>
-				
-				<tr>
-	           		<td class="">12/3/2014</td>
-					<td class="">Sample Text</td>
-					<td class="">PH Peso</td>
-					<td class=""></td>
-					<td class="">2130</td>
-					
-				</tr>
+		
 				
 	          </tbody>
 	        </table> 

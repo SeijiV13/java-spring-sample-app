@@ -21,4 +21,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  	 telephone = #{4}, fax = #{5}, email = #{6}, terms = #{7}, initial_balance = #{8}, remaining = #{9} WHERE
 	  	 supplier_code = #{0}
 	  </update>
+	  
+	    <select id="getAllSupplierPurchases" resultType="Purchases">
+      SELECT * FROM PURCHASES_TABLE
+      </select>
+    
+    <select id="getFilteredSupplierPurchases" resultType="Purchases">
+      SELECT * FROM PURCHASES_TABLE WHERE supplier_code LIKE #{0} AND reference_no LIKE #{1}
+    </select>
+    
+    <select id="getAllSupplierPurchasesReturns" resultType="Purchases">
+      SELECT * FROM PURCHASES_RETURN_TABLE
+    </select>
+    
+    <select id="getFilteredSupplierPurchasesReturns" resultType="Purchases">
+      SELECT * FROM PURCHASES_RETURN_TABLE WHERE supplier_code LIKE #{0} AND reference_no LIKE #{1}
+    </select>
+    
+    <select id="getSupplierPriceList" resultType="SupplierPriceList">
+     SELECT * FROM SUPPLIER_PRICING_TABLE	
+     </select>
+     
+     <insert id="addNewSupplier">
+     INSERT INTO SUPPLIER_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7}, #{8}, #{9})	
+     </insert>
 </mapper>

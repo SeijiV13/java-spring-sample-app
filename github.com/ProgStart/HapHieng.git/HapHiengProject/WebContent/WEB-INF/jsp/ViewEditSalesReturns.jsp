@@ -98,37 +98,37 @@
 		<h3>View/Edit Sales Returns</h3>
 		<br>
 		<div class="row">
-			<form class="form-container">
+			<form class="form-container" method="POST" action="/HapHiengProject/ViewEditSalesReturnsSubmit">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group">
 							<label for="customerfilter">Customer Filter</label> <select
-								class="form-control" id="customerfilter">
-								<option>Select Customer</option>
+								class="form-control" id="customerfilter" name="customer">
+								<option value="">Select Customer</option>
+								<c:forEach var="customer" items="${sessionScope.customers}">
+								<option value="${customer.customer_code}">${customer.description}</option>
+								</c:forEach>
+								
 							</select>
 
 						</div>
 					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label for="agentfilter">Agent Filter</label> <select
-								class="form-control" id="agentfilter">
-								<option>Select Agent</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-4">
+				
+					<div class="col-md-6">
 						<div class="form-group">
 							<label for="reffilter">SR No. Filter</label> <input
-								class="form-control" placeholder="SR. No.">
+								class="form-control" placeholder="SR. No." name="srno">
 
 						</div>
 					</div>
+					
+					<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="pull-right">
-							<button class="btn btn-default">Filter</button>
+							<button type="submit" class="btn btn-default">Filter</button>
 						</div>
 					</div>
 				</div>
@@ -147,109 +147,23 @@
 								<th class="bg_dblue text-nowrap">Customer</th>
 								<th class="bg_dblue text-nowrap">Amount</th>
 								<th class="bg_dblue text-nowrap">Balance</th>
-								<th class="bg_dblue text-nowrap">Agent</th>
-						
-
+							
+					
 							</tr>
 						</thead>
 						<tbody>
-
+                            <c:forEach var="sale" items="${sales}">
 							<tr style="cursor: pointer;" data-toggle="modal"
 								data-target="#myModal">
 
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
+								<td class="">${sale.sr_no}</td>
+								<td class="">${sale.date}</td>
+								<td class="">${sale.customer_code}</td>
+								<td class="">${sale.amount}</td>
+								<td class="">${sale.balance}</td>
 
 							</tr>
-							
-							
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-
-							</tr>
-							
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-
-							</tr>
-							
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-
-							</tr>
-							
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-
-							</tr>
-							
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-
-							</tr>
-							
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-
-							</tr>
-							
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-
-							</tr>
+							</c:forEach>
 
 					
 					

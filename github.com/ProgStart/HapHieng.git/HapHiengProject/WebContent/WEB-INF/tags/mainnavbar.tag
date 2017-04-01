@@ -57,6 +57,11 @@
 						</button></a>
 						</c:if>
 						
+						<c:if test="${transferingStockEntries == 1}">
+						<a href="TransferingStockEntries.htm"><button class="btn btn-info dropdown-toggle menu-button">
+							Transferring Stock Entries<span></span>
+						</button></a>
+						</c:if>
 							
 						<c:if test="${inventoryDamageEntries == 1}">
 						<a href="InventoryDamageEntries.htm"><button class="btn btn-info dropdown-toggle menu-button">

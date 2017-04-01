@@ -73,7 +73,7 @@
 					<form action="${logoutUrl}" method="post" id="logoutForm">
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
-					</form>
+					</form> 
 				</div>
 
 				<!-- MENU COUNTER ADDED BY SEIJI VILLAFRANCA 2016/11/19 -->
@@ -96,39 +96,38 @@
 	<div class="container-fluid">
 		<!-- TITLE OF PAGE -->
 		<h3>View/Edit Sales</h3>
-		<br>
+		<br> 
 		<div class="row">
-			<form class="form-container">
+			<form class="form-container" method="POST" action="/HapHiengProject/ViewEditSalesSubmit">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group">
 							<label for="customerfilter">Customer Filter</label> <select
-								class="form-control" id="customerfilter">
-								<option>Select Customer</option>
+								class="form-control" id="customerfilter" name="customer">
+								<option value="">Select Customer</option>
+								<c:forEach var="customer" items="${sessionScope.customers}">
+								   <option value="${customer.customer_code}">${customer.description}</option>
+								 </c:forEach>
 							</select>
 
 						</div>
 					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label for="agentfilter">Agent Filter</label> <select
-								class="form-control" id="agentfilter">
-								<option>Select Agent</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-4">
+			
+					<div class="col-md-6">
 						<div class="form-group">
 							<label for="reffilter">Ref No. Filter</label> <input
-								class="form-control" placeholder="Ref. No.">
+								class="form-control" placeholder="Ref. No." name="refno">
 
 						</div>
+						
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="pull-right">
-							<button class="btn btn-default">Filter</button>
+							<button type="submit" class="btn btn-default">Filter</button>
 						</div>
 					</div>
 				</div>
@@ -149,131 +148,31 @@
 								<th class="bg_dblue text-nowrap">PO #</th>
 								<th class="bg_dblue text-nowrap">Amount</th>
 								<th class="bg_dblue text-nowrap">Balance</th>
-								<th class="bg_dblue text-nowrap">Agent</th>
+						
 								<th class="bg_dblue text-nowrap">CtrRef</th>
 
 							</tr>
 						</thead>
 						<tbody>
-
+                           <c:forEach var="sale" items="${sessionScope.sales}">
 							<tr style="cursor: pointer;" data-toggle="modal"
 								data-target="#myModal">
 
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class=""></td>
-								<td class="">4,639</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-								<td class="">00000114</td>
+								<td class="">${sale.reference_no}</td>
+								<td class="">${sale.date }</td>
+								<td class="">${sale.customer_code}</td>
+								<td class="">${sale.terms}</td>
+								<td class="">${sale.po}</td>
+								<td class="">${sale.amount}</td>
+								<td class="">${sale.balance}</td>
+								<td class="">${sale.ctr_ref}</td>
 
 							</tr>
+                            </c:forEach>
+					
 
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class=""></td>
-								<td class="">4,639</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-								<td class="">00000114</td>
-
-							</tr>
-
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class=""></td>
-								<td class="">4,639</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-								<td class="">00000114</td>
-
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class=""></td>
-								<td class="">4,639</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-								<td class="">00000114</td>
-
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class=""></td>
-								<td class="">4,639</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-								<td class="">00000114</td>
-
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class=""></td>
-								<td class="">4,639</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-								<td class="">00000114</td>
-
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class=""></td>
-								<td class="">4,639</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-								<td class="">00000114</td>
-
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">SETS</td>
-								<td class="">0</td>
-								<td class=""></td>
-								<td class="">4,639</td>
-								<td class="">4,639</td>
-								<td class="">HapHieng</td>
-								<td class="">00000114</td>
-
-							</tr>
-
-
-
-
+			
+					
 						</tbody>
 					</table>
 				</div>

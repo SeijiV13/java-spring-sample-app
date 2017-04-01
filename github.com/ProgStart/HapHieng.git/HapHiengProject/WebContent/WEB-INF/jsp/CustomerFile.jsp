@@ -99,11 +99,14 @@
 		<h3>Customer File</h3>
 		<br>
 		<c:if test="${hasError == 'true'}">
-			<div class="alert alert-warning">Cannot Edit Deatils, You have
+			<div class="alert alert-warning">Cannot Edit Details, You have
 				not selected a Customer</div>
 		</c:if>
 		<c:if test="${hasError == 'false'}">
 			<div class="alert alert-success">Successfully edited customer</div>
+		</c:if>
+		<c:if test="${insertSuccess == 'true'}">
+			<div class="alert alert-success">new customer has been created</div>
 		</c:if>
 		<div class="row">
 			<ul class="nav nav-tabs">
@@ -270,7 +273,7 @@
 									<div class="form-group">
 										<label for="remarks">Remarks</label>
 										<textarea id="remarks" placeholder="Remarks"
-											class="form-control" rows="4"></textarea>
+											class="form-control" rows="4" name="remarks"></textarea>
 									</div>
 								</div>
 								<input type="hidden" name="${_csrf.parameterName}"
@@ -355,10 +358,11 @@
 							</div>
 						</div>
 
-						<!-- MODAL FOR ADD CUSTOMER -->
-						<modal:addcustomer />
+						
 
 					</form>
+					<!-- MODAL FOR ADD CUSTOMER -->
+						<modal:addcustomer />
 					<hr>
 
 					<!--/# TABLE FOR INVENTORY FILE-->

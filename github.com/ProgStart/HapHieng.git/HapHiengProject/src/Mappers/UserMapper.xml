@@ -26,9 +26,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	   purchase_return_entries = #{4},
 	   inventory_quantity_adjustment_entries = #{5},
 	   inventory_damage_entries = #{6},
-	   generate_sales_counter_receipts = #{7},
-	   collection_from_customers_entries = #{8},
-	   payment_to_suppliers_entries = #{9}
+	   transfering_stock_entries = #{7},
+	   generate_sales_counter_receipts = #{8},
+	   collection_from_customers_entries = #{9},
+	   payment_to_suppliers_entries = #{10}
 	   WHERE username = #{0}
 	   
 	</update>
@@ -91,6 +92,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	   purchase_return_entries as purchaseReturnEntries,
 	   inventory_quantity_adjustment_entries as inventoryQuantityAdjustmentEntries,
 	   inventory_damage_entries as inventoryDamageEntries,
+	   transfering_stock_entries as transferingStockEntries,
 	   generate_sales_counter_receipts as generateSalesCounterReceipts,
 	   collection_from_customers_entries as collectionFromCustomersEntries,
 	   payment_to_suppliers_entries as paymentToSuppliersEntries FROM ENTRIES_FUNCTIONS_TABLE

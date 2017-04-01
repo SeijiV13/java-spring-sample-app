@@ -9,7 +9,7 @@ public interface UserMapper {
 	public void changePassword(String password, String user);
 	public String checkOldPasswordValidity(String username);
 	public ArrayList<String> retrieveAllUsers();
-	public void modifyEntriesofUser(String user, int se_active, int sre_active, int pe_active, int pre_active, int iqae_active, int ide_active, int gscr_active, int cfce_active, int ptse_active);
+	public void modifyEntriesofUser(String user, int se_active, int sre_active, int pe_active, int pre_active, int iqae_active, int ide_active, int tse_active, int gscr_active, int cfce_active, int ptse_active);
     public void modifyFilesofUser(String user, int if_active, int cf_active, int sf_active, int af_active, int cbf_active);
     public void modifyReportsofUser(String user, int sr_active, int srr_active, int pr_active, int prr_active, int iiot_active, int cl_active, int sl_active, int al_active);
     public void modifyProductListofUser(String user, int pli_active, int pll_active, int ei_active, int el_active, int enp_active, int i_active, int lpbc_active, int dis_active, int qai_active);

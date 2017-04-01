@@ -138,8 +138,8 @@
 						</p>
 						<p>Back End Developer</p>
 						<hr>
-						<p>Email: villafrancasra@gmail.com</p>
-						<p>Phone Number: 09052895020</p>
+						<p>Email: xtian.cirineo@gmail.com</p>
+						<p>Phone Number: 09155956827</p>
 					</div>
 					<div class="col-md-3">
 						<p>
@@ -148,7 +148,7 @@
 						<p>Front End Developer</p>
 						<hr>
 						<p>Email: villafrancasra@gmail.com</p>
-						<p>Phone Number: 09052895020</p>
+						<p>Phone Number: 090528295426</p>
 					</div>
 					<div class="col-md-3">
 						<p>
@@ -157,7 +157,7 @@
 						<p>Database Programmer</p>
 						<hr>
 						<p>Email: harleytan09@gmail.com</p>
-						<p>Phone Number: 09052895020</p>
+						<p>Phone Number: 09173845850</p>
 					</div>
 				</div>
 			</div>

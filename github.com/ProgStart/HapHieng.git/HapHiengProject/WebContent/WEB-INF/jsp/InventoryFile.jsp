@@ -211,14 +211,13 @@
 									<c:set var="row" value="0" />
 									<c:forEach var="product" items="${sessionScope.products}">
 
-										<tr style="cursor: pointer;" data-toggle="modal"
-											data-target="#myModal">
+										<tr style="cursor: pointer;" data-toggle="modal">
 											<td class=""><input id="${product.item_code}|select"
 												name="select" type="radio" class="select" /></td>
 											<td class="">${row = row + 1}</td>
-											<td class=""><button value="${product.item_code}"
+											<td class=""><button  value="${product.item_code}"
 													data-target="#iteminout" data-toggle="modal"
-													class="btn btn-primary">${product.item_code }</button></td>
+													class="btn btn-primary itemcodebutton">${product.item_code}</button></td>
 											<td id="${product.item_code}-itemcode" class="">${product.item_code}</td>
 											<td id="${product.item_code}-category" class="">${product.category}</td>
 											<td id="${product.item_code}-description" class="">${product.description}</td>
@@ -434,6 +433,32 @@
 							</div>
 						</div>
 					</form>
+					
+						<h4>Pricing</h4>
+			<div class="tbl_wrap">
+				<div class="table-responsive">
+					<table class="table" id="priceListTable">
+
+						<thead>
+							<tr>
+								<th class="bg_dblue text-nowrap">Customer Code</th>
+								<th class="bg_dblue text-nowrap">Price</th>
+							</tr>
+						</thead>
+						<tbody id="priceListBody">
+						    <c:forEach var="item" items="${priceList}">
+							<tr>
+							    <td class="col1" hidden>${item.item_code}</td>
+								<td>${item.customer_code}</td>
+								<td>${item.price}</td>
+
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
 				</div>
 
 			</div>
@@ -460,8 +485,8 @@
 				aria-label="...">
 
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-primary">
-						<span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+					<button type="button" class="btn btn-primary" data-target="#iteminout" data-toggle="modal">
+						<span class="glyphicon glyphicon-file" aria-hidden="true" ></span>
 						Item Transactions
 					</button>
 				</div>
@@ -481,31 +506,6 @@
 				</div>
 			</div>
 			<br>
-			<h4>Pricing</h4>
-			<div class="tbl_wrap">
-				<div class="table-responsive">
-					<table class="table" id="priceListTable">
-
-						<thead>
-							<tr>
-								<th class="bg_dblue text-nowrap">Customer Code</th>
-								<th class="bg_dblue text-nowrap">Price</th>
-							</tr>
-						</thead>
-						<tbody id="priceListBody">
-						    <c:forEach var="item" items="${priceList}">
-							<tr>
-							    <td class="col1" hidden>${item.item_code}</td>
-								<td>${item.customer_code}</td>
-								<td>${item.price}</td>
-
-							</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-
-			</div>
 
 		</div>
 
@@ -513,152 +513,8 @@
 
 </div>
 
-<!-- MODAL FOR ITEM IN OUT TRANSACTION -->
-<div class="modal fade" id="iteminout" role="dialog">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h3 class="modal-title">Item In-Out Transaction</h3>
-			</div>
-
-			<!-- MODAL FORM -->
-			<div class="modal-body">
-
-				<div class="row">
-					<div class="col-md-4">
-						<select class="form-control">
-							<option>Item Code/Description</option>
-						</select>
-
-						<h4>Clients</h4>
-
-						<div class="radio">
-							<label> <input type="radio" class="IOTradios"
-								name="IOTRadios" id="IOTradio1" value="option1"> All
-								Supplies
-							</label>
-						</div>
-
-						<div class="radio">
-							<label> <input type="radio" class="IOTradios"
-								name="IOTRadios" id="IOTradio2" value="option2"> All
-								Sales Transaction
-							</label>
-						</div>
-
-						<div class="radio">
-							<label> <input type="radio" name="IOTRadios"
-								id="IOTradio3" value="option3"> <select
-								class="form-control IOTselect" disabled>
-									<option>Select Client</option>
-							</select>
-							</label>
-						</div>
-					</div>
-					<div class="col-md-4">
-
-						<label for="from">Date from</label>
-						<div class="input-group input-daterange col-md-10" id="from">
-							<input type="text" class="form-control" placeholder="mm/dd/yyyy">
-						</div>
-
-						<label for="to">Date To</label>
-						<div class="input-group input-daterange col-md-10" id="to">
-							<input type="text" class="form-control" placeholder="mm/dd/yyyy">
-						</div>
-
-						<div class="form-group txtbox">
-							<label class="control-label" for="IOTIn">Total In:</label> <input
-								type="text" class="form-control" id="IOTIn" readonly>
-
-						</div>
-
-						<div class="form-group txtbox">
-							<label class="control-label" for="IOTOut">Total Out:</label> <input
-								type="text" class="form-control" id="IOTOut" readonly>
-
-						</div>
-
-						<div class="form-group txtbox">
-							<label class="control-label" for="IOTAdj">Total Adj:</label> <input
-								type="text" class="form-control" id="IOTAdj" readonly>
-						</div>
-
-
-
-					</div>
-					<div class="col-md-4">
-						<button class="btn btn-default">
-							<span class="fa fa-search"></span> Find Reference
-						</button>
-						<button class="btn btn-default">
-							<span class="fa fa-print"></span> Print
-						</button>
-
-						<div class="form-group txtbox">
-							<label class="control-label" for="inoutadj">In-Out+Adj:</label> <input
-								type="text" class="form-control" id="inoutadj" readonly /> <label
-								class="control-label" for="stockquantity">StockQty:</label> <input
-								type="text" class="form-control" id="stockquantity" readonly />
-
-							<label class="control-label" for="totaldamage">Total
-								Damage:</label> <input type="text" class="form-control" id="totaldamage"
-								readonly /> <label class="control-label" for="pendingso">Pending
-								SO:</label> <input type="text" class="form-control" id="pendingso"
-								readonly>
-						</div>
-
-					</div>
-
-					<!-- ========================== TABLE =========================== -->
-
-					<div style="padding: 10px" class="tbl_wrap">
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th class="bg_dblue">Date</th>
-									<th class="bg_dblue">Client</th>
-									<th class="bg_dblue">Reference</th>
-									<th class="bg_dblue">Price</th>
-									<th class="bg_dblue">Currency</th>
-									<th class="bg_dblue">Qty_In</th>
-									<th class="bg_dblue">Qty_Out</th>
-									<th class="bg_dblue">Qty_Adj</th>
-									<th class="bg_dblue">Balance</th>
-									<th class="bg_dblue">Agent</th>
-								</tr>
-							</thead>
-							<tbody>
-
-								<tr data-toggle="modal" data-target="#IOTModal">
-									<td class="">12/3/2014</td>
-									<td class="">Sumpit</td>
-									<td class="">169</td>
-									<td class="">235</td>
-									<td class="">Yuan</td>
-									<td class="">1600</td>
-									<td class="">10</td>
-									<td class=""></td>
-									<td class="">2,374</td>
-									<td class="">Bong</td>
-								</tr>
-
-							</tbody>
-						</table>
-					</div>
-
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-	</div>
-
-</div>
+<!-- MODAL FOR ITEM IN OUT -->
+<modal:inout/>
 
 
 <!-- /#PAGE CONTENT WRAPPER -->
@@ -667,6 +523,8 @@
 <!-- FOR LOGOUT SPRING SECURITY FUNCTION -->
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		
 		function formSubmit() {
 			document.getElementById("logoutForm").submit();
 		}
@@ -676,6 +534,8 @@
 				let productId = $(this).attr("id");
 				
 				let id = productId.split("|");
+				let chosenitemcode = $("#" + id[0] + "-itemcode").text();
+				$("#itemcodeinoutmodal").val(chosenitemcode);
 				
 				$("#itemcode").val($("#" + id[0] + "-itemcode").text());
 				$("#category").val($("#" + id[0] + "-category").text());
@@ -716,6 +576,11 @@
 				
 			}
 		});
+		
+		//pass value of itemcode in inoutmodal
+		$(".itemcodebutton").click(function(){
+			$("#itemcodeinoutmodal").val($(this).text());
+		})
 
 	});
 </script>

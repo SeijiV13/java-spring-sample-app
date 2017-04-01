@@ -40,8 +40,8 @@ public class UserImplem {
          return users;
      }
      
-     public void modifyEntriesofUser(String user, int se_active, int sre_active, int pe_active, int pre_active,  int iqae_active, int ide_active, int gscr_active, int cfce_active, int ptse_active ){
-    	 userMapper.modifyEntriesofUser(user, se_active, sre_active, pe_active, pre_active, iqae_active, ide_active, gscr_active, cfce_active, ptse_active);
+     public void modifyEntriesofUser(String user, int se_active, int sre_active, int pe_active, int pre_active,  int iqae_active, int ide_active, int tse_active, int gscr_active, int cfce_active, int ptse_active ){
+    	 userMapper.modifyEntriesofUser(user, se_active, sre_active, pe_active, pre_active, iqae_active, ide_active, tse_active, gscr_active, cfce_active, ptse_active);
      }
      
      public void modifyFilesofUser(String user, int if_active, int cf_active, int sf_active, int af_active, int cbf_active){

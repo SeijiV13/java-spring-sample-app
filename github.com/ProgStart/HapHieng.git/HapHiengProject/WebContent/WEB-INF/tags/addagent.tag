@@ -15,8 +15,9 @@
 			</div>
 
 			<!-- MODAL FORM -->
+			<form method="POST" action="/HapHiengProject/AgentFileInsert">
 			<div class="modal-body">
-				<form>
+				
 					<div class="form-container">
 						<h3>Personal Details</h3>
 						<div class="row">
@@ -25,13 +26,13 @@
 								<div class="form-group">
 									<label for="suppliercode">name</label> <input
 										placeholder="Name" type="text" class="form-control"
-										name="name">
+										name="agentname" required>
 								</div>
 
 								<div class="form-group">
 									<label for="description">Description</label> <input
 										placeholder="Description" type="text" class="form-control"
-										name="description">
+										name="description" required>
 								</div>
 
 							</div>
@@ -83,18 +84,27 @@
 								</div>
 
 							</div>
+							
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+	                        <!-- SET REQUESTING URL -->
+							<c:set var="req" value="${pageContext.request}" />
+                            <c:set var="url">${req.requestURL}</c:set>
+                            <input name="requestingurl" type="text" value="${url}" hidden>
 
 						</div>
 					</div>
 
-				</form>
+				
 
 			</div>
 			<div class="modal-footer">
-			    <button type="submit" class="btn btn-primary">Add Supplier</button>
+			    <button type="submit" class="btn btn-primary">Add Agent</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				
 			</div>
+			</form>
+			
 		</div>
 		<!-- /.modal-content -->
 	</div>

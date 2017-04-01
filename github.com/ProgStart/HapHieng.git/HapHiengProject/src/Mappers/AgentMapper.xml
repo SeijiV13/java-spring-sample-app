@@ -12,5 +12,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    SELECT * FROM AGENT_TABLE where name LIKE #{0} AND
 	    description LIKE #{1} AND (address LIKE #{2} OR address2 LIKE #{2})
 	 </select>
+	 
+	 <update id="editAgentDetails">
+	  UPDATE AGENT_TABLE SET description = #{1}, address = #{2},
+	                         address2 = #{3}, telephone = #{4},
+	                         cellphone = #{5}, email = #{6},
+	                         remarks = #{7} WHERE name = #{0}
+	 </update>
+	 <insert id="addNewAgent">
+	 INSERT INTO AGENT_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7})	
+	 </insert>
 
 </mapper>

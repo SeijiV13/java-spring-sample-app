@@ -10,6 +10,7 @@ public class User {
     int purchaseReturnEntries = 0;
 	int inventoryQuantityAdjustmentEntries = 0;
 	int inventoryDamageEntries = 0;
+	int transferingStockEntries = 0;
 	int generateSalesCounterReceipts = 0;
 	int collectionFromCustomersEntries = 0;
 	int paymentToSuppliersEntries = 0;
@@ -57,9 +58,15 @@ public class User {
 	
 	
 	//ENTRIES GETTER AND SETTER
-	
+	 
 	public String getUsername() {
 		return username;
+	}
+	public int getTransferingStockEntries() {
+		return transferingStockEntries;
+	}
+	public void setTransferingStockEntries(int transferingStockEntries) {
+		this.transferingStockEntries = transferingStockEntries;
 	}
 	public void setUsername(String username) {
 		this.username = username;

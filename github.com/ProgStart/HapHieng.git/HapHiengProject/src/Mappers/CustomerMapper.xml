@@ -38,6 +38,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       status = #{5}, bank_remarks = #{6} WHERE customer_code = #{0}
     </update>
     
-   
+    <select id="getAllCustomerSales" resultType="Sales">
+      SELECT * FROM SALES_TABLE
+    </select>
+    
+    <select id="getFilteredCustomerSales" resultType="Sales">
+      SELECT * FROM SALES_TABLE WHERE customer_code LIKE #{0} AND reference_no LIKE #{1}
+    </select>
+    
+    <select id="getAllCustomerSalesReturns" resultType="Sales">
+      SELECT * FROM SALES_RETURN_TABLE
+    </select>
+    
+    <select id="getFilteredCustomerSalesReturns" resultType="Sales">
+      SELECT * FROM SALES_RETURN_TABLE WHERE customer_code LIKE #{0} AND sr_no LIKE #{1}
+    </select>
+    
+    <insert id="addNewCustomer">
+    	INSERT INTO CUSTOMER_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, 
+    	                                  #{5}, #{6}, #{7}, #{8},#{9}, 
+    	                                  #{10}, #{11}, #{12}, #{13}, #{14},
+    	                                  #{15}, #{16}, #{17} )
+  </insert>
+  <insert id="addNewCustomerBankFile">
+  	   INSERT INTO CUSTOMER_BANK_FILE_TABLE(customer_code) VALUES(#{0})
+  	</insert>
 
 </mapper>

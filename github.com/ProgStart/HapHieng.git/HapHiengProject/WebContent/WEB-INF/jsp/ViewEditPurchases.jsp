@@ -98,13 +98,17 @@
 		<h3>View/Edit Purchases</h3>
 		<br>
 		<div class="row">
-			<form class="form-container">
+			<form class="form-container" method="POST" action="/HapHiengProject/ViewEditPurchasesSubmit">
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="supplierfilter">Supplier Filter</label> <select
-								class="form-control" id="supplierfilter">
-								<option>Select Supplier</option>
+								class="form-control" id="supplierfilter" name="supplier">
+								<option value="">Select Supplier</option>
+								<c:forEach var="supplier" items="${suppliers}">
+								<option value="${supplier.supplier_code}">${supplier.description}</option>
+								</c:forEach>
+								
 							</select>
 
 						</div>
@@ -112,15 +116,18 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="reffilter">Ref. No. Filter</label> <input
-								class="form-control" placeholder="Ref. No.">
+								class="form-control" placeholder="Ref. No." name="refno">
 
 						</div>
 					</div>
+					
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="pull-right">
-							<button class="btn btn-default">Filter</button>
+							<button type="submit" class="btn btn-default">Filter</button>
 						</div>
 					</div>
 				</div>
@@ -145,72 +152,16 @@
 							</tr>
 						</thead>
 						<tbody>
-
+                            <c:forEach var="purchase" items="${purchases}">
 							<tr style="cursor: pointer;" data-toggle="modal"
 								data-target="#myModal">
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">CHIN HWA</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
+								<td class="">${purchase.reference_no}</td>
+								<td class="">${purchase.date}</td>
+								<td class="">${purchase.supplier_code}</td>
+								<td class="">${purchase.terms}</td>
+								<td class="">${purchase.amount}</td>
 							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">CHIN HWA</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">CHIN HWA</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">CHIN HWA</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">CHIN HWA</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">CHIN HWA</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">CHIN HWA</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-							</tr>
-							<tr style="cursor: pointer;" data-toggle="modal"
-								data-target="#myModal">
-								<td class="">20130007</td>
-								<td class="">10/6/2016</td>
-								<td class="">CHIN HWA</td>
-								<td class="">0</td>
-								<td class="">4,639</td>
-							</tr>
-									
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
