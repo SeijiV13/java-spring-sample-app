@@ -25,5 +25,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM PRODUCTS_TABLE WHERE product_line LIKE #{0} 
         AND category LIKE #{1}
     </select>
+    
+    <insert id="addNewProduct">
+    	INSERT INTO PRODUCS_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4},
+    	                                 #{5}, #{6}, #{7}, #{8}, #{9},
+    	                                 #{10}, #{11}, #{12}, #{13}, #{14},
+    	                                 #{15}, #{16}, #{17}, #{18}})
+    	                                  
+    </insert>
 	 
 </mapper>

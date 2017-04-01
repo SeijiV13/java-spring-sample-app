@@ -16,8 +16,8 @@
 
 			<!-- MODAL FORM -->
 			<div class="modal-body">
-				<form id="submitaddcustomer" class="form-container" method="POST"
-					action="/HapHiengProject/InventoryFileAddCustomer">
+				<form id="submitaddproduct" class="form-container" method="POST"
+					action="/HapHiengProject/InventoryFileInsert?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -96,8 +96,9 @@
 						<div class="col-md-6">
 
 							<div class="form-group">
-								<label for="image">Image</label> <input type="text" name="image"
-									class="form-control">
+								<label for="image">Image</label>
+                                    <input type="file" name="image"
+									class="btn btn-default">
 							</div>
 						</div>
 					</div>
@@ -175,6 +176,17 @@
 									name="packageqtysmall" placeholder="Package Quantity Small"
 									type="text" class="form-control">
 							</div>
+							
+						    <div class="form-group">
+								<label for="productline">Product Line</label>
+								<select name="productline" class="form-control">
+								<option value="">Select Product Line</option>
+								<c:forEach var="productLine" items="${sessionScope.productLines}">
+								<option value="${productLine.product_line}">${productLine.product_line}</option>
+								</c:forEach>
+								</select>
+							</div>
+							
 
 						</div>
 					</div>
@@ -200,7 +212,7 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" form="submitaddcustomer"
+				<button type="submit" form="submitaddproduct"
 					class="btn btn-primary">Add Product</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>

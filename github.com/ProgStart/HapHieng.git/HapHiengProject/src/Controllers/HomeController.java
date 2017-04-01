@@ -56,6 +56,9 @@ private ServletContext servletContext;
         ArrayList<Agent> agents = agentImplem.getAllAgents(); 
         servletContext.setAttribute("agents", agents);
         
+        //globa url for image file upload
+        servletContext.setAttribute("imageurl", "C:\\imageupload\\");
+        
      
 		//CHECK PRINCIPAL IF SET OF USERDETAILS
 		if (principal instanceof UserDetails) {
