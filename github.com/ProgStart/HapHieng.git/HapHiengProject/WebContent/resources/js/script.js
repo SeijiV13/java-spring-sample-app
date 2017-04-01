@@ -172,6 +172,7 @@ $(document).ready(function() {
 	});
 	
 	// ================= MENU SCRIPT =====================
+<<<<<<< HEAD
 	$(".list").delegate("tr", "click", function(e) {
 	    alert($(e.currentTarget).attr("id"));
 	});
@@ -191,6 +192,31 @@ $(document).ready(function() {
 		alert(this.rowIndex); 
 	});
 	*/
+=======
+	Number.prototype.between  = function (a, b, inclusive) {
+	    var min = Math.min.apply(Math, [a,b]),
+	        max = Math.max.apply(Math, [a,b]);
+	    return inclusive ? this >= min && this <= max : this > min && this < max;
+	};
+
+	$('#orderQuantity').keydown(function(event){
+	    var v = parseFloat(this.value + String.fromCharCode(event.which));
+	    var max = $('#orderQuantity').attr('max');
+	    if (event.keyCode == 45) { 
+	        event.preventDefault();
+	        return false;
+	    }
+	    return parseFloat(v).between(0,max,true);
+	});
+	
+	$(".list").delegate("tr", "click", function(e) {
+		var dataRow = $(e.currentTarget);
+		$("#orderQuantity").val(dataRow.data("quantity"));
+		$("#salesagent").val(dataRow.data("agent"));
+		$("input[name=itementry][value=" + dataRow.data("id") + "]").prop('checked', true);
+    });
+
+>>>>>>> b5a2680897dc929bd78a299ff5db7089259daa78
 	$('#itemTable tr').click(function() {
 	    $(this).find('td input:radio').prop('checked', true);
 	    
