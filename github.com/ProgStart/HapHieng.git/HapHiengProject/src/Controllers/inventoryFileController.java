@@ -80,7 +80,10 @@ public class inventoryFileController {
 			throws IOException {
 		String image = "";
 		// Save the uploaded file to this folder
-		String UPLOADED_FOLDER = servletContext.getAttribute("imageurl").toString();
+	    String UPLOADED_FOLDER = servletContext.getAttribute("imageurl").toString();
+		
+		String relativeWebPath = "resources/images/";
+	
 		HttpSession session = request.getSession();
 
 		String importeditem = request.getParameter("importeditem");
@@ -119,8 +122,8 @@ public class inventoryFileController {
 
 		// ADD NEW PRODUCT
 		productImplem.addNewProduct(item_code, category, description, gross_price, less_rc, less_wc, total, w1, w2,
-				quantity_pack_big, quantity_pack_small, image, location, remarks1, remarks2, product_line, importeditem,
-				unit, minimum_quantity);
+			quantity_pack_big, quantity_pack_small, image, location, remarks1, remarks2, product_line, importeditem,
+			unit, minimum_quantity);
 		// apply insert of new customer
 		request.setAttribute("insertSuccess", "true");
  

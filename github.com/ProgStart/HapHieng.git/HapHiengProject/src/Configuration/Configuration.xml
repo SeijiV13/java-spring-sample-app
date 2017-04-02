@@ -15,6 +15,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <typeAlias alias="PriceList" type="Models.PriceList"/>
 <typeAlias alias="Purchases" type="Models.Purchases"/>
 <typeAlias alias="SupplierPriceList" type="Models.SupplierPriceList"/>
+<typeAlias alias="InOutTransaction" type="Models.InOutTransaction"/>
 </typeAliases>
 
 <mappers>

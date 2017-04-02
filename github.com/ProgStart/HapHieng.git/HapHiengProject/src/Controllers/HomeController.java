@@ -57,7 +57,7 @@ private ServletContext servletContext;
         servletContext.setAttribute("agents", agents);
         
         //globa url for image file upload
-        servletContext.setAttribute("imageurl", "C:\\imageupload\\");
+        servletContext.setAttribute("imageurl", "C:\\Users\\dellp\\workspace\\HapHieng\\github.com\\ProgStart\\HapHieng.git\\HapHiengProject\\WebContent\\resources\\images\\");
         
      
 		//CHECK PRINCIPAL IF SET OF USERDETAILS

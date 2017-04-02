@@ -232,7 +232,10 @@
 											<td id="${product.item_code}-w2" class="">${product.w2}</td>
 											<td id="${product.item_code}-qpb" class="">${product.quantity_pack_big}</td>
 											<td id="${product.item_code}-qps" class="">${product.quantity_pack_small}</td>
-											<td id="${product.item_code}-image" class="">${product.image}</td>
+											<td id="${product.item_code}-image" class="">
+											<c:if test="${product.image == 'NO IMAGE'}">${product.image}</c:if>
+											<c:if test="${product.image != 'NO IMAGE'}"><button class="btn btn-default buttonimageview" data-target="#imageview" data-toggle="modal">${product.image}</button></c:if>
+											</td>
 											<td id="${product.item_code}-location" class="">${product.location}</td>
 											<td id="${product.item_code}-remarks1" class="">${product.remarks1}</td>
 											<td id="${product.item_code}-remarks2" class="">${product.remarks2}</td>
@@ -249,7 +252,7 @@
 							</table>
 						</div>
 					</div>
-
+                    
 				</div>
 				<div id="cardform" class="tab-pane fade">
 					<h3>Card Form</h3>
@@ -337,9 +340,11 @@
 							<div class="col-md-6">
 
 								<div class="form-group">
-									<label for="image">Image</label> <input type="text"
+									<label for="image">Image</label> <input type="hidden"
 										class="form-control" id="image">
-								</div>
+										<button  type="button" data-target="#imageview" data-toggle="modal" class="btn btn-default" id="viewimagebutton-card">View Image</button>
+								
+								</div> 
 							</div>
 						</div>
 						<div class="row">
@@ -519,7 +524,8 @@
 
 <!-- MODAL FOR ITEM IN OUT -->
 <modal:inout />
-
+<!-- MODAL FOR IMAGE VIEW -->
+<modal:imageview></modal:imageview>
 
 <!-- /#PAGE CONTENT WRAPPER -->
 </html>
@@ -708,6 +714,20 @@ function formSubmit() {
 						    let disc2 = $(this).val() -($(this).val() * .35);
 							$("#less15input").val(disc1);
 							$("#less35input").val(disc2);
+						});
+						
+						$(".buttonimageview").click(function(){
+						
+							let imagename = $(this).text();
+							$("#imagedisplay").attr("src", "/HapHiengProject/resources/images/" + imagename);
+						    
+						});
+						
+						$("#viewimagebutton-card").click(function(){
+							
+							let imagename = $("#image").val();
+							$("#imagedisplay").attr("src", "/HapHiengProject/resources/images/" + imagename);
+						   
 						});
 						
 

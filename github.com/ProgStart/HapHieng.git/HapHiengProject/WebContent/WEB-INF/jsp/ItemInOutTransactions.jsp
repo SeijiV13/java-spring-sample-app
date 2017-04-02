@@ -108,6 +108,9 @@
 				<div class="col-md-4 form-horizontal">
 					<select class="form-control">
 					  	<option>Item Code / Description</option>
+					  	 <c:forEach var="product" items="${sessionScope.products}">
+					  	  <option value="${product.item_code}">${product.item_code}/${product.description}</option>
+					  	</c:forEach>		  	
 					 </select>
 				</div>
 				
@@ -142,7 +145,7 @@
 					<div class="radio">
 					  <label>
 					    <input type="radio" class="IOTradios" name="IOTRadios" id="IOTradio1" value="option1">
-					     All Supplies
+					     All Suppliers
 					  </label>
 					</div>
 				
@@ -230,97 +233,20 @@
 	            </tr>
 	          </thead>
 	          <tbody>
-	          	
+	          <c:forEach var="inOutTransaction" items="${sessionScope.inOutTransactions}">
 	           <tr data-toggle="modal" data-target="#IOTModal">
-	           		<td class="">12/3/2014</td>
-					<td class="">Sumpit</td>
-					<td class="">169</td>
-					<td class="">235</td>
-					<td class="">Yuan</td>
-					<td class="">1600</td>
-					<td class="">10</td>
-					<td class=""></td>
-					<td class="">2,374</td>
-					<td class="">Bong</td>
+	           		<td class="">${inOutTransaction.date}</td>
+					<td class="">${inOutTransaction.client}</td>
+					<td class="">${inOutTransaction.reference_no }</td>
+					<td class="">${inOutTransaction.price}</td>
+					<td class="">${inOutTransaction.currency}</td>
+					<td class="">${inOutTransaction.quantity_in}</td>
+					<td class="">${inOutTransaction.quantity_out}</td>
+					<td class="">${inOutTransaction.quantity_adjustment}</td>
+					<td class="">${inOutTransaction.balance}</td>
+					<td class="">${inOutTransaction.agent}</td>
 				</tr>
-				
-				<tr data-toggle="modal" data-target="#IOTModal">
-	           		<td class="">12/3/2014</td>
-					<td class="">Sumpit</td>
-					<td class="">169</td>
-					<td class="">235</td>
-					<td class="">Yuan</td>
-					<td class="">1600</td>
-					<td class="">10</td>
-					<td class=""></td>
-					<td class="">2,374</td>
-					<td class="">Bong</td>
-				</tr>
-				
-				<tr data-toggle="modal" data-target="#IOTModal">
-	           		<td class="">12/3/2014</td>
-					<td class="">Sumpit</td>
-					<td class="">169</td>
-					<td class="">235</td>
-					<td class="">Yuan</td>
-					<td class="">1600</td>
-					<td class="">10</td>
-					<td class=""></td>
-					<td class="">2,374</td>
-					<td class="">Bong</td>
-				</tr>
-				
-				<tr data-toggle="modal" data-target="#IOTModal">
-	           		<td class="">12/3/2014</td>
-					<td class="">Sumpit</td>
-					<td class="">169</td>
-					<td class="">235</td>
-					<td class="">Yuan</td>
-					<td class="">1600</td>
-					<td class="">10</td>
-					<td class=""></td>
-					<td class="">2,374</td>
-					<td class="">Bong</td>
-				</tr>
-				
-				<tr data-toggle="modal" data-target="#IOTModal">
-	           		<td class="">12/3/2014</td>
-					<td class="">Sumpit</td>
-					<td class="">169</td>
-					<td class="">235</td>
-					<td class="">Yuan</td>
-					<td class="">1600</td>
-					<td class="">10</td>
-					<td class=""></td>
-					<td class="">2,374</td>
-					<td class="">Bong</td>
-				</tr>
-				
-				<tr data-toggle="modal" data-target="#IOTModal">
-	           		<td class="">12/3/2014</td>
-					<td class="">Sumpit</td>
-					<td class="">169</td>
-					<td class="">235</td>
-					<td class="">Yuan</td>
-					<td class="">1600</td>
-					<td class="">10</td>
-					<td class=""></td>
-					<td class="">2,374</td>
-					<td class="">Bong</td>
-				</tr>
-				
-				<tr data-toggle="modal" data-target="#IOTModal">
-	           		<td class="">12/3/2014</td>
-					<td class="">Sumpit</td>
-					<td class="">169</td>
-					<td class="">235</td>
-					<td class="">Yuan</td>
-					<td class="">1600</td>
-					<td class="">10</td>
-					<td class=""></td>
-					<td class="">2,374</td>
-					<td class="">Bong</td>
-				</tr>
+				</c:forEach>
 				
 	          </tbody>
 	        </table> 

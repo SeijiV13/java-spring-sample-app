@@ -158,6 +158,10 @@ http://www.springframework.org/schema/security/spring-security.xsd">
    <bean id="purchases" class="Models.Purchases" scope="session">
   <aop:scoped-proxy/>
   </bean> 
+  
+    <bean id="inouttransaction" class="Models.InOutTransaction" scope="session">
+  <aop:scoped-proxy/>
+  </bean> 
  
    <!--INJECTED MAPPERS INB BEANS-->
     <bean id="userImplem" class="Implem.UserImplem">
