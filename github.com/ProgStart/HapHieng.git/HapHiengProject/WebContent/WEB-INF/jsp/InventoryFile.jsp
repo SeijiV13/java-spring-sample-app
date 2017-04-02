@@ -108,6 +108,9 @@
 		<!-- TITLE OF PAGE -->
 		<h3>Inventory File</h3>
 		<br>
+		<c:if test="${insertSuccess == 'true'}">
+			<div class="alert alert-success">new product has been created</div>
+		</c:if>
 		<div class="row">
 
 			<ul class="nav nav-tabs">
@@ -179,7 +182,7 @@
 					<hr>
 
 					<!-- MODAL FOR ADD PRODUCT -->
-					<modal:addproduct/>
+					<modal:addproduct />
 
 					<div class="tbl_wrap">
 						<div class="table-responsive">
@@ -215,7 +218,7 @@
 											<td class=""><input id="${product.item_code}|select"
 												name="select" type="radio" class="select" /></td>
 											<td class="">${row = row + 1}</td>
-											<td class=""><button  value="${product.item_code}"
+											<td class=""><button value="${product.item_code}"
 													data-target="#iteminout" data-toggle="modal"
 													class="btn btn-primary itemcodebutton">${product.item_code}</button></td>
 											<td id="${product.item_code}-itemcode" class="">${product.item_code}</td>
@@ -258,8 +261,8 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<div class="checkbox">
-										<label><input id="importeditem" type="checkbox"> <b>Imported
-												Item </b></label>
+										<label><input id="importeditem" type="checkbox">
+											<b>Imported Item </b></label>
 									</div>
 								</div>
 							</div>
@@ -433,32 +436,32 @@
 							</div>
 						</div>
 					</form>
-					
-						<h4>Pricing</h4>
-			<div class="tbl_wrap">
-				<div class="table-responsive">
-					<table class="table" id="priceListTable">
 
-						<thead>
-							<tr>
-								<th class="bg_dblue text-nowrap">Customer Code</th>
-								<th class="bg_dblue text-nowrap">Price</th>
-							</tr>
-						</thead>
-						<tbody id="priceListBody">
-						    <c:forEach var="item" items="${priceList}">
-							<tr>
-							    <td class="col1" hidden>${item.item_code}</td>
-								<td>${item.customer_code}</td>
-								<td>${item.price}</td>
+					<h4>Pricing</h4>
+					<div class="tbl_wrap">
+						<div class="table-responsive">
+							<table class="table" id="priceListTable">
 
-							</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
+								<thead>
+									<tr>
+										<th class="bg_dblue text-nowrap">Customer Code</th>
+										<th class="bg_dblue text-nowrap">Price</th>
+									</tr>
+								</thead>
+								<tbody id="priceListBody">
+									<c:forEach var="item" items="${priceList}">
+										<tr>
+											<td class="col1" hidden>${item.item_code}</td>
+											<td>${item.customer_code}</td>
+											<td>${item.price}</td>
 
-			</div>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+
+					</div>
 				</div>
 
 			</div>
@@ -485,8 +488,9 @@
 				aria-label="...">
 
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-primary" data-target="#iteminout" data-toggle="modal">
-						<span class="glyphicon glyphicon-file" aria-hidden="true" ></span>
+					<button type="button" class="btn btn-primary"
+						data-target="#iteminout" data-toggle="modal">
+						<span class="glyphicon glyphicon-file" aria-hidden="true"></span>
 						Item Transactions
 					</button>
 				</div>
@@ -514,7 +518,7 @@
 </div>
 
 <!-- MODAL FOR ITEM IN OUT -->
-<modal:inout/>
+<modal:inout />
 
 
 <!-- /#PAGE CONTENT WRAPPER -->
@@ -522,65 +526,190 @@
 
 <!-- FOR LOGOUT SPRING SECURITY FUNCTION -->
 <script type="text/javascript">
-	$(document).ready(function() {
-		
-		
-		function formSubmit() {
-			document.getElementById("logoutForm").submit();
-		}
-		$(".select").click(function() {
-		
-			if ($(".select").is(":checked")) {
-				let productId = $(this).attr("id");
-				
-				let id = productId.split("|");
-				let chosenitemcode = $("#" + id[0] + "-itemcode").text();
-				$("#itemcodeinoutmodal").val(chosenitemcode);
-				
-				$("#itemcode").val($("#" + id[0] + "-itemcode").text());
-				$("#category").val($("#" + id[0] + "-category").text());
-				$("#description").val($("#" + id[0] + "-description").text());
-				$("#grossprice").val($("#" + id[0] + "-gross_price").text());
-				$("#less35").val($("#" + id[0] + "-less_wc").text());
-				$("#less15").val($("#" + id[0] + "-less_rc").text());
-				$("#total").val($("#" + id[0] + "-total").text());
-				$("#w1").val($("#" + id[0] + "-w1").text());
-				$("#w2").val($("#" + id[0] + "-w2").text());
-				$("#packageqtybig").val($("#" + id[0] + "-qpb").text());
-				$("#packageqtysmall").val($("#" + id[0] + "-qps").text());
-				$("#image").val($("#" + id[0] + "-image").text());
-				$("#location").val($("#" + id[0] + "-location").text());
-				$("#remarks1").val($("#" + id[0] + "-remarks1").text());
-				$("#remarks2").val($("#" + id[0] + "-remarks2").text());
-				//hidden rows
-				$("#minimumquantity").val($("#" + id[0] + "-minimumquantity").text());
-				$("#unit").val($("#" + id[0] + "-unit").text());
-		        if($("#" + id[0] + "-importeditem").text() === 'yes'){
-		        	$("#importeditem").prop("checked", true);
-		        }else{
-		        	$("#importeditem").prop("checked", false);
-		        }
-		        
-		        //filter price list table
-                
-                $.each($("#priceListTable #priceListBody").find("tr"), function () {
+function formSubmit() {
+	document.getElementById("logoutForm").submit();
+}
+	$(document)
+			.ready(
+					function() {
 
-                     if($(this).children(".col1").text() == $("#" + id[0] + "-itemcode").text()){ 
-                  	   $(this).show();
-                     }else{
-                  	   
-                  	   $(this).hide();
-                     }
-                });
-				
-				
-			}
-		});
-		
-		//pass value of itemcode in inoutmodal
-		$(".itemcodebutton").click(function(){
-			$("#itemcodeinoutmodal").val($(this).text());
-		})
+						$(".select")
+								.click(
+										function() {
 
-	});
+											if ($(".select").is(":checked")) {
+												let
+												productId = $(this).attr("id");
+
+												let
+												id = productId.split("|");
+												let
+												chosenitemcode = $(
+														"#" + id[0]
+																+ "-itemcode")
+														.text();
+												$("#itemcodeinoutmodal").val(
+														chosenitemcode);
+
+												$("#itemcode")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-itemcode")
+																		.text());
+												$("#category")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-category")
+																		.text());
+												$("#description")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-description")
+																		.text());
+												$("#grossprice")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-gross_price")
+																		.text());
+												$("#less35")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-less_wc")
+																		.text());
+												$("#less15")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-less_rc")
+																		.text());
+												$("#total")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-total")
+																		.text());
+												$("#w1").val(
+														$("#" + id[0] + "-w1")
+																.text());
+												$("#w2").val(
+														$("#" + id[0] + "-w2")
+																.text());
+												$("#packageqtybig").val(
+														$("#" + id[0] + "-qpb")
+																.text());
+												$("#packageqtysmall").val(
+														$("#" + id[0] + "-qps")
+																.text());
+												$("#image")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-image")
+																		.text());
+												$("#location")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-location")
+																		.text());
+												$("#remarks1")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-remarks1")
+																		.text());
+												$("#remarks2")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-remarks2")
+																		.text());
+												//hidden rows
+												$("#minimumquantity")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-minimumquantity")
+																		.text());
+												$("#unit")
+														.val(
+																$(
+																		"#"
+																				+ id[0]
+																				+ "-unit")
+																		.text());
+												if ($(
+														"#"
+																+ id[0]
+																+ "-importeditem")
+														.text() === 'yes') {
+													$("#importeditem").prop(
+															"checked", true);
+												} else {
+													$("#importeditem").prop(
+															"checked", false);
+												}
+
+												//filter price list table
+
+												$
+														.each(
+																$(
+																		"#priceListTable #priceListBody")
+																		.find(
+																				"tr"),
+																function() {
+
+																	if ($(this)
+																			.children(
+																					".col1")
+																			.text() == $(
+																			"#"
+																					+ id[0]
+																					+ "-itemcode")
+																			.text()) {
+																		$(this)
+																				.show();
+																	} else {
+
+																		$(this)
+																				.hide();
+																	}
+																});
+
+											}
+										});
+
+						//pass value of itemcode in inoutmodal
+						$(".itemcodebutton").click(function() {
+							$("#itemcodeinoutmodal").val($(this).text());
+						})
+						
+						$("#gpinput").keyup(function(){
+							
+						    let disc1 = $(this).val() -($(this).val() * .15);
+						    let disc2 = $(this).val() -($(this).val() * .35);
+							$("#less15input").val(disc1);
+							$("#less35input").val(disc2);
+						});
+						
+
+					});
 </script>

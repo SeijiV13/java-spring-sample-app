@@ -1,6 +1,14 @@
 var sumTotals = 0;
 $(document).ready(function() {
 	// MENUT TOGGLE FUNCTION
+	
+	$(".numberfield").keyup(function(){
+		this.value = this.value.replace(/[^0-9]/g, '');
+	});
+	
+	$(".numberfield-decimal").keyup(function(){
+		this.value = this.value.replace(/[^0-9\.]/g, '');
+	})
 
 	$("#menu-toggle").click(function() {
 		var menustate = $("#menustate").val();

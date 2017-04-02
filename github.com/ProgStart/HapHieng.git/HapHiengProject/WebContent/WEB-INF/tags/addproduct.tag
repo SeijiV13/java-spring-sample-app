@@ -17,7 +17,8 @@
 			<!-- MODAL FORM -->
 			<div class="modal-body">
 				<form id="submitaddproduct" class="form-container" method="POST"
-					action="/HapHiengProject/InventoryFileInsert?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
+					action="/HapHiengProject/InventoryFileInsert?${_csrf.parameterName}=${_csrf.token}"
+					enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -32,7 +33,7 @@
 
 							<div class="form-group">
 								<label for="unit">Unit</label> <input name="unit"
-									placeholder="Unit" type="text" class="form-control">
+									placeholder="Unit" type="text" class="form-control" required>
 							</div>
 
 						</div>
@@ -44,7 +45,8 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="itemcode">Item Code</label> <input name="itemcode"
-									placeholder="Item Code" type="text" class="form-control">
+									placeholder="Item Code" type="text" class="form-control"
+									required>
 							</div>
 						</div>
 
@@ -62,7 +64,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="categorycode">Category</label> <select
-									name="category" class="form-control">
+									name="category" class="form-control" required>
 									<option value="">Select Category</option>
 									<c:forEach var="category"
 										items="${applicationScope.categories}">
@@ -77,7 +79,7 @@
 							<div class="form-group">
 								<label for="minimumquantity">Minimum Quantity</label> <input
 									name="minimumquantity" placeholder="Minimum Quantity"
-									type="text" class="form-control">
+									type="text" class="form-control numberfield">
 
 							</div>
 						</div>
@@ -88,7 +90,7 @@
 							<div class="form-group">
 								<label for="description">Description</label> <input
 									name="description" type="text" placeholder="Description"
-									class="form-control">
+									class="form-control" required>
 							</div>
 
 						</div>
@@ -96,8 +98,7 @@
 						<div class="col-md-6">
 
 							<div class="form-group">
-								<label for="image">Image</label>
-                                    <input type="file" name="image"
+								<label for="image">Image</label> <input type="file" name="image"
 									class="btn btn-default">
 							</div>
 						</div>
@@ -107,7 +108,7 @@
 							<div class="form-group">
 								<label for="grossprice">Gross Price</label> <input
 									name="grossprice" type="text" placeholder="Gross Price"
-									class="form-control">
+									class="form-control numberfield-decimal" id="gpinput" required>
 							</div>
 
 						</div>
@@ -117,7 +118,7 @@
 
 							<div class="form-group">
 								<label for="less15">Less 15%</label> <input type="text"
-									name="less15" placeholder="Less 15%" class="form-control">
+									id="less15input" name="less15" placeholder="Less 15%" class="form-control numberfield-decimal" readonly>
 							</div>
 
 						</div>
@@ -126,7 +127,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="less35">Less 35%</label> <input type="text"
-									name="less35" placeholder="Less 35%" class="form-control">
+									id="less35input" name="less35" placeholder="Less 35%" class="form-control numberfield-decimal" readonly>
 							</div>
 
 						</div>
@@ -135,7 +136,7 @@
 
 							<div class="form-group">
 								<label for="total">Total</label> <input type="text" name="total"
-									placeholder="Total%" class="form-control">
+									placeholder="Total" id="total" class="form-control numberfield" required>
 							</div>
 
 						</div>
@@ -145,7 +146,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="w1">Warehouse 1</label> <input type="text" name="w1"
-									placeholder="Warehouse 1" class="form-control">
+									placeholder="Warehouse 1" id="w1" class="form-control numberfield">
 							</div>
 
 						</div>
@@ -154,7 +155,7 @@
 
 							<div class="form-group">
 								<label for="w2">Warehouse 2</label> <input type="text" name="w2"
-									placeholder="Warehouse 2" class="form-control">
+									placeholder="Warehouse 2" id="w2" class="form-control numberfield">
 							</div>
 
 						</div>
@@ -164,7 +165,7 @@
 							<div class="form-group">
 								<label for="packageqtybig">PackQty Big</label> <input
 									name="packageqtybig" placeholder="Package Quantity Big"
-									type="text" class="form-control">
+									type="text" class="form-control numberfield" id="packageqtybig">
 							</div>
 
 						</div>
@@ -174,22 +175,29 @@
 							<div class="form-group">
 								<label for="packageqtysmall">PackQty Small</label> <input
 									name="packageqtysmall" placeholder="Package Quantity Small"
-									type="text" class="form-control">
+									type="text" class="form-control numberfield" id="packageqtysmall">
 							</div>
-							
-						    <div class="form-group">
-								<label for="productline">Product Line</label>
-								<select name="productline" class="form-control">
-								<option value="">Select Product Line</option>
-								<c:forEach var="productLine" items="${sessionScope.productLines}">
-								<option value="${productLine.product_line}">${productLine.product_line}</option>
-								</c:forEach>
-								</select>
-							</div>
-							
+
+
 
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-6">
+
+							<div class="form-group">
+								<label for="productline" required>Product Line</label> <select
+									name="productline" class="form-control">
+									<option value="">Select Product Line</option>
+									<c:forEach var="productLine"
+										items="${applicationScope.productLines}">
+										<option value="${productLine}">${productLine}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+					</div>
+
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group">
