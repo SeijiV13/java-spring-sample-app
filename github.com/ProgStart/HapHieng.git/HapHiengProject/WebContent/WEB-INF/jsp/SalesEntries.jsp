@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="navbar" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="modal" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,6 +14,9 @@
 <!--  JQUERY AND JS LINKS -->
 <spring:url value="/resources/js/jquery/jquery.min.js" var="JQuery" />
 <script src="${JQuery}" type="text/javascript"></script>
+
+<spring:url value="/resources/js/jquery/jquery.tabletojson.min.js" var="JQueryTable" />
+<script src="${JQueryTable}" type="text/javascript"></script>
 
 <spring:url value="/resources/js/script.js" var="JScript" />
 <script src="${JScript}" type="text/javascript"></script>
@@ -103,7 +107,7 @@
 
 			<hr>
 			<div class="row">
-				
+				<modal:addcustomer />
 				<form>
 					<div class="form-horizontal col-md-6 col-xs-12">
 						<div class="form-group">
@@ -122,7 +126,7 @@
 						</div>
 						
 						<div class="col-md-3">
-							<button class="btn btn-default bg_dblue btn-add" data-target="#SEAddCust" data-toggle="modal"> Add Customer </button>
+							<button class="btn btn-default bg_dblue btn-add" data-target="#addcustomer" data-toggle="modal" type="button"> Add Customer </button>
 						</div>
 						
 						<div class="col-md-9">
@@ -623,7 +627,7 @@
 					</div>
 
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default">
+						<button id="post-btn" type="button" class="btn btn-default">
 							<span class="fa fa-file-text" aria-hidden="true"></span> Post
 						</button>
 					</div>

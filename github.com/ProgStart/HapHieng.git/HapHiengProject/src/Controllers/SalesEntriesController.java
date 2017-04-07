@@ -1,9 +1,12 @@
 package Controllers;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +56,25 @@ public class SalesEntriesController {
 		//Product product = productImplem.selectProduct(itemId);
     	//String sample = "{\"itemid\": "+ itemId +", \"name\": \"Sample Item "+ itemId +"\", \"desc\": \"Short Desc\", \"stock\": "+ 100 * Integer.parseInt(itemId) + ", \"amount\": "+ 1000 * Integer.parseInt(itemId) + "}";
     	return obj.toString();
+    }
+	
+	@RequestMapping(value="/postEntries")
+	@ResponseBody 
+    public String salesEntry3(@RequestParam("request") String json) throws JSONException {
+		JSONArray jsonArray = new JSONArray(json);
+		for(int i=0; i<jsonArray.length(); i++) {
+		    JSONObject jsonObject = jsonArray.getJSONObject(i);
+		    Iterator<String> keys= jsonObject.keys();
+		    while (keys.hasNext()) 
+		    {
+		            String keyValue = (String)keys.next();
+		            String valueString = jsonObject.getString(keyValue);
+		            System.out.println(valueString);
+		    }
+		    String jsonObjectAsString = jsonObject.toString();
+		    System.out.println(jsonObjectAsString);
+		}
+    	return "success";
     }
 	
 }
