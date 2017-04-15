@@ -97,157 +97,52 @@
     <h5><span class="fa fa-calendar"></span> Date: ${dateToday}</h5>
 	
 	<!-- MAIN CONTENT -->
-	<div class="container-fluid PR">
-		<!-- TITLE OF PAGE -->
-		<h3>Purchase Reports</h3>
-		
-		<hr>
-		
-		<div class="row show">
-			<div class="col-md-3">
-				<button class="btn btn-default center-block sales-report-button" id="PRad_btn"> Agent & Date Input </button>
+<div class="container-fluid PR">
+			<!-- TITLE OF PAGE -->
+			<h3>Purchase Reports</h3>
+
+			<hr>
+
+			<div class="btn-group btn-group-justified" role="group"
+				aria-label="...">
+				<div class="btn-group">
+					<button class="btn btn-default dropdown-toggle" type="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Daily Purchases <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">All Daily Purchases</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Daily Purchase Report with Item</a></li>
+					
+
+					</ul>
+				</div>
+
+				<div class="btn-group">
+					<button class="btn btn-default dropdown-toggle" type="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Purchases History <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+					<li><a href="#">History of Sales  by Supplier</a></li>
+					<li><a href="#">History of Purchases by Item</a></li>
+					<li><a href="#">History of Sales by Customer-Category-Item</a></li>
+					</ul>
+				</div>
 			</div>
-			
-			<div class="col-md-3">
-				<button class="btn btn-default center-block sales-report-button" id="PRccd_btn"> Customer/Category/Date Input </button>
+
+
+			<div class="row">
+
+				<div class="col-md-offset-3 col-md-6 form-container">
+				</div>
+
+
 			</div>
-			
-			<div class="col-md-3">
-				<button class="btn btn-default center-block sales-report-button" id="PRdate_btn"> Date Input </button>
-			</div>
-			
-			<div class="col-md-3">
-				<button class="btn btn-default center-block sales-report-button" id="PRisrh_btn"> Item Sales Return History Input </button>
-			</div>
+
+
 		</div>
-		
-		<div class="row">
-			
-			<div class="col-md-offset-3 col-md-6 form-container">
-				
-				<div id="PRad" class="hide">
-					<select class="form-control">
-					  	<option>Agent</option>
-					</select>
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-				
-						
-						 
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: PRR AD -->
-				
-				<div id="PRccd" class="hide">
-					<select class="form-control">
-					  	<option>Customer</option>
-					</select>
-					
-					<select class="form-control">
-					  	<option>Category</option>
-					</select>
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-				
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-	
-							<button type="button" class="btn btn-dedault" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-						
-
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: PR CCD -->
-				
-				<div id="PRdate" class="hide">
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-					
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-					
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-			 
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: PR date -->
-				
-				<div id="PRisrh" class="hide">
-				
-					<select class="form-control">
-					  	<option>Item Code</option>
-					</select>
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-				
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-					
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: PR item sales return history -->
-				
-			</div>
-			
-			
-		</div>
-		
-		
-	</div>
 </div>
 
 </body>

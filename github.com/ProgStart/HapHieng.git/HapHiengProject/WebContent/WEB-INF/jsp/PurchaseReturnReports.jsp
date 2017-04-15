@@ -103,148 +103,32 @@
 		
 		<hr>
 		
-		<div class="row show">
-			<div class="col-md-3">
-				<button class="btn btn-default center-block sales-report-button" id="PRRad_btn"> Agent & Date Input </button>
+			<div class="btn-group btn-group-justified" role="group"
+				aria-label="...">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default">All Daily
+						Returns</button>
+				</div>
+				<div class="btn-group">
+					<button class="btn btn-default dropdown-toggle" type="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Purchase Return History <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">History of Purchase Return by Item</a></li>
+						<li><a href="#">History of Purchase Return by Supplier-Category-Item
+								</a></li>
+				
+					</ul>
+				</div>
 			</div>
-			
-			<div class="col-md-3">
-				<button class="btn btn-default center-block sales-report-button" id="PRRccd_btn"> Customer/Category/Date Input </button>
-			</div>
-			
-			<div class="col-md-3">
-				<button class="btn btn-default center-block sales-report-button" id="PRRdate_btn"> Date Input </button>
-			</div>
-			
-			<div class="col-md-3">
-				<button class="btn btn-default center-block sales-report-button" id="PRRisrh_btn"> Item Sales Return History Input </button>
-			</div>
-		</div>
+
 		
 		<div class="row">
 			
 			<div class="col-md-offset-3 col-md-6 form-container">
 				
-				<div id="PRRad" class="hide">
-					<select class="form-control">
-					  	<option>Agent</option>
-					</select>
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-					
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-						
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-					
-						
-						 
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: PRRR AD -->
 				
-				<div id="PRRccd" class="hide">
-					<select class="form-control">
-					  	<option>Customer</option>
-					</select>
-					
-					<select class="form-control">
-					  	<option>Category</option>
-					</select>
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-					
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-					
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-					
-						
-						 
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: PRR CCD -->
-				
-				<div id="PRRdate" class="hide">
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-						
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-						
-						
-						 
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: PRR date -->
-				
-				<div id="PRRisrh" class="hide">
-				
-					<select class="form-control">
-					  	<option>Item Code</option>
-					</select>
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-				
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-			
-						
-						 
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: PRR item sales return history -->
 				
 			</div>
 			

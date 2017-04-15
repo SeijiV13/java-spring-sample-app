@@ -39,13 +39,15 @@
 <spring:url value="/resources/css/style.css" var="styles" />
 <link rel="stylesheet" href="${styles}" />
 
-<link href="<c:url value="/resources/css/style-media.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/style-media.css" />"
+	rel="stylesheet">
 
 <!-- DATEPICKER LINKS -->
 <spring:url value="/resources/js/bootstrap-datepicker.js" var="DatePJS" />
 <script src="${DatePJS}" type="text/javascript"></script>
 
-<spring:url value="/resources/css/boostrap-datepicker.css" var="DatePCss" />
+<spring:url value="/resources/css/boostrap-datepicker.css"
+	var="DatePCss" />
 <link rel="stylesheet" href="${DatePCss}" />
 
 <!-- FONT LINKS -->
@@ -58,196 +60,104 @@
 
 
 
-<!-- ADDED BY SEIJI VILLAFRANCA 2016/11/26 -->
-<!-- MAIN NAVBAR TAG -->
-<navbar:mainnavbar />  <!-- FOUND IN /WEB-INF/tags/mainnavbar.tag -->
+	<!-- ADDED BY SEIJI VILLAFRANCA 2016/11/26 -->
+	<!-- MAIN NAVBAR TAG -->
+	<navbar:mainnavbar />
+	<!-- FOUND IN /WEB-INF/tags/mainnavbar.tag -->
 
 
-<!-- PAGE CONTENT -->
-<div id="page-content-wrapper">
-	<!-- CLOSE MENU BAR AND SIGNOUT BUTTON -->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12">
-				<a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">
-					Close Menu Bar</a>
+	<!-- PAGE CONTENT -->
+	<div id="page-content-wrapper">
+		<!-- CLOSE MENU BAR AND SIGNOUT BUTTON -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">
+						Close Menu Bar</a>
 
 
-				<div class="pull-right">
-					<a href="javascript:formSubmit()" class="btn btn-primary"> <span
-						class="fa fa-sign-out"></span> Sign Out
-					</a>
+					<div class="pull-right">
+						<a href="javascript:formSubmit()" class="btn btn-primary"> <span
+							class="fa fa-sign-out"></span> Sign Out
+						</a>
 
-					<c:url value="/logout" var="logoutUrl" />
-					<form action="${logoutUrl}" method="post" id="logoutForm">
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
-					</form>
+						<c:url value="/logout" var="logoutUrl" />
+						<form action="${logoutUrl}" method="post" id="logoutForm">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						</form>
+					</div>
+
+					<!-- MENU COUNTER ADDED BY SEIJI VILLAFRANCA 2016/11/19 -->
+					<input value="1" id="menustate" hidden> <br> <br>
+
 				</div>
 
-				<!-- MENU COUNTER ADDED BY SEIJI VILLAFRANCA 2016/11/19 -->
-				<input value="1" id="menustate" hidden> <br> <br>
+			</div>
+		</div>
+
+		<h5>
+			<span class="fa fa-user"></span> User Login: ${username}
+		</h5>
+		<h5>
+			<span class="fa fa-calendar"></span> Date: ${dateToday}
+		</h5>
+
+		<!-- MAIN CONTENT -->
+		<div class="container-fluid SR">
+			<!-- TITLE OF PAGE -->
+			<h3>Sales Reports</h3>
+
+			<hr>
+
+			<div class="btn-group btn-group-justified" role="group"
+				aria-label="...">
+				<div class="btn-group">
+					<button class="btn btn-default dropdown-toggle" type="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Daily Sales <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">All Daily Sales</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Daily Sales with Net Income Report</a></li>
+						<li><a href="#">Daily Sales (Grouped by Customer)</a></li>
+						<li><a href="#">Daily Sales (Grouped by Agent/Date)</a></li>
+						<li><a href="#">Daily Sales (Grouped by Agent/Customer)</a></li>
+						<li><a href="#">Daily Sales (Grouped by Customer with Items)</a></li>
+
+					</ul>
+				</div>
+
+				<div class="btn-group">
+					<button class="btn btn-default dropdown-toggle" type="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Sales History <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+					<li><a href="#">History of Sales by Item</a></li>
+					<li><a href="#">History of Sales by Customer-Category-Item</a></li>
+					<li><a href="#">History of Sales  by Customer (Sales Analyzer - Item)</a></li>
+					<li><a href="#">History of Sales by Customer (Sales Analyzer - Category)</a></li>
+					<li><a href="#">Customer Monthly Sales</a></li>
+					<li><a href="#">Customer Yearly Sales</a></li>
+					<li><a href="#">Agent Monthly Sales</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="row">
+
+				<div class="col-md-offset-3 col-md-6 form-container">
+				</div>
+
 
 			</div>
+
 
 		</div>
 	</div>
-	
-	<h5><span class="fa fa-user"></span> User Login: ${username}</h5>
-    <h5><span class="fa fa-calendar"></span> Date: ${dateToday}</h5>
-	
-	<!-- MAIN CONTENT -->
-	<div class="container-fluid SR">
-		<!-- TITLE OF PAGE -->
-		<h3>Sales Reports</h3>
-		
-		<hr>
-		
-		<div class="row show">
-			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRad_btn"> Agent & Date Input </button>
-			</div>
-			
-			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRccd_btn"> Customer/Category/Date Input </button>
-			</div>
-			
-			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRdate_btn"> Date Input </button>
-			</div>
-			
-			<div class="col-md-3">
-				<button class="btn btn-default sales-report-button center-block" id="SRisrh_btn"> Item Sales Return History Input </button>
-			</div>
-		</div>
-		
-		<div class="row">
-			
-			<div class="col-md-offset-3 col-md-6 form-container">
-				
-				<div id="SRad" class="hide">
-					<select class="form-control">
-					  	<option>Agent</option>
-					</select>
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">		
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-					
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-					
-						 
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: SR AD -->
-				
-				<div id="SRccd" class="hide">
-					<select class="form-control">
-					  	<option>Customer</option>
-					</select>
-					
-					<select class="form-control">
-					  	<option>Category</option>
-					</select>
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
- 
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: SR CCD -->
-				
-				<div id="SRdate" class="hide">
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-					
-						
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-						
-						
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: SR date -->
-				
-				<div id="SRisrh" class="hide">
-				
-					<select class="form-control">
-					  	<option>Item Code</option>
-					</select>
-					
-					<div class="input-group input-daterange">
-						<span class="input-group-addon">Date</span>
-					    <input type="text" class="form-control" value="2012-04-05">
-					    <span class="input-group-addon">to</span>
-					    <input type="text" class="form-control" value="2012-04-19">
-					</div>
-					
-					<div class="text-right">
-							<button type="button" class="btn btn-primary" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					        	Ok
-					       </button>
-					
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-					        	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					        	Cancel
-					       </button>
-					
-						
-						 
-					</div> <!-- end of btns -->
-					
-				</div> <!-- end: SR item sales return history -->
-				
-			</div>
-			
-			
-		</div>
-		
-		
-	</div>
-</div>
 
 </body>
 </html>
