@@ -161,6 +161,12 @@
 					    <input type="radio" name="IOTRadios" id="IOTradio3" value="option3" >
 					     <select class="form-control IOTselect" disabled>
 						  	<option>Select Client</option>
+						  	<c:forEach var="customer" items="${sessionScope.customers}">
+						  	<option value="${customer.customer_code}">${customer.customer_code}</option>
+						  	</c:forEach>
+						  	<c:forEach var="supplier" items="${sessionScope.suppliers}">
+						  	<option value="${supplier.supplier_code}">${supplier.supplier_code }</option>
+						  	</c:forEach>
 						 </select>
 					  </label>
 					</div> 
