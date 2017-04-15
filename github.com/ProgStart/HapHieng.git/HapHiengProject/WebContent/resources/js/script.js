@@ -1,14 +1,6 @@
 var sumTotals = 0;
 $(document).ready(function() {
 	// MENUT TOGGLE FUNCTION
-	
-	$(".numberfield").keyup(function(){
-		this.value = this.value.replace(/[^0-9]/g, '');
-	});
-	
-	$(".numberfield-decimal").keyup(function(){
-		this.value = this.value.replace(/[^0-9\.]/g, '');
-	})
 
 	$("#menu-toggle").click(function() {
 		var menustate = $("#menustate").val();
@@ -220,10 +212,10 @@ $(document).ready(function() {
 
 		if((quantity*itemPrice !== 0 && (parseInt(quantity) <= parseInt(stock)))){	
 			if($('#'+itemCode+'item').length == 0) {
-				$('.list').append('<tr data-toggle="modal" data-target="#addEntry" id=' + itemCode + '-item data-quantity="' + quantity + '" data-id="' + itemCode + '" data-agent="' + agentname + '">\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td>' + itemPrice + '</td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td data-toggle="modal" data-target="#SEModal" data-id="TEST"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
+				$('.list').append('<tr data-toggle="modal" data-target="#addEntry" id=' + itemCode + '-item data-quantity="' + quantity + '" data-id="' + itemCode + '" data-agent="' + agentname + '">\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td>' + itemPrice + '</td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class="x-close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
 			}
 			else{
-				$('#'+itemCode+'item').replaceWith('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></font></td>\n</tr>').fadeIn('slow');
+				$('#'+itemCode+'item').replaceWith('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
 			} 
 		}
 
@@ -231,7 +223,7 @@ $(document).ready(function() {
 		var rows = $("#entries tr:gt(0)");
 
 		 rows.children("td:nth-child(9)").each(function() {
-		 sumTotals += parseInt($(this).html());
+			 sumTotals += parseInt($(this).html());
 		 });
 		 $("#totalAmt").val(sumTotals.toFixed(2));
 	});
@@ -245,14 +237,36 @@ $(document).ready(function() {
 		$(this).css('cursor', 'pointer');
 	});
 
-	$(document).on('click','.item-x',function(){
+	$('#post-btn').click( function() {
+		  var table = $('#entries').tableToJSON();
+		  console.log(table);
+		  alert(JSON.stringify(table));
+		  var tableStr = encodeURI(JSON.stringify(table));
+		  
+	        $.get('postEntries.htm?request='+tableStr,function(json) {
+	            if(json!=null){
+	            	alert(json);
+	            }
+	            else {
+	            	alert("fail");
+	            }
+	        }); 
+	});
+	
+	$(document).on('click','.x-close',function(){
 		if (confirm("Remove Item?") == true) {
-	         $(this).parent().parent().fadeOut();
-			var removeSum = $(this).parent().parent().children("td:nth-child(9)").text();
-			var myDivObj = document.getElementById("totalAmt").innerHTML;
-			sumTotals = parseInt(myDivObj) - parseInt(removeSum);
-			$('#totalAmt').text(sumTotals.toFixed(2));
-			$(this).parent().parent().children("td:nth-child(9)").text(0);
+			$(this).parent().fadeOut();
+			var amt = parseFloat($("#totalAmt").val());
+			var curAmt = $(this).parent().children("td:nth-child(9)").text();
+			var curTotal = amt - curAmt;
+			$(this).parent().remove();
+	        //$(this).parent().parent().fadeOut();
+			//var removeSum = $(this).parent().parent().children("td:nth-child(9)").text();
+			//var myDivObj = document.getElementById("totalAmt").innerHTML;
+			//sumTotals = parseInt(myDivObj) - parseInt(removeSum);
+			//$('#totalAmt').text(sumTotals.toFixed(2));
+			//$(this).parent().parent().children("td:nth-child(9)").text(0);
+			$("#totalAmt").val(parseFloat(Math.round(curTotal * 100) / 100).toFixed(2));
 	    } else {
 	        alert('Cancelled by user.');
 	    }
