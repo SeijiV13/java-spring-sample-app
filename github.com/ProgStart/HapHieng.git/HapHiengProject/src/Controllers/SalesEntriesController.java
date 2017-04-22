@@ -3,8 +3,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -63,36 +61,42 @@ public class SalesEntriesController {
 	
 	@RequestMapping(value="/postEntries")
 	@ResponseBody 
-    public String salesEntry3(@RequestParam("request") String json, @RequestParam("refNo") String refNo) throws JSONException {
+    public String salesEntry3(@RequestParam("request") String json, @RequestParam("refNo") String refNo, @RequestParam("details") String details) throws JSONException {
+		JSONObject home = new JSONObject(details);
+		String customer = home.getString("customer");
+		String dateIn = home.getString("date");	
+		
 		JSONArray jsonArray = new JSONArray(json);
 		for(int i=0; i<jsonArray.length(); i++) {
 		    JSONObject jsonObject = jsonArray.getJSONObject(i);
-		    Iterator<String> keys= jsonObject.keys();
-		    while (keys.hasNext()) 
-		    {
-		            String keyValue = (String)keys.next();
-		            String valueString = jsonObject.getString(keyValue);
-		            System.out.println(valueString);
-		    }
-		    String jsonObjectAsString = jsonObject.toString();
-		    System.out.println(jsonObjectAsString);
+		    String agent = jsonObject.getString("Agent");
+		    int qty = jsonObject.getInt("Qty");
+		    double amount = jsonObject.getDouble("Amount");
+		    String itemCode = jsonObject.getString("Item code");
+		    
+		    productImplem.addNewInOut_sale(itemCode, dateIn, refNo, customer, amount, "PHP", 0, qty, 0, 0.00, agent);
 		}
-		productImplem.addNewInOut_sale("item_code", "date", refNo, "client", "price", "currency", "quantity_in", "quantity_out", "quantity_adjustment", "balance", "agent");
-		
+	
     	return "success";
     }
 
 	@RequestMapping(value="/postEntry")
 	@ResponseBody 
-    public String salesEntry4(@RequestParam("request") String json) throws JSONException {
-		JSONArray jsonArray = new JSONArray(json);
+    public String salesEntry4(@RequestParam("details") String details) throws JSONException {
+		//JSONArray jsonArray = new JSONArray(details);
+		
+		JSONObject home = new JSONObject(details);
+		String customer = home.getString("customer");
+		String terms = home.getString("terms");
+		double totalAmt = home.getDouble("totalAmt");
+		String dateIn = home.getString("date");
+		String refNo = home.getString("refno");
+		 
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-		DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String todayDate = dateFormat.format(date);
-		String todayDate2 = dateFormat2.format(date);
 		
-		productImplem.addNewSale(todayDate, todayDate2, "customerCodeTest", "termstest", "po", "amount", "balance", "ctr_ref");
+		productImplem.addNewSale(todayDate, dateIn, customer, terms, "po", totalAmt, 0.00, refNo);
 		
     	return todayDate;
     }	

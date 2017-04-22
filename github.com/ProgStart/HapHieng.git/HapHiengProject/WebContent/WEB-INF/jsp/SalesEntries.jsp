@@ -130,7 +130,7 @@
 						</div>
 						
 						<div class="col-md-9">
-							<select class="form-control" >
+							<select class="form-control" id="customer">
 								<option>Customer</option>
 							</select>
 							
@@ -317,7 +317,7 @@
 							<label class="control-label col-md-2" for="date">Date</label>
 							<div class="col-md-10">
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" id="date">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-calendar"></span>
 									</div>
@@ -328,12 +328,12 @@
 						<div class="form-group">
 							<label class="control-label col-md-2" for="terms">Terms</label>
 							<div class="col-md-10 input-group">
-								<input type="text" class="form-control" id="terms">
+								<input type="text" class="form-control" id="termsDetails">
 								<div class="input-group-addon">day(s)</div>
 							</div>
 						</div>
 
-						<select class="form-control">
+						<select class="form-control" id="wcrc">
 							<option>WC/RC</option>
 						</select>
 

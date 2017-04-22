@@ -239,12 +239,18 @@ $(document).ready(function() {
 
 	$('#post-btn').click( function() {
 		  var table = $('#entries').tableToJSON();
-		  console.log(table);
-		  alert(JSON.stringify(table));
 		  var tableStr = encodeURI(JSON.stringify(table));
-		  
-		  $.get('postEntry.htm?request='+tableStr,function(refNo) {
-	        $.get('postEntries.htm?request='+tableStr+'&refNo='+refNo,function(json) {
+		  var refno = $("#drno").val();
+		  var customer = $("#customer").val();
+		  var date = $("#date").val();
+		  var terms = $("#termsDetails").val();
+		  var wcrc = $("#wcrc").val();
+		  var totalAmt = $("#totalAmt").val();
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\"}";
+		  details = encodeURI(details);
+
+		  $.get('postEntry.htm?details='+details,function(refNo) {
+	        $.get('postEntries.htm?request='+tableStr+'&refNo='+refNo+'&details='+details,function(json) {
 	            if(json!=null){
 	            	alert(json);
 	            }
