@@ -1,5 +1,8 @@
 package Controllers;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -60,7 +63,7 @@ public class SalesEntriesController {
 	
 	@RequestMapping(value="/postEntries")
 	@ResponseBody 
-    public String salesEntry3(@RequestParam("request") String json) throws JSONException {
+    public String salesEntry3(@RequestParam("request") String json, @RequestParam("refNo") String refNo) throws JSONException {
 		JSONArray jsonArray = new JSONArray(json);
 		for(int i=0; i<jsonArray.length(); i++) {
 		    JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -74,7 +77,23 @@ public class SalesEntriesController {
 		    String jsonObjectAsString = jsonObject.toString();
 		    System.out.println(jsonObjectAsString);
 		}
+		productImplem.addNewInOut_sale("item_code", "date", refNo, "client", "price", "currency", "quantity_in", "quantity_out", "quantity_adjustment", "balance", "agent");
+		
     	return "success";
     }
-	
+
+	@RequestMapping(value="/postEntry")
+	@ResponseBody 
+    public String salesEntry4(@RequestParam("request") String json) throws JSONException {
+		JSONArray jsonArray = new JSONArray(json);
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String todayDate = dateFormat.format(date);
+		String todayDate2 = dateFormat2.format(date);
+		
+		productImplem.addNewSale(todayDate, todayDate2, "customerCodeTest", "termstest", "po", "amount", "balance", "ctr_ref");
+		
+    	return todayDate;
+    }	
 }

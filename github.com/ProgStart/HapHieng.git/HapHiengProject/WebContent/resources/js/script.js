@@ -243,7 +243,8 @@ $(document).ready(function() {
 		  alert(JSON.stringify(table));
 		  var tableStr = encodeURI(JSON.stringify(table));
 		  
-	        $.get('postEntries.htm?request='+tableStr,function(json) {
+		  $.get('postEntry.htm?request='+tableStr,function(refNo) {
+	        $.get('postEntries.htm?request='+tableStr+'&refNo='+refNo,function(json) {
 	            if(json!=null){
 	            	alert(json);
 	            }
@@ -251,6 +252,7 @@ $(document).ready(function() {
 	            	alert("fail");
 	            }
 	        }); 
+		  }); 
 	});
 	
 	$(document).on('click','.x-close',function(){
