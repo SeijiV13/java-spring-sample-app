@@ -238,6 +238,8 @@ $(document).ready(function() {
 	});
 
 	$('#post-btn').click( function() {
+		var r = confirm("Are you sure you want to \"POST\" this transaction?");
+		if(r){
 		  var table = $('#entries').tableToJSON();
 		  var tableStr = encodeURI(JSON.stringify(table));
 		  var refno = $("#drno").val();
@@ -259,6 +261,34 @@ $(document).ready(function() {
 	            }
 	        }); 
 		  }); 
+		}
+	});
+	
+	$('#suspendSales').click( function() {
+		var r = confirm("Are you sure you want to \"SUSPEND\" this transaction?");
+		if(r){
+		  var table = $('#entries').tableToJSON();
+		  var tableStr = encodeURI(JSON.stringify(table));
+		  var refno = $("#drno").val();
+		  var customer = $("#customer").val();
+		  var date = $("#date").val();
+		  var terms = $("#termsDetails").val();
+		  var wcrc = $("#wcrc").val();
+		  var totalAmt = $("#totalAmt").val();
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\"}";
+		  details = encodeURI(details);
+
+		  $.get('suspendEntry.htm?details='+details,function(refNo) {
+	        $.get('suspendEntries.htm?request='+tableStr+'&refNo='+refNo+'&details='+details,function(json) {
+	            if(json!=null){
+	            	alert(json);
+	            }
+	            else {
+	            	alert("fail");
+	            }
+	        }); 
+		  }); 
+		}
 	});
 	
 	$(document).on('click','.x-close',function(){

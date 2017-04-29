@@ -633,13 +633,13 @@
 					</div>
 
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default" data-target="#SEresume" data-toggle="modal">
+						<button id="resumeSales" type="button" class="btn btn-default" data-target="#SEresume" data-toggle="modal">
 							<span class="fa fa-pencil" aria-hidden="true"></span> Resume
 						</button>
 					</div>
 
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default">
+						<button id="suspendSales" type="button" class="btn btn-default">
 							<span class="glyphicon glyphicon-save" aria-hidden="true"></span>
 							Suspend
 						</button>
@@ -662,50 +662,21 @@
 			          <thead>
 			            <tr>
 			            	<th class="bg_dblue"></th>
-			            	<th class="bg_dblue">SR no.</th>
+			            	<th class="bg_dblue">DR Ref no.</th>
 			              	<th class="bg_dblue">Customer</th>
 							<th class="bg_dblue">Date</th>
 			            </tr>
 			          </thead>
 			          <tbody>
-			          	<tr>
-			          		<td class="">
-				          		<div class="checkbox">
-							    <label>
-							      <input type="checkbox"> 
-							    </label>
-							  </div>
-			          		</td>
-			          		<td class="">124</td>
-			          		<td class="">John Smith</td>
-			          		<td class="">Jan 20 2017</td>
-			          	</tr>
-			          	
-			          	<tr>
-			          		<td class="">
-				          		<div class="checkbox">
-							    <label>
-							      <input type="checkbox"> 
-							    </label>
-							  </div>
-			          		</td>
-			          		<td class="">124</td>
-			          		<td class="">John Smith</td>
-			          		<td class="">Jan 20 2017</td>
-			          	</tr>
-			          	
-			          	<tr>
-			          		<td class="">
-				          		<div class="checkbox">
-							    <label>
-							      <input type="checkbox"> 
-							    </label>
-							  </div>
-			          		</td>
-			          		<td class="">124</td>
-			          		<td class="">John Smith</td>
-			          		<td class="">Jan 20 2017</td>
-			          	</tr>          		
+									<c:forEach var="product" items="${sessionScope.products}">
+
+										<tr>
+											<td><input type="radio" name="itementry" value="${product.item_code}"></td>
+											<td id="${product.item_code}-itemcode" class="">${product.item_code}</td>
+											<td id="${product.item_code}-description" class="">${product.description}</td>
+										</tr>
+										 
+									</c:forEach>			          
 			          </tbody>
 			          
 			         </table>

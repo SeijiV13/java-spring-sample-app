@@ -34,8 +34,10 @@ public class SalesEntriesController {
 		HttpSession session = request.getSession();
 		
 		ArrayList<Product> products = productImplem.getAllProducts();
+		ArrayList<Product> suspendProducts = productImplem.getAllProducts();
 		
 		session.setAttribute("products", products);
+		session.setAttribute("suspendProducts", suspendProducts);
 		return salesEntries;
 	}
 	
@@ -74,7 +76,7 @@ public class SalesEntriesController {
 		    double amount = jsonObject.getDouble("Amount");
 		    String itemCode = jsonObject.getString("Item code");
 		    
-		    productImplem.addNewInOut_sale(itemCode, dateIn, refNo, customer, amount, "PHP", 0, qty, 0, 0.00, agent);
+		    productImplem.addNewItemSuspend(itemCode, dateIn, refNo, customer, amount, "PHP", 0, qty, 0, 0.00, agent);
 		}
 	
     	return "success";
@@ -91,12 +93,13 @@ public class SalesEntriesController {
 		double totalAmt = home.getDouble("totalAmt");
 		String dateIn = home.getString("date");
 		String refNo = home.getString("refno");
+		String currency = "PHP";
 		 
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 		Date date = new Date();
 		String todayDate = dateFormat.format(date);
 		
-		productImplem.addNewSale(todayDate, dateIn, customer, terms, "po", totalAmt, 0.00, refNo);
+		productImplem.addNewSale(todayDate, dateIn, customer, terms, "po", totalAmt, 0.00, refNo, currency);
 		
     	return todayDate;
     }	

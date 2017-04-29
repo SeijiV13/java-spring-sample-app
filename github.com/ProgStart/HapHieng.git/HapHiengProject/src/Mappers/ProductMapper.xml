@@ -34,11 +34,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
 
     <insert id="addNewSale">
-		INSERT INTO SALES_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7})                                
+		INSERT INTO SALES_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7}, #{8})                                
     </insert>
 
     <insert id="addNewInOut_sale">
 		INSERT INTO INOUT_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7}, #{8}, #{9}, #{10})                                
+    </insert>
+
+    <insert id="addNewSuspend">
+		INSERT INTO SUSPEND_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7}, #{8}, #{9})                                
+    </insert>
+
+    <insert id="addNewItemSuspend">
+		INSERT INTO SUSPEND_ITEMS_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7}, #{8}, #{9}, #{10})                                
     </insert>
 
     <select id="getAllInOutTransactions" resultType="InOutTransaction">
