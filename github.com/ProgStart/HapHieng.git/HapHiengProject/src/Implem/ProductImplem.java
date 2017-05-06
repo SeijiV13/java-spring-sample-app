@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Mappers.ProductMapper;
 import Models.InOutTransaction;
 import Models.Product;
+import Models.Transaction;
 
 public class ProductImplem {
     
@@ -33,6 +34,11 @@ public class ProductImplem {
 		
 		return products;
 	}
+
+	public ArrayList<Transaction> getAllSuspendedSales(){
+		ArrayList<Transaction> transaction = productMapper.getAllSuspendedSales();
+		return transaction;
+	}	
 	
 	public ArrayList<Product> getAllFilteredProducts(String product_line, String category){
 		
@@ -67,6 +73,14 @@ public class ProductImplem {
 
 	public void addNewItemSuspend(String item_code, String date, String refNo, String client, double price, String currency, int quantity_in, int quantity_out, int quantity_adjustment, double balance, String agent) {
 		productMapper.addNewItemSuspend(item_code, date, refNo, client, price, currency, quantity_in, quantity_out, quantity_adjustment, balance, agent);
+	}
+
+	public void deleteSuspendedTrans(String refNo, String entry) {
+		productMapper.deleteSuspendedTrans(refNo, entry);
+	}
+
+	public void deleteSuspendedItems(String refNo) {
+		productMapper.deleteSuspendedItem(refNo);
 	}
 	
 }

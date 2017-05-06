@@ -109,12 +109,13 @@
 			<div class="row">
 				<modal:addcustomer />
 				<form>
+				<!-- 
 					<div class="form-horizontal col-md-6 col-xs-12">
 						<div class="form-group">
 							<label class="control-label col-md-4" for="drno">DR Ref.
 								No.</label>
 							<div class="col-md-8">
-								<input type="text" class="form-control" id="drno">
+								<input type="text" class="form-control" id="drno" readOnly>
 							</div>
 						</div>
 
@@ -136,183 +137,72 @@
 							
 						</div>
 					</div>
-					
-					<!-- MODAL FOR ADD CUSTOMER -->
-					
-					<div class="modal fade" id="SEAddCust" tabindex="-1" role="dialog">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					        <h3 class="modal-title">Add Customer</h3>
-					      </div>
-					      
-					      <!-- MODAL FORM -->
-					      <div class="modal-body">
-					        <form>
-								<div class="form-container">
-									<h3>Personal Details</h3>
-									<div class="row">
-										<div class="col-md-6">
-		
-											<div class="form-group">
-												<label for="customercode">Customer Code</label> <input
-													placeholder="Customer Code" type="text" class="form-control"
-													id="customercode">
-											</div>
-		
-											<div class="form-group">
-												<label for="description">Description</label> <input
-													placeholder="Description" type="text" class="form-control"
-													id="description">
-											</div>
-		
-										</div>
-										<div class="col-md-6">
-		
-											<div class="form-group">
-												<label for="agent">Agent</label> <select class="form-control">
-													<option value="">Select Agent</option>
-												</select>
-											</div>
-		
-											<div class="form-group">
-												<label for="address">Address</label> <input
-													placeholder="Address" type="text" class="form-control"
-													id="address">
-											</div>
-		
-										</div>
-										<div class="col-md-6">
-		
-											<div class="form-group">
-												<label for="address2">Address 2</label> <input
-													placeholder="Address 2" type="text" class="form-control"
-													id="address2">
-											</div>
-		
-											<div class="form-group">
-												<label for="telephone">Telephone</label> <input
-													placeholder="Telephone" type="text" class="form-control"
-													id="telephone">
-											</div>
-		
-										</div>
-										<div class="col-md-6">
-		
-											<div class="form-group">
-												<label for="residentphone">Resident Phone</label> <input
-													placeholder="Resident Phone" type="text" class="form-control"
-													id="residentphone">
-											</div>
-		
-											<div class="form-group">
-												<label for="fax">Fax</label> <input placeholder="Fax"
-													type="text" class="form-control" id="fax">
-											</div>
-		
-										</div>
-										<div class="col-md-6">
-		
-											<div class="form-group">
-												<label for="cellphone">Cellphone</label> <input
-													placeholder="Cellphone" type="text" class="form-control"
-													id="cellphone">
-											</div>
-		
-											<div class="form-group">
-												<label for="terms">Terms</label> <input placeholder="Terms"
-													type="text" class="form-control" id="terms">
-											</div>
-		
-										</div>
-										<div class="col-md-6">
-		
-											<div class="form-group">
-												<label for="tin">Tin #</label> <input placeholder="Tin #"
-													type="text" class="form-control" id="tin">
-											</div>
-		
-											<div class="form-group">
-												<label for="contactperson">Contact Person</label> <input
-													placeholder="Contact Person" type="text" class="form-control"
-													id="contactperson">
-											</div>
-		
-										</div>
-										<div class="col-md-6">
-		
-											<div class="form-group">
-												<label for="email">Email</label> <input placeholder="Email"
-													type="text" class="form-control" id="email">
-											</div>
-		
-										</div>
-		
+					-->
+					<div class="form-horizontal col-md-12">
+						<div class="col-md-4">
+							<label class="control-label col-md-4" for="drno">DR Ref.
+								No.</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="drno" value="${refno}" readOnly>
+							</div>
+						</div>
+						
+						<div class="col-md-4">
+							<label class="control-label col-md-2" for="date">Date</label>
+							<div class="col-md-10">
+								<div class="input-group date" data-provide="datepicker">
+									<input type="text" class="form-control" id="date">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
 									</div>
 								</div>
-								<div class="form-container">
-									<h3>Other Details</h3>
-									<div class="row">
-										<div class="col-md-6">
-		
-											<div class="form-group">
-												<label for="creditlimit">Credit Limit</label> <input
-													placeholder="Credit Limit" type="text" class="form-control"
-													id="creditlimit">
-											</div>
-		
-											<div class="form-group">
-												<label for="initialbalance">Initial Balance</label> <input
-													placeholder="Initial Balance" type="text"
-													class="form-control" id="initialbalance">
-											</div>
-		
-										</div>
-										<div class="col-md-6">
-		
-											<div class="form-group">
-												<label for="remaining">Remaining</label> <input
-													placeholder="Remaining" type="text" class="form-control"
-													id="remaining">
-											</div>
-		
-											<div class="form-group">
-												<label for="remaining">Customer Type</label>
-												<div class="radio">
-													<label><input type="radio" name="optradio">Wholesale
-													</label> <label><input type="radio" name="optradio">Retail
-													</label>
-												</div>
-		
-											</div>
-		
-		
-										</div>
-										<div class="col-md-12">
-											<div class="form-group">
-												<label for="remarks">Remarks</label>
-												<textarea placeholder="Remarks" class="form-control" rows="4"></textarea>
-											</div>
-										</div>
-		
-									</div>
-								</div>
-		
-							</form>
-					        
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					        <button type="button" class="btn btn-primary">Save changes</button>
-					      </div>
-					    </div><!-- /.modal-content -->
-					  </div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->
+							</div>
+						</div>
+						
+						<div class="col-md-4">
+							<label class="control-label col-md-3">Currency</label>
+							<div class="col-md-9">
+								<select class="form-control" id="salescurrency">
+									<option>PHP</option>
+									<option>CNY</option>
+								</select>
+							</div>
+						</div>
+					</div>
 					
-					<!-- end of modal -->
-
-					<div class="form-horizontal col-md-6 col-xs-12 col_2">
+					<div class="form-horizontal col-md-12">
+						<div class="col-md-4">
+							<div class="col-md-5">
+								<button class="btn btn-default bg_dblue btn-add" data-target="#addcustomer" data-toggle="modal" type="button"> Add Customer </button>
+							</div>
+							
+							<div class="col-md-7">
+								<select class="form-control" id="customer">
+									<option>Customer</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<label class="control-label col-md-4" for="terms">Terms</label>
+							<div class="col-md-8 input-group">
+								<input type="text" class="form-control" id="termsDetails">
+								<div class="input-group-addon">day(s)</div>
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<select class="form-control" id="wcrc">
+								<option>WC/RC</option>
+							</select>
+						</div>
+						
+						<div class="col-md-2">
+							<button type="button" class="center-block btn btn-primary" data-toggle="modal" data-target="#addEntry">Add Entry</button>
+						</div>
+					</div>
+					
+<!--					<div class="form-horizontal col-md-6 col-xs-12 col_2">
 						<div class="form-group">
 							<label class="control-label col-md-2" for="date">Date</label>
 							<div class="col-md-10">
@@ -339,6 +229,7 @@
 
 
 					</div>
+					-->
 				</form>
 				
 				<!-- ============ TABLE ============ -->
@@ -364,9 +255,7 @@
 			          </tbody>
 			        </table> 
 				</div>
-				
-				<button type="button" class="center-block btn btn-primary btn-lg" data-toggle="modal" data-target="#addEntry">Add Entry</button>
-        
+				 
 
 				<!-- ============= MODAL =============== -->
 				<div id="addEntry" class="modal fade" role="dialog">
@@ -459,139 +348,6 @@
 				  </div>
 				</div>
 
-				<div class="modal fade" id="SEModal" tabindex="-2" role="dialog">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<h3 class="modal-title">Select an item</h3>
-							</div>
-
-							<div class="modal-body">
-								<!-- ============= MODAL TABLE =============== -->
-
-								<div class="tbl_wrap">
-					        		<table class="table table-hover">
-							          <thead>
-							            <tr>
-							            	<th class="bg_dblue">Tx</th>
-							              	<th class="bg_dblue">SearchString</th>
-											<th class="bg_dblue">Item code</th>
-											<th class="bg_dblue">Category</th>
-											<th class="bg_dblue">Description</th>
-											<th class="bg_dblue">Qty</th>
-											<th class="bg_dblue">Price</th>
-							            </tr>
-							          </thead>
-							          <tbody>
-							          	<tr>
-							          		<td class=""></td>
-							          		<td class="">New Product Line</td>
-							          		<td class="">BS-006</td>
-							          		<td class="">Bleeder Screw</td>
-							          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-							          		<td class="">0</td>
-							          		<td class="">4.08</td>
-							          	</tr>
-							          	
-							          	<tr>
-							          		<td class=""></td>
-							          		<td class="">New Product Line</td>
-							          		<td class="">BS-006</td>
-							          		<td class="">Bleeder Screw</td>
-							          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-							          		<td class="">0</td>
-							          		<td class="">4.08</td>
-							          	</tr>
-							          	
-							          	<tr>
-							          		<td class=""></td>
-							          		<td class="">New Product Line</td>
-							          		<td class="">BS-006</td>
-							          		<td class="">Bleeder Screw</td>
-							          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-							          		<td class="">0</td>
-							          		<td class="">4.08</td>
-							          	</tr>
-							          	
-							          	<tr>
-							          		<td class=""></td>
-							          		<td class="">New Product Line</td>
-							          		<td class="">BS-006</td>
-							          		<td class="">Bleeder Screw</td>
-							          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-							          		<td class="">0</td>
-							          		<td class="">4.08</td>
-							          	</tr>
-							          	
-							          	<tr>
-							          		<td class=""></td>
-							          		<td class="">New Product Line</td>
-							          		<td class="">BS-006</td>
-							          		<td class="">Bleeder Screw</td>
-							          		<td class="">Bleeder Screw = Toyota (7 x 3.5) NC</td>
-							          		<td class="">0</td>
-							          		<td class="">4.08</td>
-							          	</tr>
-							          	
-							          				          		
-							          </tbody>
-							          
-							         </table>
-						        	</div>
-
-								<hr>
-								<div class="row center-block legend">
-									<div class="col-md-1 text-right">Pricing Legend:</div>
-									<div class="col-md-2">
-										<span class="text-center bg_black "> Ordinary </span>
-									</div>
-									<div class="col-md-2 ">
-										<span class="text-center bg_blue "> Special </span>
-									</div>
-									<div class="col-md-2">
-										<span class="text-center bg_yellow "> No Stock </span>
-									</div>
-
-									<div class="col-md-1">
-										<span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
-										Item Tx
-									</div>
-
-									<div class="col-md-2">
-										<span class="text-center bg_red "> Cost 125 </span>
-									</div>
-
-									<div class="col-md-2">
-										<span class="text-center bg_green "> Net Price </span>
-									</div>
-
-
-								</div>
-
-							</div>
-
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary"
-									data-dismiss="modal">
-									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-									Ok
-								</button>
-
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">
-									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-									Cancel
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
 
 				<!-- #PRICING LEGEND -->
 				<hr>
@@ -668,12 +424,13 @@
 			            </tr>
 			          </thead>
 			          <tbody>
-									<c:forEach var="product" items="${sessionScope.products}">
+									<c:forEach var="suspendproduct" items="${sessionScope.suspendProducts}">
 
 										<tr>
-											<td><input type="radio" name="itementry" value="${product.item_code}"></td>
-											<td id="${product.item_code}-itemcode" class="">${product.item_code}</td>
-											<td id="${product.item_code}-description" class="">${product.description}</td>
+											<td><input type="radio" name="transentry" value="${suspendproduct.reference_no}"></td>
+											<td id="${suspendproduct.reference_no}-refno" class="">${suspendproduct.reference_no}</td>
+											<td id="${suspendproduct.customer_code}-cust" class="">${suspendproduct.customer_code}</td>
+											<td id="${suspendproduct.date}-date" class="">${suspendproduct.date}</td>
 										</tr>
 										 
 									</c:forEach>			          

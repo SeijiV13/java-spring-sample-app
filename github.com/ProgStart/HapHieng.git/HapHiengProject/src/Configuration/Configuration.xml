@@ -7,6 +7,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <typeAliases>
 <typeAlias alias="User" type="Models.User"/>
+<typeAlias alias="Transaction" type="Models.Transaction"/>
 <typeAlias alias="Product" type="Models.Product"/>
 <typeAlias alias="Customer" type="Models.Customer"/>
 <typeAlias alias="Supplier" type="Models.Supplier"/>

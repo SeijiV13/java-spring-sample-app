@@ -1,7 +1,4 @@
 package Controllers;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,10 +19,18 @@ public class SuspendController {
 	
 	@RequestMapping(value="/suspendEntries")
 	@ResponseBody 
-    public String suspendItemEntries(@RequestParam("request") String json, @RequestParam("refNo") String refNo, @RequestParam("details") String details) throws JSONException {
+    public String suspendTransaction(@RequestParam("request") String json, @RequestParam("details") String details) throws JSONException {
 		JSONObject home = new JSONObject(details);
 		String customer = home.getString("customer");
-		String dateIn = home.getString("date");	
+		String terms = home.getString("terms");
+		double totalAmt = home.getDouble("totalAmt");
+		String dateIn = home.getString("date");
+		String refNo = home.getString("refno");
+		String currency = home.getString("currency");
+		
+		//CHECK IF ALREADY IN SALES TABLE, CANCEL IF ALREADY
+		
+		productImplem.addNewSuspend(refNo, dateIn, customer, terms, "po", totalAmt, 0.00, refNo, currency, "SALES");
 		
 		JSONArray jsonArray = new JSONArray(json);
 		for(int i=0; i<jsonArray.length(); i++) {
@@ -35,33 +40,10 @@ public class SuspendController {
 		    double amount = jsonObject.getDouble("Amount");
 		    String itemCode = jsonObject.getString("Item code");
 		    
-		    productImplem.addNewItemSuspend(itemCode, dateIn, refNo, customer, amount, "PHP", 0, qty, 0, 0.00, agent);
+		    productImplem.addNewItemSuspend(itemCode, dateIn, refNo, customer, amount, currency, 0, qty, 0, 0.00, agent);
 		}
 	
-    	return "success";
+    	return "Success! Transaction Suspended.";
     }
-
-	@RequestMapping(value="/suspendEntry")
-	@ResponseBody 
-    public String suspendEntries(@RequestParam("details") String details) throws JSONException {
-		//JSONArray jsonArray = new JSONArray(details);
-		
-		JSONObject home = new JSONObject(details);
-		String customer = home.getString("customer");
-		String terms = home.getString("terms");
-		double totalAmt = home.getDouble("totalAmt");
-		String dateIn = home.getString("date");
-		String refNo = home.getString("refno");
-		String currency = "PHP";
-		String entry = "SALES";
-		 
-		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date date = new Date();
-		String todayDate = dateFormat.format(date);
-		
-		productImplem.addNewSuspend(todayDate, dateIn, customer, terms, "po", totalAmt, 0.00, refNo, currency, entry);
-		
-    	return todayDate;
-    }	
 }
 

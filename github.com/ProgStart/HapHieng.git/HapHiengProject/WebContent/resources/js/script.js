@@ -211,11 +211,11 @@ $(document).ready(function() {
 		var itemCode = $('#itemCode').text();
 
 		if((quantity*itemPrice !== 0 && (parseInt(quantity) <= parseInt(stock)))){	
-			if($('#'+itemCode+'item').length == 0) {
+			if($('#'+itemCode+'-item').length == 0) {
 				$('.list').append('<tr data-toggle="modal" data-target="#addEntry" id=' + itemCode + '-item data-quantity="' + quantity + '" data-id="' + itemCode + '" data-agent="' + agentname + '">\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td>' + itemPrice + '</td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class="x-close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
 			}
 			else{
-				$('#'+itemCode+'item').replaceWith('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
+				$('#'+itemCode+'-item').replaceWith('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
 			} 
 		}
 
@@ -248,20 +248,19 @@ $(document).ready(function() {
 		  var terms = $("#termsDetails").val();
 		  var wcrc = $("#wcrc").val();
 		  var totalAmt = $("#totalAmt").val();
-		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\"}";
+		  var currency = $("#salescurrency").val();
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\"}";
 		  details = encodeURI(details);
 
-		  $.get('postEntry.htm?details='+details,function(refNo) {
-	        $.get('postEntries.htm?request='+tableStr+'&refNo='+refNo+'&details='+details,function(json) {
-	            if(json!=null){
-	            	alert(json);
-	            }
-	            else {
-	            	alert("fail");
-	            }
-	        }); 
-		  }); 
-		}
+	      $.get('postEntries.htm?request='+tableStr+'&details='+details,function(json) {
+	    	  if(json!=null){
+	    		  alert(json);
+	          }
+	          else {
+	        	  alert("Processing failed. Please try again.");
+	          }
+	      }); 
+		 }
 	});
 	
 	$('#suspendSales').click( function() {
@@ -275,20 +274,19 @@ $(document).ready(function() {
 		  var terms = $("#termsDetails").val();
 		  var wcrc = $("#wcrc").val();
 		  var totalAmt = $("#totalAmt").val();
-		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\"}";
+		  var currency = $("#salescurrency").val();
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\"}";
 		  details = encodeURI(details);
 
-		  $.get('suspendEntry.htm?details='+details,function(refNo) {
-	        $.get('suspendEntries.htm?request='+tableStr+'&refNo='+refNo+'&details='+details,function(json) {
-	            if(json!=null){
-	            	alert(json);
-	            }
-	            else {
-	            	alert("fail");
-	            }
-	        }); 
-		  }); 
-		}
+	      $.get('suspendEntries.htm?request='+tableStr+'&details='+details,function(json) {
+	    	  if(json!=null){
+	    		  alert(json);
+	          }
+	          else {
+	        	  alert("Processing failed. Please try again.");
+	          }
+	      }); 
+		 }
 	});
 	
 	$(document).on('click','.x-close',function(){
@@ -298,17 +296,11 @@ $(document).ready(function() {
 			var curAmt = $(this).parent().children("td:nth-child(9)").text();
 			var curTotal = amt - curAmt;
 			$(this).parent().remove();
-	        //$(this).parent().parent().fadeOut();
-			//var removeSum = $(this).parent().parent().children("td:nth-child(9)").text();
-			//var myDivObj = document.getElementById("totalAmt").innerHTML;
-			//sumTotals = parseInt(myDivObj) - parseInt(removeSum);
-			//$('#totalAmt').text(sumTotals.toFixed(2));
-			//$(this).parent().parent().children("td:nth-child(9)").text(0);
+
 			$("#totalAmt").val(parseFloat(Math.round(curTotal * 100) / 100).toFixed(2));
 	    } else {
 	        alert('Cancelled by user.');
 	    }
-		//$('#result').text(sumTotals);
 	});	
 
 	$(document).on('mouseover','.item-x',function(){

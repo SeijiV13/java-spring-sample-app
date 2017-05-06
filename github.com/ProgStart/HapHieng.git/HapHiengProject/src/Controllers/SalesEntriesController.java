@@ -20,6 +20,7 @@ import org.springframework.web.portlet.ModelAndView;
 
 import Implem.ProductImplem;
 import Models.Product;
+import Models.Transaction;
 
 @Controller
 public class SalesEntriesController {
@@ -34,8 +35,12 @@ public class SalesEntriesController {
 		HttpSession session = request.getSession();
 		
 		ArrayList<Product> products = productImplem.getAllProducts();
-		ArrayList<Product> suspendProducts = productImplem.getAllProducts();
+		ArrayList<Transaction> suspendProducts = productImplem.getAllSuspendedSales();
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		Date date = new Date();
+		String ref_no = dateFormat.format(date);
 		
+		session.setAttribute("refno", ref_no);
 		session.setAttribute("products", products);
 		session.setAttribute("suspendProducts", suspendProducts);
 		return salesEntries;
@@ -44,7 +49,7 @@ public class SalesEntriesController {
 	
 	@RequestMapping(value="/entries")
 	@ResponseBody 
-    public String salesEntry2(@RequestParam("itemId") String itemId) throws JSONException {
+    public String getItem(@RequestParam("itemId") String itemId) throws JSONException {
 		Product product = productImplem.selectProduct(itemId);
         JSONObject obj = new JSONObject();
 
@@ -54,19 +59,21 @@ public class SalesEntriesController {
         obj.put("stock", product.getQuantity_pack_big());
         obj.put("amount", product.getGross_price());
         
-        //System.out.println(obj.toString());
-        
-		//Product product = productImplem.selectProduct(itemId);
-    	//String sample = "{\"itemid\": "+ itemId +", \"name\": \"Sample Item "+ itemId +"\", \"desc\": \"Short Desc\", \"stock\": "+ 100 * Integer.parseInt(itemId) + ", \"amount\": "+ 1000 * Integer.parseInt(itemId) + "}";
-    	return obj.toString();
+        return obj.toString();
     }
 	
 	@RequestMapping(value="/postEntries")
 	@ResponseBody 
-    public String salesEntry3(@RequestParam("request") String json, @RequestParam("refNo") String refNo, @RequestParam("details") String details) throws JSONException {
+    public String postTransaction(@RequestParam("request") String json, @RequestParam("details") String details) throws JSONException {
 		JSONObject home = new JSONObject(details);
 		String customer = home.getString("customer");
-		String dateIn = home.getString("date");	
+		String terms = home.getString("terms");
+		double totalAmt = home.getDouble("totalAmt");
+		String dateIn = home.getString("date");
+		String refNo = home.getString("refno");
+		String currency = home.getString("currency");
+		
+		productImplem.addNewSale(refNo, dateIn, customer, terms, "po", totalAmt, 0.00, refNo, currency);
 		
 		JSONArray jsonArray = new JSONArray(json);
 		for(int i=0; i<jsonArray.length(); i++) {
@@ -76,31 +83,11 @@ public class SalesEntriesController {
 		    double amount = jsonObject.getDouble("Amount");
 		    String itemCode = jsonObject.getString("Item code");
 		    
-		    productImplem.addNewItemSuspend(itemCode, dateIn, refNo, customer, amount, "PHP", 0, qty, 0, 0.00, agent);
+		    productImplem.addNewInOut_sale(itemCode, dateIn, refNo, customer, amount, currency, 0, qty, 0, 0.00, agent);
 		}
+		productImplem.deleteSuspendedTrans(refNo, "SALES");
+		productImplem.deleteSuspendedItems(refNo);
 	
-    	return "success";
+    	return "Success! Transaction Posted.";
     }
-
-	@RequestMapping(value="/postEntry")
-	@ResponseBody 
-    public String salesEntry4(@RequestParam("details") String details) throws JSONException {
-		//JSONArray jsonArray = new JSONArray(details);
-		
-		JSONObject home = new JSONObject(details);
-		String customer = home.getString("customer");
-		String terms = home.getString("terms");
-		double totalAmt = home.getDouble("totalAmt");
-		String dateIn = home.getString("date");
-		String refNo = home.getString("refno");
-		String currency = "PHP";
-		 
-		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date date = new Date();
-		String todayDate = dateFormat.format(date);
-		
-		productImplem.addNewSale(todayDate, dateIn, customer, terms, "po", totalAmt, 0.00, refNo, currency);
-		
-    	return todayDate;
-    }	
 }

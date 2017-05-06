@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Models.InOutTransaction;
 import Models.Product;
+import Models.Transaction;
 
 public interface ProductMapper {
      
@@ -23,4 +24,7 @@ public interface ProductMapper {
 			double balance, String ctr_ref, String currency, String entry);
 	public void addNewItemSuspend(String item_code, String date, String refNo, String client, double price,
 			String currency, int quantity_in, int quantity_out, int quantity_adjustment, double balance, String agent);
+	public ArrayList<Transaction> getAllSuspendedSales();
+	public void deleteSuspendedTrans(String refNo, String entry);
+	public void deleteSuspendedItem(String refNo);
 }

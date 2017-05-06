@@ -12,6 +12,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getAllProducts" resultType="Product">
         SELECT * FROM PRODUCTS_TABLE
 	</select>
+
+	<select id="getAllSuspendedSales" resultType="Transaction">
+        SELECT reference_no, date, customer_code, terms, po, amount, balance, ctr_ref, currency FROM SUSPEND_TABLE WHERE entry = 'SALES'
+	</select>
+
+	<select id="deleteSuspendedTrans">
+        DELETE FROM SUSPEND_TABLE WHERE reference_no = #{0} AND entry = #{1}
+	</select>
+
+	<select id="deleteSuspendedItem">
+        DELETE FROM SUSPEND_ITEMS_TABLE WHERE reference_no = #{0}
+	</select>
 	
 	<select id="getAllCategories" resultType="string">
 		SELECT category FROM CATEGORY_TABLE
