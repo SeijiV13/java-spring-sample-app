@@ -17,6 +17,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT reference_no, date, customer_code, terms, po, amount, balance, ctr_ref, currency FROM SUSPEND_TABLE WHERE entry = 'SALES'
 	</select>
 
+	<select id="getSuspendedSalesTrans" resultType="Transaction">
+        SELECT reference_no, date, customer_code, terms, po, amount, balance, ctr_ref, currency FROM SUSPEND_TABLE WHERE entry = 'SALES' AND reference_no = #{0}
+	</select>
+	
+	<select id="getSuspendedItemSales" resultType="InOutTransaction">
+        SELECT * FROM SUSPEND_ITEMS_TABLE WHERE reference_no = #{0}
+	</select>
+
 	<select id="deleteSuspendedTrans">
         DELETE FROM SUSPEND_TABLE WHERE reference_no = #{0} AND entry = #{1}
 	</select>

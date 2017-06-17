@@ -160,11 +160,11 @@
 						</div>
 						
 						<div class="col-md-4">
-							<label class="control-label col-md-3">Currency</label>
+							<label class="control-label col-md-3">WC/RC: </label>
 							<div class="col-md-9">
-								<select class="form-control" id="salescurrency">
-									<option>PHP</option>
-									<option>CNY</option>
+								<select class="form-control" id="wcrc">
+									<option value="WC">WC</option>
+									<option value="RC">RC</option>
 								</select>
 							</div>
 						</div>
@@ -178,7 +178,8 @@
 							
 							<div class="col-md-7">
 								<select class="form-control" id="customer">
-									<option>Customer</option>
+									<option value="NA">N/A</option>
+									<option value="Customer">Customer</option>
 								</select>
 							</div>
 						</div>
@@ -191,11 +192,11 @@
 							</div>
 						</div>
 						
-						<div class="col-md-3">
+						<!-- <div class="col-md-3">
 							<select class="form-control" id="wcrc">
 								<option>WC/RC</option>
 							</select>
-						</div>
+						</div>  -->
 						
 						<div class="col-md-2">
 							<button type="button" class="center-block btn btn-primary" data-toggle="modal" data-target="#addEntry">Add Entry</button>
@@ -327,6 +328,7 @@
 								Description test
 							  </div>
 							</div>
+
 							<label for="btn-stockquan">Available Stock:</label>
 							  <input id="stockQuantity" class="form-control" type="number" placeholder="0" value="0" disabled>
 							<p class="form-control-static">Amount: P<span id="itemAmount">0.00</span></p>
@@ -414,7 +416,7 @@
 				      <div class="modal-body">
 				        
 				        <div class="tbl_wrap">
-	        		<table class="table table-hover">
+	        		<table class="table table-hover" id="resumeTable">
 			          <thead>
 			            <tr>
 			            	<th class="bg_dblue"></th>
@@ -442,7 +444,7 @@
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				        <button type="button" class="btn btn-primary">Resume</button>
+				        <button id="resumeBtn" type="button" class="btn btn-primary">Resume</button>
 				      </div>
 				    </div><!-- /.modal-content -->
 				  </div><!-- /.modal-dialog -->

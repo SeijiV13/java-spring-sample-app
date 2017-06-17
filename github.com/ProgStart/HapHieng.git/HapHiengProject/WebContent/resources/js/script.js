@@ -197,7 +197,10 @@ $(document).ready(function() {
 
 	$('#itemTable tr').click(function() {
 	    $(this).find('td input:radio').prop('checked', true);
-	    
+	});
+
+	$('#resumeTable tr').click(function() {
+	    $(this).find('td input:radio').prop('checked', true);
 	});
 	
 	$('.addToList').click(function(){
@@ -227,11 +230,6 @@ $(document).ready(function() {
 		 });
 		 $("#totalAmt").val(sumTotals.toFixed(2));
 	});
-	
-	$('#clear').click(function(){
-		$('#totalAmt').text("0.00");
-		$('#entries').replaceWith('<table id=\"entries\" class=\"list\"><thead><tr><th><p class=\"qtyCO\">Name &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</p></th><th><p class=\"qtyCO\">Quantity &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</p></th><th><p class=\"qtyCO\">Price &nbsp &nbsp</p></th></tr></thead></table>');
-	});
 
 	$('.addToList').mouseover(function(){
 		$(this).css('cursor', 'pointer');
@@ -248,7 +246,7 @@ $(document).ready(function() {
 		  var terms = $("#termsDetails").val();
 		  var wcrc = $("#wcrc").val();
 		  var totalAmt = $("#totalAmt").val();
-		  var currency = $("#salescurrency").val();
+		  var currency = "PHP";
 		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\"}";
 		  details = encodeURI(details);
 
@@ -274,7 +272,7 @@ $(document).ready(function() {
 		  var terms = $("#termsDetails").val();
 		  var wcrc = $("#wcrc").val();
 		  var totalAmt = $("#totalAmt").val();
-		  var currency = $("#salescurrency").val();
+		  var currency = "PHP";
 		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\"}";
 		  details = encodeURI(details);
 
@@ -287,6 +285,68 @@ $(document).ready(function() {
 	          }
 	      }); 
 		 }
+	});
+	
+	$('#resumeBtn').click( function() {
+		var val = $('input[name=transentry]:checked').val();
+		
+        $.get('resumeEntries.htm?details='+val,function(json) {
+            if(json!=null){
+            	var data = JSON.parse(json);
+      			$("#drno").val(data.ref_no);
+      		  	$("#customer").val(data.cust_code);
+      		  	$("#date").val(data.date);
+      		  	$("#termsDetails").val(data.terms);
+      		  	//$("#totalAmt").val(data.total.toFixed(2));
+      		  	$("#salescurrency").val(data.currency);	
+      		  	$("#wcrc").val(data.wcrc);	
+      		  
+      		  	for (var i = 0; i < data.items[0].length ; i++) {
+      		  		//alert(data.items[0][i].item_code);
+		            var data;
+  		        	var itemName;
+  		        	var itemPrice = data.items[0][i].price;
+  		        	var stock;
+  	      			var quantity = data.items[0][i].quantity_out;
+  	      			var agentname = data.items[0][i].agent;
+  	      			var itemCode = data.items[0][i].item_code;
+  	      			
+  	      			var dataItemSale;
+      		        $.get('entries.htm?itemId='+data.items[0][i].item_code,function(jsonItem) {
+      		            if(jsonItem!=null){
+      		            	dataItemSale = JSON.parse(jsonItem);
+      		        		itemName = dataItemSale.name;
+      		        		stock = dataItemSale.stock;
+      		        		
+      		      			if((quantity*itemPrice !== 0 && (parseInt(quantity) <= parseInt(stock)))){	
+      		      				alert($('#'+itemCode+'-item').length == 0)
+      		      				if($('#'+itemCode+'-item').length == 0) {
+      		      					$('.list').append('<tr data-toggle="modal" data-target="#addEntry" id=' + itemCode + '-item data-quantity="' + quantity + '" data-id="' + itemCode + '" data-agent="' + agentname + '">\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td>' + itemPrice + '</td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class="x-close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
+      		      				}
+      		      				else{
+      		      					$('#'+itemCode+'-item').replaceWith('<tr id=' + itemCode + 'item>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"item-xm\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"item-x\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
+      		      				} 
+      		      			}
+      		            }
+      		            else {
+      		            	$("#totalAmt").html("no fetched");
+      		            }
+      		        });  		        
+
+      		  	}
+
+      			var sumTotals = 0;
+      			var rows = $("#entries tr:gt(0)");
+
+      			 rows.children("td:nth-child(9)").each(function() {
+      				 sumTotals += parseInt($(this).html());
+      			 });
+      			 $("#totalAmt").val(sumTotals.toFixed(2));
+            }
+            else {
+            	alert("no fetched");
+            }
+        });
 	});
 	
 	$(document).on('click','.x-close',function(){

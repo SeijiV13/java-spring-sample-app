@@ -1,5 +1,7 @@
 package Controllers;
 
+import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import Implem.ProductImplem;
+import Models.InOutTransaction;
+import Models.Transaction;
 
 @Controller
 public class SuspendController {
@@ -28,7 +32,7 @@ public class SuspendController {
 		String refNo = home.getString("refno");
 		String currency = home.getString("currency");
 		
-		//CHECK IF ALREADY IN SALES TABLE, CANCEL IF ALREADY
+		//TO DO: CHECK IF ALREADY IN SALES TABLE, CANCEL IF ALREADY
 		
 		productImplem.addNewSuspend(refNo, dateIn, customer, terms, "po", totalAmt, 0.00, refNo, currency, "SALES");
 		
@@ -45,5 +49,36 @@ public class SuspendController {
 	
     	return "Success! Transaction Suspended.";
     }
+	
+	@RequestMapping(value="/resumeEntries")
+	@ResponseBody 
+    public String resumeTransaction(@RequestParam("details") String details) throws JSONException {
+		
+		Transaction trans = productImplem.getSuspendedSalesTrans(details);
+		ArrayList<InOutTransaction> itemList = productImplem.getSuspendedItemSales(details);
+		
+		JSONObject output = new JSONObject();
+		output.append("ref_no", trans.getReference_no());
+		output.append("date", trans.getDate());
+		output.append("currency", trans.getCurrency());
+		output.append("cust_code", trans.getCustomer_code());
+		output.append("terms", trans.getTerms());
+		output.append("total", trans.getAmount());
+		output.append("wcrc", trans.getPo());
+		
+		JSONArray items = new JSONArray();
+		items.put(itemList);
+		/*for(int i=0; i< itemList.size(); i++) {
+			InOutTransaction listItem = itemList.get(i);
+			JSONObject item = new JSONObject();
+			item.append(key, listItem.);
+			
+			items.put(item);
+		}	*/	
+		output.append("items", itemList);
+		System.out.println(output.toString());
+	
+    	return output.toString();
+    }	
 }
 

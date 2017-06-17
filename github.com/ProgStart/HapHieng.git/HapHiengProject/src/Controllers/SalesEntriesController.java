@@ -72,8 +72,9 @@ public class SalesEntriesController {
 		String dateIn = home.getString("date");
 		String refNo = home.getString("refno");
 		String currency = home.getString("currency");
+		String wcrc = home.getString("wcrc");
 		
-		productImplem.addNewSale(refNo, dateIn, customer, terms, "po", totalAmt, 0.00, refNo, currency);
+		productImplem.addNewSale(refNo, dateIn, customer, terms, wcrc, totalAmt, 0.00, refNo, currency);
 		
 		JSONArray jsonArray = new JSONArray(json);
 		for(int i=0; i<jsonArray.length(); i++) {

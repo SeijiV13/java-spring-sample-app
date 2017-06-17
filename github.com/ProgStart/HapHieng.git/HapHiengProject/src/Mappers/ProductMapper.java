@@ -27,4 +27,6 @@ public interface ProductMapper {
 	public ArrayList<Transaction> getAllSuspendedSales();
 	public void deleteSuspendedTrans(String refNo, String entry);
 	public void deleteSuspendedItem(String refNo);
+	public Transaction getSuspendedSalesTrans(String reference_no);
+	public ArrayList<InOutTransaction> getSuspendedItemSales(String reference_no);
 }

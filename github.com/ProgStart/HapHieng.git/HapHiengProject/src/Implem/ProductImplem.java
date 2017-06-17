@@ -39,6 +39,16 @@ public class ProductImplem {
 		ArrayList<Transaction> transaction = productMapper.getAllSuspendedSales();
 		return transaction;
 	}	
+
+	public Transaction getSuspendedSalesTrans(String reference_no){
+		Transaction transaction = productMapper.getSuspendedSalesTrans(reference_no);
+		return transaction;
+	}	
+	
+	public ArrayList<InOutTransaction> getSuspendedItemSales(String reference_no){
+		ArrayList<InOutTransaction> transaction = productMapper.getSuspendedItemSales(reference_no);
+		return transaction;
+	}	
 	
 	public ArrayList<Product> getAllFilteredProducts(String product_line, String category){
 		

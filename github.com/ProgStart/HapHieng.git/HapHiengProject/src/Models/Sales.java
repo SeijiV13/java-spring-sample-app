@@ -1,7 +1,5 @@
 package Models;
 
-import java.util.Date;
-
 public class Sales {
    String sr_no = null;
    String reference_no = null;
