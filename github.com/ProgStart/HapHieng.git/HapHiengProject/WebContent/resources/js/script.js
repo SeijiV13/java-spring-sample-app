@@ -300,16 +300,16 @@ $(document).ready(function() {
       		  	//$("#totalAmt").val(data.total.toFixed(2));
       		  	$("#salescurrency").val(data.currency);	
       		  	$("#wcrc").val(data.wcrc);	
-      		  
+
       		  	for (var i = 0; i < data.items[0].length ; i++) {
       		  		//alert(data.items[0][i].item_code);
 		            var data;
   		        	var itemName;
-  		        	var itemPrice = data.items[0][i].price;
   		        	var stock;
+  		        	var itemPrice = data.items[0][i].price;
   	      			var quantity = data.items[0][i].quantity_out;
   	      			var agentname = data.items[0][i].agent;
-  	      			var itemCode = data.items[0][i].item_code;
+  	      			var itemCode;// = data.items[0][i].item_code;
   	      			
   	      			var dataItemSale;
       		        $.get('entries.htm?itemId='+data.items[0][i].item_code,function(jsonItem) {
@@ -317,9 +317,10 @@ $(document).ready(function() {
       		            	dataItemSale = JSON.parse(jsonItem);
       		        		itemName = dataItemSale.name;
       		        		stock = dataItemSale.stock;
+      		        		itemCode = dataItemSale.itemid;
       		        		
       		      			if((quantity*itemPrice !== 0 && (parseInt(quantity) <= parseInt(stock)))){	
-      		      				alert($('#'+itemCode+'-item').length == 0)
+      		      				//alert(itemCode)
       		      				if($('#'+itemCode+'-item').length == 0) {
       		      					$('.list').append('<tr data-toggle="modal" data-target="#addEntry" id=' + itemCode + '-item data-quantity="' + quantity + '" data-id="' + itemCode + '" data-agent="' + agentname + '">\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td>' + itemPrice + '</td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class="x-close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
       		      				}
