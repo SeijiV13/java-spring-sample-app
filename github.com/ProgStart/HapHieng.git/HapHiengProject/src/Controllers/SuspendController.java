@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import Implem.ProductImplem;
 import Models.InOutTransaction;
+import Models.Product;
 import Models.Transaction;
 
 @Controller
@@ -75,7 +76,24 @@ public class SuspendController {
 			
 			items.put(item);
 		}	*/	
-		output.append("items", itemList);
+
+		for(int i=0; i< itemList.size(); i++) {
+			Product product = productImplem.selectProduct(itemList.get(i).getItem_code());
+	        JSONObject obj = new JSONObject();
+	
+	        obj.put("itemid", product.getItem_code());
+	        obj.put("name", product.getDescription());
+	        obj.put("desc", product.getDescription());
+	        obj.put("stock", product.getQuantity_pack_big());
+	        
+	        obj.put("itemPrice", itemList.get(i).getPrice());
+	        obj.put("quantity", itemList.get(i).getQuantity_out());
+	        obj.put("agent", itemList.get(i).getAgent());
+
+	        output.accumulate("items", obj); 
+		}
+        
+		
 		System.out.println(output.toString());
 	
     	return output.toString();
