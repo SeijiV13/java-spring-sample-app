@@ -202,6 +202,20 @@ $(document).ready(function() {
 	$('#resumeTable tr').click(function() {
 	    $(this).find('td input:radio').prop('checked', true);
 	});
+
+	$("#drnochar").focus(function() { $(this).select(); } );
+	$("#drno").focus(function() { $("#drnochar").select(); } );
+	$('#drnochar').change(function() {
+		var drno = $('#drnochar').val();
+	      $.get('getNextID?request='+drno,function(json) {
+	    	  if(json!=null){
+	    		  $('#drno').val(json);
+	          }
+	          else {
+	        	  alert("Processing failed. Please try again.");
+	          }
+	      });
+	});	
 	
 	$('.addToList').click(function(){
 		var itemName = $(this).attr('name');
@@ -240,7 +254,7 @@ $(document).ready(function() {
 		if(r){
 		  var table = $('#entries').tableToJSON();
 		  var tableStr = encodeURI(JSON.stringify(table));
-		  var refno = $("#drno").val();
+		  var refno = $("#drnochar").val() + $("#drno").val();
 		  var customer = $("#customer").val();
 		  var date = $("#date").val();
 		  var terms = $("#termsDetails").val();
@@ -266,7 +280,7 @@ $(document).ready(function() {
 		if(r){
 		  var table = $('#entries').tableToJSON();
 		  var tableStr = encodeURI(JSON.stringify(table));
-		  var refno = $("#drno").val();
+		  var refno = $("#drnochar").val() + $("#drno").val();
 		  var customer = $("#customer").val();
 		  var date = $("#date").val();
 		  var terms = $("#termsDetails").val();

@@ -3,7 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- MODAL FOR ADD SUPPLIER -->
-<div class="modal fade" id="addagent" role="dialog">
+<div class="modal fade" id="addagent" role="dialog" style="z-index: 10000">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -11,7 +11,7 @@
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h3 class="modal-title">Add Supplier</h3>
+				<h3 class="modal-title">Add Agent</h3>
 			</div>
 
 			<!-- MODAL FORM -->
@@ -24,7 +24,7 @@
 							<div class="col-md-6">
 
 								<div class="form-group">
-									<label for="suppliercode">name</label> <input
+									<label for="suppliercode">Name</label> <input
 										placeholder="Name" type="text" class="form-control"
 										name="agentname" required>
 								</div>
