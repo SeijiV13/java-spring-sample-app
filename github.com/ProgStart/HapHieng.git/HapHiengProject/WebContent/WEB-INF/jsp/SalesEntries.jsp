@@ -63,21 +63,23 @@
 <style>
 .double-input .form-control {
     width: 80%;
-    border-right-width: 0px;
+    border-right-width: 1px;
 }
 .double-input .form-control:focus {
-    border-right-width: 0px;
+    border-right-width: 1px;
 }
 .first-input{
   width: 25px !important;
   border-right:none !important;
   padding-right: 1px !important;
   text-align: right;
+  text-transform:uppercase;
 }
 .second-input{
   border-left:none !important;
   padding-left:0px !important;
   text-align: left;
+  background-color: #FFFFFF !important;
 }
 </style>
 </head>
@@ -129,6 +131,7 @@
 			<hr>
 			<div class="row">
 				<modal:addcustomer />
+				<modal:addagent />
 				<form>
 				<!-- 
 					<div class="form-horizontal col-md-6 col-xs-12">
@@ -164,7 +167,7 @@
 							<label class="control-label col-md-4" for="drno">DR Ref.
 								No.</label>
 							<div class="col-md-8 input-group double-input">
-								<input type="text" class="form-control first-input" maxlength="1" size="1" id="drnochar">
+								<input type="text" class="form-control first-input" maxlength="1" size="1" id="drnochar" required>
 								<input type="text" class="form-control second-input" id="drno" readOnly>
 							</div>
 						</div>
@@ -200,8 +203,10 @@
 							
 							<div class="col-md-7">
 								<select class="form-control" id="customer">
-									<option value="NA">N/A</option>
-									<option value="Customer">Customer</option>
+							  	<option value="0" selected="selected">None</option>
+									<c:forEach var="customers" items="${sessionScope.customers}">
+										<option value="${customers.customer_code}">${customers.description}</option>
+									</c:forEach>
 								</select>
 							</div>
 						</div>
@@ -292,13 +297,13 @@
 				      </div>
 				    <div class="modal-body">
 						<div class="form-group">
+						<button class="btn btn-default bg_dblue btn-add" data-target="#addagent" data-toggle="modal" type="button"> Add Agent </button>
 							  <label for="salesagent">Sales Agent:</label>
 							  <select class="form-control" id="salesagent">
-								<option value="0" selected="selected">None</option>
-								<option value="Agent1">Sales Agent1</option>
-								<option value="Agent2">Sales Agent2</option>
-								<option value="Agent3">Sales Agent3</option>
-								<option value="Agent4">Sales Agent4</option>
+							  	<option value="0" selected="selected">None</option>
+								<c:forEach var="agents" items="${sessionScope.agents}">
+									<option value="${agents.name}">${agents.description}</option>
+								</c:forEach>
 							  </select>
 					
 					<div class="form-group">

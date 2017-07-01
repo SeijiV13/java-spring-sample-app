@@ -15,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.portlet.ModelAndView;
 
+import Implem.AgentImplem;
+import Implem.CustomerImplem;
 import Implem.ProductImplem;
+import Models.Agent;
+import Models.Customer;
 import Models.Product;
 import Models.Transaction;
 
@@ -24,6 +28,10 @@ public class SalesEntriesController {
 
 	@Autowired
 	ProductImplem productImplem;
+	@Autowired
+	CustomerImplem customerImplem;
+	@Autowired
+	AgentImplem agentImplem;
 	
 	@RequestMapping(value="/SalesEntries", method = RequestMethod.GET)
 	public ModelAndView formBackingObject(HttpServletRequest request){
@@ -33,12 +41,16 @@ public class SalesEntriesController {
 		
 		ArrayList<Product> products = productImplem.getAllProducts();
 		ArrayList<Transaction> suspendProducts = productImplem.getAllSuspendedSales();
+		ArrayList<Customer> customers = customerImplem.getAllCustomers();
+		ArrayList<Agent> agents = agentImplem.getAllAgents();
 		//DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 		//Date date = new Date();
 		//String ref_no = dateFormat.format(date);
 		
 		//session.setAttribute("refno", ref_no);
 		session.setAttribute("products", products);
+		session.setAttribute("customers", customers);
+		session.setAttribute("agents", agents);
 		session.setAttribute("suspendProducts", suspendProducts);
 		return salesEntries;
 	}
