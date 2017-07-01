@@ -13,6 +13,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM PRODUCTS_TABLE
 	</select>
 	
+	<select id="selectSuspendID" resultType="string">
+        SELECT TOP 1 reference_no FROM SUSPEND_TABLE WHERE reference_no = #{0}
+	</select>
+
 	<select id="getNextSuspendID" resultType="string">
         SELECT TOP 1 reference_no FROM SUSPEND_TABLE WHERE reference_no LIKE #{0} ORDER BY reference_no DESC
 	</select>
@@ -37,9 +41,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         DELETE FROM SUSPEND_TABLE WHERE reference_no = #{0} AND entry = #{1}
 	</select>
 
-	<select id="deleteSuspendedItem">
+	<delete id="deleteSuspendedItem">
         DELETE FROM SUSPEND_ITEMS_TABLE WHERE reference_no = #{0}
-	</select>
+	</delete>
 	
 	<select id="getAllCategories" resultType="string">
 		SELECT category FROM CATEGORY_TABLE
@@ -80,5 +84,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="getAllInOutTransactions" resultType="InOutTransaction">
       SELECT * FROM INOUT_TABLE	
     </select>
+
+    <update id="updateSuspend">
+		UPDATE SUSPEND_TABLE SET date = #{1}, customer_code = #{2}, terms = #{3}, po = #{4}, amount = #{5}, balance = #{6}, ctr_ref = #{7}, currency = #{8} WHERE reference_no = #{0}
+    </update>
 	 
 </mapper>

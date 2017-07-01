@@ -57,6 +57,10 @@ public class ProductImplem {
 	 
 	}
 	
+	public String selectSuspendID(String refno){
+		return productMapper.selectSuspendID(refno);
+	}
+	
 	public String getNextSuspendID(String input){
 		return productMapper.getNextSuspendID(input);
 	}
@@ -90,6 +94,10 @@ public class ProductImplem {
 		productMapper.addNewSuspend(refNo, date, customerCode, terms, po, amount, balance, ctr_ref, currency, entry);
 	}
 
+	public void updateSuspend(String refNo, String date, String customerCode, String terms, String po, double amount, double balance, String ctr_ref, String currency, String entry) {
+		productMapper.updateSuspend(refNo, date, customerCode, terms, po, amount, balance, ctr_ref, currency, entry);
+	}
+	
 	public void addNewItemSuspend(String item_code, String date, String refNo, String client, double price, String currency, int quantity_in, int quantity_out, int quantity_adjustment, double balance, String agent) {
 		productMapper.addNewItemSuspend(item_code, date, refNo, client, price, currency, quantity_in, quantity_out, quantity_adjustment, balance, agent);
 	}

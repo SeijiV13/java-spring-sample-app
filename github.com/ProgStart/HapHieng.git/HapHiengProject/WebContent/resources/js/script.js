@@ -316,7 +316,9 @@ $(document).ready(function() {
         $.get('resumeEntries.htm?details='+val,function(json) {
             if(json!=null){
             	var data = JSON.parse(json);
-      			$("#drno").val(data.ref_no);
+            	var drno = data.ref_no + '';
+      			$("#drno").val(drno.substring(1));
+      			$("#drnochar").val(drno.substring(0, 1));
       		  	$("#customer").val(data.cust_code);
       		  	$("#date").val(data.date);
       		  	$("#termsDetails").val(data.terms);

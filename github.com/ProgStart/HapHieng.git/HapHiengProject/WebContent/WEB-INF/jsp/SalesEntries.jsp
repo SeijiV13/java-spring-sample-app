@@ -176,7 +176,7 @@
 							<label class="control-label col-md-2" for="date">Date</label>
 							<div class="col-md-10">
 								<div class="input-group date" data-provide="datepicker">
-									<input type="text" class="form-control" id="date">
+									<input type="text" class="form-control" id="date" value="${dateToday}">
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-calendar"></span>
 									</div>

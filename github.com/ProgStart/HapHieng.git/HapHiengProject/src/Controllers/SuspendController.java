@@ -1,6 +1,9 @@
 package Controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,10 +37,18 @@ public class SuspendController {
 		String currency = home.getString("currency");
 		String wcrc = home.getString("wcrc");
 		
-		//TO DO: CHECK IF ALREADY IN SALES TABLE, CANCEL IF ALREADY
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddmmHHss");
+		Date date = new Date();
+		String dateToday = dateFormat.format(date);
 		
-		productImplem.addNewSuspend(refNo, dateIn, customer, terms, wcrc, totalAmt, 0.00, refNo, currency, "SALES");
-		
+		//CHECK IF ALREADY IN SUSPEND TABLE, UPDATE IF ALREADY
+		System.out.println("-" + productImplem.selectSuspendID(refNo) + "-");
+		if((productImplem.selectSuspendID(refNo) + "").equals("null")){
+			productImplem.addNewSuspend(refNo, dateIn, customer, terms, wcrc, totalAmt, 0.00, dateToday, currency, "SALES");
+		} else {
+			productImplem.updateSuspend(refNo, dateIn, customer, terms, wcrc, totalAmt, 0.00, dateToday, currency, "SALES");
+			productImplem.deleteSuspendedItems(refNo);
+		}
 		JSONArray jsonArray = new JSONArray(json);
 		for(int i=0; i<jsonArray.length(); i++) {
 		    JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -48,7 +59,7 @@ public class SuspendController {
 		    
 		    productImplem.addNewItemSuspend(itemCode, dateIn, refNo, customer, amount, currency, 0, qty, 0, 0.00, agent);
 		}
-	
+		
     	return "Success! Transaction Suspended.";
     }
 	

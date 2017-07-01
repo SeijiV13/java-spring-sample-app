@@ -1,5 +1,8 @@
 package Controllers;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -43,11 +46,11 @@ public class SalesEntriesController {
 		ArrayList<Transaction> suspendProducts = productImplem.getAllSuspendedSales();
 		ArrayList<Customer> customers = customerImplem.getAllCustomers();
 		ArrayList<Agent> agents = agentImplem.getAllAgents();
-		//DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-		//Date date = new Date();
-		//String ref_no = dateFormat.format(date);
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		Date date = new Date();
+		String dateToday = dateFormat.format(date);
 		
-		//session.setAttribute("refno", ref_no);
+		session.setAttribute("dateToday", dateToday);
 		session.setAttribute("products", products);
 		session.setAttribute("customers", customers);
 		session.setAttribute("agents", agents);
@@ -83,7 +86,11 @@ public class SalesEntriesController {
 		String currency = home.getString("currency");
 		String wcrc = home.getString("wcrc");
 		
-		productImplem.addNewSale(refNo, dateIn, customer, terms, wcrc, totalAmt, 0.00, refNo, currency);
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddmmHHss");
+		Date date = new Date();
+		String dateToday = dateFormat.format(date);
+		
+		productImplem.addNewSale(refNo, dateIn, customer, terms, wcrc, totalAmt, 0.00, dateToday, currency);
 		
 		JSONArray jsonArray = new JSONArray(json);
 		for(int i=0; i<jsonArray.length(); i++) {
