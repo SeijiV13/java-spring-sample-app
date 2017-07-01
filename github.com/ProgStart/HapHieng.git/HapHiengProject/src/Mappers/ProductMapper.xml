@@ -12,6 +12,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getAllProducts" resultType="Product">
         SELECT * FROM PRODUCTS_TABLE
 	</select>
+	
+	<select id="getNextSuspendID" resultType="string">
+        SELECT TOP 1 reference_no FROM SUSPEND_TABLE WHERE reference_no LIKE #{0} ORDER BY reference_no DESC
+	</select>
+	
+	<select id="getNextSalesID" resultType="string">
+        SELECT TOP 1 reference_no FROM SALES_TABLE WHERE reference_no LIKE #{0} ORDER BY reference_no DESC
+	</select>
 
 	<select id="getAllSuspendedSales" resultType="Transaction">
         SELECT reference_no, date, customer_code, terms, po, amount, balance, ctr_ref, currency FROM SUSPEND_TABLE WHERE entry = 'SALES'

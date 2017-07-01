@@ -32,10 +32,11 @@ public class SuspendController {
 		String dateIn = home.getString("date");
 		String refNo = home.getString("refno");
 		String currency = home.getString("currency");
+		String wcrc = home.getString("wcrc");
 		
 		//TO DO: CHECK IF ALREADY IN SALES TABLE, CANCEL IF ALREADY
 		
-		productImplem.addNewSuspend(refNo, dateIn, customer, terms, "po", totalAmt, 0.00, refNo, currency, "SALES");
+		productImplem.addNewSuspend(refNo, dateIn, customer, terms, wcrc, totalAmt, 0.00, refNo, currency, "SALES");
 		
 		JSONArray jsonArray = new JSONArray(json);
 		for(int i=0; i<jsonArray.length(); i++) {
@@ -68,14 +69,7 @@ public class SuspendController {
 		output.append("wcrc", trans.getPo());
 		
 		JSONArray items = new JSONArray();
-		items.put(itemList);
-		/*for(int i=0; i< itemList.size(); i++) {
-			InOutTransaction listItem = itemList.get(i);
-			JSONObject item = new JSONObject();
-			item.append(key, listItem.);
-			
-			items.put(item);
-		}	*/	
+		items.put(itemList);	
 
 		for(int i=0; i< itemList.size(); i++) {
 			Product product = productImplem.selectProduct(itemList.get(i).getItem_code());
@@ -93,7 +87,6 @@ public class SuspendController {
 	        output.accumulate("items", obj); 
 		}
         
-		
 		System.out.println(output.toString());
 	
     	return output.toString();

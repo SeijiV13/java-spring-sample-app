@@ -59,6 +59,27 @@
 	rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Raleway"
 	rel="stylesheet" type="text/css">
+	
+<style>
+.double-input .form-control {
+    width: 80%;
+    border-right-width: 0px;
+}
+.double-input .form-control:focus {
+    border-right-width: 0px;
+}
+.first-input{
+  width: 25px !important;
+  border-right:none !important;
+  padding-right: 1px !important;
+  text-align: right;
+}
+.second-input{
+  border-left:none !important;
+  padding-left:0px !important;
+  text-align: left;
+}
+</style>
 </head>
 <body>
 
@@ -142,8 +163,9 @@
 						<div class="col-md-4">
 							<label class="control-label col-md-4" for="drno">DR Ref.
 								No.</label>
-							<div class="col-md-8">
-								<input type="text" class="form-control" id="drno" value="${refno}" readOnly>
+							<div class="col-md-8 input-group double-input">
+								<input type="text" class="form-control first-input" maxlength="1" size="1" id="drnochar">
+								<input type="text" class="form-control second-input" id="drno" readOnly>
 							</div>
 						</div>
 						

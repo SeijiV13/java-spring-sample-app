@@ -56,6 +56,15 @@ public class ProductImplem {
 		return products;
 	 
 	}
+	
+	public String getNextSuspendID(String input){
+		return productMapper.getNextSuspendID(input);
+	}
+
+	public String getNextSalesID(String input){
+		return productMapper.getNextSalesID(input);
+	}
+	
 	public Product selectProduct(String itemId) {
 		Product product = productMapper.selectProduct(itemId);
 		return product;

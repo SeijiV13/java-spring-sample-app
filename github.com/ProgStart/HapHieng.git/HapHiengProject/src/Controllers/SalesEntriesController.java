@@ -1,8 +1,5 @@
 package Controllers;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,11 +33,11 @@ public class SalesEntriesController {
 		
 		ArrayList<Product> products = productImplem.getAllProducts();
 		ArrayList<Transaction> suspendProducts = productImplem.getAllSuspendedSales();
-		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date date = new Date();
-		String ref_no = dateFormat.format(date);
+		//DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		//Date date = new Date();
+		//String ref_no = dateFormat.format(date);
 		
-		session.setAttribute("refno", ref_no);
+		//session.setAttribute("refno", ref_no);
 		session.setAttribute("products", products);
 		session.setAttribute("suspendProducts", suspendProducts);
 		return salesEntries;
@@ -91,4 +88,28 @@ public class SalesEntriesController {
 	
     	return "Success! Transaction Posted.";
     }
+	
+	@RequestMapping(value="/getNextID")
+	@ResponseBody 
+    public String getNextID(@RequestParam("request") String input) throws JSONException {
+		// GET RECORD OF COUNTS, if none existing, return 00
+		String suspend = (productImplem.getNextSuspendID(input+"%") + "").equals("null") 
+				? "00" : productImplem.getNextSuspendID(input+"%");
+		String sales = (productImplem.getNextSalesID(input+"%") + "").equals("null") 
+				? "00" : productImplem.getNextSalesID(input+"%");
+
+		long num;
+		// GET COUNTS (remove first LETTER DIGIT
+		long suspendInt = Integer.parseInt(suspend.substring(1));
+		long salesInt = Integer.parseInt(sales.substring(1));
+		
+		if(suspendInt >= salesInt){
+			num = suspendInt + 1;
+		} else {
+			num = salesInt + 1;
+		}
+		// Format to pad leading zeroes
+		String output = String.format("%014d", num);
+    	return output;
+    }	
 }
