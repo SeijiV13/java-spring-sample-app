@@ -55,11 +55,14 @@ private ServletContext servletContext;
         //for agent dropdown
         ArrayList<Agent> agents = agentImplem.getAllAgents(); 
         servletContext.setAttribute("agents", agents);
-        
+         
+        //for users
+        ArrayList<String> users = userImplem.retrieveAllUsers();
+        servletContext.setAttribute("users", users);
         //globa url for image file upload
         servletContext.setAttribute("imageurl", "C:\\Users\\dellp\\workspace\\HapHieng\\github.com\\ProgStart\\HapHieng.git\\HapHiengProject\\WebContent\\resources\\images\\");
         
-     
+         
 		//CHECK PRINCIPAL IF SET OF USERDETAILS
 		if (principal instanceof UserDetails) {
 			String username = ((UserDetails) principal).getUsername();

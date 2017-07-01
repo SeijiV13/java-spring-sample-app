@@ -50,7 +50,8 @@
 
 <!-- ADDED BY SEIJI VILLAFRANCA 2016/11/26 -->
 <!-- MAIN NAVBAR TAG -->
-<navbar:mainnavbar />  <!-- FOUND IN /WEB-INF/tags/mainnavbar.tag -->
+<navbar:mainnavbar />
+<!-- FOUND IN /WEB-INF/tags/mainnavbar.tag -->
 
 
 <!-- PAGE CONTENT -->
@@ -82,17 +83,47 @@
 
 		</div>
 	</div>
-	
+
 	<!-- USERNAME AND DATE DISPLAY -->
-	<h5><span class="fa fa-user"></span> User Login: ${username}</h5>
-	<h5><span class="fa fa-calendar"></span> Date: ${dateToday}</h5>
-	
+	<h5>
+		<span class="fa fa-user"></span> User Login: ${username}
+	</h5>
+	<h5>
+		<span class="fa fa-calendar"></span> Date: ${dateToday}
+	</h5>
+
 	<!-- MAIN CONTENT -->
 	<div class="container-fluid">
 		<!-- TITLE OF PAGE -->
-		<h3>Sample Page</h3>
+		<h3>Admin Dashboard</h3>
 		<br>
-		<div class="row"></div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="text-center cust_headers ">
+					<h4>Users</h4>
+					<div class="input-group">
+						<span class="input-group-addon"> <span
+							class="glyphicon glyphicon-search"></span>
+						</span> <input type="text" class="form-control" id="entrySearch"
+							onkeyup="searchUser()" placeholder="Search Customer">
+					</div>
+
+				</div>
+				<div class="list-group cust_tbl">
+					<table class="table table-hover" id="itemTable">
+						<tbody>
+							<c:forEach var="user" items="${applicationScope.users}">
+								<tr>
+									<td>${user}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-8"></div>
+
+		</div>
 
 	</div>
 
@@ -108,4 +139,26 @@
 	function formSubmit() {
 		document.getElementById("logoutForm").submit();
 	}
+	
+	//search customer dynamically
+	function searchUser() {
+		  // Declare variables 
+		  var input, filter, table, tr, td, i;
+		  input = document.getElementById("entrySearch");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("itemTable");
+		  tr = table.getElementsByTagName("tr");
+
+		  // Loop through all table rows, and hide those who don't match the search query
+		  for (i = 0; i < tr.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[0];
+		    if (td) {
+		      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		        tr[i].style.display = "";
+		      } else {
+		        tr[i].style.display = "none";
+		      }
+		    } 
+		  }
+		}
 </script>

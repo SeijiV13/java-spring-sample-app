@@ -122,8 +122,6 @@
 						<li role="separator" class="divider"></li>
 						<li><a href="#">Daily Sales with Net Income Report</a></li>
 						<li><a href="#">Daily Sales (Grouped by Customer)</a></li>
-						<li><a href="#">Daily Sales (Grouped by Agent/Date)</a></li>
-						<li><a href="#">Daily Sales (Grouped by Agent/Customer)</a></li>
 						<li><a href="#">Daily Sales (Grouped by Customer with Items)</a></li>
 
 					</ul>

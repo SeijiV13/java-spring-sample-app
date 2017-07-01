@@ -125,9 +125,9 @@
 						Purchases History <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-					<li><a href="#">History of Sales  by Supplier</a></li>
+					<li><a href="#">History of Purchases  by Supplier</a></li>
 					<li><a href="#">History of Purchases by Item</a></li>
-					<li><a href="#">History of Sales by Customer-Category-Item</a></li>
+					<li><a href="#">History of Purchases by Customer-Category-Item</a></li>
 					</ul>
 				</div>
 			</div>

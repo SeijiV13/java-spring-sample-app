@@ -125,7 +125,7 @@
 						<li><a href="#">History of Sales Return by Item</a></li>
 						<li><a href="#">History of Sales Return by Customer-Category-Item
 								</a></li>
-						<li><a href="#">History of Sales by Agent</a></li>
+						<li><a href="#">History of Sales Return by Agent</a></li>
 				
 					</ul>
 				</div>

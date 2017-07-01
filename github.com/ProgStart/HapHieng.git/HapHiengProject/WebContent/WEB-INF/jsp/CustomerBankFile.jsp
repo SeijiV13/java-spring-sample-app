@@ -98,7 +98,7 @@
 		<h3>Customer Bank File</h3>
 		<br>
 		<c:if test="${hasError == 'true'}">
-			<div class="alert alert-warning">Cannot Edit Deatils, You have
+			<div class="alert alert-warning">Cannot Edit Details, You have
 				not selected a Customer</div>
 		</c:if>
 		<c:if test="${hasError == 'false'}">
@@ -231,4 +231,25 @@
 	function formSubmit() {
 		document.getElementById("logoutForm").submit();
 	}
+	//search customer dynamically
+	function searchCustomer() {
+		  // Declare variables 
+		  var input, filter, table, tr, td, i;
+		  input = document.getElementById("entrySearch");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("itemTable");
+		  tr = table.getElementsByTagName("tr");
+
+		  // Loop through all table rows, and hide those who don't match the search query
+		  for (i = 0; i < tr.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[0];
+		    if (td) {
+		      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		        tr[i].style.display = "";
+		      } else {
+		        tr[i].style.display = "none";
+		      }
+		    } 
+		  }
+		}
 </script>
