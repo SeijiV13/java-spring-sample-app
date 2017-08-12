@@ -57,7 +57,7 @@ public class SuspendController {
 		    double amount = jsonObject.getDouble("Amount");
 		    String itemCode = jsonObject.getString("Item code");
 		    
-		    productImplem.addNewItemSuspend(itemCode, dateIn, refNo, customer, amount, currency, 0, qty, 0, 0.00, agent);
+		    productImplem.addNewItemSuspend(itemCode, dateIn, refNo, customer, amount/qty, currency, 0, qty, 0, 0.00, agent);
 		}
 		
     	return "Success! Transaction Suspended.";

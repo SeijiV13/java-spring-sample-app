@@ -61,7 +61,7 @@ public class SalesEntriesController {
 	
 	@RequestMapping(value="/entries")
 	@ResponseBody 
-    public String getItem(@RequestParam("itemId") String itemId) throws JSONException {
+    public String getItem(@RequestParam("itemId") String itemId, @RequestParam("client") String client) throws JSONException {
 		Product product = productImplem.selectProduct(itemId);
         JSONObject obj = new JSONObject();
 
@@ -69,6 +69,9 @@ public class SalesEntriesController {
         obj.put("name", product.getDescription());
         obj.put("desc", product.getDescription());
         obj.put("stock", product.getQuantity_pack_big());
+        // GET LAST PRICE
+        String lastPrice = productImplem.getLastOrderedPrice(itemId, client);     
+        obj.put("lastamount", ((lastPrice+"").equals("null")) ? "0.00" : lastPrice);
         obj.put("amount", product.getGross_price());
         
         return obj.toString();
@@ -100,7 +103,7 @@ public class SalesEntriesController {
 		    double amount = jsonObject.getDouble("Amount");
 		    String itemCode = jsonObject.getString("Item code");
 		    
-		    productImplem.addNewInOut_sale(itemCode, dateIn, refNo, customer, amount, currency, 0, qty, 0, 0.00, agent);
+		    productImplem.addNewInOut_sale(itemCode, dateIn, refNo, customer, amount/qty, currency, 0, qty, 0, 0.00, agent);
 		}
 		productImplem.deleteSuspendedTrans(refNo, "SALES");
 		productImplem.deleteSuspendedItems(refNo);

@@ -81,6 +81,12 @@
   text-align: left;
   background-color: #FFFFFF !important;
 }
+.inlinetext{
+	border: 0;
+	padding: 18px 0px;
+	margin: -8px -8px;
+	width: 40px;
+}
 </style>
 </head>
 <body>
@@ -188,6 +194,7 @@
 							<label class="control-label col-md-3">WC/RC: </label>
 							<div class="col-md-9">
 								<select class="form-control" id="wcrc">
+									<option value="" selected></option>
 									<option value="WC">WC</option>
 									<option value="RC">RC</option>
 								</select>
@@ -203,7 +210,7 @@
 							
 							<div class="col-md-7">
 								<select class="form-control" id="customer">
-							  	<option value="0" selected="selected">None</option>
+							  	<option value="Customer" selected="selected">None</option>
 									<c:forEach var="customers" items="${sessionScope.customers}">
 										<option value="${customers.customer_code}">${customers.description}</option>
 									</c:forEach>
@@ -322,7 +329,7 @@
 											<th class="bg_dblue">Description</th>
 											<th class="bg_dblue">Available Qty</th>
 											<th class="bg_dblue">Pending Qty</th>
-											<th class="bg_dblue">Price</th>
+											<th class="bg_dblue">Original Price</th>
 							            </tr>
 							          </thead>
 							          <tbody>
@@ -358,10 +365,14 @@
 
 							<label for="btn-stockquan">Available Stock:</label>
 							  <input id="stockQuantity" class="form-control" type="number" placeholder="0" value="0" disabled>
-							<p class="form-control-static">Amount: P<span id="itemAmount">0.00</span></p>
+							<p class="form-control-static">Amount: P<span id="itemAmount2">0.00</span>
+							<span id="itemAmountRecent">0.00</span><span id="itemAmountOriginal">0.00</span></p>
 							</div>
 							
 							<div id="itemmenu" class="form-group">
+							<label for="btn-quan">Last/Overwrite Price:</label>
+							  <input id="itemAmount" class="form-control" type="number">
+							
 							<label for="btn-quan">Enter Quantity:</label>
 							  <input id="orderQuantity" class="form-control" type="number" placeholder="0" min="1" max="0" size="1" height="1" width="2">
 							</div>

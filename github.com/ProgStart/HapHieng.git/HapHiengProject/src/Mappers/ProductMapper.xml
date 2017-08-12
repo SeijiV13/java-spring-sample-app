@@ -85,6 +85,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       SELECT * FROM INOUT_TABLE	
     </select>
 
+    <select id="getLastOrderedPrice" resultType="string">
+      SELECT TOP 1 price FROM INOUT_TABLE	WHERE item_code = #{0} AND client = #{1} ORDER BY date DESC
+    </select>
+    
     <update id="updateSuspend">
 		UPDATE SUSPEND_TABLE SET date = #{1}, customer_code = #{2}, terms = #{3}, po = #{4}, amount = #{5}, balance = #{6}, ctr_ref = #{7}, currency = #{8} WHERE reference_no = #{0}
     </update>

@@ -105,6 +105,10 @@ public class ProductImplem {
 	public void deleteSuspendedTrans(String refNo, String entry) {
 		productMapper.deleteSuspendedTrans(refNo, entry);
 	}
+	
+	public String getLastOrderedPrice(String item_code, String client){
+		return productMapper.getLastOrderedPrice(item_code, client);
+	}
 
 	public void deleteSuspendedItems(String refNo) {
 		productMapper.deleteSuspendedItem(refNo);
