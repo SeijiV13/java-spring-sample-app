@@ -487,14 +487,7 @@ $(document).ready(function() {
 		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\",\"receiptName\" : \""+ receiptName +"\",\"senderAddress\" : \""+ senderAddress +"\",\"receiverAddress\" : \""+ receiverAddress +"\"}";
 		  details = encodeURI(details);
 
-	      $.get('GetStandardReceipt?details='+details+'&items='+tableStr,function(json) {
-	    	  if(json!=null){
-	    		  alert(json);
-	          }
-	          else {
-	        	  alert("Processing failed. Please try again.");
-	          }
-	      }); 
+		  window.open('GetStandardReceipt?details='+details+'&items='+tableStr); 
 		 }
 	});	
 	

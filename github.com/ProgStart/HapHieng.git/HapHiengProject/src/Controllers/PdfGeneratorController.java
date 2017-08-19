@@ -182,25 +182,6 @@ public class PdfGeneratorController {
 	    	html.append("			</tr>");
 		}
 		
-    	html.append("			<tr>");
-    	html.append("				<td>Samsung Galaxy S5</td>");
-    	html.append("				<td class=\"text-center\">$900</td>");
-    	html.append("				<td class=\"text-center\">1</td>");
-    	html.append("				<td class=\"text-right\">$900</td>");
-    	html.append("			</tr>");
-    	html.append("			<tr>");
-    	html.append("				<td>Samsung Galaxy S5 Extra Battery</td>");
-    	html.append("				<td class=\"text-center\">$30.00</td>");
-    	html.append("				<td class=\"text-center\">1</td>");
-    	html.append("				<td class=\"text-right\">$30.00</td>");
-    	html.append("			</tr>");
-    	html.append("			<tr>");
-    	html.append("				<td>Screen protector</td>");
-    	html.append("				<td class=\"text-center\">$7</td>");
-    	html.append("				<td class=\"text-center\">4</td>");
-    	html.append("				<td class=\"text-right\">$28</td>");
-    	html.append("			</tr>");
-    	html.append("			<tr>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF; text-align: right\"><strong>SUB-TOTAL</strong></td>");
