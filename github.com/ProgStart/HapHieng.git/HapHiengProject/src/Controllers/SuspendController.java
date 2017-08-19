@@ -92,6 +92,8 @@ public class SuspendController {
 	        obj.put("stock", product.getQuantity_pack_big());
 	        
 	        obj.put("itemPrice", itemList.get(i).getPrice());
+	        String lastPrice = productImplem.getLastOrderedPrice(product.getItem_code(),  trans.getCustomer_code());     
+	        obj.put("lastamount", ((lastPrice+"").equals("null")) ? "0.00" : lastPrice);
 	        obj.put("quantity", itemList.get(i).getQuantity_out());
 	        obj.put("agent", itemList.get(i).getAgent());
 
