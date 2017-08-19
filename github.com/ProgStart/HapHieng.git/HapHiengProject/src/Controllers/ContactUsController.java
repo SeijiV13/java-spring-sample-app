@@ -35,7 +35,7 @@ public class ContactUsController {
 		email.setTo("villafrancasra@gmail.com");
 		// email default title
 		email.setSubject("HapHieng System Issues");
-		// content of the email
+		// content of the email 
 		email.setText(issues);
 
 		// send Message
