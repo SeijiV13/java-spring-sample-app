@@ -248,7 +248,6 @@ $(document).ready(function() {
 		}
 		if((quantity*itemPrice !== 0 && (parseInt(quantity) <= parseInt(stock)))){
 			if($('#'+itemCode+'-item').length == 0) {
-				alert(itemPrice);
 				$('.list').append('<tr ' + trColor + ' data-toggle=\"modal\" data-target=\"#addEntry\" id=\"' + itemCode + '-item\" data-quantity="' + quantity + '" data-id="' + itemCode + '" data-agent="' + agentname + '">\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td class=\"priceCol\">' + itemPrice + '</td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class=\"xCol\"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
 				//$('.list').append('<tr data-toggle="modal" data-target="#addEntry" id=' + itemCode + '-item data-quantity="' + quantity + '" data-id="' + itemCode + '" data-agent="' + agentname + '">\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td class=\"priceCol\"><input type=\"text"\ class=\"form-control inlinetext\" value=\"' + itemPrice + '\"></td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class=\"xCol\"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
 				}
@@ -468,5 +467,36 @@ $(document).ready(function() {
 	$( document ).ready( changer );
 	$("#salesagent").change(changer);
 	$('#itemTable tr').click(changer);
+	
+	// RECEIPT FUNCTIONS
+	$('#standardReceipt').click( function() {
+		var r = confirm("Are you sure you want to print a \"STANDARD RECEIPT\" on this transaction?");
+		if(r){
+		  var table = $('#entries').tableToJSON();
+		  var tableStr = encodeURI(JSON.stringify(table));
+		  var refno = $("#drnochar").val() + $("#drno").val();
+		  var customer = $("#customer").val();
+		  var date = $("#date").val();
+		  var terms = $("#termsDetails").val();
+		  var wcrc = $("#wcrc").val();
+		  var totalAmt = $("#totalAmt").val();
+		  var currency = "PHP";
+		  var receiptName = "Hap Hieng Marketing Corporation";
+		  var senderAddress = "----SENDER ADDRESS----";
+		  var receiverAddress = "----RECEIVER ADDRESS----";
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\",\"receiptName\" : \""+ receiptName +"\",\"senderAddress\" : \""+ senderAddress +"\",\"receiverAddress\" : \""+ receiverAddress +"\"}";
+		  details = encodeURI(details);
+
+	      $.get('GetStandardReceipt?details='+details+'&items='+tableStr,function(json) {
+	    	  if(json!=null){
+	    		  alert(json);
+	          }
+	          else {
+	        	  alert("Processing failed. Please try again.");
+	          }
+	      }); 
+		 }
+	});	
+	
 	
 });
