@@ -482,14 +482,76 @@ $(document).ready(function() {
 		  var totalAmt = $("#totalAmt").val();
 		  var currency = "PHP";
 		  var receiptName = "Hap Hieng Marketing Corporation";
-		  var senderAddress = "----SENDER ADDRESS----";
+		  var senderAddress = "9 Juliana Street, Potrero, Malabon City - Tels.: 361-3382 / 366-8079";
 		  var receiverAddress = "----RECEIVER ADDRESS----";
 		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\",\"receiptName\" : \""+ receiptName +"\",\"senderAddress\" : \""+ senderAddress +"\",\"receiverAddress\" : \""+ receiverAddress +"\"}";
 		  details = encodeURI(details);
 
-		  window.open('GetStandardReceipt?details='+details+'&items='+tableStr); 
+		  window.open('GenerateReceipt?details='+details+'&items='+tableStr+'&type='+1); 
 		 }
 	});	
-	
+	$('#HhhPlainReceipt').click( function() {
+		var r = confirm("Are you sure you want to print a \"HHH PLAIN RECEIPT\" on this transaction?");
+		if(r){
+		  var table = $('#entries').tableToJSON();
+		  var tableStr = encodeURI(JSON.stringify(table));
+		  var refno = $("#drnochar").val() + $("#drno").val();
+		  var customer = $("#customer").val();
+		  var date = $("#date").val();
+		  var terms = $("#termsDetails").val();
+		  var wcrc = $("#wcrc").val();
+		  var totalAmt = $("#totalAmt").val();
+		  var currency = "PHP";
+		  var receiptName = "HHM Marketing";
+		  var senderAddress = "9 Juliana Street, Potrero, Malabon City - Tels.: 366-8079 / 361-3382";
+		  var receiverAddress = "----RECEIVER ADDRESS----";
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\",\"receiptName\" : \""+ receiptName +"\",\"senderAddress\" : \""+ senderAddress +"\",\"receiverAddress\" : \""+ receiverAddress +"\"}";
+		  details = encodeURI(details);
+
+		  window.open('GenerateReceipt?details='+details+'&items='+tableStr+'&type='+2); 
+		 }
+	});	
+	$('#HhPlainReceipt').click( function() {
+		var r = confirm("Are you sure you want to print a \"HAP HIENG PLAIN RECEIPT\" on this transaction?");
+		if(r){
+		  var table = $('#entries').tableToJSON();
+		  var tableStr = encodeURI(JSON.stringify(table));
+		  var refno = $("#drnochar").val() + $("#drno").val();
+		  var customer = $("#customer").val();
+		  var date = $("#date").val();
+		  var terms = $("#termsDetails").val();
+		  var wcrc = $("#wcrc").val();
+		  var totalAmt = $("#totalAmt").val();
+		  var currency = "PHP";
+		  var receiptName = "Hap Hieng Marketing";
+		  var senderAddress = "9 Juliana Street, Potrero, Malabon City - Tels.: 366-8079 / 361-3382";
+		  var receiverAddress = "----RECEIVER ADDRESS----";
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\",\"receiptName\" : \""+ receiptName +"\",\"senderAddress\" : \""+ senderAddress +"\",\"receiverAddress\" : \""+ receiverAddress +"\"}";
+		  details = encodeURI(details);
+
+		  window.open('GenerateReceipt?details='+details+'&items='+tableStr+'&type='+3); 
+		 }
+	});	
+	$('#CkcjPlainReceipt').click( function() {
+		var r = confirm("Are you sure you want to print a \"CKCJ PLAIN RECEIPT\" on this transaction?");
+		if(r){
+		  var table = $('#entries').tableToJSON();
+		  var tableStr = encodeURI(JSON.stringify(table));
+		  var refno = $("#drnochar").val() + $("#drno").val();
+		  var customer = $("#customer").val();
+		  var date = $("#date").val();
+		  var terms = $("#termsDetails").val();
+		  var wcrc = $("#wcrc").val();
+		  var totalAmt = $("#totalAmt").val();
+		  var currency = "PHP";
+		  var receiptName = "CKCJ Marketing";
+		  var senderAddress = "9 Juliana Street, Potrero, Malabon City - Tels.: 366-8079 / 361-3382";
+		  var receiverAddress = "----RECEIVER ADDRESS----";
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\",\"receiptName\" : \""+ receiptName +"\",\"senderAddress\" : \""+ senderAddress +"\",\"receiverAddress\" : \""+ receiverAddress +"\"}";
+		  details = encodeURI(details);
+
+		  window.open('GenerateReceipt?details='+details+'&items='+tableStr+'&type='+4); 
+		 }
+	});	
 	
 });

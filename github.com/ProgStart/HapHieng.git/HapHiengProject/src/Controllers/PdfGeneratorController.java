@@ -21,6 +21,7 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -47,9 +48,19 @@ import com.itextpdf.tool.xml.pipeline.end.PdfWriterPipeline;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipeline;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 
+import Implem.CustomerImplem;
+import Models.Customer;
+
 @Controller
 public class PdfGeneratorController {
-
+	
+	static CustomerImplem customerImplem;
+	
+    @Autowired
+    public PdfGeneratorController(CustomerImplem customerImplem) {
+    	PdfGeneratorController.customerImplem = customerImplem;
+    }
+	
 	@RequestMapping(value = "/GeneratePdf", method = RequestMethod.GET)
 	ModelAndView generatePdf(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -123,17 +134,21 @@ public class PdfGeneratorController {
 		String senderAddress = detailsObj.getString("senderAddress");
 		String receiverAddress = detailsObj.getString("receiverAddress");
 		
+		new PdfGeneratorController(customerImplem);
+		Customer cust = customerImplem.getCustomer(customer);
+		
     	StringBuilder html = new StringBuilder();
     	html.append("<html>");
     	html.append("<body>");
     	html.append("        <section id=\"haphieng-details\">");
     	html.append("            <h1>" + receiptName + "</h1>    ");
+    	html.append("            <p>VAT Reg. TIN - 240-610-923-000</p>");
     	html.append("            <p>" + senderAddress + "</p>");
     	html.append("        </section>");
     	html.append("		<br></br>");
     	html.append("		<br></br>");
     	html.append("        <h2>Delivery Receipt</h2>");
-    	html.append("		<p></p>");
+    	html.append("		<p style=\"text-align: right; font-size: 11.5px\">DR# "+ refNo +"</p>");
     	html.append("		<br></br>");
     	html.append("		<hr></hr>");
     	html.append("		<table style=\"width:100%\">");
@@ -143,8 +158,8 @@ public class PdfGeneratorController {
     	html.append("					<td class=\"header\" style=\"width:50%; background-color: #FFFFFF\">Date: <u>" + dateIn + "</u></td>");
     	html.append("				</tr>");
     	html.append("				<tr>");
-    	html.append("					<td class=\"header\" style=\"width:50%; background-color: #FFFFFF\">Address: <u>" + receiverAddress + "</u></td>");
-    	html.append("					<td class=\"header\" style=\"width:50%; background-color: #FFFFFF\">Terms: <u>" + terms + "</u></td>");
+    	html.append("					<td class=\"header\" style=\"width:50%; background-color: #FFFFFF\">Address: <u>" + (cust.getAddress()+"") + "</u></td>");
+    	html.append("					<td class=\"header\" style=\"width:50%; background-color: #FFFFFF\">Terms: <u>" + terms + " day(s)</u></td>");
     	html.append("				</tr>");
     	html.append("				<tr>");
     	html.append("					<td class=\"header\" style=\"width:50%; background-color: #FFFFFF\">&nbsp;</td>");
@@ -153,13 +168,14 @@ public class PdfGeneratorController {
     	html.append("			</tbody>");
     	html.append("		</table>");
     	html.append("		<p></p>");
-    	html.append("");
+
     	html.append("		<table style=\"width:100%\">");
     	html.append("		<thead>");
     	html.append("			<tr>");
     	html.append("				<th><strong>ITEM NAME</strong></th>");
     	html.append("				<th class=\"text-center\"><strong>ITEM PRICE</strong></th>");
     	html.append("				<th class=\"text-center\"><strong>ITEM QUANTITY</strong></th>");
+    	html.append("				<th class=\"text-center\"><strong>SALES AGENT</strong></th>");
     	html.append("				<th class=\"text-right\"><strong>ITEM TOTAL</strong></th>");
     	html.append("			</tr>");
     	html.append("		</thead>");
@@ -176,37 +192,43 @@ public class PdfGeneratorController {
 		    
 	    	html.append("			<tr>");
 	    	html.append("				<td>" + description + "</td>");
-	    	html.append("				<td class=\"text-center\">" + price + "</td>");
+	    	html.append("				<td class=\"text-center\">" + String.format("%.2f", price) + "</td>");
 	    	html.append("				<td class=\"text-center\">" + qty + "</td>");
-	    	html.append("				<td class=\"text-right\">" + amount + "</td>");
+	    	html.append("				<td class=\"text-center\">" + agent + "</td>");
+	    	html.append("				<td class=\"text-right\">" + String.format("%.2f", amount) + "</td>");
 	    	html.append("			</tr>");
 		}
 		
+    	html.append("			<tr>");		
+    	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF; text-align: right\"><strong>SUB-TOTAL</strong></td>");
-    	html.append("				<td class=\"highrow text-right\">" + totalAmt + "</td>");
+    	html.append("				<td class=\"highrow text-right\">" + String.format("%.2f", totalAmt) + "</td>");
     	html.append("			</tr>");
     	html.append("			<tr>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
+    	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF; text-align: right\"><strong>ADDITIONAL FEES</strong></td>");
-    	html.append("				<td class=\"emptyrow text-right\">0</td>");
+    	html.append("				<td class=\"emptyrow text-right\">"+ String.format("%.2f", 0.00) +"</td>");
     	html.append("			</tr>");
     	html.append("			<tr>");
     	html.append("				<td style=\"background-color: #FFFFFF\"><i class=\"fa fa-barcode iconbig\"></i></td>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
+    	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF; text-align: right\"><strong>TOTAL</strong></td>");
-    	html.append("				<td class=\"emptyrow text-right\">" + totalAmt + "</td>");
+    	html.append("				<td class=\"emptyrow text-right\">" + String.format("%.2f", totalAmt) + "</td>");
     	html.append("			</tr>");
     	html.append("		</tbody>");
     	html.append("		</table>");
-    	html.append(" ");
+
+    	if(receiptName.equals("Hap Hieng Marketing Corporation")){
     	html.append("        <label id=\"some-text\">*Received the above merchandise in good order and condition.</label>");
-    	html.append("");
+
     	html.append("        <p>");
     	html.append("            <label>No.</label>");
-    	html.append("            <label> <u>" + refNo + "</u></label>");
+    	html.append("            <label> <u style=\"text-color: red\">" + "0000001" + "</u></label>");
     	html.append("        </p>");
     	html.append("		<br></br>");
     	html.append("		");
@@ -215,6 +237,33 @@ public class PdfGeneratorController {
     	html.append("            <br></br>");
     	html.append("            <label>Printed name over signature</label>");
     	html.append("        </p>");
+    	} else {
+        html.append("		<table style=\"width:100%;\">");
+        html.append("			<tbody>");
+        html.append("				<tr>");
+        html.append("					<td class=\"header\" style=\"width:50%; background-color: #FFFFFF; border: 2px solid black; font-size: 9px;\">");
+        html.append("					NOTE: Not to be issued for Non-VAT/Empt Sale of goods, properties or services.");
+        html.append("					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If issued, sales shall be subjected to VAT.");
+        html.append("					<br></br>TERMS: Our responsibility ceases upon deliver of the goods to public carrier in good");
+        html.append("					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order. An interest of 12% annum will be charged on all overdue accounts. In case ");
+        html.append("					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of legal action arising over this account, purchaser expressly agrees to submit ");
+        html.append("					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;himself	to the jurisdiction of the court of Malabon City and to pay an additional");
+        html.append("					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum equal to 25% of the total amount due to cover collection expenses until paid ");
+        html.append("					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in full.");
+        html.append("					</td>");
+        html.append("					<td class=\"header\" style=\"width:50%; background-color: #FFFFFF; border: 2px solid black;\">");
+        html.append("						<p class=\"signature\" style=\"margin-left: 40px\">");
+        html.append("						<br></br><br></br><br></br>");
+        html.append("							<label>By: </label> ____________________________________");
+        html.append("							<br></br>");
+        html.append("							<p style=\"margin-left: 15px\">Printed name over signature</p>");
+        html.append("						</p>					");
+        html.append("					</td>");
+        html.append("				</tr>");
+        html.append("			</tbody>");
+        html.append("		</table>");    		
+    	}
+    	
     	html.append("</body>");
     	html.append("</html>");
     	
@@ -308,7 +357,7 @@ public class PdfGeneratorController {
     	return htmlcss;
     }
     
-    @WebServlet("/GetStandardReceipt")
+    @WebServlet("/GenerateReceipt")
     public static class ReportServlet extends HttpServlet {
         private static final long serialVersionUID = 1L;
 
@@ -327,6 +376,19 @@ public class PdfGeneratorController {
         
         String details = request.getParameter("details");
         String items = request.getParameter("items");
+        int receiptType = Integer.parseInt(request.getParameter("type"));
+        
+        String fileType = "STANDARD_RECEIPT";
+        if(receiptType == 1){
+        	fileType = "STANDARD_RECEIPT";
+        } else if(receiptType == 2){
+        	fileType = "HHM_MARKETING_RECEIPT";
+        } else if(receiptType == 3){
+        	fileType = "HHM_MARKETING_RECEIPT";
+        } else if(receiptType == 4){
+        	fileType = "CKCJ_MARKETING_RECEIPT";
+        }
+        
         String[] htmlcss = null;
 		try {
 			htmlcss = generateReceipt(details, items);
@@ -335,7 +397,7 @@ public class PdfGeneratorController {
 			e.printStackTrace();
 		}
 
-        String fileName = "STANDARD_RECEIPT_"+System.currentTimeMillis()+".pdf";
+        String fileName = fileType + "_" + System.currentTimeMillis() +".pdf";
         response.setContentType("application/pdf");
         response.setHeader("Cache-Control", "no-cache");
         response.setHeader("Cache-Control", "max-age=0");
@@ -360,7 +422,7 @@ public class PdfGeneratorController {
                 response) throws ServletException, IOException {        
         }
 
-        private static ByteArrayOutputStream 
+        private ByteArrayOutputStream 
             convertPDFToByteArrayOutputStream(String fileName) {
 
             InputStream inputStream = null;
