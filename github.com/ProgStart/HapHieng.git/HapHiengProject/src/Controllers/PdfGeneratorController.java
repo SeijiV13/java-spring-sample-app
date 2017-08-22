@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.DecimalFormat;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -49,18 +50,21 @@ import com.itextpdf.tool.xml.pipeline.html.HtmlPipeline;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 
 import Implem.CustomerImplem;
+import Implem.PDFImplem;
 import Models.Customer;
 
 @Controller
 public class PdfGeneratorController {
 	
 	static CustomerImplem customerImplem;
+	static PDFImplem pdfImplem;
 	
     @Autowired
-    public PdfGeneratorController(CustomerImplem customerImplem) {
+    public PdfGeneratorController(CustomerImplem customerImplem, PDFImplem pdfImplem) {
     	PdfGeneratorController.customerImplem = customerImplem;
+    	PdfGeneratorController.pdfImplem = pdfImplem;
     }
-	
+    
 	@RequestMapping(value = "/GeneratePdf", method = RequestMethod.GET)
 	ModelAndView generatePdf(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -86,47 +90,16 @@ public class PdfGeneratorController {
 	    ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(contents, headers, HttpStatus.OK);
 	    return response;
 	}
-	
-    public static void createPdf(String file, String[] components) throws IOException, DocumentException {
-        // step 1
-        Document document = new Document(PageSize.LETTER);
-        // step 2
-        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(file));
-        // step 3
-        document.open();
-        // step 4 
-        CSSResolver cssResolver = new StyleAttrCSSResolver();
-        CssFile cssFile = XMLWorkerHelper.getCSS(new ByteArrayInputStream(components[1].getBytes()));
-        //CssFile cssFile = XMLWorkerHelper.getCSS(new FileInputStream(STYLE));
-        cssResolver.addCss(cssFile);
- 
-        // HTML
-        HtmlPipelineContext htmlContext = new HtmlPipelineContext(null);
-        htmlContext.setTagFactory(Tags.getHtmlTagProcessorFactory());
- 
-        // Pipelines
-        PdfWriterPipeline pdf = new PdfWriterPipeline(document, writer);
-        HtmlPipeline html = new HtmlPipeline(htmlContext, pdf);
-        CssResolverPipeline css = new CssResolverPipeline(cssResolver, html);
- 
-        // XML Worker
-        XMLWorker worker = new XMLWorker(css, true);
-        XMLParser p = new XMLParser(worker);
-        p.parse(new ByteArrayInputStream(components[0].getBytes()));
-        //p.parse(new FileInputStream(HTML),Charset.forName("cp1252"));
- 
-        // step 5
-        document.close();
-    }
     
     public static String[] generateReceipt(String details, String items) throws JSONException{
         JSONObject detailsObj = new JSONObject(details);
         JSONArray itemsArr = new JSONArray(items);
+        DecimalFormat formatter = new DecimalFormat("#,##0.00");
     	
         String receiptName = detailsObj.getString("receiptName");
 		String customer = detailsObj.getString("customer");
 		String terms = detailsObj.getString("terms");
-		double totalAmt = detailsObj.getDouble("totalAmt");
+		String totalAmt = formatter.format(detailsObj.getDouble("totalAmt"));
 		String dateIn = detailsObj.getString("date");
 		String refNo = detailsObj.getString("refno");
 		String currency = detailsObj.getString("currency");
@@ -134,7 +107,7 @@ public class PdfGeneratorController {
 		String senderAddress = detailsObj.getString("senderAddress");
 		String receiverAddress = detailsObj.getString("receiverAddress");
 		
-		new PdfGeneratorController(customerImplem);
+		new PdfGeneratorController(customerImplem, pdfImplem);
 		Customer cust = customerImplem.getCustomer(customer);
 		
     	StringBuilder html = new StringBuilder();
@@ -185,17 +158,17 @@ public class PdfGeneratorController {
 		    JSONObject jsonObject = itemsArr.getJSONObject(i);
 		    String agent = jsonObject.getString("Agent");
 		    int qty = jsonObject.getInt("Qty");
-		    double price = jsonObject.getDouble("Price");
-		    double amount = jsonObject.getDouble("Amount");
+		    String price = formatter.format(jsonObject.getDouble("Price"));
+		    String amount = formatter.format(jsonObject.getDouble("Amount"));
 		    String itemCode = jsonObject.getString("Item code");
 		    String description = jsonObject.getString("Description");
 		    
 	    	html.append("			<tr>");
 	    	html.append("				<td>" + description + "</td>");
-	    	html.append("				<td class=\"text-center\">" + String.format("%.2f", price) + "</td>");
+	    	html.append("				<td class=\"text-center\">" + price + "</td>");
 	    	html.append("				<td class=\"text-center\">" + qty + "</td>");
 	    	html.append("				<td class=\"text-center\">" + agent + "</td>");
-	    	html.append("				<td class=\"text-right\">" + String.format("%.2f", amount) + "</td>");
+	    	html.append("				<td class=\"text-right\">" + amount + "</td>");
 	    	html.append("			</tr>");
 		}
 		
@@ -204,21 +177,21 @@ public class PdfGeneratorController {
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF; text-align: right\"><strong>SUB-TOTAL</strong></td>");
-    	html.append("				<td class=\"highrow text-right\">" + String.format("%.2f", totalAmt) + "</td>");
+    	html.append("				<td class=\"highrow text-right\">" + totalAmt + "</td>");
     	html.append("			</tr>");
     	html.append("			<tr>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF; text-align: right\"><strong>ADDITIONAL FEES</strong></td>");
-    	html.append("				<td class=\"emptyrow text-right\">"+ String.format("%.2f", 0.00) +"</td>");
+    	html.append("				<td class=\"emptyrow text-right\">"+ 0.00 +"</td>");
     	html.append("			</tr>");
     	html.append("			<tr>");
     	html.append("				<td style=\"background-color: #FFFFFF\"><i class=\"fa fa-barcode iconbig\"></i></td>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF\"></td>");
     	html.append("				<td style=\"background-color: #FFFFFF; text-align: right\"><strong>TOTAL</strong></td>");
-    	html.append("				<td class=\"emptyrow text-right\">" + String.format("%.2f", totalAmt) + "</td>");
+    	html.append("				<td class=\"emptyrow text-right\">" + totalAmt + "</td>");
     	html.append("			</tr>");
     	html.append("		</tbody>");
     	html.append("		</table>");
@@ -406,7 +379,8 @@ public class PdfGeneratorController {
 
         try {
         	// GENERATE PDF
-            createPdf(temperotyFilePath+"\\"+fileName, htmlcss);
+        	new PdfGeneratorController(customerImplem, pdfImplem);
+            pdfImplem.createPdf(temperotyFilePath+"\\"+fileName, htmlcss);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             baos = convertPDFToByteArrayOutputStream(
                     temperotyFilePath+"\\"+fileName);

@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <typeAlias alias="Purchases" type="Models.Purchases"/>
 <typeAlias alias="SupplierPriceList" type="Models.SupplierPriceList"/>
 <typeAlias alias="InOutTransaction" type="Models.InOutTransaction"/>
+<typeAlias alias="SalesReport" type="Models.SalesReport"/>
 </typeAliases>
 
 <mappers>
@@ -25,6 +26,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <mapper resource="Mappers/CustomerMapper.xml"/>
 <mapper resource="Mappers/SupplierMapper.xml"/>
 <mapper resource="Mappers/AgentMapper.xml"/>
+<mapper resource="Mappers/PDFMapper.xml"/>
 </mappers>  
 
 </configuration>

@@ -139,35 +139,7 @@
 				<modal:addcustomer />
 				<modal:addagent />
 				<form>
-				<!-- 
-					<div class="form-horizontal col-md-6 col-xs-12">
-						<div class="form-group">
-							<label class="control-label col-md-4" for="drno">DR Ref.
-								No.</label>
-							<div class="col-md-8">
-								<input type="text" class="form-control" id="drno" readOnly>
-							</div>
-						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4" for="sono">SO No.</label>
-							<div class="col-md-8">
-								<input type="text" class="form-control" id="sono">
-							</div>
-						</div>
-						
-						<div class="col-md-3">
-							<button class="btn btn-default bg_dblue btn-add" data-target="#addcustomer" data-toggle="modal" type="button"> Add Customer </button>
-						</div>
-						
-						<div class="col-md-9">
-							<select class="form-control" id="customer">
-								<option>Customer</option>
-							</select>
-							
-						</div>
-					</div>
-					-->
 					<div class="form-horizontal col-md-12">
 						<div class="col-md-4">
 							<label class="control-label col-md-4" for="drno">DR Ref.
@@ -237,34 +209,6 @@
 						</div>
 					</div>
 					
-<!--					<div class="form-horizontal col-md-6 col-xs-12 col_2">
-						<div class="form-group">
-							<label class="control-label col-md-2" for="date">Date</label>
-							<div class="col-md-10">
-								<div class="input-group date" data-provide="datepicker">
-									<input type="text" class="form-control" id="date">
-									<div class="input-group-addon">
-										<span class="glyphicon glyphicon-calendar"></span>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="control-label col-md-2" for="terms">Terms</label>
-							<div class="col-md-10 input-group">
-								<input type="text" class="form-control" id="termsDetails">
-								<div class="input-group-addon">day(s)</div>
-							</div>
-						</div>
-
-						<select class="form-control" id="wcrc">
-							<option>WC/RC</option>
-						</select>
-
-
-					</div>
-					-->
 				</form>
 				
 				<!-- ============ TABLE ============ -->
