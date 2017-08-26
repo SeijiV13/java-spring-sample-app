@@ -6,7 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="Mappers.PDFMapper">
 	<select id="getDailySales" resultType="SalesReport">
-        SELECT date, reference_no, customer_code, currency, amount, balance FROM SALES_TABLE WHERE date BETWEEN #{0} AND #{1}
+        SELECT date, reference_no, customer_code, currency, amount, balance, net_income FROM SALES_TABLE WHERE date BETWEEN #{0} AND #{1}
 	</select>
-	 
+	<select id="getDailySaleItems" resultType="InOutTransaction">
+        SELECT  date, client, reference_no, item_code, quantity_out, price, (quantity_out * price) AS 'Amount'  FROM INOUT_TABLE WHERE indicator = 'sales' AND date BETWEEN #{0} AND #{1} ORDER BY date, client
+	</select>
 </mapper>

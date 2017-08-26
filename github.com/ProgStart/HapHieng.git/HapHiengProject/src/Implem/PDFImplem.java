@@ -22,7 +22,7 @@ import com.itextpdf.tool.xml.pipeline.html.HtmlPipeline;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 
 import Mappers.PDFMapper;
-import Models.Customer;
+import Models.InOutTransaction;
 import Models.SalesReport;
 
 public class PDFImplem {
@@ -48,6 +48,9 @@ public class PDFImplem {
 
 	public ArrayList<SalesReport> getDailySales(String startDate, String endDate) {
 		return pdfMapper.getDailySales(startDate, endDate);
+	}
+	public ArrayList<InOutTransaction> getDailySaleItems(String startDate, String endDate) {
+		return pdfMapper.getDailySaleItems(startDate, endDate);
 	}
 	/* HOW TO CREATE PDF:
 	 * 	1st Param: fileName

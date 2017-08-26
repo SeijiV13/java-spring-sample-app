@@ -8,6 +8,7 @@ public class SalesReport {
     private String currency;
     private double amount;
     private double balance;
+    private double net_income;
     
 	public String getDate() {
 		return date;
@@ -50,5 +51,11 @@ public class SalesReport {
 	}
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}
+	public double getNet_income() {
+		return net_income;
+	}
+	public void setNet_income(double net_income) {
+		this.net_income = net_income;
 	}   
 }

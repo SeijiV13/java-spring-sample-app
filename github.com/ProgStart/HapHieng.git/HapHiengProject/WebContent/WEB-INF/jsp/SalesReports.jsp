@@ -120,9 +120,9 @@
 					<ul class="dropdown-menu">
 						<li><a href="GetDailySales?startDate=2017-04-22&endDate=2017-04-29">All Daily Sales</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">Daily Sales with Net Income Report</a></li>
-						<li><a href="#">Daily Sales (Grouped by Customer)</a></li>
-						<li><a href="#">Daily Sales (Grouped by Customer with Items)</a></li>
+						<li><a href="GetDailySales?filterBy=netincome&startDate=2017-04-22&endDate=2017-04-29">Daily Sales with Net Income Report</a></li>
+						<li><a href="GetDailySales?filterBy=customer&startDate=2017-04-22&endDate=2017-04-29">Daily Sales (Grouped by Customer)</a></li>
+						<li><a href="GetDailySales?filterBy=items&startDate=2017-04-22&endDate=2017-04-29">Daily Sales (Grouped by Customer with Items)</a></li>
 
 					</ul>
 				</div>
