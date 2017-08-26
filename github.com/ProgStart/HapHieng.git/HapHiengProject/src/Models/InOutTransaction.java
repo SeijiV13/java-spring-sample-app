@@ -12,6 +12,20 @@ public class InOutTransaction {
     int quantity_adjustment = 0;
     double balance = 0;
     String agent = null;
+    String good = null;
+    public String getGood() {
+		return good;
+	}
+	public void setGood(String good) {
+		this.good = good;
+	}
+	public String getWarehouse() {
+		return warehouse;
+	}
+	public void setWarehouse(String warehouse) {
+		this.warehouse = warehouse;
+	}
+	String warehouse = null;
     
 	public String getItem_code() {
 		return item_code;

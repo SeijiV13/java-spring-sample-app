@@ -193,6 +193,8 @@ $(document).ready(function() {
 	  }
 	} 
 	// ================= MENU SCRIPT =====================
+	
+	
 	Number.prototype.between  = function (a, b, inclusive) {
 	    var min = Math.min.apply(Math, [a,b]),
 	        max = Math.max.apply(Math, [a,b]);
@@ -301,7 +303,7 @@ $(document).ready(function() {
 
 	$('#post-btn').click( function() {
 		var r = confirm("Are you sure you want to \"POST\" this transaction?");
-		if(r){
+		if(r && $("#drnochar").val() && $("#date").val() && $("#totalAmt").val()){
 		  var table = $('#entries').tableToJSON();
 		  var tableStr = encodeURI(JSON.stringify(table));
 		  var refno = $("#drnochar").val() + $("#drno").val();
@@ -319,6 +321,8 @@ $(document).ready(function() {
 	        	  alert("Processing failed. Please try again.");
 	          }
 	      });
+		 } else {
+			 alert("Please fill required fields.")
 		 }
 	});
 	
@@ -341,7 +345,7 @@ $(document).ready(function() {
 	
 	$('#suspendSales').click( function() {
 		var r = confirm("Are you sure you want to \"SUSPEND\" this transaction?");
-		if(r){
+		if(r && $("#drnochar").val() && $("#date").val() && $("#totalAmt").val()){
 		  var table = $('#entries').tableToJSON();
 		  var tableStr = encodeURI(JSON.stringify(table));
 		  var refno = $("#drnochar").val() + $("#drno").val();
@@ -362,6 +366,8 @@ $(document).ready(function() {
 	        	  alert("Processing failed. Please try again.");
 	          }
 	      }); 
+		 } else {
+			 alert("Please fill required fields.")
 		 }
 	});
 	
@@ -369,7 +375,7 @@ $(document).ready(function() {
 		var val = $('input[name=transentry]:checked').val();				
 		$("#tbentries tr").remove();
 		
-        $.get('resumeEntries.htm?details='+val,function(json) {
+        $.get('resumeSalesReturnEntries.htm?details='+val,function(json) {
             if(json!=null){
             	var data = JSON.parse(json);
             	var drno = data.ref_no + '';
@@ -389,6 +395,8 @@ $(document).ready(function() {
   	      			var itemName = data.items[i].name;
 	        		var stock = data.items[i].stock;
 	        		var itemCode = data.items[i].itemid;
+	        		var good = data.items[i].good;
+	        		var warehouse = data.items[i].warehouse;
 	        		
 	        		$('#itemAmount2').text(data.items[i].itemPrice);
 	        		$('#itemAmountRecent').text(data.items[i].lastamount);
@@ -396,7 +404,7 @@ $(document).ready(function() {
 	        			$('#itemAmount').val(data.items[i].lastamount);
 	        		}
 	        		
-	        		itemAdder(itemName, itemPrice, itemPrice, quantity, itemName, stock, agentname, itemCode);
+	        		itemAdder(itemName, itemPrice, itemPrice, quantity, itemName, stock, agentname, itemCode, good, warehouse);
       		  	}
             }
             else {

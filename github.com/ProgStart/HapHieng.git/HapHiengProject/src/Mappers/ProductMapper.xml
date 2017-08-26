@@ -37,6 +37,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT reference_no, date, customer_code, terms, po, amount, balance, ctr_ref, currency FROM SUSPEND_TABLE WHERE entry = 'SALES' AND reference_no = #{0}
 	</select>
 	
+	<select id="getSuspendedSalesReturnTrans" resultType="Transaction">
+        SELECT reference_no, date, customer_code, terms, po, amount, balance, ctr_ref, currency FROM SUSPEND_TABLE WHERE entry = 'SALESRETURN' AND reference_no = #{0}
+	</select>
+	
 	<select id="getSuspendedItemSales" resultType="InOutTransaction">
         SELECT * FROM SUSPEND_ITEMS_TABLE WHERE reference_no = #{0}
 	</select>
@@ -90,7 +94,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
 
     <insert id="addNewItemSuspend">
-		INSERT INTO SUSPEND_ITEMS_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7}, #{8}, #{9}, #{10})                                
+		INSERT INTO SUSPEND_ITEMS_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7}, #{8}, #{9}, #{10}, #{11}, #{12})                                
     </insert>
 
     <select id="getAllInOutTransactions" resultType="InOutTransaction">

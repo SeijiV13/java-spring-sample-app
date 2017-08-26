@@ -50,6 +50,11 @@ public class ProductImplem {
 		return transaction;
 	}	
 	
+	public Transaction getSuspendedSalesReturnTrans(String reference_no){
+		Transaction transaction = productMapper.getSuspendedSalesReturnTrans(reference_no);
+		return transaction;
+	}	
+	
 	public ArrayList<InOutTransaction> getSuspendedItemSales(String reference_no){
 		ArrayList<InOutTransaction> transaction = productMapper.getSuspendedItemSales(reference_no);
 		return transaction;
@@ -111,8 +116,8 @@ public class ProductImplem {
 		productMapper.updateSuspend(refNo, date, customerCode, terms, po, amount, balance, ctr_ref, currency, entry);
 	}
 	
-	public void addNewItemSuspend(String item_code, String date, String refNo, String client, double price, String currency, int quantity_in, int quantity_out, int quantity_adjustment, double balance, String agent) {
-		productMapper.addNewItemSuspend(item_code, date, refNo, client, price, currency, quantity_in, quantity_out, quantity_adjustment, balance, agent);
+	public void addNewItemSuspend(String item_code, String date, String refNo, String client, double price, String currency, int quantity_in, int quantity_out, int quantity_adjustment, double balance, String agent, String good, String warehouse) {
+		productMapper.addNewItemSuspend(item_code, date, refNo, client, price, currency, quantity_in, quantity_out, quantity_adjustment, balance, agent, good, warehouse);
 	}
 
 	public void deleteSuspendedTrans(String refNo, String entry) {

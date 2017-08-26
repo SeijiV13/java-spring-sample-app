@@ -231,7 +231,7 @@
 								<div class="form-group">
 								<label for="warehousetype">Warehouse: </label>
 								<label class="radio-inline">
-								<input name="warehousetype"type="radio" value="W1"/> W1
+								<input name="warehousetype"type="radio" value="W1" checked/> W1
 								</label>
 								<label class="radio-inline">
 								<input name="warehousetype"type="radio" value="W2"/>W2
@@ -241,11 +241,12 @@
 								<div class="form-group">
 								<label for="good">Good: </label>
 								<label class="radio-inline">
-								<input name="good" type="radio" value="Yes"/> Yes
+								<input name="good" type="radio" value="No" checked/>No
 								</label>
 								<label class="radio-inline">
-								<input name="good" type="radio" value="No"/>No
+								<input name="good" type="radio" value="Yes"/> Yes
 								</label>
+								
 								</div>
 								
 								<div class="tbl_wrap">
@@ -445,8 +446,8 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Cancel</button>
-							<button id="resumeBtn" type="button" class="btn btn-primary">Resume</button>
+								data-dismiss="modal" data-dismiss="modal">Cancel</button>
+							<button id="resumeBtn" type="button" class="btn btn-primary" data-dismiss="modal">Resume</button>
 						</div>
 					</div>
 					<!-- /.modal-content -->
