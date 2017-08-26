@@ -75,9 +75,9 @@ public class SuspendController {
 		output.append("date", trans.getDate());
 		output.append("currency", trans.getCurrency());
 		output.append("cust_code", trans.getCustomer_code());
-		output.append("terms", trans.getTerms());
+		//output.append("terms", trans.getTerms());
 		output.append("total", trans.getAmount());
-		output.append("wcrc", trans.getPo());
+		//output.append("wcrc", trans.getPo());
 		
 		JSONArray items = new JSONArray();
 		items.put(itemList);	
@@ -104,5 +104,43 @@ public class SuspendController {
 	
     	return output.toString();
     }	
+	
+	@RequestMapping(value="/suspendSalesReturnEntries")
+	@ResponseBody 
+    public String suspendSalesReturnTransaction(@RequestParam("request") String json, @RequestParam("details") String details) throws JSONException {
+		JSONObject home = new JSONObject(details);
+		String customer = home.getString("customer");
+		//String terms = home.getString("terms");
+		double totalAmt = home.getDouble("totalAmt");
+		String dateIn = home.getString("date");
+		String refNo = home.getString("refno");
+		String currency = home.getString("currency");
+		//String wcrc = home.getString("wcrc");
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddmmHHss");
+		Date date = new Date();
+		String dateToday = dateFormat.format(date);
+		
+		//CHECK IF ALREADY IN SUSPEND TABLE, UPDATE IF ALREADY
+		System.out.println("-" + productImplem.selectSuspendID(refNo) + "-");
+		if((productImplem.selectSuspendID(refNo) + "").equals("null")){
+			productImplem.addNewSuspend(refNo, dateIn, customer, "", "", totalAmt, 0.00, dateToday, currency, "SALESRETURN");
+		} else {
+			productImplem.updateSuspend(refNo, dateIn, customer, "", "", totalAmt, 0.00, dateToday, currency, "SALESRETURN");
+			productImplem.deleteSuspendedItems(refNo);
+		}
+		JSONArray jsonArray = new JSONArray(json);
+		for(int i=0; i<jsonArray.length(); i++) {
+		    JSONObject jsonObject = jsonArray.getJSONObject(i);
+		    String agent = jsonObject.getString("Agent");
+		    int qty = jsonObject.getInt("Qty");
+		    double amount = jsonObject.getDouble("Amount");
+		    String itemCode = jsonObject.getString("Item code");
+		    
+		    productImplem.addNewItemSuspend(itemCode, dateIn, refNo, customer, amount/qty, currency, 0, qty, 0, 0.00, agent);
+		}
+		
+    	return "Success! Transaction Suspended.";
+    }
 }
 

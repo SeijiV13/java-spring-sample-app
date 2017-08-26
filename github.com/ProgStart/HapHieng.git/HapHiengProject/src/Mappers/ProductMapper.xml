@@ -28,6 +28,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getAllSuspendedSales" resultType="Transaction">
         SELECT reference_no, date, customer_code, terms, po, amount, balance, ctr_ref, currency FROM SUSPEND_TABLE WHERE entry = 'SALES'
 	</select>
+	
+	<select id="getAllSuspendedSalesReturn" resultType="Transaction">
+		SELECT reference_no, date, customer_code, terms, po, amount, balance, ctr_ref, currency FROM SUSPEND_TABLE WHERE entry = 'SALESRETURN'
+	</select>
 
 	<select id="getSuspendedSalesTrans" resultType="Transaction">
         SELECT reference_no, date, customer_code, terms, po, amount, balance, ctr_ref, currency FROM SUSPEND_TABLE WHERE entry = 'SALES' AND reference_no = #{0}
@@ -68,11 +72,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="addNewSale">
 		INSERT INTO SALES_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7}, #{8})                                
     </insert>
+    
+    <insert id="addNewSalesReturn">
+		INSERT INTO SALES_RETURN_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4})                                
+    </insert>
 
     <insert id="addNewInOut_sale">
 		INSERT INTO INOUT_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7}, #{8}, #{9}, #{10})                                
     </insert>
-
+    
+    <insert id="addNewInOut_salesReturn">
+		INSERT INTO INOUT_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7}, #{8}, #{9}, #{10}, #{11}, #{12}, #{13})                                
+    </insert>
+    
     <insert id="addNewSuspend">
 		INSERT INTO SUSPEND_TABLE VALUES(#{0}, #{1}, #{2}, #{3}, #{4}, #{5}, #{6}, #{7}, #{8}, #{9})                                
     </insert>

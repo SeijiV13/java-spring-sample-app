@@ -118,11 +118,11 @@
 						Daily Sales <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<li><a href="#">All Daily Sales</a></li>
+						<li id="all-daily-sales-link"><a href="#">All Daily Sales</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">Daily Sales with Net Income Report</a></li>
-						<li><a href="#">Daily Sales (Grouped by Customer)</a></li>
-						<li><a href="#">Daily Sales (Grouped by Customer with Items)</a></li>
+						<li id="daily-sales-net-link"><a href="#">Daily Sales with Net Income Report</a></li>
+						<li id="daily-sales-cust-link"><a href="#">Daily Sales (Grouped by Customer)</a></li>
+						<li id="daily-sales-item-link"><a href="#">Daily Sales (Grouped by Customer with Items)</a></li>
 
 					</ul>
 				</div>
@@ -133,13 +133,13 @@
 						Sales History <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-					<li><a href="#">History of Sales by Item</a></li>
-					<li><a href="#">History of Sales by Customer-Category-Item</a></li>
-					<li><a href="#">History of Sales  by Customer (Sales Analyzer - Item)</a></li>
-					<li><a href="#">History of Sales by Customer (Sales Analyzer - Category)</a></li>
-					<li><a href="#">Customer Monthly Sales</a></li>
-					<li><a href="#">Customer Yearly Sales</a></li>
-					<li><a href="#">Agent Monthly Sales</a></li>
+					<li id="history-by-item-link"><a href="#">History of Sales by Item</a></li>
+					<li id="history-by-cci-link"><a href="#">History of Sales by Customer-Category-Item</a></li>
+					<li id="history-by-sai-link"><a href="#">History of Sales  by Customer (Sales Analyzer - Item)</a></li>
+					<li id="history-by-sac-link"><a href="#">History of Sales by Customer (Sales Analyzer - Category)</a></li>
+					<li id="cust-monthly-link"><a href="#">Customer Monthly Sales</a></li>
+					<li id="cust-yearly-link"><a href="#">Customer Yearly Sales</a></li>
+					<li id="agent-monthly-link"><a href="#">Agent Monthly Sales</a></li>
 					</ul>
 				</div>
 			</div>
@@ -148,6 +148,175 @@
 			<div class="row">
 
 				<div class="col-md-offset-3 col-md-6 form-container">
+					
+					<div id="all-daily-sales" class="hide">
+						<h4>All Daily Sales</h4>
+						<div class="col-md-12">
+							<label class="control-label col-md-3" for="date">Date from:</label>
+							<div class="col-md-9">
+								<div class="input-group dateFrom" data-provide="datepicker">
+									<input type="text" class="form-control" >
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<label class="control-label col-md-3" for="date">Date to:</label>
+							<div class="col-md-9">
+								<div class="input-group dateTo" data-provide="datepicker">
+									<input type="text" class="form-control">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<button class="btn btn-primary center-block"> Submit </button>
+						</div>
+					</div>
+					
+					<div id="daily-sales-net" class="hide"> 
+						<h4>Daily Sales with Net Income Report</h4>
+						<div class="col-md-12">
+							<label class="control-label col-md-3" for="date">Date from:</label>
+							<div class="col-md-9">
+								<div class="input-group dateFrom" data-provide="datepicker">
+									<input type="text" class="form-control" >
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<label class="control-label col-md-3" for="date">Date to:</label>
+							<div class="col-md-9">
+								<div class="input-group dateTo" data-provide="datepicker">
+									<input type="text" class="form-control">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<button class="btn btn-primary center-block"> Submit </button>
+						</div>
+					</div>
+					
+					<div id="daily-sales-cust" class="hide">
+						<h4>Daily Sales (Grouped by Customer)</h4>
+						<div class="col-md-12">
+							<label class="control-label col-md-3" for="date">Date from:</label>
+							<div class="col-md-9">
+								<div class="input-group dateFrom" data-provide="datepicker">
+									<input type="text" class="form-control" >
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<label class="control-label col-md-3" for="date">Date to:</label>
+							<div class="col-md-9">
+								<div class="input-group dateTo" data-provide="datepicker">
+									<input type="text" class="form-control">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<button class="btn btn-primary center-block"> Submit </button>
+						</div>
+					</div>
+					
+					<div id="daily-sales-item" class="hide">
+						<h4>Daily Sales (Grouped by Customer with Items)</h4>
+						<div class="col-md-12">
+							<label class="control-label col-md-3" for="date">Date from:</label>
+							<div class="col-md-9">
+								<div class="input-group dateFrom" data-provide="datepicker">
+									<input type="text" class="form-control" >
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<label class="control-label col-md-3" for="date">Date to:</label>
+							<div class="col-md-9">
+								<div class="input-group dateTo" data-provide="datepicker">
+									<input type="text" class="form-control" >
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<button class="btn btn-primary center-block"> Submit </button>
+						</div>
+					</div>
+					
+					<!-- ==============  SALES HISTORY ============== -->
+					<div id="history-by-item" class="hide">
+						<h4>History of Sales by Item</h4>
+						
+						<div class="col-md-12">
+							<label class="control-label col-md-3">Item code: </label>
+							<div class="col-md-9">
+								<select class="form-control" id="itemCode">
+									
+								</select>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+					<div class="form-group">
+						<label class="control-label col-md-3" for="date">Date</label>
+						<div class="col-md-9">
+							<div class="input-group date" data-provide="datepicker">
+								<input type="text" id="date" class="form-control">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+						
+						<div class="col-md-12">
+							<label class="control-label col-md-3" for="date">Date to:</label>
+							<div class="col-md-9">
+								<div class="input-group date" data-provide="datepicker">
+									<input type="text" class="form-control">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-12">
+							<button class="btn btn-primary center-block"> Submit </button>
+						</div>
+					</div>
+					
 				</div>
 
 
@@ -158,4 +327,95 @@
 	</div>
 
 </body>
+
+<script>
+
+	
+	
+	$(document).ready(function(){
+		
+		$('#all-daily-sales-link').click(function (){
+			$('#all-daily-sales').toggleClass('show');
+			
+			$('#daily-sales-net').addClass('hide');
+			$('#daily-sales-net').removeClass('show');
+			
+			$('#daily-sales-cust').addClass('hide');
+			$('#daily-sales-cust').removeClass('show');
+			
+			$('#daily-sales-item').addClass('hide');
+			$('#daily-sales-item').removeClass('show');
+			
+			// SALES HISTORY
+		});
+		
+		$('#daily-sales-net-link').click(function (){
+			$('#daily-sales-net').toggleClass('show');
+			
+			$('#all-daily-sales').addClass('hide');
+			$('#all-daily-sales').removeClass('show');
+			
+			$('#daily-sales-cust').addClass('hide');
+			$('#daily-sales-cust').removeClass('show');
+			
+			$('#daily-sales-item').addClass('hide');
+			$('#daily-sales-item').removeClass('show');
+			
+			// SALES HISTORY
+		});
+		
+		$('#daily-sales-cust-link').click(function (){
+			$('#daily-sales-cust').toggleClass('show');
+			
+			$('#all-daily-sales').addClass('hide');
+			$('#all-daily-sales').removeClass('show');
+			
+			$('#daily-sales-net').addClass('hide');
+			$('#daily-sales-net').removeClass('show');
+			
+			$('#daily-sales-item').addClass('hide');
+			$('#daily-sales-item').removeClass('show');
+			
+			// SALES HISTORY
+		});
+		
+		$('#daily-sales-item-link').click(function (){
+			$('#daily-sales-item').toggleClass('show');
+			
+			$('#all-daily-sales').addClass('hide');
+			$('#all-daily-sales').removeClass('show');
+			
+			$('#daily-sales-net').addClass('hide');
+			$('#daily-sales-net').removeClass('show');
+			
+			$('#daily-sales-cust').addClass('hide');
+			$('#daily-sales-cust').removeClass('show');
+			
+			// SALES HISTORY
+		});
+		
+		// ========== SALES HISTORY
+		$('#daily-sales-item-link').click(function (){
+			$('#history-by-item').toggleClass('show');
+			
+			// DAILY SALES
+			$('#all-daily-sales').addClass('hide');
+			$('#all-daily-sales').removeClass('show');
+			
+			$('#daily-sales-net').addClass('hide');
+			$('#daily-sales-net').removeClass('show');
+			
+			$('#daily-sales-cust').addClass('hide');
+			$('#daily-sales-cust').removeClass('show');
+			
+			$('#daily-sales-item').addClass('hide');
+			$('#daily-sales-item').removeClass('show');
+			
+		});
+		
+		var startDate = new Date($(".dateTo input").val() );
+		console.log(startDate);
+	});
+</script>
+
 </html>

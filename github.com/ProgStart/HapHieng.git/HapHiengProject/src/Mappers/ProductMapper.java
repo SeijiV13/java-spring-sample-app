@@ -19,9 +19,15 @@ public interface ProductMapper {
 	public ArrayList<InOutTransaction> getAllInOutTransactions();
 	public void addNewSale(String refNo, String date, String customerCode, String terms, String po, double amount,
 			double balance, String ctr_ref, String currency);
+	public void addNewSalesReturn(String refNo, String date, String customerCode, double amount,
+			double balance);
 	public void addNewInOut_sale(String item_code, String date, String refNo, String client, double price,
 			String currency, int quantity_in, int quantity_out, int quantity_adjustment, double balance,
 			String agent);
+	
+	public void addNewInOut_salesReturn(String item_code, String date, String refNo, String client, double price,
+			String currency, int quantity_in, int quantity_out, int quantity_adjustment, double balance,
+			String agent, String indicator, String good, String category);
 	public void addNewSuspend(String refNo, String date, String customerCode, String terms, String po, double amount,
 			double balance, String ctr_ref, String currency, String entry);
 	public void addNewItemSuspend(String item_code, String date, String refNo, String client, double price,
@@ -35,4 +41,5 @@ public interface ProductMapper {
 	public String getLastOrderedPrice(String item_code, String client);
 	public void updateSuspend(String refNo, String date, String customerCode, String terms, String po, double amount,
 			double balance, String ctr_ref, String currency, String entry);
+	public ArrayList<Transaction> getAllSuspendedSalesReturn();
 }

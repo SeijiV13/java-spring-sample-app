@@ -38,7 +38,12 @@ public class ProductImplem {
 	public ArrayList<Transaction> getAllSuspendedSales(){
 		ArrayList<Transaction> transaction = productMapper.getAllSuspendedSales();
 		return transaction;
-	}	
+	}
+	
+	public ArrayList<Transaction> getAllSuspendedSalesReturn(){
+		ArrayList<Transaction> transaction = productMapper.getAllSuspendedSalesReturn();
+		return transaction;
+	}
 
 	public Transaction getSuspendedSalesTrans(String reference_no){
 		Transaction transaction = productMapper.getSuspendedSalesTrans(reference_no);
@@ -81,9 +86,17 @@ public class ProductImplem {
 	public void addNewSale(String refNo, String date, String customerCode, String terms, String po, double amount, double balance, String ctr_ref, String currency){
 		productMapper.addNewSale(refNo, date, customerCode, terms, po, amount, balance, ctr_ref, currency);
 	}
+	
+	public void addNewSalesReturn(String refNo, String date, String customerCode, String terms, String po, double amount, double balance, String ctr_ref, String currency){
+		productMapper.addNewSalesReturn(refNo, date, customerCode, amount, balance);
+	}
 
 	public void addNewInOut_sale(String item_code, String date, String refNo, String client, double price, String currency, int quantity_in, int quantity_out, int quantity_adjustment, double balance, String agent){
 		productMapper.addNewInOut_sale(item_code, date, refNo, client, price, currency, quantity_in, quantity_out, quantity_adjustment, balance, agent);
+	}
+	
+	public void addNewInOut_salesReturn(String item_code, String date, String refNo, String client, double price, String currency, int quantity_in, int quantity_out, int quantity_adjustment, double balance, String agent, String indicator, String good, String category){
+		productMapper.addNewInOut_salesReturn(item_code, date, refNo, client, price, currency, quantity_in, quantity_out, quantity_adjustment, balance, agent, indicator, good, category);
 	}
 	
 	public ArrayList<InOutTransaction> getAllInOutTransactions(){

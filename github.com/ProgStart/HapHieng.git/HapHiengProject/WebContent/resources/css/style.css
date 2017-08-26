@@ -492,6 +492,20 @@ body div:nth-child(2) h3:not(.modal-title) {
 		.SR .btn, .SRR .btn, .PR .btn, .PRR .btn {
 			font-size: 16px;
 		}
+		
+		.SR label[for=date] {
+			margin-top: 10px;
+		}
+		
+		.SR .form-container h4 {
+			border-bottom: 1px solid grey;
+			padding-bottom: 5px;
+		}
+		
+		.SR .form-container button {
+			padding-left: 30px;
+			padding-right: 30px;
+		}
 	
 
 	/* ========= ITEM IN OUT TRANSACTIONS =========== */
@@ -503,5 +517,3 @@ body div:nth-child(2) h3:not(.modal-title) {
 			white-space:normal;
 			
 		}
-
-
