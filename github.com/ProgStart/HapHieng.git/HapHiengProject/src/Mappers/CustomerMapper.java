@@ -9,6 +9,7 @@ import Models.Sales;
 public interface CustomerMapper {
    
 	public ArrayList<Customer> getAllCustomers();
+	public Customer getCustomer(String customer_id);
 	public ArrayList<Customer> getFilteredCustomers(String customer_code, String description, String agent);
     public ArrayList<Customer> getAllCustomersWithBankFile();
     public void editCustomerDetails(String customer_code, String description, String agent, String address, String address2, String telephone, String resident_phone, String fax, String cellphone, String terms, String tin_number, String contact_person, String email, String credit_limit, String initial_balance, String remaining, String customer_type, String remarks );

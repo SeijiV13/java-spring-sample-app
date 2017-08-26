@@ -22,6 +22,10 @@ public class CustomerImplem {
 		return customerMapper.getAllCustomers();
 	}
 
+	public Customer getCustomer(String customer_id) {
+		return customerMapper.getCustomer(customer_id);
+	}
+	
 	public ArrayList<Customer> getFilteredCustomers(String customer_code, String description, String agent) {
 
 		return customerMapper.getFilteredCustomers("%" + customer_code + "%", "%" + description + "%",

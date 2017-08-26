@@ -193,6 +193,20 @@ $(document).ready(function() {
 	  }
 	} 
 	// ================= MENU SCRIPT =====================
+	
+	var formValidator = function (){
+	    var nameReg = /^[A-Za-z]+$/;
+	    var numberReg =  /^[0-9]+$/;
+	    var ref_no = $("#drnochar").val();
+	    var date = $("#date").val();
+	    var terms = $("#termsDetails").val();
+	    var totalAmt = $("#totalAmt").val();
+		if(ref_no == "" || date == "" || terms == "" || totalAmt == ""){
+			return false;
+		}
+		return true;
+	};
+	
 	Number.prototype.between  = function (a, b, inclusive) {
 	    var min = Math.min.apply(Math, [a,b]),
 	        max = Math.max.apply(Math, [a,b]);
@@ -248,12 +262,11 @@ $(document).ready(function() {
 		}
 		if((quantity*itemPrice !== 0 && (parseInt(quantity) <= parseInt(stock)))){
 			if($('#'+itemCode+'-item').length == 0) {
-				alert(itemPrice);
-				$('.list').append('<tr ' + trColor + ' data-toggle=\"modal\" data-target=\"#addEntry\" id=\"' + itemCode + '-item\" data-quantity="' + quantity + '" data-id="' + itemCode + '" data-agent="' + agentname + '">\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td class=\"priceCol\">' + itemPrice + '</td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class=\"xCol\"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
+				$('.list').append('<tr ' + trColor + ' data-toggle=\"modal\" data-target=\"#addEntry\" id=\"' + itemCode + '-item\" data-quantity="' + quantity + '" data-id="' + itemCode + '" data-agent="' + agentname + '">\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td class=\"priceCol\">' + parseFloat(itemPrice).toFixed(2) + '</td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class=\"xCol\"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
 				//$('.list').append('<tr data-toggle="modal" data-target="#addEntry" id=' + itemCode + '-item data-quantity="' + quantity + '" data-id="' + itemCode + '" data-agent="' + agentname + '">\n\t<td>' + itemCode + '</td>\n\t<td>' + itemCode + '</td>\n\t<td>' +  itemName + '</td>\n\t<td>' +  quantity + '</td>\n\t<td align=\"center\">' +  stock + '</td>\n\t<td>' +  "STOCK" + '</td>\n\t<td>' +  agentname + '</td>\n\t<td class=\"priceCol\"><input type=\"text"\ class=\"form-control inlinetext\" value=\"' + itemPrice + '\"></td>\n\t<td>' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td class=\"xCol\"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
 				}
 			else{
-				$('#'+itemCode+'-item').replaceWith('<tr ' + trColor + ' data-toggle=\"modal\" data-target=\"#addEntry\" id=\"' + itemCode + '-item\">\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"priceCol\">' + itemPrice + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"xCol\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
+				$('#'+itemCode+'-item').replaceWith('<tr ' + trColor + ' data-toggle=\"modal\" data-target=\"#addEntry\" id=\"' + itemCode + '-item\">\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' + itemCode + '</td>\n\t<td class=\"item-xm\">' +  itemName + '</td>\n\t<td class=\"item-xm\">' +  quantity + '</td>\n\t<td class=\"item-xm\" align=\"center\">' +  stock + '</td>\n\t<td class=\"item-xm\">' +  "STOCK" + '</td>\n\t<td class=\"item-xm\">' +  agentname + '</td>\n\t<td class=\"priceCol\">' + parseFloat(itemPrice).toFixed(2) + '</td>\n\t<td class=\"item-xm\">' + (itemPrice*quantity).toFixed(2) + '</td>\n\t<td><font class=\"xCol\"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>\n</tr>').fadeIn('slow');
 			} 
 		}
 
@@ -278,7 +291,7 @@ $(document).ready(function() {
 
 	$('#post-btn').click( function() {
 		var r = confirm("Are you sure you want to \"POST\" this transaction?");
-		if(r){
+		if(r && formValidator()){
 		  var table = $('#entries').tableToJSON();
 		  var tableStr = encodeURI(JSON.stringify(table));
 		  var refno = $("#drnochar").val() + $("#drno").val();
@@ -298,6 +311,8 @@ $(document).ready(function() {
 	        	  alert("Processing failed. Please try again.");
 	          }
 	      });
+		 } else {
+			 alert("Please fill required fields.")
 		 }
 	});
 	
@@ -321,6 +336,7 @@ $(document).ready(function() {
 		if(r){
 			var table = $('#entries').tableToJSON();
 			var multiplier;
+			//alert($("#wcrc").val());
 			if($("#wcrc").val() == "WC"){
 				multiplier = 0.65;
 			} else if($("#wcrc").val() == "RC"){
@@ -330,7 +346,8 @@ $(document).ready(function() {
 			}
 			for (var i = 0; i < table.length ; i++) { 
 				getItem(table[i]["Item code"]);
-				itemAdder(table[i]["Description"], $('#itemAmount').val(), $('#itemAmount2').text()*multiplier,
+				//alert($('#itemAmount').text()*multiplier);
+				itemAdder(table[i]["Description"], $('#itemAmount').val()*multiplier, $('#itemAmount2').text(),
 						table[i]["Qty"], table[i]["Description"], table[i]["QtyStock"], table[i]["Agent"],
 						table[i]["Item code"]);	
 			}
@@ -341,7 +358,7 @@ $(document).ready(function() {
 	
 	$('#suspendSales').click( function() {
 		var r = confirm("Are you sure you want to \"SUSPEND\" this transaction?");
-		if(r){
+		if(r && formValidator()){
 		  var table = $('#entries').tableToJSON();
 		  var tableStr = encodeURI(JSON.stringify(table));
 		  var refno = $("#drnochar").val() + $("#drno").val();
@@ -362,6 +379,8 @@ $(document).ready(function() {
 	        	  alert("Processing failed. Please try again.");
 	          }
 	      }); 
+		 } else {
+			 alert("Please fill required fields.")
 		 }
 	});
 	
@@ -468,5 +487,99 @@ $(document).ready(function() {
 	$( document ).ready( changer );
 	$("#salesagent").change(changer);
 	$('#itemTable tr').click(changer);
+	
+	// RECEIPT FUNCTIONS
+	$('#standardReceipt').click( function() {
+		var r = confirm("Are you sure you want to print a \"STANDARD RECEIPT\" on this transaction?");
+		if(r && formValidator()){
+		  var table = $('#entries').tableToJSON();
+		  var tableStr = encodeURI(JSON.stringify(table));
+		  var refno = $("#drnochar").val() + $("#drno").val();
+		  var customer = $("#customer").val();
+		  var date = $("#date").val();
+		  var terms = $("#termsDetails").val();
+		  var wcrc = $("#wcrc").val();
+		  var totalAmt = $("#totalAmt").val();
+		  var currency = "PHP";
+		  var receiptName = "Hap Hieng Marketing Corporation";
+		  var senderAddress = "9 Juliana Street, Potrero, Malabon City - Tels.: 361-3382 / 366-8079";
+		  var receiverAddress = "----RECEIVER ADDRESS----";
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\",\"receiptName\" : \""+ receiptName +"\",\"senderAddress\" : \""+ senderAddress +"\",\"receiverAddress\" : \""+ receiverAddress +"\"}";
+		  details = encodeURI(details);
+
+		  window.open('GenerateReceipt?details='+details+'&items='+tableStr+'&type='+1); 
+		 } else {
+			 alert("Please fill required fields.")
+		 }
+	});	
+	$('#HhhPlainReceipt').click( function() {
+		var r = confirm("Are you sure you want to print a \"HHH PLAIN RECEIPT\" on this transaction?");
+		if(r && formValidator()){
+		  var table = $('#entries').tableToJSON();
+		  var tableStr = encodeURI(JSON.stringify(table));
+		  var refno = $("#drnochar").val() + $("#drno").val();
+		  var customer = $("#customer").val();
+		  var date = $("#date").val();
+		  var terms = $("#termsDetails").val();
+		  var wcrc = $("#wcrc").val();
+		  var totalAmt = $("#totalAmt").val();
+		  var currency = "PHP";
+		  var receiptName = "HHM Marketing";
+		  var senderAddress = "9 Juliana Street, Potrero, Malabon City - Tels.: 366-8079 / 361-3382";
+		  var receiverAddress = "----RECEIVER ADDRESS----";
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\",\"receiptName\" : \""+ receiptName +"\",\"senderAddress\" : \""+ senderAddress +"\",\"receiverAddress\" : \""+ receiverAddress +"\"}";
+		  details = encodeURI(details);
+
+		  window.open('GenerateReceipt?details='+details+'&items='+tableStr+'&type='+2); 
+		 } else {
+			 alert("Please fill required fields.")
+		 }
+	});	
+	$('#HhPlainReceipt').click( function() {
+		var r = confirm("Are you sure you want to print a \"HAP HIENG PLAIN RECEIPT\" on this transaction?");
+		if(r && formValidator()){
+		  var table = $('#entries').tableToJSON();
+		  var tableStr = encodeURI(JSON.stringify(table));
+		  var refno = $("#drnochar").val() + $("#drno").val();
+		  var customer = $("#customer").val();
+		  var date = $("#date").val();
+		  var terms = $("#termsDetails").val();
+		  var wcrc = $("#wcrc").val();
+		  var totalAmt = $("#totalAmt").val();
+		  var currency = "PHP";
+		  var receiptName = "Hap Hieng Marketing";
+		  var senderAddress = "9 Juliana Street, Potrero, Malabon City - Tels.: 366-8079 / 361-3382";
+		  var receiverAddress = "----RECEIVER ADDRESS----";
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\",\"receiptName\" : \""+ receiptName +"\",\"senderAddress\" : \""+ senderAddress +"\",\"receiverAddress\" : \""+ receiverAddress +"\"}";
+		  details = encodeURI(details);
+
+		  window.open('GenerateReceipt?details='+details+'&items='+tableStr+'&type='+3); 
+		 } else {
+			 alert("Please fill required fields.")
+		 }
+	});	
+	$('#CkcjPlainReceipt').click( function() {
+		var r = confirm("Are you sure you want to print a \"CKCJ PLAIN RECEIPT\" on this transaction?");
+		if(r && formValidator()){
+		  var table = $('#entries').tableToJSON();
+		  var tableStr = encodeURI(JSON.stringify(table));
+		  var refno = $("#drnochar").val() + $("#drno").val();
+		  var customer = $("#customer").val();
+		  var date = $("#date").val();
+		  var terms = $("#termsDetails").val();
+		  var wcrc = $("#wcrc").val();
+		  var totalAmt = $("#totalAmt").val();
+		  var currency = "PHP";
+		  var receiptName = "CKCJ Marketing";
+		  var senderAddress = "9 Juliana Street, Potrero, Malabon City - Tels.: 366-8079 / 361-3382";
+		  var receiverAddress = "----RECEIVER ADDRESS----";
+		  var details = "{\"refno\" : \""+ refno +"\",\"customer\" : \""+ customer +"\",\"date\" : \""+ date +"\",\"terms\" : \""+ terms +"\",\"wcrc\" : \""+ wcrc +"\",\"totalAmt\" : \""+ totalAmt +"\",\"currency\" : \""+ currency +"\",\"receiptName\" : \""+ receiptName +"\",\"senderAddress\" : \""+ senderAddress +"\",\"receiverAddress\" : \""+ receiverAddress +"\"}";
+		  details = encodeURI(details);
+
+		  window.open('GenerateReceipt?details='+details+'&items='+tableStr+'&type='+4); 
+		 } else {
+			 alert("Please fill required fields.")
+		 }
+	});	
 	
 });

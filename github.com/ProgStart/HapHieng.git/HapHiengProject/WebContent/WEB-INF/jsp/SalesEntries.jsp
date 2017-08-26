@@ -139,6 +139,7 @@
 				<modal:addcustomer />
 				<modal:addagent />
 				<form>
+
 					<div class="form-horizontal col-md-12">
 						<div class="col-md-4">
 							<label class="control-label col-md-4" for="drno">DR Ref.
@@ -203,7 +204,6 @@
 						</div>
 					</div>
 					
-
 				</form>
 				
 				<!-- ============ TABLE ============ -->
@@ -433,28 +433,28 @@
 				<div class="btn-group btn-group-justified " role="group">
 					
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default">
+						<button id="standardReceipt" type="button" class="btn btn-default">
 							<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
 							STANDARD
 						</button>
 					</div>
 
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default">
+						<button id="HhhPlainReceipt" type="button" class="btn btn-default">
 							<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
 							HHH PLAIN
 						</button>
 					</div>
 
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default">
+						<button id="HhPlainReceipt" type="button" class="btn btn-default">
 							<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
 							HAP HIENG PLAIN
 						</button>
 					</div>
 					
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default">
+						<button id="CkcjPlainReceipt" type="button" class="btn btn-default">
 							<span class="glyphicon glyphicon-print" aria-hidden="true"></span>
 							CKCJ PLAIN
 						</button>

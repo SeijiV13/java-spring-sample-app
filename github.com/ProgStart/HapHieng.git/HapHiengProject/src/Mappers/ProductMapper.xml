@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="getNextSuspendID" resultType="string">
-        SELECT TOP 1 reference_no FROM SUSPEND_TABLE WHERE reference_no LIKE #{0} ORDER BY reference_no DESC
+        (SELECT TOP 1 reference_no FROM SUSPEND_TABLE WHERE reference_no LIKE #{0}) UNION (SELECT TOP 1 reference_no FROM SALES_TABLE WHERE reference_no LIKE #{0}) ORDER BY reference_no DESC
 	</select>
 	
 	<select id="getNextSalesID" resultType="string">

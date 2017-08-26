@@ -9,7 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getAllCustomers" resultType="Customer">
 	  SELECT * FROM CUSTOMER_TABLE order by customer_code	
     </select>
-    
+
+    <select id="getCustomer" resultType="Customer">
+    	SELECT * FROM CUSTOMER_TABLE WHERE customer_code = #{0}
+    </select>
+        
     <select id="getFilteredCustomers" resultType="Customer">
     	SELECT * FROM CUSTOMER_TABLE WHERE customer_code LIKE #{0}
     	AND description LIKE #{1} AND agent LIKE #{2} ORDER BY description
